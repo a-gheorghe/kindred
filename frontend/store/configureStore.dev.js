@@ -1,13 +1,15 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux'
+
+
 import rootReducer from '../reducers';
-// import DevTools from '../containers/DevTools';
 
 export function configureStore(initialState) {
     return createStore(
-        rootReducer,
+        combineReducers({
+          rootReducer,
+          routing: routerReducer
+        }),
         initialState
-        // compose(
-        //     DevTools.instrument()
-        // )
     );
 }

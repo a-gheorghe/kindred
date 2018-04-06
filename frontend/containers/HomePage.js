@@ -1,32 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
-import Button from '../components/Button'
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Title from '../components/Title';
+import LoginFrom from '../components/LoginForm';
 
 
-const AppContainer = ({ name }) => {
+const HomePage = ({ name }) => {
     return (
         <div>
-            Hello
-            {' '}
-            <Link to='/'> Root </Link>
-            {' '}
-            <Link to='/login'> Login </Link>
-            {' '}
-            <Link to='/home'> Home </Link>
-            <Header />
-            <Title name={name} />
-            <Button />
-            <Footer />
+          Home Page
         </div>
     );
 };
 
-AppContainer.propTypes = {
+HomePage.propTypes = {
     name: PropTypes.string,
 };
 
@@ -44,4 +33,4 @@ const mapDispatchToProps = (/* dispatch */) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AppContainer);
+)(HomePage);
