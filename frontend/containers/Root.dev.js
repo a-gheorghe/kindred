@@ -15,9 +15,9 @@ export default function Root({ store }) {
         <Provider store={store}>
             <div>
               <Router history={history}>
-                <Route path='/' component={AppContainer}>
-                  <Route path='/login' component={SharedLogin}/>
-                  <Route path='/home' component={HomePage}/>
+                <Route exact path='/' component={AppContainer}>
+                  <Route exact path='/login' component={SharedLogin}/>
+                  <Route exact path='/home' component={HomePage}/>
                </Route>
              </Router>
             </div>
