@@ -1,8 +1,15 @@
-function rootReducer(state = {name: 'Welcome to Kindred Talent'}, action) {
-    switch (action.type) {
-        default:
-            return state;
+import { combineReducers } from 'redux';
+
+function loggedInReducer(state = 'pending', action) {
+  switch(action.type) {
+    case 'LOGIN':
+      return true;
+    case 'LOGOUT':
+      return false;
+    default:
+      return state;
     }
 }
 
-export default rootReducer;
+
+export default combineReducers({ loggedIn: loggedInReducer });

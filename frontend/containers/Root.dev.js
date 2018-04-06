@@ -1,30 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import PropTypes from 'prop-types';
-import AppContainer from './AppContainer';
-import SharedLogin from './SharedLogin';
-import HomePage from './HomePage';
+import { Provider, connect } from 'react-redux';
+// import { BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
+import ViewingContainer from './ViewingContainer.js';
+import UserContainer from './UserContainer.js';
+import '../css/main.css';
+import { BrowserRouter } from 'react-router-dom';
+import HomePage from '../components/HomePage';
+import Login from '../components/Login';
 
 
-export default function Root({ store }) {
-  const history = syncHistoryWithStore(browserHistory, store);
+
+
+class Root extends React.Component {
+  // componentWillMount() {
+  //   // check if logged in
+  // }
+
+  render() {
+    // if (this.props.loggedIn === 'pending') {
+    //   return <div />;
+    // }
+
     return (
-        <Provider store={store}>
-            <div>
-              <Router history={history}>
-                <Route exact path='/' component={AppContainer}>
-                  <Route exact path='/login' component={SharedLogin}/>
-                  <Route exact path='/home' component={HomePage}/>
-               </Route>
-             </Router>
-            </div>
-        </Provider>
+// THIS WORKS
+      <Provider store={this.props.store}>
+        {/* <Router history={hashHistory}>
+          <Route path='/' component={HomePage} />
+          <Route path='/login' component={Login} />
+        </Router> */}
+
+
+        <BrowserRouter>
+          {/* { this.props.loggedIn ?
+            <UserContainer /> : */}
+            <ViewingContainer />
+        </BrowserRouter>
+      </Provider>
     );
+  }
 }
 
-Root.propTypes = {
-    store: PropTypes.object.isRequired
-};
+  const mapStateToProps = state => ({
+    loggedIn: state.loggedIn
+  })
+
+  const mapDispatchToProps = dispatch => ({
+    login: () => dispatch({ type: 'LOGIN' }),
+    logout: () => dispatch({ type: 'LOGOUT' })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root)
