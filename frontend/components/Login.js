@@ -1,23 +1,68 @@
-import React from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 
+
+// component
 class Login extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        loggedIn: false
+      }
+    }
+
+  login = () => {
+    this.props.auth.authenticate(() => {
+      this.setState(() => ({
+        loggedIn: true
+      }))
+    })
+  }
+
+
+  sendLogin(event){
+    event.preventDefault();
+    axios.post('/login', {
+      username: event.target.username.value,
+      password: event.target.password.value
+    }).then((resp) => {
+      if (resp.data === true) {
+        console.log('resp data true')
+        this.setState(() => ({
+          loggedIn: true
+        }))
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   render() {
+    console.log('login this.props', this.props)
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { loggedIn } = this.state
+
+    if (loggedIn === true) {
+      console.log('inside logged in true', from.pathname)
+      return (
+        <Redirect to={from.pathname}/>
+      )
+    }
+
     return (
-      <form>
-        <h1>Login</h1>
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button label="Submit" primary type="submit" />
-      </form>
-    );
+      <div>
+        <p> You must log in to view the page </p>
+        {/* <form onSubmit={() => this.login()} > */}
+        <form>
+          Username: <input type="text" name="username" /> <br/>
+          Password: <input type="password" name="password" />
+          {/* <input type="submit" value="Login"/> */}
+        </form>
+        <button onClick={this.login}>LOGIN</button>
+      </div>
+    )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  login: () => dispatch({ type: 'LOGIN' })
-});
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;
