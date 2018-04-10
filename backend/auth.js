@@ -10,7 +10,6 @@ const router = express.Router();
 // router.use(passport.session());
 //
 // passport.serializeUser((user, done) => {
-//   console.log('in serialize user')
 //   done(null, user.id);
 // });
 //

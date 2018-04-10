@@ -8,14 +8,12 @@ class AuthButton extends React.Component {
   }
 
   render(){
-    const { history, auth } = this.props
-    console.log('this.props is: ', this.props)
-    console.log('history is: ', history)
-    if (auth.isAuthenticated){
+    const { history, authCand } = this.props
+    if (authCand.isAuthenticated){
       return (
         <p> Welcome!
           <button onClick={() => {
-            auth.signout(() => history.push('/'))
+            authCand.signout(() => history.push('/'))
           }}> Sign out </button>
         </p>
       )

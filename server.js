@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 //   console.log('yo yo waddup?')
 // })
 
-app.post('/api/login', passport.authenticate('local'), (req,res) => {
+app.post('/login', passport.authenticate('local'), (req,res) => {
   console.log('in here')
   if (req.user) res.send(true);
   else res.status(401).send('Incorrect username/pass combo');
