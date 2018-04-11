@@ -12,7 +12,7 @@ class CandidateRegister extends React.Component {
 
 // save candidate to database
 // set this.state.loggedIn to true
-// set this.state.employeeRegistered to true
+// set this.state.referrerRegistered to true
 registerCandidate = () => {
   this.props.authCand.authenticate(() => {
     this.setState(() => ({
@@ -37,7 +37,7 @@ registerCandidate = () => {
               Email: <input type="text" name="email" /> <br/>
               Password: <input type="password" name="password" /> <br/>
           </form>
-          <button onClick={this.registerCandidate}> Register as a Candidate </button>
+          <button onClick={this.registerCandidate}> Register as a Candidate </button><br/>
           <Link to='/login'> Already have an account? Log in! </Link>
       </div>
     )

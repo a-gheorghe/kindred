@@ -4,12 +4,15 @@ import About from '../components/About'
 import AuthButton from '../components/AuthButton'
 import Login from '../components/Login'
 import PrivateRouteCand from '../components/PrivateRouteCand'
-import PrivateRouteEmp from '../components/PrivateRouteEmp'
+import PrivateRouteRef from '../components/PrivateRouteRef'
 import CandidateSelfProfile from '../components/CandidateSelfProfile'
 import Landing from '../components/Landing'
-import EmployeeRegister from '../components/EmployeeRegister'
+import ReferrerRegister from '../components/ReferrerRegister'
 import CandidateRegister from '../components/CandidateRegister'
 import AllCandidates from '../components/AllCandidates'
+import CandidateExternalProfile from '../components/CandidateExternalProfile'
+import Messages from '../components/Messages'
+import PrivateRouteBoth from '../components/PrivateRouteBoth'
 
 
 import axios from 'axios'
@@ -27,7 +30,7 @@ const fakeAuthCand = {
   }
 }
 
-const fakeAuthEmp = {
+const fakeAuthRef = {
   isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true
@@ -40,18 +43,21 @@ const fakeAuthEmp = {
 }
 
 
-export default function AuthExample () {
+export default function AuthExample (props) {
+  ('props main', props)
   return (
     // <div>
-      <BrowserRouter>
+      <BrowserRouter basename='/app'>
         <div>
           <Route exact path='/' render={(props) => <Landing authCand={fakeAuthCand} {...props}/>} />
-          <Route path="/about" component={About}/>
-          <Route path='/employeeRegister' render={(props) => <EmployeeRegister authEmp={fakeAuthEmp} {...props}/>} />
+          <Route path='/about' component={About}/>
+          <Route path='/referrerRegister' render={(props) => <ReferrerRegister authRef={fakeAuthRef} {...props}/>} />
           <Route path='/candidateRegister' render={(props) => <CandidateRegister authCand={fakeAuthCand} {...props}/>} />
-          <Route path="/login"  render={(props) => <Login authCand={fakeAuthCand} {...props}/>} />
-          <PrivateRouteCand path="/candidateSelfProfile" component={CandidateSelfProfile} authCand={fakeAuthCand} />
-          <PrivateRouteEmp path="/allCandidates" component={AllCandidates} authEmp={fakeAuthEmp} />
+          <Route path='/login'  render={(props) => <Login authCand={fakeAuthCand} authRef={fakeAuthRef} {...props}/>} />
+          <Route path='/candidateExternalProfile' render={(props) => <CandidateExternalProfile authCand={fakeAuthCand} authRef={fakeAuthRef} {...props}/>} />
+          <PrivateRouteBoth path='/messages' render={(props) => <Messages authCand={fakeAuthCand} authRef={fakeAuthRef} {...props} />} />
+          <PrivateRouteCand path='/candidateSelfProfile' component={CandidateSelfProfile} authCand={fakeAuthCand} />
+          <PrivateRouteRef path='/allCandidates' component={AllCandidates} authRef={fakeAuthRef} />
         </div>
       </BrowserRouter>
     // </div>

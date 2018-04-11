@@ -6,17 +6,17 @@ class EmployeeRegister extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        loggedInEmp: false
+        loggedInRef: false
       }
     }
 
 // save employee to database
 // set this.state.loggedIn to true
-// set this.state.employeeRegistered to true
+// set this.state.referrerRegistered to true
 registerEmployee = () => {
-  this.props.authEmp.authenticate(() => {
+  this.props.authRef.authenticate(() => {
     this.setState(() => ({
-      loggedInEmp: true
+      loggedInRef: true
     }))
   })
 }
@@ -38,7 +38,7 @@ registerEmployee = () => {
             Email: <input type="text" name="email" /> <br/>
             Password: <input type="password" name="password" /> <br/>
         </form>
-            <button onClick={this.registerEmployee}> Register as Employee </button>
+            <button onClick={this.registerEmployee}> Register as Employee </button> <br/>
             <Link to='/login'> Already have an account? Log in! </Link>
 
       </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 
 // component
@@ -7,7 +7,8 @@ class Login extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        loggedInCand: false
+        loggedInCand: false,
+        loggedInRef: false
       }
     }
 
@@ -19,29 +20,24 @@ class Login extends React.Component {
     })
   }
 
-  //
-  // sendLogin(event){
-  //   event.preventDefault();
-  //   axios.post('/login', {
-  //     username: event.target.username.value,
-  //     password: event.target.password.value
-  //   }).then((resp) => {
-  //     if (resp.data === true) {
-  //       console.log('resp data true')
-  //       this.setState(() => ({
-  //         loggedIn: true
-  //       }))
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-  // }
+  loginRef = () => {
+    this.props.authRef.authenticate(() => {
+      this.setState(() => ({
+        loggedInRef: true
+      }))
+    })
+  }
+
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
-    const { loggedInCand } = this.state
-    console.log('log in', this.props)
+    const { loggedInCand, loggedInRef } = this.state
+
+    if (loggedInRef === true) {
+      return (
+        <Redirect to={from.pathname}/>
+      )
+    }
 
     if (loggedInCand === true) {
       return (
@@ -58,10 +54,11 @@ class Login extends React.Component {
           Password: <input type="password" name="password" />
           {/* <input type="submit" value="Login"/> */}
         </form>
-        <button onClick={this.loginCand}>LOGIN</button>
+        <button onClick={this.loginCand}>LOGIN AS CANDIDATE</button>
+        <button onClick={this.loginRef}>LOGIN AS REFERRER</button>
       </div>
     )
   }
 }
 
-export default Login;
+export default withRouter(Login);
