@@ -33,6 +33,7 @@ class MessageThread extends React.Component {
 
     return (
       <div>
+        <AuthButton loggedInCand={this.props.loggedInCand} loggedInRef={this.props.loggedInRef} logoutCand={this.props.logoutCand} logoutRef={this.props.logoutRef} />
         Here are your messages
         {newArrayMessages} <br/> <br/>
         <form onSubmit={this.handleSubmit}>

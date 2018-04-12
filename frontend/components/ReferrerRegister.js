@@ -9,11 +9,10 @@ class ReferrerRegister extends React.Component {
 
   render() {
     console.log('Referrer props', this.props)
-    console.log('target in register', this.props.getTarget())
 
     if (this.props.loggedInRef === true) {
       return (
-        <Redirect to={this.props.location.state.from.pathname}/>
+        <Redirect to={this.props.target}/>
       )
     }
 

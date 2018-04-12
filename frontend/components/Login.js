@@ -6,27 +6,19 @@ import { Redirect, withRouter } from 'react-router-dom'
 class Login extends React.Component {
   constructor(props) {
       super(props);
-    }
-
-  loginAndRedirect = () => {
-    this.props.loginRef()
-    this.props.history.push(this.props.getTarget())
-  }
+}
 
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
-    const { loggedInCand, loggedInRef, loginRef, loginCand } = this.props
+    // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
-    if (loggedInRef === true) {
+    const { loggedInCand, loggedInRef, loginRef, loginCand, target } = this.props
+
+    if (loggedInRef === true || loggedInCand === true) {
       return (
-        <Redirect to={from.pathname}/>
+        <Redirect to={target}/>
       )
-    } else if (loggedInCand === true) {
-      return (
-        <Redirect to={from.pathname}/>
-      )
-    } else {
+    }  else {
       return (
         <div>
           <p> You must log in to view the page </p>
@@ -35,7 +27,7 @@ class Login extends React.Component {
             Password: <input type="password" name="password" />
           </form>
           <button onClick={loginCand}>Login as candidate</button>
-          <button onClick={this.loginAndRedirect}>Login as referrer</button>
+          <button onClick={loginRef}>Login as referrer</button>
         </div>
       )
     }

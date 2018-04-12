@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
-import { Route, Link, Redirect } from 'react-router-dom'
+import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 
-const PrivateRouteBoth = ({ component: Component, ...rest  }) => {
-  return (
-    <Route {...rest}
-      render={(props) => (rest.loggedInCand || rest.loggedInRef) ?
-        <Component {...props} {...rest}/> :
-        <Redirect to={{
-          pathname: '/referrerRegister',
-          state: { from: props.location }
-        }} />}
-      />
-  )
+class PrivateRouteBoth extends React.Component {
+
+  componentWillMount(){
+    this.props.setTarget(this.props.location.pathname)
+  }
+
+  render(){
+    const { component: Component, ...rest  } = this.props
+    return (
+      <Route {...rest}
+        render={(props) => (rest.loggedInCand || rest.loggedInRef) ?
+          <Component {...props} {...rest} /> :
+          <Redirect to= '/referrerRegister' />}
+        />
+    )
+  }
 }
 
-export default PrivateRouteBoth;
+export default withRouter(PrivateRouteBoth);

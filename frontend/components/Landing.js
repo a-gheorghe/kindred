@@ -4,13 +4,11 @@ import AuthButton from './AuthButton'
 import ShortBio from './ShortBio'
 
 class Landing extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
 
 
   handleClick = (id) => {
-    this.props.setTarget(`/messages/${id}`)
+    // this.props.setTarget(`/messages/${id}`)
     this.props.history.push(`/messages/${id}`)
   }
 
