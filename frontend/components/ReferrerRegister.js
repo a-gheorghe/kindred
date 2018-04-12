@@ -1,31 +1,19 @@
 import React, { Component } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, withRouter } from 'react-router-dom'
 
 
-class EmployeeRegister extends React.Component {
+class ReferrerRegister extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        loggedInRef: false
-      }
-    }
-
-// save employee to database
-// set this.state.loggedIn to true
-// set this.state.referrerRegistered to true
-registerEmployee = () => {
-  this.props.authRef.authenticate(() => {
-    this.setState(() => ({
-      loggedInRef: true
-    }))
-  })
-}
+    super(props);
+  }
 
   render() {
-    const { loggedInEmp } = this.state
-    if (loggedInEmp === true) {
+    console.log('Referrer props', this.props)
+    console.log('target in register', this.props.getTarget())
+
+    if (this.props.loggedInRef === true) {
       return (
-        <Redirect to='/allCandidates'/>
+        <Redirect to={this.props.location.state.from.pathname}/>
       )
     }
 
@@ -38,7 +26,7 @@ registerEmployee = () => {
             Email: <input type="text" name="email" /> <br/>
             Password: <input type="password" name="password" /> <br/>
         </form>
-            <button onClick={this.registerEmployee}> Register as Employee </button> <br/>
+            <button onClick={this.props.registerRef}> Register as Employee </button> <br/>
             <Link to='/login'> Already have an account? Log in! </Link>
 
       </div>
@@ -46,4 +34,4 @@ registerEmployee = () => {
   }
 }
 
-export default EmployeeRegister;
+export default withRouter(ReferrerRegister);

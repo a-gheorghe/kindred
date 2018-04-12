@@ -6,58 +6,39 @@ import { Redirect, withRouter } from 'react-router-dom'
 class Login extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {
-        loggedInCand: false,
-        loggedInRef: false
-      }
     }
 
-  loginCand = () => {
-    this.props.authCand.authenticate(() => {
-      this.setState(() => ({
-        loggedInCand: true
-      }))
-    })
-  }
-
-  loginRef = () => {
-    this.props.authRef.authenticate(() => {
-      this.setState(() => ({
-        loggedInRef: true
-      }))
-    })
+  loginAndRedirect = () => {
+    this.props.loginRef()
+    this.props.history.push(this.props.getTarget())
   }
 
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
-    const { loggedInCand, loggedInRef } = this.state
+    const { loggedInCand, loggedInRef, loginRef, loginCand } = this.props
 
     if (loggedInRef === true) {
       return (
         <Redirect to={from.pathname}/>
       )
-    }
-
-    if (loggedInCand === true) {
+    } else if (loggedInCand === true) {
       return (
         <Redirect to={from.pathname}/>
       )
+    } else {
+      return (
+        <div>
+          <p> You must log in to view the page </p>
+          <form>
+            Username: <input type="text" name="username" /> <br/>
+            Password: <input type="password" name="password" />
+          </form>
+          <button onClick={loginCand}>Login as candidate</button>
+          <button onClick={this.loginAndRedirect}>Login as referrer</button>
+        </div>
+      )
     }
-
-    return (
-      <div>
-        <p> You must log in to view the page </p>
-        {/* <form onSubmit={() => this.login()} > */}
-        <form>
-          Username: <input type="text" name="username" /> <br/>
-          Password: <input type="password" name="password" />
-          {/* <input type="submit" value="Login"/> */}
-        </form>
-        <button onClick={this.loginCand}>LOGIN AS CANDIDATE</button>
-        <button onClick={this.loginRef}>LOGIN AS REFERRER</button>
-      </div>
-    )
   }
 }
 

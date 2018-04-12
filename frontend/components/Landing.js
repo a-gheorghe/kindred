@@ -1,24 +1,38 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import AuthButton from './AuthButton'
 import ShortBio from './ShortBio'
 
-const Landing = (props) =>  {
-  return (
-  <div>
-    <AuthButton authCand={props.authCand}/>
-    <ul>
-      <li><Link to="/about"> About Kindred Talent </Link></li>
-      <li><Link to="/referrerRegister"> I want to refer someone </Link></li>
-      <li><Link to="/candidateRegister"> I want a job </Link></li>
-    </ul>
-    <h3> Welcome to Kindred Talent. Here are some promising candidates </h3>
-    <ShortBio />
-    <ShortBio />
-    <ShortBio />
-    <ShortBio />
-  </div>
-  )
+class Landing extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+  handleClick = (id) => {
+    this.props.setTarget(`/messages/${id}`)
+    this.props.history.push(`/messages/${id}`)
+  }
+
+
+
+  render() {
+    console.log('landing props', this.props)
+    return (
+      <div>
+        <div>
+          Main landing page (referrer focused) <br/>
+          <a href="/candidate" style={{fontSize: 10}}> I'm looking for a job </a>
+          <a href="/app/login" style={{fontSize: 10, float: 'right'}}> Login </a> <br/>
+        </div>
+
+        <div>
+          Here are some well qualified candidates <br/>
+          { [1,2,3,4].map(id => <div style={{border: '1px solid black'}} onClick={() => this.handleClick(id)} key={id}> Connect with Candidate One</div>) }
+        </div>
+      </div>
+    )
+  }
 }
 
-export default Landing;
+export default withRouter(Landing);

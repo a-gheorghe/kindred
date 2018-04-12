@@ -9,31 +9,17 @@ class AuthButton extends React.Component {
   }
 
   render(){
-  const { history, authCand } = this.props
-    if (authCand.isAuthenticated){
+  const { history, loggedInCand, loggedInRef, logoutCand, logoutRef } = this.props
+    if (loggedInCand){
       return (
         <p> Welcome!
-          <button onClick={() => {
-            authCand.signout(() => {
-              axios.get('/candidate')
-              .then((resp) => {
-                (resp)
-              })
-            })
-          }}> Sign out </button>
+          <button onClick={logoutCand}> Sign out </button>
         </p>
       )
-    } else if (authRef.isAuthenticated){
+    } else if (loggedInRef){
       return (
         <p> Welcome!
-          <button onClick={() => {
-            authRef.signout(() => {
-              axios.get('/app')
-              .then((resp) => {
-                (resp)
-              })
-            })
-          }}> Sign out </button>
+          <button onClick={logoutRef}> Sign out </button>
         </p>
       )
     } else {
