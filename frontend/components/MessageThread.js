@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import Message from './Message'
 import OptionsRef from './OptionsRef'
+import OptionsCand from './OptionsCand'
 
 class MessageThread extends React.Component {
   constructor(props) {
@@ -24,23 +25,36 @@ class MessageThread extends React.Component {
   }
 
   render(){
-
     console.log('this.props inside message thread', this.props)
     const newArrayMessages = this.state.arrayMessages.map((message) => {
       return <Message name={message.name} value={message.value} />
     })
 
-    return (
-      <div>
-        <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />
-        Here are your messages with Candidate
-        {newArrayMessages} <br/> <br/>
-        <form onSubmit={this.handleSubmit}>
-          <textarea type="text" placeholder="Type your message here" value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Send message" />
-        </form>
-      </div>
-    )
+    if (this.props.loggedInCand){
+      return (
+        <div>
+          <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
+          Here are your messages with referrers
+          {newArrayMessages} <br/><br/>
+          <form onSubmit={this.handleSubmit}>
+            <textarea type="text" placeholder="Type your message here" value={this.state.value} onChange={this.handleChange} />
+            <input type="submit" value="Send message" />
+          </form>
+        </div>
+      )
+    } else if (this.props.loggedInRef){
+      return (
+        <div>
+          <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />
+          Here are your messages with Candidate
+          {newArrayMessages} <br/> <br/>
+          <form onSubmit={this.handleSubmit}>
+            <textarea type="text" placeholder="Type your message here" value={this.state.value} onChange={this.handleChange} />
+            <input type="submit" value="Send message" />
+          </form>
+        </div>
+      )
+    }
   }
 }
 

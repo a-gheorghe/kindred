@@ -5,6 +5,7 @@ import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 class PrivateRouteCand extends React.Component {
 
   componentWillMount(){
+    console.log('private route cand this.props', this.props)
     this.props.setTarget(this.props.location.pathname)
   }
 

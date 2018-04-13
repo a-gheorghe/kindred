@@ -1,17 +1,16 @@
 import React from 'react';
 import AuthButton from './AuthButton'
+import OptionsCand from './OptionsCand'
 
 const CandidateSelfProfile = (props) => {
   return (
     <div>
-      <AuthButton authCand={props.authCand} />
-      <a href="/app/candidateExternalProfile"> See profile from referrer view </a> <br/>
+      <OptionsCand loggedInCand={props.loggedInCand} logoutCand={props.logoutCand}/>
       <b>Ana</b><br/>
-      <b> Education:</b> BSc Brock University <br/>
+      <b> Education:</b> MSc University of British Columbia <br/>
       <b> Work Experience: </b> Some work experience here <br/> <br/> <br/>
-      <a href='/app/messages'> Messages </a>
     </div>
-)
+  )
 }
 
 export default CandidateSelfProfile;
