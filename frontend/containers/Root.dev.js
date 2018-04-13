@@ -130,7 +130,7 @@ class AuthExample extends React.Component {
       // <div>
       <BrowserRouter basename='/app'>
       <div>
-        <Route exact path='/' render={(props) => <Landing logoutCand={this.logoutCand} setTarget={this.setTarget} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} {...props}/>} />
+        {/* <Route exact path='/' render={(props) => <Landing logoutCand={this.logoutCand} setTarget={this.setTarget} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} {...props}/>} /> */}
         <Route path='/about' component={About}/>
         <Route path='/referrerRegister' render={(props) => <ReferrerRegister target={this.target} setTarget={this.setTarget} registerRef={this.registerRef} loggedInRef={this.state.loggedInRef} {...props}/>} />
         <Route path='/candidateRegister' render={(props) => <CandidateRegister target={this.target} setTarget={this.setTarget} registerCand={this.registerCand} loggedInCand={this.state.loggedInCand} {...props}/>} />

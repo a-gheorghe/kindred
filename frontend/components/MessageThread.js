@@ -30,11 +30,12 @@ class MessageThread extends React.Component {
       return <Message name={message.name} value={message.value} />
     })
 
-    if (this.props.loggedInCand){
+    if (this.props.loggedInCand || this.props.loggedInRef){
       return (
         <div>
-          <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
-          Here are your messages with referrers
+          {this.props.loggedInCand ? <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />:  <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />}
+          {/* <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} /> */}
+          Test message. Here are your messages with referrers
           {newArrayMessages} <br/><br/>
           <form onSubmit={this.handleSubmit}>
             <textarea type="text" placeholder="Type your message here" value={this.state.value} onChange={this.handleChange} />
@@ -42,7 +43,7 @@ class MessageThread extends React.Component {
           </form>
         </div>
       )
-    } else if (this.props.loggedInRef){
+    } /*else if (this.props.loggedInRef){
       return (
         <div>
           <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />
@@ -54,7 +55,7 @@ class MessageThread extends React.Component {
           </form>
         </div>
       )
-    }
+    } */
   }
 }
 

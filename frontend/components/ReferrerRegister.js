@@ -9,7 +9,7 @@ class ReferrerRegister extends React.Component {
 
   render() {
     console.log('Referrer props', this.props)
-
+    // move to component will mount
     if (this.props.loggedInRef === true) {
       if (this.props.target === '/referrerRegister'){
         return (
