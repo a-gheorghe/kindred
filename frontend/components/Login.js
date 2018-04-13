@@ -13,12 +13,29 @@ class Login extends React.Component {
     // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
     const { loggedInCand, loggedInRef, loginRef, loginCand, target } = this.props
+    console.log('target inside login page', target)
 
-    if (loggedInRef === true || loggedInCand === true) {
-      return (
-        <Redirect to={target}/>
-      )
-    }  else {
+    if (loggedInCand === true){
+      if (target === undefined){
+        return (
+          <Redirect to={target} />
+        )
+      } else {
+        return (
+          <Redirect to='/candidateSelfProfile' />
+        )
+      }
+    } else if (loggedInRef === true){
+      if (target === undefined){
+        return (
+          <Redirect to={target} />
+        )
+      } else {
+        return (
+          <Redirect to='/allCandidates' />
+        )
+      }
+    } else {
       return (
         <div>
           <p> You must log in to view the page </p>

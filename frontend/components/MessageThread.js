@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import AuthButton from './AuthButton'
+import { Link, withRouter } from 'react-router-dom'
 import Message from './Message'
-
+import OptionsRef from './OptionsRef'
 
 class MessageThread extends React.Component {
   constructor(props) {
@@ -26,25 +25,23 @@ class MessageThread extends React.Component {
 
   render(){
 
-    console.log('this.state.arrayMessages', this.state.arrayMessages)
+    console.log('this.props inside message thread', this.props)
     const newArrayMessages = this.state.arrayMessages.map((message) => {
       return <Message name={message.name} value={message.value} />
     })
 
     return (
       <div>
-        <AuthButton loggedInCand={this.props.loggedInCand} loggedInRef={this.props.loggedInRef} logoutCand={this.props.logoutCand} logoutRef={this.props.logoutRef} />
-        Here are your messages
+        <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />
+        Here are your messages with Candidate
         {newArrayMessages} <br/> <br/>
         <form onSubmit={this.handleSubmit}>
           <textarea type="text" placeholder="Type your message here" value={this.state.value} onChange={this.handleChange} />
           <input type="submit" value="Send message" />
-
         </form>
-
       </div>
     )
   }
 }
 
-export default MessageThread;
+export default withRouter(MessageThread);

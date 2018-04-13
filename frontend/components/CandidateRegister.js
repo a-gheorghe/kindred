@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, withRouter } from 'react-router-dom'
 
 
 class CandidateRegister extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {
-        loggedInCand: false
-      }
     }
 
-// save candidate to database
-// set this.state.loggedIn to true
-// set this.state.referrerRegistered to true
-registerCandidate = () => {
-  this.props.authCand.authenticate(() => {
-    this.setState(() => ({
-      loggedInCand: true
-    }))
-  })
-}
-
   render() {
-    const { loggedInCand } = this.state
-    if (loggedInCand === true) {
-      return (
-        <Redirect to='/candidateSelfProfile'/>
-      )
+    console.log('Candidate props', this.props)
+
+    if (this.props.loggedInCand === true) {
+      if (this.props.target === '/candidateRegister'){
+        return (
+          <Redirect to='/candidateSelfProfile'/>
+        )
+      } else {
+          return (
+            <Redirect to={this.props.target} />
+          )
+      }
     }
 
     return (
@@ -37,11 +30,11 @@ registerCandidate = () => {
               Email: <input type="text" name="email" /> <br/>
               Password: <input type="password" name="password" /> <br/>
           </form>
-          <button onClick={this.registerCandidate}> Register as a Candidate </button><br/>
+          <button onClick={this.props.registerCand}> Register as a Candidate </button><br/>
           <Link to='/login'> Already have an account? Log in! </Link>
       </div>
     )
   }
 }
 
-export default CandidateRegister;
+export default withRouter(CandidateRegister);
