@@ -1,0 +1,169 @@
+.topnav {
+    background-color: #05668D;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    flex-direction: row;
+    padding: 0;
+}
+
+/* Style the links inside the navigation bar */
+html, body{
+    margin: 0;
+
+    padding: 0;
+
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+
+    min-height: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.logo{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.aTag a{
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#headerButtom {
+  margin: 15px;
+  margin-right: 25px;
+  border: 2px solid white;
+  border-color: #f2f2f2;
+  color: #f2f2f2;
+  background-color: #05668D;
+}
+
+.referralInfo {
+  padding: 30px;
+  height: 35%;
+}
+
+.bigOffer {
+  margin-bottom: 0;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.smallOffer {
+  color: #949191;
+}
+
+.blueContainer {
+  background-color: #86BBD8;
+  min-height: 100%;
+  flex: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.startReffer {
+  font-size: 60px;
+  color: white;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.profileDiv {
+  background-color: white;
+  display:flex;
+  flex-direction: row;
+  padding: 30px;
+  border-radius: 2%;
+}
+
+.infoName  {
+  font-size: 30px;
+}
+
+.imgDiv {
+  margin-right: 5%;
+}
+
+.inforExperience{
+  font-size: 30px;
+}
+
+.inforSkills{
+  font-size: 30px;
+}
+
+.infoJobTitle {
+  font-size: 15px;
+}
+.javascript{
+  border: 1px solid black;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 15%;
+}
+
+.profileSkills{
+  display: flex;
+  flex-direction: row;
+}
+
+.links {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+#connect {
+  background-color: #05668D;
+  color: white;
+}
+
+.profileDivSarah {
+  background-color: white;
+  display:flex;
+  flex-direction: row;
+  padding: 30px;
+  border-radius: 2%;
+  margin-top: 10px;
+}
+
+.profileDivDavid {
+  background-color: white;
+  display:flex;
+  flex-direction: row;
+  padding: 30px;
+  border-radius: 2%;
+  margin-top: 10px;
+}
+
+.viewCandidateButton {
+  margin: 5%;
+}
+
+.footer{
+  background-color: #6C6C6C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 10px;
+}
+
+.loginPageInput {
+}

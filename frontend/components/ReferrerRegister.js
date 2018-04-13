@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { Redirect, Link, withRouter } from 'react-router-dom'
+import { Input } from 'semantic-ui-react'
+
 
 
 class ReferrerRegister extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  // <button onClick={this.props.registerRef}> Register as Employee </button> <br/>
+  // <Link to='/login'> Already have an account? Log in! </Link>
 
   render() {
     console.log('Referrer props', this.props)
@@ -18,15 +23,29 @@ class ReferrerRegister extends React.Component {
 
     return (
       <div>
-        Register an employeee looking to refer candidates
-        <form>
-            Full Name: <input type="text" name="fullname" /> <br/>
-            Current Company: <input type="text" name="company" /> <br/>
-            Email: <input type="text" name="email" /> <br/>
-            Password: <input type="password" name="password" /> <br/>
-        </form>
-            <button onClick={this.props.registerRef}> Register as Employee </button> <br/>
-            <Link to='/login'> Already have an account? Log in! </Link>
+        <div className="topnav">
+          <div className="logo">
+            KINDREDTALENT
+          </div>
+          <div className="aTag">
+            <a>I&apos;m looking</a>
+            <a>I&apos;m Referring</a>
+            <button id="headerButtom" className="ui button"> Login </button>
+          </div>
+        </div>
+        <div className="blueContainer">
+        <div className="login">
+          Referrer Registration
+        </div>
+          <div className="registerInputBox">
+            <Input className="loginPageInput" placeholder='First Name' />
+            <Input className="loginPageInput" placeholder='Last Name' />
+            <Input className="loginPageInput" placeholder='Email' />
+            <Input className="loginPageInput" placeholder='Password' />
+            <Input className="loginPageInput" placeholder='Confirm Password' />
+            <button id="registerButton" className="medium ui button">Login</button>
+          </div>
+        </div>
 
       </div>
     )
