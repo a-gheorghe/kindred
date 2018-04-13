@@ -51,8 +51,11 @@ html, body{
 }
 
 .referralInfo {
-  padding: 30px;
-  height: 35%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .bigOffer {
@@ -63,6 +66,13 @@ html, body{
 
 .smallOffer {
   color: #949191;
+  font-size: 24px;
+}
+
+.refferImg {
+  height: 80%;
+  margin-left: 8%;
+
 }
 
 .blueContainer {
@@ -72,6 +82,7 @@ html, body{
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-top: 5%
 }
 
 .startReffer {
@@ -141,6 +152,7 @@ html, body{
   padding: 30px;
   border-radius: 2%;
   margin-top: 10px;
+  min-width: 595px;
 }
 
 .profileDivDavid {
@@ -165,5 +177,35 @@ html, body{
   padding: 10px;
 }
 
-.loginPageInput {
+.candidateImg {
+  height: 80%;
+  margin-right: 10%;
+}
+
+.candidateInputBox{
+  flex-direction: column;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: white;
+  padding-top: 50px;
+  width: 500px;
+  height: 450px;
+  border-radius: 5%;
+}
+
+#candidatePageInput input{
+  margin-bottom: 5% !important;
+  border: 1px solid #949191 !important;
+}
+
+#candidatePageInput {
+  width: 90%;
+}
+
+#registerButton {
+  background-color: #05668D;
+  color: white;
+  width: 45%;
+  margin-top: 4%;
 }

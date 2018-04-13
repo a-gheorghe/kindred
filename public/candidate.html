@@ -2,13 +2,76 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Candidate Landing Page</title>
+    <title>Kindred Talent</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="semantic/out/semantic.min.js"></script>
   </head>
   <body>
-    This is the candidate landing page </br>
-    <a href="/" style="font-size: 10px;"> I want to refer someone </a>
+    <div class="topnav">
+      <div class="logo">
+        KINDREDTALENT
+      </div>
+      <div class="aTag">
+        <a>I'm looking</a>
+        <a>I'm Referring</a>
+        <button id="headerButtom" class="ui button"> Login </button>
+      </div>
+    </div>
+
+    <div class="referralInfo">
+      <img src="./student.png" alt="" class="candidateImg">
+      <div>
+      <p class="bigOffer">
+        Get recongnized by industry experts.</br>
+        land your dream job.</br>
+        <span><p class="smallOffer">Our referrers are affiliated with top tier companies</br> Sign up today to connect!</p></span>
+      </p>
+    </div>
+    </div>
+
+    <div class="blueContainer">
+      <div class="headerContainer">
+        <p class="startReffer">Register Today!</p>
+      </div>
+
+      <div class="candidateInputBox">
+        <div class="ui input" id="candidatePageInput">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="ui input" id="candidatePageInput">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="ui input" id="candidatePageInput">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="ui input" id="candidatePageInput">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="ui input" id="candidatePageInput">
+          <input type="text" placeholder="Search...">
+        </div>
+        <button id="registerButton" class="medium ui button">Register</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        KindredTalent is a portfolio company of Alpha, an early stage investment fund. Our mission is to fill the skills gap and broken hiring processes in the United States. We’re starting with software engineering.</br>
+        To contact our team please email team@kindredtalent.com.
+      </p>
+    </div>
+
+
+
+    <!-- <a href="/" style="font-size: 10px;"> I want to refer someone </a>
     <a href="/app/login" style="font-size: 10px; float: right;"> Login </a> </br> </br> </br>
 
-    <a href='/app/candidateRegister'> Get started - Create a profile and let jobs find you </a></br>
+    <a href='/app/candidateRegister'> Get started - Create a profile and let jobs find you </a></br> -->
   </body>
+
 </html>
