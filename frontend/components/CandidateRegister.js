@@ -11,11 +11,14 @@ class CandidateRegister extends React.Component {
     console.log('Candidate props', this.props)
 
     if (this.props.loggedInCand === true) {
+      console.log('here i am')
       if (this.props.target === '/candidateRegister'){
+        console.log('register')
         return (
-          <Redirect to='/candidateSelfProfile'/>
+          <Redirect to='/candidateRegisterOne'/>
         )
       } else {
+          console.log('there')
           return (
             <Redirect to={this.props.target} />
           )
@@ -24,11 +27,13 @@ class CandidateRegister extends React.Component {
 
     return (
       <div>
-        Register as a candidate looking for a job
+        Candidate Registration
           <form>
-              Full Name: <input type="text" name="fullname" /> <br/>
+              First Name: <input type="text" name="firstname" /> <br/>
+              Last Name: <input type="text" name="lastname" /> <br/>
               Email: <input type="text" name="email" /> <br/>
               Password: <input type="password" name="password" /> <br/>
+              Repeat Password: <input type="password" name="repeatpassword"/> <br/>
           </form>
           <button onClick={this.props.registerCand}> Register as a Candidate </button><br/>
           <Link to='/login'> Already have an account? Log in! </Link>

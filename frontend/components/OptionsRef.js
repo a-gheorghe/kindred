@@ -9,6 +9,7 @@ const OptionsRef = (props) =>  {
       <AuthButton loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
       <Link to='/profileRef'> My Profile </Link> <br/>
       <Link to='/messages'> Messages </Link> <br/>
+      <Link to='/allCandidates'> See All Candidates </Link><br/>
       <Link to='/referrals'> Given Referrals </Link><br/>
     </div>
   )
