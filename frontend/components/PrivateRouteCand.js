@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
-import { Route, Link, Redirect } from 'react-router-dom'
+import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 
 
-const PrivateRouteCand = ({ component: Component, ...rest  }) => {
-  return (
-    <Route {...rest}
-      render={(props) => rest.authCand.isAuthenticated === true ?
-        <Component {...props} {...rest}/> :
-        <Redirect to={{
-          pathname: '/login',
-          state: { from: props.location }
-        }} />}
+class PrivateRouteCand extends React.Component {
+
+  componentWillMount(){
+    this.props.setTarget(this.props.location.pathname)
+  }
+
+  render(){
+    const { component: Component, ...rest } = this.props
+    return (
+      <Route {...rest}
+        render={(props) => (rest.loggedInCand) ?
+          <Component {...props} {...rest} /> :
+          <Redirect to='/candidateRegister' />}
       />
-  )
+    )
+  }
 }
 
-export default PrivateRouteCand;
+export default withRouter(PrivateRouteCand);

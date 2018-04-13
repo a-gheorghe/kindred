@@ -15,11 +15,17 @@ class ReferrerRegister extends React.Component {
   render() {
     console.log('Referrer props', this.props)
 
-    if (this.props.loggedInRef === true) {
-      return (
-        <Redirect to={this.props.target}/>
-      )
-    }
+    // if (this.props.loggedInRef === true) {
+    //   if (this.props.target === '/referrerRegister'){
+    //     return (
+    //       <Redirect to='/allCandidates'/>
+    //     )
+    //   } else {
+    //       return (
+    //         <Redirect to={this.props.target} />
+    //       )
+    //   }
+    // }
 
     return (
       <div>

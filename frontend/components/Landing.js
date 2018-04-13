@@ -8,7 +8,6 @@ class Landing extends React.Component {
 
 
   handleClick = (id) => {
-    // this.props.setTarget(`/messages/${id}`)
     this.props.history.push(`/messages/${id}`)
   }
 

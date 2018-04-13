@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 const ShortBio = () =>  {
   return (
-  <div>
-    <h3> Candidate Picture </h3>
-    <p> I am a software engineer who graduated from xyz university etc etc etc </p>
-  </div>
+    <div style={{border: '1px solid black'}}>
+      <h3> Candidate Picture </h3>
+      <div> Candidate one info  <Link style={{textDecoration: 'none', color: 'white', backgroundColor: 'blue', borderRadius: '2px'}} to="/messages"> Connect </Link> </div>
+    </div>
   )
 }
 

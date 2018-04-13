@@ -14,6 +14,8 @@ import CandidateExternalProfile from '../components/CandidateExternalProfile'
 import Message from '../components/Message'
 import MessageThread from '../components/MessageThread'
 import PrivateRouteBoth from '../components/PrivateRouteBoth'
+import ReferralProfile from '../components/ReferralProfile'
+import GivenReferrals from '../components/GivenReferrals'
 
 
 import axios from 'axios'
@@ -124,15 +126,16 @@ class AuthExample extends React.Component {
         <Route exact path='/' render={(props) => <Landing logoutCand={this.logoutCand} setTarget={this.setTarget} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} {...props}/>} />
         <Route path='/about' component={About}/>
         <Route path='/referrerRegister' render={(props) => <ReferrerRegister target={this.target} setTarget={this.setTarget} registerRef={this.registerRef} loggedInRef={this.state.loggedInRef} {...props}/>} />
-        {/* <Route path='/candidateRegister' render={(props) => <CandidateRegister authCand={fakeAuthCand} {...props}/>} /> */}
+        <Route path='/candidateRegister' render={(props) => <CandidateRegister target={this.target} setTarget={this.setTarget} registerCand={this.registerCand} loggedInCand={this.state.loggedInCand} {...props}/>} />
         <Route path='/login'  render={(props) => <Login target={this.target} setTarget={this.setTarget} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} loginCand={this.loginCand} loginRef={this.loginRef} {...props}/>} />
+        <PrivateRouteRef exact path='/allCandidates' component={AllCandidates} loggedInRef={this.state.loggedInRef} logoutRef={this.logoutRef} />
+
         {/* <Route path='/candidateExternalProfile' render={(props) => <CandidateExternalProfile authCand={fakeAuthCand} authRef={fakeAuthRef} {...props}/>} /> */}
 
-
-        <PrivateRouteBoth exact path='/messages/:id' component={MessageThread} logoutCand={this.logoutCand} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} setTarget={this.setTarget} />
-
-        {/* <PrivateRouteCand path='/candidateSelfProfile' component={CandidateSelfProfile} authCand={fakeAuthCand} /> */}
-        <PrivateRouteRef exact path='/allCandidates' component={AllCandidates} loggedInRef={this.state.loggedInRef} />
+        <PrivateRouteBoth exact path='/messages' component={MessageThread} logoutCand={this.logoutCand} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} setTarget={this.setTarget} />
+        <PrivateRouteRef path="/profileRef" component={ReferralProfile} loggedInRef={this.state.loggedInRef} logoutRef={this.logoutRef} />
+        <PrivateRouteRef path="/referrals" component={GivenReferrals} loggedInRef={this.state.loggedInRef} logoutRef={this.logoutRef} />
+        <PrivateRouteCand path='/candidateSelfProfile' component={CandidateSelfProfile} loggedInCand={this.state.loggedInCand} setTarget={this.setTarget} />
       </div>
     </BrowserRouter>
     // </div>
