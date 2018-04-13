@@ -4,8 +4,8 @@ import OptionsRef from './OptionsRef'
 const Referral = (props) => {
   return (
     <div style={{border: '1px solid black'}}>
-      This is a referral to some candidate. <br/>
-      Status is ...  how to put conditional thing here  ...
+      This is a referral <br/>
+      Referral status:
     </div>
   )
 }

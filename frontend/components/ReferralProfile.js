@@ -1,11 +1,11 @@
 import React from 'react';
-import AuthButton from './AuthButton'
+import OptionsRef from './OptionsRef'
 
 const ReferralProfile = (props) => {
   console.log('referral profile', props)
   return (
     <div>
-      <AuthButton loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
+      <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
       This is the referral's profile
     </div>
 )

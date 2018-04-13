@@ -6,7 +6,7 @@ const ReceivedReferrals = (props) => {
   console.log('received referrals props', props)
   return (
     <div>
-      <OptionsCand loggedInCand={props.loggedInCand} logoutRef={props.logoutCand} />
+      <OptionsCand loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} />
       Referrals received:
         <Referral /> <br/>
         <Referral /> <br/>

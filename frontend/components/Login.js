@@ -6,7 +6,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 class Login extends React.Component {
   constructor(props) {
       super(props);
-}
+  }
 
 
   render() {
@@ -16,26 +16,25 @@ class Login extends React.Component {
     console.log('target inside login page', target)
 
     if (loggedInCand === true){
-      if (target === undefined){
+      // if (target === undefined){
+      //   return (
+      //     <Redirect to={target} />
+      //   )
+      // } else {
         return (
-          <Redirect to={target} />
+          <Redirect to='/messages' />
         )
-      } else {
-        return (
-          <Redirect to='/candidateSelfProfile' />
-        )
-      }
+      // }
     } else if (loggedInRef === true){
-      if (target === undefined){
+      // if (target === undefined){
+      //   return (
+      //     <Redirect to={target} />
+      //   )
+      // } else {
         return (
-          <Redirect to={target} />
+          <Redirect to='/messages' />
         )
       } else {
-        return (
-          <Redirect to='/allCandidates' />
-        )
-      }
-    } else {
       return (
         <div>
           <p> You must log in to view the page </p>
