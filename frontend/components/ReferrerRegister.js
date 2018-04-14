@@ -31,7 +31,7 @@ class ReferrerRegister extends React.Component {
             Email: <input type="text" name="email" /> <br/>
             Password: <input type="password" name="password" /> <br/>
         </form>
-            <button onClick={this.props.registerRef}> Register as Employee </button> <br/>
+            <button onClick={this.props.registerRef}> Register as Referrer </button> <br/>
             <Link to='/login'> Already have an account? Log in! </Link>
 
       </div>
