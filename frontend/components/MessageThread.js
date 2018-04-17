@@ -62,7 +62,7 @@ class MessageThread extends React.Component {
             <OptionsCand loggedInCand={this.props.loggedInCand}
             logoutCand={this.props.logoutCand} />
           */}
-          Test message. Here are your messages with referrers
+          Test message. Here are your messages.
           {newArrayMessages}
           <br />
           <br />
