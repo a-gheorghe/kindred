@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Message from './Message';
-import OptionsRef from './OptionsRef';
-import OptionsCand from './OptionsCand';
+import OptionsRef from './authentication/OptionsRef';
+import OptionsCand from './authentication/OptionsCand';
 
 class MessageThread extends React.Component {
   constructor(props) {
