@@ -7,19 +7,16 @@ class ProjectForm extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
+      projectname: '',
       description: ''
     }
   }
 
-  handleNameChange = (event) => {
-    console.log('this.state is: ', this.state)
-    this.setState({name: event.target.value})
-  }
-
-  handleDescriptionChange = (event) => {
-    console.log('this.state is: ', this.state)
-    this.setState({description: event.target.value})
+  handleProjectChange = (event) => {
+    console.log('this.state in handle work change', this.state)
+    let change = {}
+    change[e.target.name] = e.target.value
+    this.setState(change)
   }
 
 
@@ -27,8 +24,8 @@ class ProjectForm extends React.Component {
     return (
       <div>
         <form>
-          Project Name: <input type="text" name="name" onChange={this.handleNameChange}  /> <br/>
-          Description: <input type="text" name="description" onChange={this.handleDescriptionChange} /><br/>
+          Project Name: <input type="text" name="projectname" onChange={this.handleProjectChange}  /> <br/>
+          Description: <input type="text" name="description" onChange={this.handleProjectChange} /><br/>
         </form>
       </div>
     );

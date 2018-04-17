@@ -14,31 +14,20 @@ class WorkExpForm extends React.Component {
   }
 
   handleWorkChange = (event) => {
-
+    console.log('this.state in handle work change', this.state)
+    let change = {}
+    change[e.target.name] = e.target.value
+    this.setState(change)
   }
 
-  handleCompanyChange = (event) => {
-    console.log('this.state is: ', this.state)
-    this.setState({company: event.target.value})
-  }
-
-  handlePositionChange = (event) => {
-    console.log('this.state is: ', this.state)
-    this.setState({Position: event.target.value})
-  }
-
-  handleDescriptionChange = (event) => {
-    console.log('this.state is: ', this.state)
-    this.setState({description: event.target.value})
-  }
 
   render() {
     return (
       <div>
         <form>
-          Company: <input type="text" name="company" onChange={this.handleCompanyChange}  /> <br/>
-          Job Position: <input type="text" name="position" onChange={this.handlePositionChange} /> <br/>
-          Description: <input type="text" name="description" onChange={this.handleDescriptionChange} /><br/>
+          Company: <input type="text" name="company" onChange={this.handleWorkChange}  /> <br/>
+          Job Position: <input type="text" name="position" onChange={this.handleWorkChange} /> <br/>
+          Description: <input type="text" name="description" onChange={this.handleWorkChange} /><br/>
         </form>
       </div>
     );
