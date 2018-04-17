@@ -1,20 +1,31 @@
-import React from 'react'
-import ShortBio from './ShortBio'
-import AuthButton from './AuthButton'
-import OptionsRef from './OptionsRef'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const AllCandidates = (props) =>  {
-  console.log('all candidate props', props )
+import ShortBio from './ShortBio';
+// import AuthButton from './AuthButton';
+import OptionsRef from './OptionsRef';
+
+
+const AllCandidates = (props) => {
+  console.log('all candidate props', props);
   return (
     <div>
-      <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
+      <OptionsRef
+        loggedInRef={props.loggedInRef}
+        logoutRef={props.logoutRef}
+      />
       Here are all the candidates
-      <ShortBio /> <br/>
-      <ShortBio /> <br/>
-      <ShortBio /> <br/>
-      <ShortBio /> <br/>
+      <ShortBio /> <br />
+      <ShortBio /> <br />
+      <ShortBio /> <br />
+      <ShortBio /> <br />
     </div>
-  )
-}
+  );
+};
+
+AllCandidates.propTypes = {
+  loggedInRef: PropTypes.bool.isRequired,
+  logoutRef: PropTypes.func.isRequired,
+};
 
 export default AllCandidates;

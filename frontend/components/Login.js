@@ -1,53 +1,60 @@
-import React from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Redirect, withRouter } from 'react-router-dom';
 
 
-// component
 class Login extends React.Component {
-  constructor(props) {
-      super(props);
-  }
-
+  // Ignore linter errors: additional methods will go here; not necessary to
+  // switch to pure function. <--- Delete me when new methods are added.
 
   render() {
     // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
-    const { loggedInCand, loggedInRef, loginRef, loginCand, target } = this.props
-    console.log('target inside login page', target)
+    const {
+      loggedInCand, loggedInRef, loginRef, loginCand, target,
+    } = this.props;
+    console.log('target inside login page', target);
 
-    if (loggedInCand === true){
+    if (loggedInCand === true) {
       // if (target === undefined){
       //   return (
       //     <Redirect to={target} />
       //   )
       // } else {
-        return (
-          <Redirect to='/messages' />
-        )
-      // }
-    } else if (loggedInRef === true){
-      // if (target === undefined){
-      //   return (
-      //     <Redirect to={target} />
-      //   )
-      // } else {
-        return (
-          <Redirect to='/messages' />
-        )
-      } else {
       return (
-        <div>
-          <p> You must log in to view the page </p>
-          <form>
-            Username: <input type="text" name="username" /> <br/>
-            Password: <input type="password" name="password" />
-          </form>
-          <button onClick={loginCand}>Login as candidate</button>
-          <button onClick={loginRef}>Login as referrer</button>
-        </div>
-      )
+        <Redirect to="/messages" />
+      );
+      // }
+    } else if (loggedInRef === true) {
+      // if (target === undefined){
+      //   return (
+      //     <Redirect to={target} />
+      //   )
+      // } else {
+      return (
+        <Redirect to="/messages" />
+      );
     }
+    return (
+      <div>
+        <p> You must log in to view the page </p>
+        <form>
+            Username: <input type="text" name="username" /> <br />
+            Password: <input type="password" name="password" />
+        </form>
+        <button onClick={loginCand}>Login as candidate</button>
+        <button onClick={loginRef}>Login as referrer</button>
+      </div>
+    );
   }
 }
+
+Login.propTypes = {
+  loggedInCand: PropTypes.bool.isRequired,
+  loggedInRef: PropTypes.bool.isRequired,
+  loginRef: PropTypes.func.isRequired,
+  loginCand: PropTypes.func.isRequired,
+  target: PropTypes.arrayOf('string').isRequired,
+};
 
 export default withRouter(Login);
