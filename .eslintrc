@@ -193,6 +193,7 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/jsx-wrap-multilines": 2,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
     'jsx-a11y/aria-role': 'warn',

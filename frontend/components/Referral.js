@@ -1,13 +1,11 @@
 import React from 'react';
-import OptionsRef from './OptionsRef'
+// import OptionsRef from './OptionsRef';
 
-const Referral = (props) => {
-  return (
-    <div style={{border: '1px solid black'}}>
-      This is a referral <br/>
+const Referral = () => (
+  <div style={{ border: '1px solid black' }}>
+      This is a referral <br />
       Referral status:
-    </div>
-  )
-}
+  </div>
+);
 
 export default Referral;
