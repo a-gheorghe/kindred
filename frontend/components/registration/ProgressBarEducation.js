@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProgressBarProfile = () => (
+const ProgressBarEducation = () => (
   <div style={{ border: '1px solid black' }}>
-    <p> Progress bar </p>
-    <p> So far so good. Let's move on and talk about your experience. </p>
+    <h3> Progress bar </h3>
+    <h3> Thanks for signing up. Let's talk about your background. </h3>
     <p> We use this information to help match you with jobs matching your area of expertise </p>
   </div>
 );
 
-export default ProgressBarProfile;
+export default ProgressBarEducation;

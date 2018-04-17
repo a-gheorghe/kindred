@@ -68,8 +68,8 @@ class RegisterBoth extends React.Component {
             <option value="candidate"> Candidate </option>
             <option value="referrer"> Referrer </option>
           </select>
-          {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Referrer </button> :
-          this.state.type === "candidate" ? <button onClick={this.props.registerCand}> Candidate </button> :
+          {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
+          this.state.type === "candidate" ? <button onClick={this.props.registerCand}> Sign Up as a Candidate </button> :
           <button> Sign Up </button> }
           {/* <button onClick={this.props.registerCand}> Register as a Candidate </button><br/> */}
           <Link to='/login'> Already have an account? Log in! </Link>

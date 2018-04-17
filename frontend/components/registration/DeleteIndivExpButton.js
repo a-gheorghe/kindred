@@ -10,7 +10,7 @@ class DeleteIndivExpButton extends React.Component {
   render() {
     return (
       <div>
-        <button> Delete Experience </button>
+        <button onClick={this.props.removeWork}> Delete Experience </button>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Route } from 'react-router-dom';
 
-class AddWorkButton extends React.Component {
+
+class DeleteIndivProjectButton extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -9,10 +10,10 @@ class AddWorkButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.addWork}> Add Work </button>
+        <button onClick={this.props.removeProject}> Delete Project </button>
       </div>
     );
   }
 }
 
-export default withRouter(AddWorkButton);
+export default withRouter(DeleteIndivProjectButton);

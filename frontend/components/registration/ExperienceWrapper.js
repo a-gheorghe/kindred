@@ -3,7 +3,7 @@ import WorkExperienceContainer from '../../containers/registration/WorkExperienc
 
 const ExperienceWrapper = () => (
   <div style={{ border: '1px solid black' }}>
-    <h1>Work Experience</h1>
+    <h3>Work Experience</h3>
     <WorkExperienceContainer />
   </div>
 );

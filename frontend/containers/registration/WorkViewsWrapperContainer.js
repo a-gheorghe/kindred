@@ -9,11 +9,10 @@ class WorkViewsWrapperContainer extends React.Component {
   }
 
   render() {
+    console.log('work views wrapper container props', this.props)
     return (
       <div style={{ border: '1px solid blue' }}>
-      Here is where the individual jobs will go
-        <IndivJobContainer />
-        <IndivJobContainer />
+        {this.props.children[1].length === 0 ? <div> Add your first job </div> : this.props.children}
       </div>
     );
   }

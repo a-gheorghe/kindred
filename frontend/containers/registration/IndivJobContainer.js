@@ -8,14 +8,16 @@ import DeleteIndivExpButton from '../../components/registration/DeleteIndivExpBu
 class IndivJobContainer extends React.Component {
   constructor(props) {
     super(props);
+    console.log('constructed indiv job container', this.props)
   }
 
   render() {
+    console.log('indiv job container props', this.props)
     return (
       <div style={{ border: '1px solid green' }}>
         <WorkExpForm />
         <EditIndivExpButton />
-        <DeleteIndivExpButton />
+        <DeleteIndivExpButton removeWork={this.props.removeWork}/>
       </div>
     );
   }
