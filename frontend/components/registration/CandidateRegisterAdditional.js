@@ -29,9 +29,12 @@ class CandidateRegisterAdditional extends React.Component {
         <ProgressBarAdditional />
               Github URL: <input type="text" name="github" placeholder="Github URL" onChange={this.handleAdditionalChange} /> <br />
               Linkedin URL: <input type="text" name="linkedin" placeholder="LinkedIn URL" onChange={this.handleAdditionalChange} /> <br />
-              Personal Website URL <input type="text" name="website" placeholder="Personal Website URL" onChange={this.handleAdditionalChange} /> <br />
-              Tell us about yourself: <textarea type="text" name="selfbio" onChange={this.handleAdditionalChange} placeholder="Tell us about yourself"> </textarea>
-        <Link to=""> Done </Link>
+              Personal Website URL <input type="text" name="website" placeholder="Personal Website URL"  onChange={this.handleAdditionalChange} /> <br />
+              Tell us about yourself: <textarea type="text" name="selfbio" onChange={this.handleAdditionalChange} defaultvalue= "Tell us about yourself" placeholder="Tell us about yourself"/> <br />
+              <button> Upload Resume </button>
+              <button> Upload Picture </button><br/>
+        <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
+        <Link style={{float: 'right'}} to=""> Done </Link>
       </div>
     );
   }
