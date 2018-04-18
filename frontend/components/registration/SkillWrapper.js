@@ -1,20 +1,47 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import SkillForm from './SkillForm'
-import AddSkillButton from './AddSkillButton'
+// import SkillForm from './SkillForm'
+// import AddSkillButton from './AddSkillButton'
 
-const SkillWrapper = ({ skillArr, addSkill, removeSkill, onChange}) => (
+class SkillWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      skill: '',
+    }
+  }
+
+handleInputChange = (e) => {
+  console.log('this.state', this.state)
+  this.setState({skill: e.target.value})
+}
+
+addSkillResetState = () => {
+  this.props.addSkill(this.state.skill);
+  this.setState({skill: ''})
+}
+
+
+render() {
+  console.log('this.props', this.props)
+  return (
+// const SkillWrapper = ({ skillArr, addSkill, removeSkill, onChange, index}) => (
   <div style={{ border: '1px solid black' }}>
     <h3>Skills</h3>
-    {skillArr.length === 0 ? <p> What skills do you have? </p> : ''}
-    {skillArr.map((data, i) => (
+
+    {this.props.skillArr.length === 0 ? <p> What skills do you have? </p> : ''}
+    {this.props.skillArr.map((data, i) => (
       <div style={{border: '1px solid green'}} key={data.id}>
-        <SkillForm data={data} onChange={onChange} index={i}  />
-        <button onClick={(e) => removeSkill(data.id, e)}> Delete </button>
+        {data.skill}
+        <button onClick={(e) => this.props.removeSkill(data.id, e)}> Delete </button>
       </div>
     ))}
-    <AddSkillButton addSkill={addSkill}/>
+    <input type="text" name="skill" onChange={(e) => this.handleInputChange(e)} value={this.state.skill}/>
+    <button onClick={this.addSkillResetState}> Add Skill </button>
   </div>
-);
+)
+}}
+
+
 
 export default withRouter(SkillWrapper);

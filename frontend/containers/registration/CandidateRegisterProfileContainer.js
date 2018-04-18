@@ -14,7 +14,7 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.state = {
       workExpArr: [],
       projectArr: [],
-      skillArr: []
+      skillArr: [{skill: 'javascript', id:10}, {skill: 'java', id:11}]
     }
   }
 
@@ -26,8 +26,8 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({projectArr: [...this.state.projectArr, {name:"", description:"", id: this.projectCount++}]})
   }
 
-  addSkill = () => {
-    this.setState({skillArr: [...this.state.skillArr, {skill: "", id: this.skillCount++}]})
+  addSkill = (skill) => {
+    this.setState({skillArr: [...this.state.skillArr, {skill: skill, id: this.skillCount++}]})
   }
 
   removeWork = (id) => {
@@ -67,14 +67,20 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({ projectArr: newProjectArr })
   }
 
-  onSkillChange = (index, newStuff) => {
-    console.log('skill change this.state', this.state)
-    const newSkillArr = this.state.skillArr.slice()
-    newSkillArr[index] = {
-      ...newSkillArr[index],
-      ...newStuff
-    }
-    this.setState({ skillArr: newSkillArr })
+  // onSkillChange = (index, newStuff) => {
+  //   console.log('index is: ', index)
+  //   console.log('newStuff is: ', newStuff)
+  //   console.log('skill change this.state', this.state)
+  //   const newSkillArr = this.state.skillArr.slice()
+  //   newSkillArr[index] = {
+  //     ...newSkillArr[index],
+  //     ...newStuff
+  //   }
+  //   this.setState({ skillArr: newSkillArr })
+  // }
+
+  onSkillChange = (event) => {
+    console.log('something added')
   }
 
   render() {
@@ -83,7 +89,7 @@ class CandidateRegisterProfileContainer extends React.Component {
         <ProgressBarProfile /><br/>
         <ExperienceWrapper workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} /><br/>
         <ProjectWrapper projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange}/><br/>
-        <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} onChange={this.onSkillChange}/><br/>
+        <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} onChange={this.onSkillChange} count={this.skillCount}/><br/>
         <button style={{float: 'right'}}> <Link to='/register/candidate/additional'> Next </Link></button>
         <button style={{float: 'left'}}> <Link to='/register/candidate/education'> Previous </Link></button>
 
