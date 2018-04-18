@@ -1,35 +1,12 @@
 import React from 'react';
-import { withRouter, Route } from 'react-router-dom';
 
 
-class ProjectForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      projectname: '',
-      description: ''
-    }
-  }
-
-  handleProjectChange = (event) => {
-    console.log('this.state in handle work change', this.state)
-    let change = {}
-    change[e.target.name] = e.target.value
-    this.setState(change)
-  }
+const ProjectForm = ({ data, onChange, index }) => (
+  <div style={{ display: "flex", flexDirection: "column" }}>
+    Name: <input type="text" name="company" value={data.name} onChange={e => { onChange(index, { name: e.target.value})}} />
+    Description: <input type="text" name="description" value={data.description} onChange={e => { onChange(index, { description: e.target.value})}} />
+  </div>
+)
 
 
-  render() {
-    return (
-      <div>
-        <form>
-          Project Name: <input type="text" name="projectname" onChange={this.handleProjectChange}  /> <br/>
-          Description: <input type="text" name="description" onChange={this.handleProjectChange} /><br/>
-        </form>
-      </div>
-    );
-  }
-}
-
-export default withRouter(ProjectForm);
+export default ProjectForm

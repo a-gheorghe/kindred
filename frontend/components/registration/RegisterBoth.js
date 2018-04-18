@@ -48,7 +48,7 @@ class RegisterBoth extends React.Component {
 
   render() {
     if (this.props.loggedInCand === true) {
-      return <Redirect to='/register/candidate'/>
+      return <Redirect to='/register/candidate/education'/>
     }
 
     if (this.props.loggedInRef === true) {

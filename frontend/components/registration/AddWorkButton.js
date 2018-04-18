@@ -1,18 +1,7 @@
 import React from 'react';
 import { withRouter, Route } from 'react-router-dom';
 
-class AddWorkButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.props.addWork}> Add Work </button>
-      </div>
-    );
-  }
-}
-
+const AddWorkButton = ({ addWork }) => (
+  <button onClick={addWork}> Add Work Experience </button>
+)
 export default withRouter(AddWorkButton);
