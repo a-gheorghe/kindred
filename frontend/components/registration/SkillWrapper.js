@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
+import Autocomplete from 'react-autocomplete'
+import BasicAutocomplete from './BasicAutocomplete'
+import skills from './SkillOptions'
 // import SkillForm from './SkillForm'
 // import AddSkillButton from './AddSkillButton'
 
@@ -7,18 +10,18 @@ class SkillWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      skill: '',
+      skill: ''
     }
   }
 
 handleInputChange = (e) => {
-  console.log('this.state', this.state)
-  this.setState({skill: e.target.value})
+  console.log('on change was called this.state', this.state)
+  this.setState({skill: e}, () => console.log('this.state after', this.state))
 }
 
 addSkillResetState = () => {
   this.props.addSkill(this.state.skill);
-  this.setState({skill: ''})
+  this.setState({skill: ''}, () => console.log('this.state AFTER RESET'), this.state)
 }
 
 
@@ -36,8 +39,17 @@ render() {
         <button onClick={(e) => this.props.removeSkill(data.id, e)}> Delete </button>
       </div>
     ))}
-    <input type="text" name="skill" onChange={(e) => this.handleInputChange(e)} value={this.state.skill}/>
-    <button onClick={this.addSkillResetState}> Add Skill </button>
+    {/* <input type="text" name="skill" onChange={(e) => this.handleInputChange(e)} value={this.state.skill}/> */}
+
+
+    <BasicAutocomplete
+          items={skills}
+          onChange={(e) => this.handleInputChange(e)}
+          addSkill={this.addSkillResetState}
+
+    />
+
+
   </div>
 )
 }}

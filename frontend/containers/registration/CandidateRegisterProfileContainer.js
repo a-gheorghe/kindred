@@ -14,7 +14,7 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.state = {
       workExpArr: [],
       projectArr: [],
-      skillArr: [{skill: 'javascript', id:10}, {skill: 'java', id:11}]
+      skillArr: []
     }
   }
 
