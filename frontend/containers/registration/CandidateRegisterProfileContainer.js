@@ -14,7 +14,8 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.state = {
       workExpArr: [],
       projectArr: [],
-      skillArr: []
+      skillArr: [],
+      projectForm: false,
     }
   }
 
@@ -22,8 +23,8 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({workExpArr: [...this.state.workExpArr, {company: "", title: "", description: "", id: this.workCount++}]})
   }
 
-  addProject = () => {
-    this.setState({projectArr: [...this.state.projectArr, {name:"", description:"", id: this.projectCount++}]})
+  addProject = (title, description, projectstart) => {
+    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, id: this.projectCount++}]}, () => console.log('this.state after adding', this.state))
   }
 
   addSkill = (skill) => {
@@ -67,35 +68,21 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({ projectArr: newProjectArr })
   }
 
-  // onSkillChange = (index, newStuff) => {
-  //   console.log('index is: ', index)
-  //   console.log('newStuff is: ', newStuff)
-  //   console.log('skill change this.state', this.state)
-  //   const newSkillArr = this.state.skillArr.slice()
-  //   newSkillArr[index] = {
-  //     ...newSkillArr[index],
-  //     ...newStuff
-  //   }
-  //   this.setState({ skillArr: newSkillArr })
-  // }
-
-  onSkillChange = (event) => {
-    console.log('something added')
+  toggleProjectForm = () => {
+    console.log('toggling project form', this.state.projectForm)
+    this.setState({ projectForm: !this.state.projectForm})
   }
+
 
   render() {
     return (
-      <div>
+      <div style={{border: '2px dotted red'}}>
         <ProgressBarProfile /><br/>
         <ExperienceWrapper workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} /><br/>
-        <ProjectWrapper projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange}/><br/>
-        <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} onChange={this.onSkillChange} count={this.skillCount}/><br/>
+        <ProjectWrapper projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange} projectForm={this.state.projectForm} toggleProjectForm={this.toggleProjectForm}/><br/>
+        <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
         <button style={{float: 'right'}}> <Link to='/register/candidate/additional'> Next </Link></button>
         <button style={{float: 'left'}}> <Link to='/register/candidate/education'> Previous </Link></button>
-
-
-        {/* <SkillsWrapper /> <br/> */}
-
       </div>
     );
   }

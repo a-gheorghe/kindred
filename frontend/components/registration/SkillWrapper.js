@@ -27,7 +27,6 @@ addSkillResetState = () => {
 
 
 render() {
-  console.log('this.props', this.props)
   return (
 // const SkillWrapper = ({ skillArr, addSkill, removeSkill, onChange, index}) => (
   <div style={{ border: '1px solid black' }}>
