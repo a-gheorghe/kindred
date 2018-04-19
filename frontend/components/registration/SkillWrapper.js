@@ -19,6 +19,7 @@ handleInputChange = (e) => {
   this.setState({skill: e}, () => console.log('this.state after', this.state))
 }
 
+
 addSkillResetState = () => {
   this.props.addSkill(this.state.skill);
   this.setState({skill: ''}, () => console.log('this.state AFTER RESET'), this.state)
@@ -34,13 +35,12 @@ render() {
 
     {this.props.skillArr.length === 0 ? <p> What skills do you have? </p> : ''}
     {this.props.skillArr.map((data, i) => (
-      <div style={{border: '1px solid green'}} key={data.id}>
+      <span style={{border: '1px solid green', color: 'red', margin: '10 10 10 10'}} key={data.id}>
         {data.skill}
         <button onClick={(e) => this.props.removeSkill(data.id, e)}> Delete </button>
-      </div>
+      </span>
     ))}
     {/* <input type="text" name="skill" onChange={(e) => this.handleInputChange(e)} value={this.state.skill}/> */}
-
 
     <BasicAutocomplete
           items={skills}

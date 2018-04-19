@@ -4,6 +4,7 @@ import Downshift from 'downshift'
 const BasicAutocomplete = ({items, onChange, addSkill}) => (
     <Downshift
       onChange={onChange}
+      onStateChange={(e) => onChange(e.inputValue)}
       render={({
         getInputProps,
         getItemProps,
@@ -13,7 +14,7 @@ const BasicAutocomplete = ({items, onChange, addSkill}) => (
         highlightedIndex,
         clearSelection
       }) => (
-        <span>
+        <div style={{border: '2px solid orange'}}>
           <input {...getInputProps({placeholder:  'What skills do you have?' })} /> <button onClick={(event) => { clearSelection(); addSkill();}}> Add Skill </button>
           {isOpen ? (
             <div style={{border: '1px solid #ccc'}}>
@@ -38,7 +39,7 @@ const BasicAutocomplete = ({items, onChange, addSkill}) => (
                 ))}
             </div>
           ) : null}
-        </span>
+        </div>
       )}
     />
   )
