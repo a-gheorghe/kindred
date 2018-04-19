@@ -1,77 +1,213 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Kindred Talent</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script src="semantic/out/semantic.min.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Kindred Talent</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="semantic/out/semantic.min.js"></script>
+</head>
   <body>
     <div class="topnav">
       <div class="logo">
-        KINDREDTALENT
+        KindredTalent
       </div>
       <div class="aTag">
-        <a>I'm looking</a>
-        <a>I'm Referring</a>
-        <button id="headerButtom" class="ui button"> Login </button>
+        <a href="/candidate">I'm Looking</a>
+        <a href="/">I'm Referring</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
       </div>
     </div>
-
-    <div class="referralInfo">
-      <img src="./student.png" alt="" class="candidateImg">
-      <div>
-      <p class="bigOffer">
-        Get recongnized by industry experts.</br>
-        land your dream job.</br>
-        <span><p class="smallOffer">Our referrers are affiliated with top tier companies</br> Sign up today to connect!</p></span>
-      </p>
-    </div>
-    </div>
-
-    <div class="blueContainer">
-      <div class="headerContainer">
-        <p class="startReffer">Register Today!</p>
-      </div>
-
-      <div class="candidateInputBox">
-        <div class="ui input" id="candidatePageInput">
-          <input type="text" placeholder="Search...">
+    <div class="sec">
+      <div class="subsec">
+        <div class="canPromo">
+          <p class="bigOffer" style="margin: 0px 0px 20px 0px !important;">
+            Get recognized by industry experts.</br>
+            Land your dream job.
+          </p>
+          <div class="smallOffer">
+            Entry Level hiring is broken. 61% of “Entry-Level” Jobs Require 3+ Years of Experience. Kindred helps</br>
+            candidates get interviews by using direct relationships with employers. Connections matter.
+          </div>
+          <button style="margin-bottom: 60px;" id="scootButton" type="submit" name="button">Sign up</button>
+          <img src="./Logos.png" alt="">
         </div>
-        <div class="ui input" id="candidatePageInput">
-          <input type="text" placeholder="Search...">
-        </div>
-        <div class="ui input" id="candidatePageInput">
-          <input type="text" placeholder="Search...">
-        </div>
-        <div class="ui input" id="candidatePageInput">
-          <input type="text" placeholder="Search...">
-        </div>
-        <div class="ui input" id="candidatePageInput">
-          <input type="text" placeholder="Search...">
-        </div>
-        <button id="registerButton" class="medium ui button">Register</button>
       </div>
     </div>
+    <div class="sec grey-sec">
+      <div class="subsec">
+        <p class="howItWorks">How it works</p>
+        <div class="howItWorksBoxes">
+          <div class="searchDiv1">
+            <img class="searchImg" src="./guy.png" alt="">
+            <div class="searchDiv2" style="background-color: white;">
+              <p class="howItWorksText">Create a Profile</p>
+              <p class="howItWorksText2">
+                Tell us about your experiences</br>
+                and the roles you're looking for
+              </p>
 
-    <div class="footer">
-      <p>
-        KindredTalent is a portfolio company of Alpha, an early stage investment fund. Our mission is to fill the skills gap and broken hiring processes in the United States. We’re starting with software engineering.</br>
-        To contact our team please email team@kindredtalent.com.
-      </p>
+            </div>
+          </div>
+          <div class="searchDiv1">
+            <img class="searchImg" src="./mail2.png" alt="">
+            <div class="searchDiv2" style="background-color: white;">
+              <p class="howItWorksText">Get Noticed</p>
+              <p class="howItWorksText2">
+                Our team and network will</br>
+                reach out with opportunities
+              </p>
+
+            </div>
+          </div>
+          <div class="searchDiv1">
+            <img class="searchImg" src="./computer.png" alt="">
+            <div class="searchDiv2" style="background-color: white;">
+              <p class="howItWorksText">Work</p>
+              <p class="howItWorksText2">
+                Interview for companies</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and land jobs!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="sec">
+      <div class="subsec">
 
+        <div class="faq">FAQs</div>
 
+        <div class="faq1">
+          <div class="">
+            <div class="pricing">How does pricing work?</div>
+            <div class="infoFAQ">
+              Applying for Kindred is free to candidates.</br>
+              If you are placed into a company via our</br>
+              platform, you owe a 10% placement fee.</br>
+              This fee is based on your starting salary.
+            </div>
+          </div>
+          <div class="">
+            <div class="charge">Why do you charge candidates</br>and not companies?</div>
+            <div class="infoFAQ">
+              Junior candidates struggle the most in</br>
+              landing job #1. Companies hire junior when</br>
+              they can’t find senior candidates. Kindred is</br>
+              creating an system that incentivizes</br>
+              recruiters and employees to take a close</br>
+              look at candidates when it’s needed the</br>
+              most.
+            </div>
+          </div>
+          <div class="">
+            <div class="chances">What are my chances?</div>
+            <div class="infoFAQ">
+              Once you are on the Kindred platform you</br>
+              are not guaranteed a job. However, if we</br>
+              take you on, we’re fully incentivized to make</br>
+              your job search as easy as possible.
+            </div>
+          </div>
+        </div>
+        <div class="faq2">
+          <div class="">
+            <div class="placement">How does Kindred</br>help with placement</div>
+            <div class="infoFAQ">
+              We have both an internal placement</br>
+              as well as a network of employeers who are</br>
+              actively looking to match candidates with</br>
+              their companies!
+            </div>
+          </div>
+          <div class="">
+            <div class="network">What companies are in</br>the KindredNetwork?</div>
+            <div class="infoFAQ">
+              We work with companies ranging from early</br>
+              stage startups to tech giants like Google</br>
+              and Facebook. We match candidates based</br>
+              on our belief in their likelihood in getting an</br>
+              interview, with a Kindred push.
+            </div>
+          </div>
+          <div class="">
+            <div class="qualified">Do I need to be qualified?</div>
+            <div class="infoFAQ">
+              Due to the size of our team, we can only</br>
+              work with a certain number of candidates at</br>
+              a time. We will notify you within 72 hours of</br>
+              signing up our team is actively working on</br>
+              placing you.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec grey-sec">
+      <div class="subsec">
+        <div class="scootDiv">
+          <div class="">
+            <div style="font-family: Avenir-Medium; font-size: 42px; color: #6B6B6B; margin-bottom: 30px;">Get hired today.</div>
+            <div style="font-family: Avenir-Light; font-size: 18px; color: #6B6B6B; margin-bottom: 30px;">
+              Our referrers are affiliated with top tier companies, and are always</br>
+              on the lookout for rockstars like you!
+            </div>
+            <button id="scootButton" type="button" name="button">Sign up</button>
+          </div>
+          <img style="height: 300px; width: 318px"src="./Briefcase.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="subsec">
+        <div class="mainDiv">
+          <div class="">
+            <div style="font-size: 36px; color: #6C6666; margin-bottom: 20px;  font-family: BodoniSvtyTwoITCTT-Bold;">KindredTalent</div>
+            <p style="font-family: Avenir-Light; font-size: 16px; color: #6C6666">Fusce vehicula dolor arcu, sit amet blandit</br> dolor mollis nec. Donec viverra eleifend</br>lacus, vitae ullamcorper metus.</p>
+            <img height="46px" width="214px" src="./icons.png" alt="">
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">COMPANY</div>
+            <div class="bottomATags">
+              <a href="#">About Us</a>
+              <a href="#">Jobs</a>
+              <a href="#">Blog</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">BROWSE</div>
+            <div class="bottomATags">
+              <a href="#">React Engineer</a>
+              <a href="#">UI Engineer</a>
+              <a href="#">UI/UX Designer</a>
+              <a href="#">Product Manager</a>
+              <a href="#">Backend Engineer</a>
+              <a href="#">Full Stack Developer</a>
+              <a href="#">Solutions Engineer</a>
+            </div>
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">ADDITIONAL SERVICES</div>
+            <div class="bottomATags">
+              <a href="#">I'm a Candidate</a>
+              <a href="#">Contact</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
 
-    <!-- <a href="/" style="font-size: 10px;"> I want to refer someone </a>
-    <a href="/app/login" style="font-size: 10px; float: right;"> Login </a> </br> </br> </br>
-
-    <a href='/app/candidateRegister'> Get started - Create a profile and let jobs find you </a></br> -->
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
-
 </html>

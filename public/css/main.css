@@ -230,3 +230,83 @@ html, body{
   flex-direction: column;
   height: 100%;
 }
+
+.canPromo {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.smallOffer {
+  font-family: Avenir-Light;
+  font-size: 20px;
+  color: #6B6B6B;
+  margin-bottom: 30px;
+}
+
+.faq {
+  /* FAQs: */
+  font-family: Avenir-Roman;
+  font-size: 30px;
+  color: #6B6B6B;
+  margin-bottom: 60px;
+}
+
+.faq1{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.faq2{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.infoFAQ {
+  font-size: 14px;
+  font-family: Avenir-Light;
+  color: #6B6B6B;
+}
+
+.pricing {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 30px
+}
+.charge {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 8px;
+}
+.chances {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 25px;
+}
+
+.placement {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 8px;
+}
+
+.network {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 8px;
+}
+
+.qualified {
+  font-size: 18px;
+  font-family: Avenir-Black;
+  color: #6B6B6B;
+  margin-bottom: 25px;
+}
