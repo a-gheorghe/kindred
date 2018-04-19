@@ -1,11 +1,11 @@
 .topnav {
-    background-color: #05668D;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     flex: 1;
     flex-direction: row;
     padding: 0;
+    box-shadow: 0px 2px 8px #ECE1E1;
 }
 
 /* Style the links inside the navigation bar */
@@ -27,28 +27,30 @@ html, body{
   display: flex;
   flex: 1;
   align-items: center;
-  color: #f2f2f2;
+  color: #6C6666;
   text-align: center;
   padding: 20px 30px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 24px;
+  font-family: BodoniSvtyTwoITCTT-Bold;
+}
+
+
+.aTag {
+  display: flex;
+  align-items: center;
 }
 
 .aTag a{
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  font-family: Avenir-Light;
+  font-size: 16px;
+  color: #6B6B6B;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-#headerButtom {
-  margin: 15px;
-  margin-right: 25px;
-  border: 2px solid white;
-  border-color: #f2f2f2;
-  color: #f2f2f2;
-  background-color: #05668D;
-}
+
 
 .referralInfo {
   height: 50%;
@@ -59,153 +61,172 @@ html, body{
 }
 
 .bigOffer {
-  margin-bottom: 0;
-  font-size: 42px;
+  font-family: Avenir-Heavy;
+  color: #575757;
+  font-size: 40px;
   font-weight: bold;
+  margin: 25px 0 55px 0 !important;
 }
 
-.smallOffer {
-  color: #949191;
-  font-size: 24px;
+#landingpageInput {
+  font-family: Avenir-Light;
+  color: #6B6B6B;
+  width: 550px;
+  height: 64px;
+  font-size: 22px;
+  border-width: 0px;
+  border: none;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-left: 20px;
 }
 
-.refferImg {
-  height: 80%;
-  margin-left: 8%;
-
+#inputBut {
+  font-family: Avenir-Light;
+  border-width: 0px;
+  border: none;
+  width: 160px;
+  font-size: 22px;
+  color: white;
+  background-color: #D43239;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.blueContainer {
-  background-color: #86BBD8;
-  min-height: 100%;
-  flex: auto;
+.landingpageImg {
+  width: 415px;
+  height: 399px;
+  margin-top: 20px;
+}
+
+.promoBox {
+  min-width: 1440px;
+  height: 689px;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.howItWorks {
+  color: #6B6B6B;
+  font-family: Avenir-Heavy;
+  font-size: 40px;
+}
+
+.searchDiv1{
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  padding-top: 5%
 }
 
-.startReffer {
-  font-size: 60px;
-  color: white;
-}
-
-.headerContainer {
+.searchDiv2 {
+  height: 260px;
+  width: 360px;
+  flex-direction: column;
   display: flex;
-  justify-content: center;
-  margin-bottom: 5%;
+  align-items: center;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  padding-top: 90px;
 }
 
-.profileDiv {
-  background-color: white;
-  display:flex;
-  flex-direction: row;
-  padding: 30px;
-  border-radius: 2%;
+.searchImg {
+  transform: translateY(50%);
+  height: 100px;
+  width: 100px;
+  z-index: 10;
 }
 
-.infoName  {
-  font-size: 30px;
-}
-
-.imgDiv {
-  margin-right: 5%;
-}
-
-.inforExperience{
-  font-size: 30px;
-}
-
-.inforSkills{
-  font-size: 30px;
-}
-
-.infoJobTitle {
-  font-size: 15px;
-}
-.javascript{
-  border: 1px solid black;
-  margin-right: 5px;
-  padding: 5px;
-  border-radius: 15%;
-}
-
-.profileSkills{
+.howItWorksBoxes {
   display: flex;
-  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
-.links {
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-#connect {
-  background-color: #05668D;
-  color: white;
-}
-
-.profileDivSarah {
-  background-color: white;
-  display:flex;
-  flex-direction: row;
-  padding: 30px;
-  border-radius: 2%;
-  margin-top: 10px;
-  min-width: 595px;
-}
-
-.profileDivDavid {
-  background-color: white;
-  display:flex;
-  flex-direction: row;
-  padding: 30px;
-  border-radius: 2%;
-  margin-top: 10px;
-}
-
-.viewCandidateButton {
-  margin: 5%;
-}
-
-.footer{
-  background-color: #6C6C6C;
+.sec {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  padding: 10px;
 }
 
-.candidateImg {
-  height: 80%;
-  margin-right: 10%;
-}
+.subsec {
+  width: 1200px;
+  padding: 120px 0px;
 
-.candidateInputBox{
-  flex-direction: column;
   display: flex;
-  padding: 10px;
+  justify-content: center;
   align-items: center;
-  background-color: white;
-  padding-top: 50px;
-  width: 500px;
-  height: 450px;
-  border-radius: 5%;
+  flex-direction: column;
 }
 
-#candidatePageInput input{
-  margin-bottom: 5% !important;
-  border: 1px solid #949191 !important;
+.grey-sec {
+  background-color: #FAFAFA;
+  box-shadow: 0px 2px 8px #ECE1E1;
 }
 
-#candidatePageInput {
-  width: 90%;
+.language-subsec {
+  padding: 30px 0 !important;
 }
 
-#registerButton {
-  background-color: #05668D;
+.block {display: block;}
+.inline-block {display: inline-block;}
+.float-left {float: left;}
+.float-right {float: right;}
+
+
+
+
+.howItWorksText {
+  font-family: Avenir-Heavy;
+  font-size: 30px;
+  color: #6B6B6B;
+}
+
+.howItWorksText2 {
+  font-family: Avenir-Light;
+  color: #6B6B6B;
+  font-size: 20px;
+}
+.howItWorksText3 {
+  font-family: Avenir-Light;
+  font-size: 20px;
+  color: #6B6B6B;
+}
+
+#scootButton {
+  font-family: Avenir-Heavy;
+  height: 64px;
+  width: 160px;
   color: white;
-  width: 45%;
-  margin-top: 4%;
+  background-color: #D43239;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.scootDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.mainDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
+.bottomATags a{
+  font-family: Avenir-Light;
+  color: #6B6B6B;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
