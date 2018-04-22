@@ -1,4 +1,5 @@
 import React from 'react';
+import Picker from 'react-month-picker'
 
 class ProjectForm extends React.Component {
   constructor(props){
@@ -33,11 +34,11 @@ class ProjectForm extends React.Component {
     console.log('the editable state on this project form is: ', 'state: ', this.state.editable, 'props: ', this.props.editable)
     return (
       <div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
-        Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
-        Start: <input type="text" name="projectstart" value={this.state.projectstart} onChange={this.handleInputChange} />
-      </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
+          Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
+          Start: <input type="text" name="projectstart" value={this.state.projectstart} onChange={this.handleInputChange} />
+        </div>
       {editedVersion ?
         // if editVersion, want to addProject in same position but with editable as false
         <button onClick={() => this.disableEditAndAdd()}> Save!!!! </button> :
