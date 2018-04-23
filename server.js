@@ -4,32 +4,45 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
+const aws = require('aws-sdk');
+const multerS3 = require('multer-s3');
+
 
 const PORT = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //routes
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// configure storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads');
-  },
-  filename: (req, file, cb) => {
-    const newFilename = `${uuidv4()}${path.extname(file.originalname)}`;
-    cb(null, newFilename);
-  },
+aws.config.update({
+    secretAccessKey: process.env.S3_SECRET,
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    region: 'us-west-1'
 });
 
-// create the multer instance that will be used to upload/save the file
-const upload = multer({ storage });
+s3 = new aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'kindred-testing-ana',
+        key: function (req, file, cb) {
+            console.log(file);
+            cb(null, file.originalname); //use Date.now() for unique file keys
+        }
+    })
+});
+// TEST ENDS HERE
 
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
+
 
 app.post('/photo', upload.array('fileArray'), (req, res) => {
   console.log('in here')
