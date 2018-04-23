@@ -10,12 +10,28 @@ const multerS3 = require('multer-s3');
 
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //routes
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// configure storage
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, './uploads');
+//   },
+//   filename: (req, file, cb) => {
+//     const newFilename = `${uuidv4()}${path.extname(file.originalname)}`;
+//     cb(null, newFilename);
+//   },
+// });
+
+// create the multer instance that will be used to upload/save the file
+// const upload = multer({ storage });
+
+
+// TEST STARTS HERE
 
 aws.config.update({
     secretAccessKey: process.env.S3_SECRET,
@@ -29,9 +45,9 @@ const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'kindred-testing-ana',
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, file.originalname); //use Date.now() for unique file keys
+        key: (req, file, cb) => {
+            const newFilename = `${uuidv4()}${path.extname(file.originalname)}`
+            cb(null, newFilename)
         }
     })
 });
@@ -43,6 +59,8 @@ const upload = multer({
 
 
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/photo', upload.array('fileArray'), (req, res) => {
   console.log('in here')
