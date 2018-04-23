@@ -24,15 +24,15 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, editable: editable, id: this.workCount++}]})
   }
 
-  addProject = (title, description, projectstart, editable) => {
-    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, editable: editable, id: this.projectCount++}]},
+  addProject = (title, description, projectstart, photos, editable) => {
+    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, photos: photos, editable: editable, id: this.projectCount++}]},
       () => console.log('this.state after adding', this.state))
   }
 
-  addEditedProject = (title, description, projectstart, editable, id, positionArray) => {
+  addEditedProject = (title, description, projectstart, photos, editable, id, positionArray) => {
     const newProjectArr = this.state.projectArr.slice()
     console.log('array before', newProjectArr)
-    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, editable: editable, id: id})
+    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, photos: photos, editable: editable, id: id})
     console.log('array after: ', newProjectArr)
     this.setState({projectArr: newProjectArr})
   }
@@ -87,7 +87,7 @@ class CandidateRegisterProfileContainer extends React.Component {
   }
 
   toggleProjectForm = () => {
-    this.setState({ projectFormShown: !this.state.projectFormShown}, () => console.log('toggled projectForm. this.state.projectFormShown is now: ', JSON.stringify(this.state.projectFormShown)))
+    this.setState({ projectFormShown: !this.state.projectFormShown})
   }
 
   toggleWorkForm = () => {
@@ -95,12 +95,10 @@ class CandidateRegisterProfileContainer extends React.Component {
   }
 
   makeProjectEditable = (index) => {
-    console.log('calling makeEditable with this index', index)
     const editSavvyProjectArr = this.state.projectArr.slice()
-    console.log('old projectArr is', JSON.stringify(this.state.projectArr))
     const foundIndex = editSavvyProjectArr.findIndex(project => project.id == index);
     editSavvyProjectArr[foundIndex].editable = true
-    this.setState({ projectArr: editSavvyProjectArr}, () => console.log('new projectArr', JSON.stringify(this.state.projectArr)))
+    this.setState({ projectArr: editSavvyProjectArr})
   }
 
   makeWorkEditable = (index) => {
@@ -110,8 +108,8 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({ workExpArr: editSavvyWorkArr})
   }
 
-  addProjectCloseForm = (title, description, projectstart, editable) => {
-    this.addProject(title, description, projectstart, editable)
+  addProjectCloseForm = (title, description, projectstart, photos, editable) => {
+    this.addProject(title, description, projectstart, photos, editable)
     this.toggleProjectForm()
   }
 
@@ -122,7 +120,6 @@ class CandidateRegisterProfileContainer extends React.Component {
 
 
   render() {
-    console.log('this.state.projectArr at the beginng of candregisterprofilecontainer', JSON.stringify(this.state.projectArr))
     return (
       <div style={{border: '2px dotted red'}}>
         <ProgressBarProfile /><br/>

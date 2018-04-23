@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import ProgressBarAdditional from './ProgressBarAdditional'
+import Dropzone from 'react-dropzone'
 
 class CandidateRegisterAdditional extends React.Component {
   constructor(props) {
@@ -12,9 +13,17 @@ class CandidateRegisterAdditional extends React.Component {
       linkedin: '',
       website: '',
       selfbio: '',
-      selectedFile: null
+      selectedFile: null,
+      files: []
     }
   }
+
+  onDrop = (file) => {
+  let newFiles = this.state.files.concat(file)
+   this.setState({
+     files: newFiles
+   }, console.log('this.state.files is ', this.state.files));
+ }
 
   handleAdditionalChange = (event) => {
     let change = {}
@@ -22,42 +31,34 @@ class CandidateRegisterAdditional extends React.Component {
     this.setState(change)
   }
 
-  fileSelectedHandler = (event) => {
-    this.setState({selectedFile: event.target.files[0]})
-  }
-
-  fileUploadHandler = () => {
-
-  }
 
 
 
-  render() {
-    return (
-      <div>
-        <ProgressBarAdditional />
-              Github URL: <input type="text" name="github" placeholder="Github URL" onChange={this.handleAdditionalChange} /> <br />
-              Linkedin URL: <input type="text" name="linkedin" placeholder="LinkedIn URL" onChange={this.handleAdditionalChange} /> <br />
-              Personal Website URL <input type="text" name="website" placeholder="Personal Website URL"  onChange={this.handleAdditionalChange} /> <br />
-              Tell us about yourself: <textarea type="text" name="selfbio" onChange={this.handleAdditionalChange} defaultvalue= "Tell us about yourself" placeholder="Tell us about yourself"/> <br />
-              <button> Upload Resume </button>
-              <input
-                style={{display: 'none'}}
-                type='file'
-                onChange={this.fileSelectedHandler}
-                ref={fileInput => this.fileInput = fileInput}/>
-                <button onClick={() => this.fileInput.click()}> Pick File </button>
-              <button> Upload Picture </button><br/>
-        <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
-        <Link style={{float: 'right'}} to=""> Done </Link>
+render() {
+  console.log('page load files', this.state.files)
+  return (
+    <div>
+      <ProgressBarAdditional />
+      Github URL: <input type="text" name="github" placeholder="Github URL" onChange={this.handleAdditionalChange} /> <br />
+      Linkedin URL: <input type="text" name="linkedin" placeholder="LinkedIn URL" onChange={this.handleAdditionalChange} /> <br />
+      Personal Website URL <input type="text" name="website" placeholder="Personal Website URL"  onChange={this.handleAdditionalChange} /> <br />
+      Tell us about yourself: <textarea type="text" name="selfbio" onChange={this.handleAdditionalChange} defaultvalue= "Tell us about yourself" placeholder="Tell us about yourself"/> <br />
+      <button> Upload Resume </button>
+      <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
+      <Link style={{float: 'right'}} to=""> Done </Link>
+
+
+        <div className="dropzone">
+          <Dropzone onDrop={this.onDrop}>
+            <p>Choose your profile picture</p>
+            <div>{this.state.files.map((file) => <img src={file.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /> )}</div>
+          </Dropzone>
+        </div>
       </div>
-    );
-  }
-}
 
-CandidateRegisterAdditional.propTypes = {
-  loggedInCand: PropTypes.bool.isRequired,
-  logoutCand: PropTypes.func.isRequired,
-};
+
+  );
+}
+}
 
 export default withRouter(CandidateRegisterAdditional);

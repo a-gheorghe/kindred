@@ -8,11 +8,17 @@ class ProjectWrapper extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(){
+  }
+
+  shouldComponentUpdate(){
+    return true
+  }
+
 
 
   render(){
     const { projectArr, addProject, removeProject, onChange, projectFormShown, toggleProjectForm, makeProjectEditable, addProjectCloseForm, addEditedProject } = this.props
-
     return (
       <div style={{ border: '1px solid purple' }}>
         <h3>Projects</h3>
@@ -21,12 +27,16 @@ class ProjectWrapper extends React.Component {
           {projectArr.map((project, i) => {
             return (
               project.editable ?
-              <ProjectForm addEditedProject={addEditedProject} title={project.title} description={project.description} projectstart={project.projectstart} id={project.id} editable={true} addProjectCloseForm={addProjectCloseForm} editedVersion={true} positionArray={i}/>
+              <ProjectForm i={i} addEditedProject={addEditedProject} title={project.title} description={project.description} projectstart={project.projectstart} photos={project.photos} id={project.id} editable={true} addProjectCloseForm={addProjectCloseForm} editedVersion={true} positionArray={i}/>
              :
             <div style={{border: '1px solid green'}} key={project.id}>
               Title: {project.title} <br/>
               Description: {project.description} <br/>
               Start date: {project.projectstart}<br/>
+              {project.photos.length === 0 ? '' :
+              <div> Photos:
+              {project.photos.map((photo, photoIndex) => <img src={photo.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /> )}</div>}
+
               <button onClick={(e) => removeProject(project.id, e)}> Delete </button>
               <button onClick={(e) => makeProjectEditable(project.id, e)}> Edit </button>
             </div>

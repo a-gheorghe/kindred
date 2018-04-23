@@ -7,10 +7,9 @@ const PORT = process.env.PORT || 3000;
 
 
 // set up body parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 
 //routes
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,6 +29,7 @@ app.get(/^\/app/, (req, res) => {
   ('in /app route')
   res.sendFile(__dirname + '/public/app.html');
 })
+
 
 
 
