@@ -14,15 +14,14 @@ class CandidateRegisterAdditional extends React.Component {
       website: '',
       selfbio: '',
       selectedFile: null,
-      files: []
+      files: ''
     }
   }
 
   onDrop = (file) => {
-  let newFiles = this.state.files.concat(file)
    this.setState({
-     files: newFiles
-   }, console.log('this.state.files is ', this.state.files));
+     files: file
+   }, () => console.log('this.state.files after setting state', this.state.files));
  }
 
   handleAdditionalChange = (event) => {
@@ -50,8 +49,11 @@ render() {
 
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop}>
-            <p>Choose your profile picture</p>
-            <div>{this.state.files.map((file) => <img src={file.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /> )}</div>
+            <div>
+              <p>Drop or click to add a profile picture</p>
+              {this.state.files.length === 0 ? '' :
+              <img src={this.state.files[0].preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} />}
+            </div>
           </Dropzone>
         </div>
       </div>
