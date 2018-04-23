@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 class Login extends React.Component {
-
   render() {
     return (
       <form>
@@ -17,7 +16,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: () => dispatch({ type: 'LOGIN' })
+  login: () => dispatch({ type: 'LOGIN' }),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

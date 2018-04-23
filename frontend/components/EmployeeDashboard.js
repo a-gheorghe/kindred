@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 class EmployeeDashboard extends React.Component {
-
   render() {
     return (
       <div> EmployeeDashboard </div>

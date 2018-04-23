@@ -11,8 +11,6 @@ import HomePage from '../components/HomePage';
 import Login from '../components/Login';
 
 
-
-
 class Root extends React.Component {
   // componentWillMount() {
   //   // check if logged in
@@ -24,7 +22,7 @@ class Root extends React.Component {
     // }
 
     return (
-// THIS WORKS
+    // THIS WORKS
       <Provider store={this.props.store}>
         {/* <Router history={hashHistory}>
           <Route path='/' component={HomePage} />
@@ -35,20 +33,20 @@ class Root extends React.Component {
         <BrowserRouter>
           {/* { this.props.loggedIn ?
             <UserContainer /> : */}
-            <ViewingContainer />
+          <ViewingContainer />
         </BrowserRouter>
       </Provider>
     );
   }
 }
 
-  const mapStateToProps = state => ({
-    loggedIn: state.loggedIn
-  })
-
-  const mapDispatchToProps = dispatch => ({
-    login: () => dispatch({ type: 'LOGIN' }),
-    logout: () => dispatch({ type: 'LOGOUT' })
+const mapStateToProps = state => ({
+  loggedIn: state.loggedIn,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Root)
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch({ type: 'LOGIN' }),
+  logout: () => dispatch({ type: 'LOGOUT' }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

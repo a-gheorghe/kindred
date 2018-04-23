@@ -5,26 +5,22 @@ import Login from '../components/Login';
 import '../components/styles/view.css';
 
 
-const ViewingContainer = () => {
-  return (
-    <div>
-        {/* <Switch>
+const ViewingContainer = () => (
+  <div>
+    {/* <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={Login} />
           <Redirect to="/" />
         </Switch> */}
     hello
-    </div>
-  )
-}
+  </div>
+);
 
 
-        {/* This works
+{ /* This works
         <BrowserRouter>
             <Route exact path="/" component={HomePage} />
-        </BrowserRouter> */}
-
-
+        </BrowserRouter> */ }
 
 
 export default ViewingContainer;
