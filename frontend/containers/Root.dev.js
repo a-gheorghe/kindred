@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Link, Redirect, withRouter } from 'react-router-d
 import RegisterContainer from './registration/RegisterContainer';
 import MessageThread from '../components/MessageThread';
 import PrivateRouteBoth from '../components/authentication/PrivateRouteBoth';
+import Login from '../components/login/Login'
 // import About from '../components/About'
 // import AuthButton from '../components/AuthButton'
-// import Login from '../components/Login'
 // import PrivateRouteCand from '../components/PrivateRouteCand'
 // import PrivateRouteRef from '../components/PrivateRouteRef'
 // import CandidateSelfProfile from '../components/CandidateSelfProfile'
@@ -125,6 +125,7 @@ class AuthExample extends React.Component {
         <div>
           <Route path="/register" render={props => <RegisterContainer loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} registerRef={this.registerRef} registerCand={this.registerCand} logoutCand={this.logoutCand} logoutRef={this.logoutRef} />} />
           <PrivateRouteBoth exact path="/messages" component={MessageThread} logoutCand={this.logoutCand} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} setTarget={this.setTarget} />
+          <Route path='/login'  render={(props) => <Login target={this.target} setTarget={this.setTarget} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} loginCand={this.loginCand} loginRef={this.loginRef} {...props}/>} />
 
           {/* <Route path='/messages' component={MessageThread} /> */}
           {/* <Route path='/referrerRegister' render={(props) => <ReferrerRegister target={this.target} setTarget={this.setTarget} registerRef={this.registerRef} loggedInRef={this.state.loggedInRef} {...props}/>} /> */}

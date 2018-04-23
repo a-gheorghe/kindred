@@ -1,6 +1,7 @@
 import React from 'react';
 import Picker from 'react-month-picker'
 import Dropzone from 'react-dropzone'
+import axios from 'axios'
 
 class ProjectForm extends React.Component {
   constructor(props){
@@ -21,6 +22,27 @@ class ProjectForm extends React.Component {
      files: newFiles
    });
  }
+
+ multerSave = () => {
+   const { title, files } = this.state;
+       let formData = new FormData();
+
+       formData.append('title', 'hello');
+
+       for(let i = 0; i < files.length; i++) {
+        formData.append('fileArray', files[i]);
+      }
+
+       axios.post('/photo', formData)
+         .then((result) => {
+           console.log('this is my result', result)
+         })
+         .catch(err => {
+           console.log('oops there was an error', err)
+         })
+       }
+
+
 
   handleInputChange = (e) => {
     let change = {}
@@ -58,6 +80,7 @@ class ProjectForm extends React.Component {
               <div>
                 <button onClick={() => this.deletePhoto(photoIndex)}> x </button>
                 <img src={file.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} />
+                <button onClick={this.multerSave}> Save post request </button>
               </div>
             )}
           </div>
