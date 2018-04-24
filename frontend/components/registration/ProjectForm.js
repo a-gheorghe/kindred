@@ -23,17 +23,17 @@ class ProjectForm extends React.Component {
    });
  }
 
- multerSave = () => {
+ uploadPhotos = () => {
    const { title, files } = this.state;
        let formData = new FormData();
 
-       formData.append('title', 'hello');
-
+       formData.append('type', 'project-photo');
+       formData.append('user', 15);
        for(let i = 0; i < files.length; i++) {
-        formData.append('fileArray', files[i]);
+        formData.append('project-photos', files[i]);
       }
 
-       axios.post('/photo', formData)
+       axios.post('/projectphotos', formData)
          .then((result) => {
            console.log('this is my result', result)
          })
@@ -61,7 +61,9 @@ class ProjectForm extends React.Component {
 
   deletePhoto = (photoIndex) => {
     this.state.files.splice(photoIndex, 1)
-    this.forceUpdate()
+    this.setState({
+      files: this.state.files
+    })
   }
 
   render(){
@@ -72,19 +74,19 @@ class ProjectForm extends React.Component {
           Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
           Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
           Start: <input type="text" name="projectstart" value={this.state.projectstart} onChange={this.handleInputChange} />
-          <div className="dropzone">
+          {/* <div className="dropzone">
             <Dropzone onDrop={this.onDrop}>
-              <p>Upload some pictures</p>
+              <p>Drop or click to add photos/videos documenting your previous projects</p>
+              <div>{this.state.files.map((file, photoIndex) =>
+                <span>
+                  <button onClick={() => this.deletePhoto(photoIndex)}> x </button>
+                  <img src={file.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} />
+                </span>
+              )}
+            </div>
             </Dropzone>
-            <div>{this.state.files.map((file, photoIndex) =>
-              <div>
-                <button onClick={() => this.deletePhoto(photoIndex)}> x </button>
-                <img src={file.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} />
-                <button onClick={this.multerSave}> Save post request </button>
-              </div>
-            )}
-          </div>
-          </div>
+            <button onClick={this.uploadPhotos}> Upload </button>
+          </div> */}
         </div>
       {editedVersion ?
         // if editVersion, want to addProject in same position but with editable as false

@@ -14,24 +14,8 @@ const PORT = process.env.PORT || 3000;
 
 //routes
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-// configure storage
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, './uploads');
-//   },
-//   filename: (req, file, cb) => {
-//     const newFilename = `${uuidv4()}${path.extname(file.originalname)}`;
-//     cb(null, newFilename);
-//   },
-// });
-
-// create the multer instance that will be used to upload/save the file
-// const upload = multer({ storage });
-
-
-// TEST STARTS HERE
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 aws.config.update({
     secretAccessKey: process.env.S3_SECRET,
@@ -51,28 +35,23 @@ const upload = multer({
         }
     })
 });
-// TEST ENDS HERE
 
+// post
+app.post('/projectphotos', upload.array('project-photos'), (req, res) => {
+  console.log('successfully uploaded photos to S3', req.files)
 
-
-
-
-
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-app.post('/photo', upload.array('fileArray'), (req, res) => {
-  console.log('in here')
-  console.log('req is ', req)
-  /*
-    We now have a new req.file object here. At this point the file has been saved
-    and the req.file.filename value will be the name returned by the
-    filename() function defined in the diskStorage configuration. Other form fields
-    are available here in req.body.
-  */
+  // here now we can take the urls and save them to the postgreSQL database for the particular user
+  req.files.forEach((file) => console.log('file location is: ', file.location))
+  // req.files.location
   res.send();
 });
+
+app.post('/profilephoto', upload.single('profile-photo'), (req, res) => {
+  console.log('successfully uploaded profile photo to S3', req)
+  res.send()
+})
+
+
 
 
 

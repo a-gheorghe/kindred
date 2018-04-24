@@ -1,3 +1,13 @@
-h1 {
-  color: red;
+.right {
+  border: 1px solid red;
+  flex: 1;
+}
+
+.left {
+  border: 1px solid blue;
+  flex: 1;
+}
+
+.container-additional {
+  display: flex;
 }

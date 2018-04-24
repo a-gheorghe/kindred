@@ -35,7 +35,7 @@ class ProjectWrapper extends React.Component {
               Start date: {project.projectstart}<br/>
               {project.photos.length === 0 ? '' :
               <div> Photos:
-              {project.photos.map((photo, photoIndex) => <img src={photo.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /> )}</div>}
+              {project.photos.map((photo, photoIndex) => <div><img src={photo.preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /></div> )}</div>}
 
               <button onClick={(e) => removeProject(project.id, e)}> Delete </button>
               <button onClick={(e) => makeProjectEditable(project.id, e)}> Edit </button>
