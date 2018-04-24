@@ -1,15 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom'
-import { Input } from 'semantic-ui-react'
-import './styles/styles.css'
-import SwitchButton from './react-switch-button'
+import { Button, Input } from 'semantic-ui-react'
+import '../styles/styles.css'
+import Container from '../Container'
 
 class Login extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state={
+        ref: true,
+        can: false,
+      }
+  }
+
+  refClick = () => this.setState({
+    can: false,
+    ref: true,
+  })
+  canClick = () => this.setState({
+    can: true,
+    ref: false,
+  })
   // Ignore linter errors: additional methods will go here; not necessary to
   // switch to pure function. <--- Delete me when new methods are added.
 
   render() {
+    const { can, ref } = this.state;
     // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
     const {
@@ -38,31 +55,44 @@ class Login extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="maindiv">
         <div className="topnav">
           <div className="logo">
-            KINDREDTALENT
+            KindredTalent
           </div>
           <div className="aTag">
-            <a>I&apos;m looking</a>
-            <a>I&apos;m Referring</a>
-            <button id="headerButtom" className="ui button"> Login </button>
+            <a href="/candidate">I&#39;m Looking</a>
+            <a href="/">I&#39;m Referring</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
           </div>
         </div>
-        <div className="blueContainer">
-        <div className="login">
-          Login
-        </div>
-          <div className="inputBox">
-            <Input className="loginPageInput" placeholder='Email' />
-            <Input className="loginPageInput" placeholder='Password' />
-            <div className="SwitchButton">
-              <SwitchButton name="switch-8" label="Switch mode" mode="select" labelRight="Referrer" label="Candidate"/>
+        <img src="../background.svg" style={{position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1'}}/>
+        <Container>
+          <div className="loginDiv">
+            <div className="loginHeader">Sign into KindredTalent</div>
+            <Button.Group>
+              <Button toggle active={ref} onClick={this.refClick}>Referrer</Button>
+              <Button toggle active={can} onClick={this.canClick}>Candidate</Button>
+            </Button.Group>
+            <div className="loginBox">
+              <input className="loginInput" placeholder="Email" style={{marginBottom: "45px"}} type="text" name="name" />
+              <input className="loginInput" placeholder="Password" style={{marginBottom: "20px"}} type="text" name="name" />
+              <div className="loginRemember">
+                <label className="loginLabel">
+                  <input type="checkbox" value="" className="loginCheck"/>
+                  Remember Me
+                </label>
+              </div>
+              {/* Change button to call loginCand if Cand or loginRef if Ref */}
+              <Button className="loginButton">Sign In</Button>
             </div>
-            <button id="connect" className="medium ui button">Login</button>
+            <a className="loginA" href="#">Forgot Password?</a>
           </div>
-        </div>
-
+          <div className="loginSignup">
+            Don’t have an account? <a className="loginASign" href="#">Sign Up</a>
+          </div>
+        </Container>
       </div>
     );
   }
