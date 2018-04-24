@@ -3,24 +3,154 @@
   <head>
     <meta charset="utf-8">
     <title>Kindred Talent</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="semantic/out/semantic.min.js"></script>
   </head>
   <body>
-    <div>
-    <div>
-      Kindred Talent </br>
-      <a href="/candidate" style="font-size: 10px;"> I'm looking </a>
-      <a href="/" style="font-size: 10px;"> I'm referring </a>
-      <a href="/app/register" > Sign up </a>
-      <a href="/app/login" style="font-size: 10px; float: right;"> Login </a>
+    <div class="topnav">
+      <div class="logo">
+        KindredTalent
+      </div>
+      <div class="aTag">
+        <a href="/candidate">I'm Looking</a>
+        <a href="/">I'm Referring</a>
+        <a href="/app/register">Sign Up</a>
+        <a href="/app/login">Login</a>
+        <!-- <a href='/app/allCandidates'> See all candidates </a> -->
+      </div>
     </div>
-    Refer vetted engineers for jobs. Get paid up to $5000 for hire.
-    </br> </br>
-    <div>
-      Start referring today! </br>
-      <div style="border: 1px solid black;"><h3> Candidate Picture </h3> Candidate one info  <a style="text-decoration: none; color: white; background-color: blue; border-radius: 2px;" href="app/messages"> Connect </a> </div> <br/>
-      <div style="border: 1px solid black;"><h3> Candidate Picture </h3> Candidate two info <a style="text-decoration: none; color: white; background-color: blue; border-radius: 2px;" href="app/messages"> Connect </a> </div> <br/>
-      <div style="border: 1px solid black;"><h3> Candidate Picture </h3> Candidate three info <a style="text-decoration: none; color: white; background-color: blue; border-radius: 2px;" href="app/messages"> Connect </a> </div> <br/>
-      <a href='/app/allCandidates'> See all candidates </a>
+    <div class="sec">
+      <div class="subsec" style="align-items: normal !important">
+        <div class="block">
+          <div class="inline-block float-left">
+            <p class="bigOffer">
+              Refer engineers for jobs.</br>
+              Get paid up to $5,000/hire.</br>
+            </p>
+            <div class="input-group">
+              <input id="landingpageInput" type="text" placeholder="What skills are you looking for?">
+              <span class="input-group-btn">
+                <button id="inputBut" class="btn btn-secondary" type="submit">Search</button>
+              </span>
+            </div>
+          </div>
+          <div class="inline-block float-right">
+            <img class="landingpageImg" src="./people.png" alt="">
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="sec grey-sec">
+      <div class="subsec language-subsec">
+        <img src="./language.png" alt="">
+      </div>
+    </div>
+    <div class="sec">
+      <div class="subsec">
+        <p class="howItWorks">How it works</p>
+        <div class="howItWorksBoxes">
+          <div class="searchDiv1">
+            <img class="searchImg" src="./search.png" alt="">
+            <div class="searchDiv2">
+              <p class="howItWorksText">Search</p>
+              <span class="howItWorksText3">
+                Search through a database</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of skilled candidates
+              </span>
+
+            </div>
+          </div>
+          <div class="searchDiv1">
+            <img class="searchImg" src="./mail.png" alt="">
+            <div class="searchDiv2">
+              <p class="howItWorksText">Refer</p>
+              <p class="howItWorksText2">
+                Search through a database</br>
+                of highly skilled candidates
+              </p>
+
+            </div>
+          </div>
+          <div class="searchDiv1">
+            <img class="searchImg" src="./computer.png" alt="">
+            <div class="searchDiv2">
+              <p class="howItWorksText">Work</p>
+              <p class="howItWorksText2">
+                Search through a database</br>
+                of highly skilled candidates
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec grey-sec">
+      <div class="subsec">
+        <div class="scootDiv">
+          <div class="">
+            <div style="font-family: Avenir-Medium; font-size: 42px; color: #6B6B6B; margin-bottom: 30px;">Start referring today.</div>
+            <div style="font-family: Avenir-Light; font-size: 18px; color: #6B6B6B; margin-bottom: 30px;">Search through candidates. Refer them to jobs your company (or</br>
+              friends). If they land a job, you get paid!</div>
+              <button id="scootButton" type="button" name="button">Sign up</button>
+          </div>
+          <img style="height: 300px; width: 317px"src="./scoot.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="subsec">
+        <div class="mainDiv">
+          <div class="">
+            <div style="font-size: 36px; color: #6C6666; margin-bottom: 20px;  font-family: BodoniSvtyTwoITCTT-Bold;">KindredTalent</div>
+            <p style="font-family: Avenir-Light; font-size: 16px; color: #6C6666">Fusce vehicula dolor arcu, sit amet blandit</br> dolor mollis nec. Donec viverra eleifend</br>lacus, vitae ullamcorper metus.</p>
+            <img height="46px" width="214px" src="./icons.png" alt="">
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">COMPANY</div>
+            <div class="bottomATags">
+              <a href="#">About Us</a>
+              <a href="#">Jobs</a>
+              <a href="#">Blog</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">BROWSE</div>
+            <div class="bottomATags">
+              <a href="#">React Engineer</a>
+              <a href="#">UI Engineer</a>
+              <a href="#">UI/UX Designer</a>
+              <a href="#">Product Manager</a>
+              <a href="#">Backend Engineer</a>
+              <a href="#">Full Stack Developer</a>
+              <a href="#">Solutions Engineer</a>
+            </div>
+          </div>
+          <div class="">
+            <div style="font-size: 16px; color: #6C6666; margin-bottom: 20px; font-family: Avenir-Black;">ADDITIONAL SERVICES</div>
+            <div class="bottomATags">
+              <a href="#">I'm a Candidate</a>
+              <a href="#">Contact</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
+
 </html>

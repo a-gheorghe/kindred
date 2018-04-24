@@ -1,0 +1,23 @@
+.ui.button.toggle.active:hover{
+  background-color: #D43239 !important;
+  color: white;
+}
+
+.ui.button.toggle.active, .ui.buttons .button.toggle.active, .ui.toggle.buttons .active.button {
+  background-color: #D43239 !important;
+  color: white;
+  box-shadow: inset 0px 0px 4px #000000 !important;
+
+}
+
+.ui.button {
+  border: 1px solid #D43239;
+  background-color: white;
+  color: #D43239;
+  width: 150px;
+  height: 46px;
+}
+
+.ui.buttons .button:first-child {
+  border-left: solid rgb(212, 50, 57) 1px;
+}

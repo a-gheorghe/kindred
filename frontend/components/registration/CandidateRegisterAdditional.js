@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ProgressBarAdditional from './ProgressBarAdditional'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
-import '../../css/main.css'
+import '../styles/styles.css'
 
 class CandidateRegisterAdditional extends React.Component {
   constructor(props) {

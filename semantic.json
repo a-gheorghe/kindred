@@ -1,17 +1,17 @@
 {
-  "base": "semantic\\",
+  "base": "semantic/",
   "paths": {
     "source": {
       "config": "src/theme.config",
       "definitions": "src/definitions/",
-      "site": "src\\site\\",
+      "site": "src/site/",
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "dist\\",
-      "uncompressed": "dist\\components\\",
-      "compressed": "dist\\components\\",
-      "themes": "dist/themes/"
+      "packaged": "out/",
+      "uncompressed": "out/components/",
+      "compressed": "out/components/",
+      "themes": "out/themes/"
     },
     "clean": "dist/"
   },
