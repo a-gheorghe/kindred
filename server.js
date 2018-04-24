@@ -36,17 +36,17 @@ const upload = multer({
     })
 });
 
-// post
-app.post('/projectphotos', upload.array('project-photos'), (req, res) => {
-  console.log('successfully uploaded photos to S3', req.files)
+// post project photos
+// app.post('/projectphotos', upload.array('project-photos'), (req, res) => {
+//   console.log('successfully uploaded photos to S3', req.files)
+//
+//   // here now we can take the urls and save them to the postgreSQL database for the particular user
+//   req.files.forEach((file) => console.log('file location is: ', file.location))
+//   // req.files.location
+//   res.send();
+// });
 
-  // here now we can take the urls and save them to the postgreSQL database for the particular user
-  req.files.forEach((file) => console.log('file location is: ', file.location))
-  // req.files.location
-  res.send();
-});
-
-app.post('/profilephoto', upload.single('profile-photo'), (req, res) => {
+app.post('/profilephoto', upload.array('profile-photo'), (req, res) => {
   console.log('successfully uploaded profile photo to S3', req)
   res.send()
 })

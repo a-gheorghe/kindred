@@ -15,7 +15,7 @@ class CandidateRegisterAdditional extends React.Component {
       linkedin: '',
       website: '',
       selfbio: '',
-      files: '',
+      files: [],
       resume: ''
     }
   }
@@ -24,8 +24,6 @@ class CandidateRegisterAdditional extends React.Component {
     const { files } = this.state;
     let formData = new FormData();
 
-    formData.append('type', 'profile-photo');
-    formData.append('user', 15);
     formData.append('profile-photo', files)
 
 
@@ -107,7 +105,7 @@ class CandidateRegisterAdditional extends React.Component {
             </div>
           </div>
           <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
-          <Link onClick={this.upload} style={{float: 'right'}} to=""> Done </Link>
+          <Link onClick={this.uploadPhoto} style={{float: 'right'}} to="/cand/messages"> Done </Link>
         </div>
 
 

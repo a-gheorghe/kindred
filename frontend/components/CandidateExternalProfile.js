@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OptionsCand from './OptionsCand';
-import OptionsRef from './OptionsRef';
+import OptionsCand from './authentication/OptionsCand';
+import OptionsRef from './authentication/OptionsRef';
 
 class CandidateExternalProfile extends React.Component {
   // Ignore linter errors: additional methods will go here; not necessary to

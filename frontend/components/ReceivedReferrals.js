@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OptionsCand from './OptionsCand';
+import OptionsCand from './authentication/OptionsCand';
 import Referral from './Referral';
 
 const ReceivedReferrals = (props) => {

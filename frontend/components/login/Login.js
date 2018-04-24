@@ -16,23 +16,12 @@ class Login extends React.Component {
     console.log('target inside login page', target);
 
     if (loggedInCand === true) {
-      // if (target === undefined){
-      //   return (
-      //     <Redirect to={target} />
-      //   )
-      // } else {
       return (
-        <Redirect to="/messages" />
+        <Redirect to="/cand/messages" />
       );
-      // }
     } else if (loggedInRef === true) {
-      // if (target === undefined){
-      //   return (
-      //     <Redirect to={target} />
-      //   )
-      // } else {
       return (
-        <Redirect to="/messages" />
+        <Redirect to="/ref/messages" />
       );
     }
     return (
@@ -54,7 +43,6 @@ Login.propTypes = {
   loggedInRef: PropTypes.bool.isRequired,
   loginRef: PropTypes.func.isRequired,
   loginCand: PropTypes.func.isRequired,
-  target: PropTypes.arrayOf('string').isRequired,
 };
 
 export default withRouter(Login);

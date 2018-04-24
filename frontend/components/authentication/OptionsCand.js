@@ -9,10 +9,10 @@ const OptionsCand = (props) => {
     <div>
       <AuthButton loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} /><br />
       {/* Href attribute linter errors can be ignored. */}
-      <Link to="/candidateSelfProfile"> My Profile </Link><br />
-      <Link to="/candidateExternalProfile"> See profile from referrer view </Link><br />
-      <Link to="/messages"> Messages </Link> <br />
-      <Link to="/receivedreferrals"> Referrals Received </Link><br />
+      <Link to="/cand/selfprofile"> My Profile </Link><br />
+      <Link to="/cand/extprofile"> See profile from referrer view </Link><br />
+      <Link to="/cand/messages"> Messages </Link> <br />
+      <Link to="/cand/referrals"> Referrals Received </Link><br />
     </div>
   );
 };
