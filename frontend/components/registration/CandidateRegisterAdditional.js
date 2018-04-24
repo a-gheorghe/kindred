@@ -15,19 +15,20 @@ class CandidateRegisterAdditional extends React.Component {
       linkedin: '',
       website: '',
       selfbio: '',
-      files: [],
+      files: '',
       resume: ''
     }
   }
 
-  uploadPhoto = () => {
-    const { files } = this.state;
+  uploadBoth = () => {
+    const { files, resume } = this.state;
     let formData = new FormData();
 
-    formData.append('profile-photo', files)
+    formData.append('documents', files[0])
+    formData.append('documents', resume[0])
 
 
-    axios.post('/profilephoto', formData)
+    axios.post('/upload', formData)
     .then((result) => {
       console.log('this is my result', result)
     })
@@ -48,6 +49,7 @@ class CandidateRegisterAdditional extends React.Component {
       resume: resume
     })
   }
+
 
   handleAdditionalChange = (event) => {
     let change = {}
@@ -93,19 +95,16 @@ class CandidateRegisterAdditional extends React.Component {
             <input type="text" name="linkedin" placeholder="LinkedIn URL" onChange={this.handleAdditionalChange} /> <br />
             <input type="text" name="website" placeholder="Personal Website URL"  onChange={this.handleAdditionalChange} /> <br />
             <textarea type="text" name="selfbio" onChange={this.handleAdditionalChange} defaultvalue= "Tell us about yourself" placeholder="Tell us about yourself"/> <br />
-            <div>
-              <label htmlFor="files">Upload Resume</label>
-              <input id="files" type="file" placeholder="Upload file"/>
-            </div>
-              {/* <Dropzone style={{"width": "50px", "height": "50px", "border": "1px solid red"}} onDrop={this.onDropResume}>
-                Upload your resume
+              <Dropzone style={{"width": "100%", "height": "50px", "border": "1px solid purple"}} onDrop={this.onDropResume}>
+                <span><button>Upload your resume</button>
                 {this.state.resume.length === 0 ? '' :
-                <div><button onClick={() => this.deleteResume()} > x </button><img src={this.state.resume[0].preview} style={{"height": "60px", "width": "50px", "margin": "5px", "border": "1px solid black"}} /></div>}
-              </Dropzone> */}
+                <div>{this.state.resume[0].name}<button onClick={() => this.deleteResume()} > x </button> </div>}
+              </span>
+              </Dropzone>
             </div>
           </div>
           <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
-          <Link onClick={this.uploadPhoto} style={{float: 'right'}} to="/cand/messages"> Done </Link>
+          <Link onClick={this.uploadBoth} style={{float: 'right'}} to="/cand/messages"> Done </Link>
         </div>
 
 

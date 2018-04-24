@@ -46,8 +46,14 @@ const upload = multer({
 //   res.send();
 // });
 
-app.post('/profilephoto', upload.array('profile-photo'), (req, res) => {
-  console.log('successfully uploaded profile photo to S3', req)
+app.post('/upload', upload.array('documents'), (req, res) => {
+  console.log('successfully documents to S3', req.files)
+  // here now we can take the urls and save them to the postgreSQL database for the particular user
+  // if file.mimetype === 'application/pdf', this is the resume
+  // if file.mimetime === 'image/jpeg', this is the profile picture
+
+  //   req.files.forEach((file) => console.log('file location is: ', file.location))
+
   res.send()
 })
 
