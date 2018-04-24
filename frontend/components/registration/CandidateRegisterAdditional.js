@@ -75,8 +75,8 @@ class CandidateRegisterAdditional extends React.Component {
     return (
       <div>
         <ProgressBarAdditional />
-        <div className="container-additional">
-          <div className="left">
+        <div className="ana container-additional">
+          <div className="ana left">
             <Dropzone style={{"display": "inline-block", border: "1px dotted grey", "height": "200px", width: "100%"}} onDrop={this.onDropPicture}>
               <div>
                 <p>Drop or click to add a profile picture</p>
@@ -88,7 +88,7 @@ class CandidateRegisterAdditional extends React.Component {
               </div>
             </Dropzone>
           </div>
-          <div className="right">
+          <div className="ana right">
             <input type="text" name="github" placeholder="Github URL" onChange={this.handleAdditionalChange} /> <br />
             <input type="text" name="linkedin" placeholder="LinkedIn URL" onChange={this.handleAdditionalChange} /> <br />
             <input type="text" name="website" placeholder="Personal Website URL"  onChange={this.handleAdditionalChange} /> <br />
