@@ -30,9 +30,8 @@ class Login extends React.Component {
     // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
     const {
-      loggedInCand, loggedInRef, loginRef, loginCand, target,
+      loggedInCand, loggedInRef, loginRef, loginCand,
     } = this.props;
-    console.log('target inside login page', target);
 
     if (loggedInCand === true) {
       return (

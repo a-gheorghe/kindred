@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import React from 'react'; // , { Component }
+import axios from 'axios';
+import { BrowserRouter, Route } from 'react-router-dom'; // , Link, Redirect, withRouter
+
 import RegisterContainer from './registration/RegisterContainer';
 import MessageThread from '../components/MessageThread';
 import PrivateRouteBoth from '../components/authentication/PrivateRouteBoth';
-import Login from '../components/login/Login';
 import CandidateContainer from './registration/CandidateContainer';
+import Login from '../components/login/Login';
+import PrivateRouteCand from '../components/authentication/PrivateRouteCand';
+import PrivateRouteRef from '../components/authentication/PrivateRouteRef';
+import ReferrerContainer from './registration/ReferrerContainer';
+import MessageContainer from './../components/MessageContainer';
 
-import axios from 'axios';
 
 class AuthExample extends React.Component {
   constructor(props) {
@@ -104,9 +109,49 @@ class AuthExample extends React.Component {
     return (
       <BrowserRouter basename="/app">
         <div>
-          <Route path="/register" render={props => <RegisterContainer loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} registerRef={this.registerRef} registerCand={this.registerCand} logoutCand={this.logoutCand} logoutRef={this.logoutRef} />} />
-          <PrivateRouteBoth exact path="/messages" component={MessageThread} logoutCand={this.logoutCand} logoutRef={this.logoutRef} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} setTarget={this.setTarget} />
-          <Route path='/login'  render={(props) => <Login target={this.target} setTarget={this.setTarget} loggedInCand={this.state.loggedInCand} loggedInRef={this.state.loggedInRef} loginCand={this.loginCand} loginRef={this.loginRef} {...props}/>} />
+          {/* Renders the first page of the registration form for cands & recruiters */}
+          <Route
+            path="/register"
+            render={props =>
+              (<RegisterContainer
+                loggedInCand={this.state.loggedInCand}
+                loggedInRef={this.state.loggedInRef}
+                registerRef={this.registerRef}
+                registerCand={this.registerCand}
+                logoutCand={this.logoutCand}
+                logoutRef={this.logoutRef}
+                {...props}
+              />
+            )}
+          />
+          {/* Renders a user's login page */}
+          <Route
+            path="/login"
+            render={props =>
+              (<Login
+                target={this.target}
+                setTarget={this.setTarget}
+                loggedInCand={this.state.loggedInCand}
+                loggedInRef={this.state.loggedInRef}
+                loginCand={this.loginCand}
+                loginRef={this.loginRef}
+                {...props}
+              />)
+            }
+          />
+          {/* Renders referrer routes */}
+          <Route
+            path="/ref"
+            render={props =>
+              (<ReferrerContainer
+                loggedInRef={this.state.loggedInRef}
+                logoutRef={this.logoutRef}
+                setTarget={this.setTarget}
+                {...props}
+              />
+            )}
+          />
+          {/* Renders candidate routes */}
           <Route path='/cand' render={props => (
             <CandidateContainer
               loggedInCand={this.state.loggedInCand}
@@ -117,7 +162,7 @@ class AuthExample extends React.Component {
             />
           )}
         />
-      </div>
+        </div>
       </BrowserRouter>
     );
   }
