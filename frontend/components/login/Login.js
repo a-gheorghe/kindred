@@ -4,6 +4,8 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { Button, Input } from 'semantic-ui-react'
 import '../styles/styles.css'
 import Container from '../Container'
+import Footer from '../Footer'
+import Header from '../Header'
 
 class Login extends React.Component {
   constructor(props) {
@@ -44,17 +46,7 @@ class Login extends React.Component {
     }
     return (
       <div className="maindiv">
-        <div className="topnav">
-          <div className="logo">
-            KindredTalent
-          </div>
-          <div className="aTag">
-            <a href="/candidate">I&#39;m Looking</a>
-            <a href="/">I&#39;m Referring</a>
-            <a href="#">Sign Up</a>
-            <a href="#">Login</a>
-          </div>
-        </div>
+        <Header />
         <img src="../background.svg" style={{position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1'}}/>
         <Container>
           <div className="loginDiv">
@@ -78,9 +70,10 @@ class Login extends React.Component {
             <a className="loginA" href="#">Forgot Password?</a>
           </div>
           <div className="loginSignup">
-            Don’t have an account? <a className="loginASign" href="#">Sign Up</a>
+            Don’t have an account? <a className="loginASign" href="/app/register">Sign Up</a>
           </div>
         </Container>
+        <Footer />
       </div>
     );
   }
