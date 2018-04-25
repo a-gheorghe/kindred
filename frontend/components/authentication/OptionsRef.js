@@ -7,10 +7,11 @@ const OptionsRef = props => (
   <div>
     <AuthButton loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
     {/* Href attribute linter errors can be ignored. */}
-    <Link to="/profileRef"> My Profile </Link> <br />
-    <Link to="/messages"> Messages </Link> <br />
-    <Link to="/allCandidates"> See All Candidates </Link><br />
-    <Link to="/referrals"> Given Referrals </Link><br />
+    <Link to="/ref/profileRef"> My Profile </Link> <br />
+    <Link to="/ref/messages"> Messages </Link> <br />
+    <Link to="/ref/allCandidates"> See All Candidates </Link><br />
+    <Link to="/ref/referrals"> Given Referrals </Link><br />
+    <Link to="/ref/jobListings"> Manage My Job Listings</Link><br />
   </div>
 );
 

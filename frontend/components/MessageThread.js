@@ -43,8 +43,7 @@ class MessageThread extends React.Component {
   render() {
     console.log('this.props inside message thread', this.props);
     const newArrayMessages = this.state.arrayMessages.map(message =>
-      (<Message name={message.name} value={message.value} />));
-
+      (<Message name={message.name} value={message.value} key={message.name} />));
     if (this.props.loggedInCand || this.props.loggedInRef) {
       return (
         <div>
