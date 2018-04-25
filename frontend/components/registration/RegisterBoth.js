@@ -26,6 +26,11 @@ class RegisterBoth extends React.Component {
     this.setState(change)
   }
 
+  handleTypeChange = (event, data) => {
+    console.log('event is ', event, 'data is ', data)
+    this.setState({type: data.value})
+  }
+
   registerCandStorage = () => {
     localStorage.setItem('candidateObject', JSON.stringify(this.state))
     this.props.registerCand()
@@ -63,7 +68,7 @@ class RegisterBoth extends React.Component {
             <input style={{marginBottom: "5px"}} placeholder="Email" className="loginInput" type="text" name="email" value={this.state.email} onChange={this.handleBothChange}/> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Password" className="loginInput" type="password" name="password" value={this.state.password} onChange={this.handleBothChange}/> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Confirm Password" className="loginInput" type="password" name="repeatpassword" value={this.state.repeatpassword} onChange={this.handleBothChange}/> <br/>
-            <Dropdown className="regDrop" placeholder="Choose One" fluid selection options={options} value={this.state.type} onChange={this.handleBothChange} />
+            <Dropdown className="regDrop" placeholder="Choose One" fluid selection options={options} value={this.state.type} onChange={this.handleTypeChange} />
 
             {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
             this.state.type === "candidate" ? <button onClick={this.props.registerCand}> Sign Up as a Candidate </button> :
