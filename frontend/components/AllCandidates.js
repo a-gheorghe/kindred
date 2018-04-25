@@ -7,7 +7,6 @@ import OptionsRef from './OptionsRef';
 
 
 const AllCandidates = (props) => {
-  console.log('all candidate props', props);
   return (
     <div>
       <OptionsRef

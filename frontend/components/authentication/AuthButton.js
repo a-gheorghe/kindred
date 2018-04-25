@@ -3,12 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-// import axios from 'axios';
 
 
 class AuthButton extends React.Component {
-  // Ignore linter errors: additional methods will go here; not necessary to
-  // switch to pure function. <--- Delete me when new methods are added.
 
   render() {
     const {

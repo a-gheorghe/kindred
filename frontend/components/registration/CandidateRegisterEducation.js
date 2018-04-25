@@ -34,7 +34,6 @@ class CandidateRegisterEducation extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('candidate object on education page is: ', candidateObject)
     return (
       <div>
         <ProgressBarEducation />

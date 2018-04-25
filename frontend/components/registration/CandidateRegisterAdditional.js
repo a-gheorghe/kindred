@@ -86,7 +86,6 @@ class CandidateRegisterAdditional extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('CAND ADDITIONAL PROPS', this.props)
     return (
       <div>
         <ProgressBarAdditional />
@@ -118,7 +117,7 @@ class CandidateRegisterAdditional extends React.Component {
           </div>
           <Link style={{float: 'left'}} to='/register/cand/profile'> Back </Link>
           {/* <Link onClick={this.uploadBoth} style={{float: 'right'}} to="/cand/pending"> Done </Link> */}
-          <li onClick={this.uploadBoth} style={{float: 'right'}}> Done </li>
+          <a onClick={this.uploadBoth} style={{float: 'right'}}> Done </a>
 
         </div>
 

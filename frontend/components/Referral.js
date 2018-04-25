@@ -1,5 +1,4 @@
 import React from 'react';
-// import OptionsRef from './OptionsRef';
 
 const Referral = () => (
   <div style={{ border: '1px solid black' }}>

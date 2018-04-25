@@ -79,7 +79,6 @@ class AuthExample extends React.Component {
     };
 
     this.registerRef = () => {
-      console.log('calling register ref');
       fakeAuthRef.register(() => {
         this.setState(() => ({
           loggedInRef: fakeAuthRef.isAuthenticated,
@@ -94,7 +93,6 @@ class AuthExample extends React.Component {
     };
 
     this.setTarget = (url) => {
-      console.log('url that was passed in as target', url);
       this.target = url;
     };
   }

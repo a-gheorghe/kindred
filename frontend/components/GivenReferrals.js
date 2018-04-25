@@ -5,7 +5,6 @@ import OptionsRef from './OptionsRef';
 import Referral from './Referral';
 
 const GivenReferrals = (props) => {
-  console.log('given referrals props', props);
   return (
     <div>
       <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />

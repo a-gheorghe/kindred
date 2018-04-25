@@ -30,15 +30,12 @@ class RegisterBoth extends React.Component {
 
 
   render() {
-    console.log(this.state, 'this.state on register page')
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('candidate object is: ', candidateObject)
     if (this.props.loggedInCand === true) {
       return <Redirect to='/register/cand/education'/>
     }
 
     if (this.props.loggedInRef === true) {
-      console.log('referrer is logged in')
       return <Redirect to='/messages'/>
     }
 
@@ -51,14 +48,13 @@ class RegisterBoth extends React.Component {
               Password: <input type="password" name="password" value={this.state.password} onChange={this.handleBothChange}/> <br/>
               Repeat Password: <input type="password" name="repeatpassword" value={this.state.repeatpassword} onChange={this.handleBothChange}/> <br/>
           <select value={this.state.type} onChange={this.handleBothChange} name="type" >
-            <option value="" defaultValue disabled hidden> Choose </option>
+            <option value="" defaultValue disabled hidden> Choose One </option>
             <option value="candidate"> Candidate </option>
             <option value="referrer"> Referrer </option>
           </select>
           {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
           this.state.type === "candidate" ? <button onClick={this.registerCandStorage}> Sign Up as a Candidate </button> :
           <button> Sign Up </button> }
-          {/* <button onClick={this.props.registerCand}> Register as a Candidate </button><br/> */}
           <Link to='/login'> Already have an account? Log in! </Link>
       </div>
     )

@@ -90,7 +90,6 @@ class CandidateRegisterProfileContainer extends React.Component {
 
 // or this
   onProjectChange = (index, newStuff) => {
-    console.log('project change this.state', this.state)
     const newProjectArr = this.state.projectArr.slice()
     newProjectArr[index] = {
       ...newProjectArr[index],
@@ -134,7 +133,6 @@ class CandidateRegisterProfileContainer extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('candidate object on register profile container page is: ', candidateObject)
     return (
       <div style={{border: '2px dotted red'}}>
         <ProgressBarProfile /><br/>

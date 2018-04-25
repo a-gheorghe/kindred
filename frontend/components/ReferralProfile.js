@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import OptionsRef from './OptionsRef';
 
 const ReferralProfile = (props) => {
-  console.log('referral profile', props);
   return (
     <div>
       <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />

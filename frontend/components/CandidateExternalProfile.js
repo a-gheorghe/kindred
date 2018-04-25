@@ -9,7 +9,6 @@ class CandidateExternalProfile extends React.Component {
   // switch to pure function. <--- Delete me when new methods are added.
 
   render() {
-    console.log('cand external profile', this.props);
     if (this.props.loggedInCand) {
       return (
         <div>
