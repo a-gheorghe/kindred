@@ -20,6 +20,19 @@ class CandidateRegisterProfileContainer extends React.Component {
     }
   }
 
+  saveProfileInfo = () => {
+    const currentState = {
+      workArr: this.state.workExpArr,
+      projectArr: this.state.projectArr,
+      skillArr: this.state.skillArr
+    }
+
+    const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    let newCandidateObject = Object.assign({}, currentState, candidateObject)
+    localStorage.setItem('candidateObject', JSON.stringify(newCandidateObject))
+  }
+
+
   addWork = (company, title, description, editable) => {
     this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, editable: editable, id: this.workCount++}]})
   }
@@ -120,14 +133,16 @@ class CandidateRegisterProfileContainer extends React.Component {
 
 
   render() {
+    const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('candidate object on register profile container page is: ', candidateObject)
     return (
       <div style={{border: '2px dotted red'}}>
         <ProgressBarProfile /><br/>
         <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
         <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
         <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
-        <button style={{float: 'right'}}> <Link to='/register/candidate/additional'> Next </Link></button>
-        <button style={{float: 'left'}}> <Link to='/register/candidate/education'> Previous </Link></button>
+        <button style={{float: 'right'}}> <Link onClick={this.saveProfileInfo} to='/register/cand/additional'> Next </Link></button>
+        <button style={{float: 'left'}}> <Link to='/register/cand/education'> Previous </Link></button>
       </div>
     );
   }

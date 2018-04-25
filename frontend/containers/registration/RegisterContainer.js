@@ -14,9 +14,9 @@ class RegisterContainer extends React.Component {
     return (
       <div>
         <Route exact path="/register" render={props => <RegisterBoth loggedInCand={this.props.loggedInCand} loggedInRef={this.props.loggedInRef} registerRef={this.props.registerRef} registerCand={this.props.registerCand} />} />
-        <Route exact path="/register/candidate/education" component={CandidateRegisterEducation} />
-        <Route exact path="/register/candidate/profile" component={CandidateRegisterProfileContainer} />
-        <Route exact path="/register/candidate/additional" component={CandidateRegisterAdditional} />
+        <Route exact path="/register/cand/education" component={CandidateRegisterEducation} />
+        <Route exact path="/register/cand/profile" component={CandidateRegisterProfileContainer} />
+        <Route exact path="/register/cand/additional" component={CandidateRegisterAdditional} />
       </div>
     );
   }
