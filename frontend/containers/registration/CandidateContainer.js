@@ -6,6 +6,7 @@ import ReceivedReferrals from '../../components/ReceivedReferrals';
 import MessageThread from '../../components/MessageThread';
 import CandidateExternalProfile from '../../components/CandidateExternalProfile'
 import CandidateSelfProfile from '../../components/CandidateSelfProfile';
+import Pending from '../../components/Pending';
 
 class CandidateContainer extends React.Component {
   constructor(props) {
@@ -42,10 +43,19 @@ class CandidateContainer extends React.Component {
           loggedInCand={this.props.loggedInCand}
           logoutCand={this.props.logoutCand}
         />
+        {/* Renders external view of profile */}
         <PrivateRouteCand
           exact
           path="/cand/extprofile"
           component={CandidateExternalProfile}
+          loggedInCand={this.props.loggedInCand}
+          logoutCand={this.props.logoutCand}
+        />
+        {/* Renders pending form after candidate registers */}
+        <PrivateRouteCand
+          exact
+          path="/cand/pending"
+          component={Pending}
           loggedInCand={this.props.loggedInCand}
           logoutCand={this.props.logoutCand}
         />

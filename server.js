@@ -48,13 +48,21 @@ const upload = multer({
 
 app.post('/upload', upload.array('documents'), (req, res) => {
   console.log('successfully documents to S3', req.files)
+  let candDocs = {}
+  for (let i = 0; i < req.files.length; i++){
+    if (req.files[i].mimetype === 'application/pdf'){
+      candDocs.resume = req.files[i].location
+    } else {
+      candDocs.profilePic = req.files[i].location
+    }
+  }
   // here now we can take the urls and save them to the postgreSQL database for the particular user
   // if file.mimetype === 'application/pdf', this is the resume
   // if file.mimetime === 'image/jpeg', this is the profile picture
 
   //   req.files.forEach((file) => console.log('file location is: ', file.location))
 
-  res.send()
+  res.status(200).send({message: 'Here are the cand docs', docs: candDocs})
 })
 
 

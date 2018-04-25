@@ -23,15 +23,27 @@ class CandidateRegisterAdditional extends React.Component {
   uploadBoth = () => {
     const { files, resume } = this.state;
     let formData = new FormData();
-
     formData.append('documents', files[0])
     formData.append('documents', resume[0])
 
-
     axios.post('/upload', formData)
     .then((result) => {
-      console.log('this is my result', result)
+
+      const currentState = {
+        github: this.state.github,
+        linkedin: this.state.linkedin,
+        website: this.state.website,
+        selfbio: this.state.selfbio,
+        profilepic: result.data.docs.profilePic,
+        resume: result.data.docs.resume
+      }
+      console.log('CURRENT STATE OBJECT', currentState)
+      const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+      let newCandidateObject = Object.assign({}, currentState, candidateObject)
+      localStorage.setItem('candidateObject', JSON.stringify(newCandidateObject))
+      this.props.history.push('/cand/pending')
     })
+    // .then(() => this.props.history.push('/cand/pending'))
     .catch(err => {
       console.log('oops, sorry an error occured', err)
     })
@@ -73,7 +85,8 @@ class CandidateRegisterAdditional extends React.Component {
 
 
   render() {
-    console.log('ADDITIONAL REGIONAL PAGE STATE', this.state)
+    const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('CAND ADDITIONAL PROPS', this.props)
     return (
       <div>
         <ProgressBarAdditional />
@@ -103,8 +116,10 @@ class CandidateRegisterAdditional extends React.Component {
               </Dropzone>
             </div>
           </div>
-          <Link style={{float: 'left'}} to='/register/candidate/profile'> Back </Link>
-          <Link onClick={this.uploadBoth} style={{float: 'right'}} to="/cand/messages"> Done </Link>
+          <Link style={{float: 'left'}} to='/register/cand/profile'> Back </Link>
+          {/* <Link onClick={this.uploadBoth} style={{float: 'right'}} to="/cand/pending"> Done </Link> */}
+          <li onClick={this.uploadBoth} style={{float: 'right'}}> Done </li>
+
         </div>
 
 
