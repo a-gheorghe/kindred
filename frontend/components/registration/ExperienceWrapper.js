@@ -20,12 +20,15 @@ class ExperienceWrapper extends React.Component {
           {workExpArr.map((work, i) => {
             return (
               work.editable ?
-              <WorkExpForm addEditedWork={addEditedWork} company={work.company} title={work.title} description={work.description} id={work.id} editable={true} addWorkCloseForm={addWorkCloseForm} editedVersion={true} positionArray={i} />
+              <WorkExpForm addEditedWork={addEditedWork} startdate = {work.startdate} enddate={work.enddate} current = {work.current} company={work.company} title={work.title} description={work.description} id={work.id} editable={true} addWorkCloseForm={addWorkCloseForm} editedVersion={true} positionArray={i} />
               :
               <div style={{border: '1px solid green'}} key={work.id}>
                 Company: {work.company} <br/>
                 Title: {work.title} <br/>
                 Description: {work.description} <br/>
+                Start Date: {work.startdate} <br/>
+                End Date: {work.enddate} <br/>
+                Current: {work.current}
                 <button onClick={(e) => removeWork(work.id, e)}> Delete </button>
                 <button onClick={(e) => makeWorkEditable(work.id, e)}> Edit </button>
               </div>

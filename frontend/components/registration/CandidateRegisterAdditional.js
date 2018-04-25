@@ -86,6 +86,7 @@ class CandidateRegisterAdditional extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('candidate object inside additional', candidateObject)
     return (
       <div>
         <ProgressBarAdditional />

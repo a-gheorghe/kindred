@@ -33,26 +33,26 @@ class CandidateRegisterProfileContainer extends React.Component {
   }
 
 
-  addWork = (company, title, description, editable) => {
-    this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, editable: editable, id: this.workCount++}]})
+  addWork = (company, title, description, startdate, enddate, current, editable) => {
+    this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, startdate: startdate, enddate: enddate, current: current, editable: editable, id: this.workCount++}]})
   }
 
-  addProject = (title, description, projectstart, photos, editable) => {
-    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, photos: photos, editable: editable, id: this.projectCount++}]},
+  addProject = (title, description, projectstart, projectend, current, link, photos, editable) => {
+    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, photos: photos, editable: editable, id: this.projectCount++}]},
       () => console.log('this.state after adding', this.state))
   }
 
-  addEditedProject = (title, description, projectstart, photos, editable, id, positionArray) => {
+  addEditedProject = (title, description, projectstart, projectend, current, link, photos, editable, id, positionArray) => {
     const newProjectArr = this.state.projectArr.slice()
     console.log('array before', newProjectArr)
-    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, photos: photos, editable: editable, id: id})
+    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, photos: photos, editable: editable, id: id})
     console.log('array after: ', newProjectArr)
     this.setState({projectArr: newProjectArr})
   }
 
-  addEditedWork = (company, title, description, editable, id, positionArray) => {
+  addEditedWork = (company, title, description, startdate, enddate, current, editable, id, positionArray) => {
     const newWorkArr = this.state.workExpArr.slice()
-    newWorkArr.splice(positionArray, 1, {company: company, title: title, description: description, editable: editable, id: id})
+    newWorkArr.splice(positionArray, 1, {company: company, title: title, description: description, startdate: startdate, enddate: enddate, current: current, editable: editable, id: id})
     this.setState({workExpArr: newWorkArr})
   }
 
@@ -120,19 +120,20 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({ workExpArr: editSavvyWorkArr})
   }
 
-  addProjectCloseForm = (title, description, projectstart, photos, editable) => {
-    this.addProject(title, description, projectstart, photos, editable)
+  addProjectCloseForm = (title, description, projectstart, projectend, current, link, photos, editable) => {
+    this.addProject(title, description, projectstart, projectend, current, link, photos, editable)
     this.toggleProjectForm()
   }
 
-  addWorkCloseForm = (company, title, description, editable) => {
-    this.addWork(company, title, description, editable)
+  addWorkCloseForm = (company, title, description, startdate, enddate, current, editable) => {
+    this.addWork(company, title, description, startdate, enddate, current, editable)
     this.toggleWorkForm()
   }
 
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('candidate object inside profile container', candidateObject)
     return (
       <div style={{border: '2px dotted red'}}>
         <ProgressBarProfile /><br/>

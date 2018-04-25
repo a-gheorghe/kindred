@@ -24,13 +24,21 @@ class RegisterBoth extends React.Component {
   }
 
   registerCandStorage = () => {
-    localStorage.setItem('candidateObject', JSON.stringify(this.state))
+    localStorage.setItem('candidateObject', JSON.stringify({
+      basic: {
+        first_name: this.state.firstname,
+        last_name: this.state.lastname,
+        email: this.state.email,
+        password: this.state.password
+      }
+    }))
     this.props.registerCand()
   }
 
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('candidate object on register both page', candidateObject)
     if (this.props.loggedInCand === true) {
       return <Redirect to='/register/cand/education'/>
     }
