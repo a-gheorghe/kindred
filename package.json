@@ -5,13 +5,27 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
+    "setup-db": "node_modules/.bin/sequelize db:create && node_modules/.bin/sequelize db:migrate && node database/sync.js",
+    "clear-db": "node_modules/.bin/sequelize db:seed:undo:all",
+    "drop-db": "node_modules/.bin/sequelize db:drop",
     "dev": "concurrently -k \"npm run frontend\" \"npm run backend\"",
     "frontend": "webpack -d --watch",
     "backend": "nodemon server.js",
     "win_start": "npm run build && node server.js",
     "start": "npm run build && NODE_ENV=production node server.js",
-    "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles"
+    "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles",
+    "lint:js": "eslint -- .",
+    "lint:staged": "lint-staged"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint .",
+      "git add --all"
+    ]
+  },
+  "pre-commit": [
+    "lint:staged"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -37,6 +51,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.1",
     "q": "^1.5.1",
     "react": "^15.5.4",
@@ -55,6 +70,7 @@
     "semantic-ui": "^2.3.1",
     "semantic-ui-react": "^0.79.1",
     "sequelize": "^4.37.6",
+    "sequelize-cli": "^4.0.0",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3"
   },
@@ -71,7 +87,9 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-watch": "^3.1.0",
     "ignore-styles": "^5.0.1",
-    "nodemon": "^1.11.0",
+    "lint-staged": "^7.0.4",
+    "nodemon": "^1.17.3",
+    "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
     "webpack-dev-middleware": "^1.10.1",

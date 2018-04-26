@@ -8,7 +8,7 @@ import Landing from './../frontend/components/Landing';
 
 describe('Component: App', () => {
   it('should render the App component', () => {
-    const wrapper = shallow(<Landing />);
+    const wrapper = shallow(<Title name="Horizons" />);
 
     expect(wrapper.find('h1').text()).toEqual('Horizons');
   });
