@@ -31,11 +31,23 @@ class AuthButton extends React.Component {
 }
 
 AuthButton.propTypes = {
-  loggedInRef: PropTypes.bool.isRequired,
-  logoutRef: PropTypes.func.isRequired,
-  loggedInCand: PropTypes.bool.isRequired,
-  logoutCand: PropTypes.func.isRequired,
-  history: PropTypes.arrayOf(PropTypes.string).isRequired,
+  loggedInRef: PropTypes.bool,
+  logoutRef: PropTypes.func,
+  loggedInCand: PropTypes.bool,
+  logoutCand: PropTypes.func,
+  history: PropTypes.shape({
+    action: PropTypes.string,
+    block: PropTypes.func,
+    createHref: PropTypes.func,
+    go: PropTypes.func,
+    goBack: PropTypes.func,
+    goForward: PropTypes.func,
+    length: PropTypes.number,
+    listen: PropTypes.func,
+    location: PropTypes.object,
+    push: PropTypes.func,
+    replace: PropTypes.func,
+  }).isRequired,
 };
 
 export default withRouter(AuthButton);

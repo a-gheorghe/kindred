@@ -8,8 +8,8 @@ const PrivateRouteRef = ({ component: Component, ...rest }) => (
     render={props => (rest.loggedInRef === true ?
       <Component {...props} {...rest} /> :
       <Redirect to={{
-          pathname: '/referrerRegister',
-          state: { from: props.location },
+          pathname: '/login',
+          // state: { from: props.location },
         }}
       />
       )}
@@ -18,10 +18,12 @@ const PrivateRouteRef = ({ component: Component, ...rest }) => (
 
 PrivateRouteRef.propTypes = {
   loggedInRef: PropTypes.bool.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }).isRequired,
+  // location: PropTypes.shape({
+  //   pathname: PropTypes.string,
+  // }),
   component: PropTypes.func.isRequired,
 };
+
+// PrivateRouteRef.defaultType
 
 export default PrivateRouteRef;

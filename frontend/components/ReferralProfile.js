@@ -1,19 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import OptionsRef from './OptionsRef';
+import { withRouter } from 'react-router-dom';
 
 const ReferralProfile = (props) => {
   return (
     <div>
-      <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
-      This is the referral&apos;s profile
+      This is the referrer&apos;s profile
     </div>
   );
 };
 
-ReferralProfile.propTypes = {
-  loggedInRef: PropTypes.bool.isRequired,
-  logoutRef: PropTypes.func.isRequired,
-};
-
-export default ReferralProfile;
+export default withRouter(ReferralProfile);
