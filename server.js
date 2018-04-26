@@ -8,9 +8,6 @@ const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
-
-
-const PORT = process.env.PORT || 3000;
 const routes = require('./backend/routes');
 const admin = require('./backend/admin');
 const auth = require('./backend/auth');
