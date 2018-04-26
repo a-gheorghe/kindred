@@ -244,3 +244,14 @@ Ana's stuff
   line-height: 120%;
   padding-top: 50px;
 }
+
+/* Ana - Registration Additional Page */
+
+.additional-progress {
+  border: 1px solid orange;
+  position: absolute;
+  left: 30.76%;
+  right: 31.39%;
+  top: 8.75%;
+  bottom: 85.78%;
+}

@@ -5,6 +5,7 @@ import ProgressBarAdditional from './ProgressBarAdditional'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import '../styles/styles.css'
+import Header from '../Header'
 
 class CandidateRegisterAdditional extends React.Component {
   constructor(props) {
@@ -40,7 +41,9 @@ class CandidateRegisterAdditional extends React.Component {
 
       candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
       console.log('candidate object after it is altered', candidateObject)
-
+      return axios.post('/register-candidate', candidateObject)
+    })
+    .then(() => {
       this.props.history.push('/cand/pending')
     })
     // .then(() => this.props.history.push('/cand/pending'))
@@ -90,6 +93,7 @@ class CandidateRegisterAdditional extends React.Component {
     console.log('candidate object inside additional', candidateObject)
     return (
       <div>
+      <Header />
         <ProgressBarAdditional />
         <div className="ana container-additional">
           <div className="ana left">
