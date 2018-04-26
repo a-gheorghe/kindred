@@ -36,7 +36,6 @@ class ProjectWrapper extends React.Component {
                 projectend={project.projectend}
                 current={project.current}
                 link={project.link}
-                photos={project.photos}
                 id={project.id}
                 editable={true}
                 addProjectCloseForm={addProjectCloseForm}

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 class Pending extends React.Component {
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    
 //     let sendObj = {}
 //     sendObj.basic = {
 //       first_name: candidateObject.firstname,

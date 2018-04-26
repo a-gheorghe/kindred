@@ -37,15 +37,15 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, startdate: startdate, enddate: enddate, current: current, editable: editable, id: this.workCount++}]})
   }
 
-  addProject = (title, description, projectstart, projectend, current, link, photos, editable) => {
-    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, photos: photos, editable: editable, id: this.projectCount++}]},
+  addProject = (title, description, projectstart, projectend, current, link, editable) => {
+    this.setState({projectArr: [...this.state.projectArr, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, editable: editable, id: this.projectCount++}]},
       () => console.log('this.state after adding', this.state))
   }
 
-  addEditedProject = (title, description, projectstart, projectend, current, link, photos, editable, id, positionArray) => {
+  addEditedProject = (title, description, projectstart, projectend, current, link, editable, id, positionArray) => {
     const newProjectArr = this.state.projectArr.slice()
     console.log('array before', newProjectArr)
-    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, photos: photos, editable: editable, id: id})
+    newProjectArr.splice(positionArray, 1, {title: title, description: description, projectstart: projectstart, projectend: projectend, current: current, link: link, editable: editable, id: id})
     console.log('array after: ', newProjectArr)
     this.setState({projectArr: newProjectArr})
   }
@@ -120,8 +120,8 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({ workExpArr: editSavvyWorkArr})
   }
 
-  addProjectCloseForm = (title, description, projectstart, projectend, current, link, photos, editable) => {
-    this.addProject(title, description, projectstart, projectend, current, link, photos, editable)
+  addProjectCloseForm = (title, description, projectstart, projectend, current, link, editable) => {
+    this.addProject(title, description, projectstart, projectend, current, link, editable)
     this.toggleProjectForm()
   }
 
