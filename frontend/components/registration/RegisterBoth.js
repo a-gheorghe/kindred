@@ -15,6 +15,7 @@ class RegisterBoth extends React.Component {
         email: '',
         password: '',
         repeatpassword: '',
+        title: '',
         type: ''
       }
     }
@@ -37,7 +38,8 @@ class RegisterBoth extends React.Component {
         first_name: this.state.firstname,
         last_name: this.state.lastname,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        title: this.state.title
       }
     }))
 
@@ -73,6 +75,7 @@ class RegisterBoth extends React.Component {
             <div className="regHeader">Sign up for KindredTalent</div>
             <input style={{marginBottom: "5px"}} placeholder="First Name" className="loginInput" type="text" name="firstname" value={this.state.firstname} onChange={this.handleBothChange} /> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Last Name" className="loginInput" type="text" name="lastname" value={this.state.lastname} onChange={this.handleBothChange}/> <br/>
+            <input style={{marginBottom: "5px"}} placeholder="Title (eg. Front-End Engineer)" className="loginInput" type="text" name="title" value={this.state.title} onChange={this.handleBothChange} /> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Email" className="loginInput" type="text" name="email" value={this.state.email} onChange={this.handleBothChange}/> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Password" className="loginInput" type="password" name="password" value={this.state.password} onChange={this.handleBothChange}/> <br/>
             <input style={{marginBottom: "5px"}} placeholder="Confirm Password" className="loginInput" type="password" name="repeatpassword" value={this.state.repeatpassword} onChange={this.handleBothChange}/> <br/>
