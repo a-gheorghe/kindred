@@ -14,7 +14,6 @@ class CandidateContainer extends React.Component {
   }
 
   render() {
-    console.log("Candidate container, this.props", this.props);
     return (
       <div>
         {/* Renders messages for candidiate */}
