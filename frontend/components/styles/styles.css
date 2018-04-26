@@ -254,4 +254,51 @@ Ana's stuff
   right: 31.39%;
   top: 8.75%;
   bottom: 85.78%;
+.center {
+  justify-content: center;
+}
+
+.thanksFor {
+  width: 100%;
+  padding: 75px 0px 75px 0px;
+  background-color: white;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thanksline1 {
+  color: #9B9B9B;
+  font-size: 24px;
+  font-family: Avenir-Light;
+  margin-bottom: 10px;
+}
+
+.thanksline2 {
+  color: #9B9B9B;
+  font-size: 14px;
+  font-family: Avenir-Light;
+}
+
+.educationDiv {
+  width: 100%;
+  padding-top: 110px;
+  padding-bottom: 60px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: white;
+  flex-direction: column;
+}
+
+.maindiv2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
 }

@@ -48,7 +48,7 @@ class Login extends React.Component {
       <div className="maindiv">
         <Header />
         <img src="../background.svg" style={{position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1'}}/>
-        <Container className="grey-sec">
+        <Container className="center">
           <div className="loginDiv">
             <div className="loginHeader">Sign into KindredTalent</div>
             <Button.Group>
@@ -63,8 +63,8 @@ class Login extends React.Component {
                   <input type="checkbox" value="" className="loginCheck"/>
                   Remember Me
                 </label>
-              </div>
-              {/* Change button to call loginCand if Cand or loginRef if Ref */}
+                </div>
+                {/* Change button to call loginCand if Cand or loginRef if Ref */}
               <Button className="loginButton">Sign In</Button>
             </div>
             <a className="loginA" href="#">Forgot Password?</a>
