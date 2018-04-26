@@ -47,7 +47,7 @@ class RegisterBoth extends React.Component {
 
     if (this.props.loggedInRef === true) {
       console.log('referrer is logged in')
-      return <Redirect to='/ref/messages'/>
+      return <Redirect to='/ref/pending'/>
     }
 
     let options = [

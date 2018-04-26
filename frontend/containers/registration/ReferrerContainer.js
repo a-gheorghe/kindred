@@ -9,6 +9,7 @@ import GivenReferrals from '../../components/GivenReferrals';
 import MessageContainer from '../../components/MessageContainer';
 import RefJobListings from '../../components/RefJobListings';
 import OptionsRef from '../../components/authentication/OptionsRef';
+import Pending from '../../components/Pending';
 
 const ReferrerContainer = props => (
   <div>
@@ -51,6 +52,13 @@ const ReferrerContainer = props => (
       exact
       path="/ref/jobListings"
       component={RefJobListings}
+      loggedInRef={props.loggedInRef}
+      logoutRef={props.logoutRef}
+    />
+    <PrivateRouteRef
+      exact
+      path="/ref/pending"
+      component={Pending}
       loggedInRef={props.loggedInRef}
       logoutRef={props.logoutRef}
     />
