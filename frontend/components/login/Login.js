@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, withRouter } from 'react-router-dom'
-import { Button, Input } from 'semantic-ui-react'
-import '../styles/styles.css'
-import Container from '../Container'
-import Footer from '../Footer'
-import Header from '../Header'
+import { Redirect, withRouter } from 'react-router-dom';
+import { Button, Input } from 'semantic-ui-react';
+import '../styles/styles.css';
+import Container from '../Container';
+import Footer from '../Footer';
+import Header from '../Header';
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Login extends React.Component {
       <div className="maindiv">
         <Header />
         <img src="../background.svg" style={{position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1'}}/>
-        <Container>
+        <Container className="grey-sec">
           <div className="loginDiv">
             <div className="loginHeader">Sign into KindredTalent</div>
             <Button.Group>

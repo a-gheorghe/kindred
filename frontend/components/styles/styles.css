@@ -218,3 +218,29 @@ Ana's stuff
   width: 300px !important;
   margin-bottom: 40px;
 }
+
+.pendingContainer {
+  background-color: #FAFAFA;
+  box-shadow: 0px 2px 8px #ECE1E1;
+}
+
+.pending {
+  width: 700px;
+  height: 400px;
+  box-shadow: 0px 2px 4px #9D9D9D;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 70px;
+}
+
+.pending-text {
+  color: #6B6B6B;
+  font-size: 26px;
+  font-family: Avenir-Light;
+  line-height: 120%;
+  padding-top: 50px;
+}
