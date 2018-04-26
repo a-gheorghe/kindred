@@ -1,23 +1,26 @@
 {
   "development": {
-    "username": "",
-    "password": null,
-    "database": "kindred",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "operatorsAliases": false,
+    "dialectOptions": {
+      "ssl": true
+    }
   },
   "test": {
-    "username": "",
-    "password": null,
-    "database": "kindred",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "operatorsAliases": false,
+    "dialectOptions": {
+      "ssl": true
+    }
   },
   "production": {
-    "username": "",
-    "password": null,
-    "database": "kindred",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "operatorsAliases": false,
+    "dialectOptions": {
+      "ssl": true
+    }
   }
 }
