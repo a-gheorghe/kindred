@@ -64,7 +64,7 @@ class CandidateRegisterEducation extends React.Component {
               <input type="text" name="major" placeholder="Enter major" onChange={this.handleEducationChange} /> <br />
             </div>
           </div>
-          <a href="/register/cand/profile" onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
+          <a href="/app/register/cand/profile" onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
         </Container2>
         <Footer />
       </div>

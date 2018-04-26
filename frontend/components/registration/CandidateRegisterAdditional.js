@@ -43,7 +43,8 @@ class CandidateRegisterAdditional extends React.Component {
       console.log('candidate object after it is altered', candidateObject)
       return axios.post('/register-candidate', candidateObject)
     })
-    .then(() => {
+    .then((res) => {
+      console.log('response is ', res)
       this.props.history.push('/cand/pending')
     })
     // .then(() => this.props.history.push('/cand/pending'))
