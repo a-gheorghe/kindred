@@ -282,7 +282,22 @@ Ana's stuff
   font-family: Avenir-Light;
 }
 
-.educationDiv {
+.educationDiv1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.educationImg {
+  transform: translateY(50%);
+  height: 100px;
+  width: 100px;
+  z-index: 10;
+}
+
+.educationDiv2 {
   width: 100%;
   padding-top: 110px;
   padding-bottom: 60px;
