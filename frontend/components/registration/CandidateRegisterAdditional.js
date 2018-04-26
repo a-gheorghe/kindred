@@ -30,13 +30,17 @@ class CandidateRegisterAdditional extends React.Component {
     .then((result) => {
 
       let candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+      console.log('candidate object when it is received', candidateObject)
       candidateObject.basic.github_url = this.state.github
       candidateObject.basic.linkedin_url = this.state.linkedin
       candidateObject.basic.website_url = this.state.website
       candidateObject.basic.resume_url = result.data.docs.resume
       candidateObject.basic.picture_url = result.data.docs.profilePic
-
       localStorage.setItem('candidateObject', JSON.stringify(candidateObject))
+
+      candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+      console.log('candidate object after it is altered', candidateObject)
+
       this.props.history.push('/cand/pending')
     })
     // .then(() => this.props.history.push('/cand/pending'))
