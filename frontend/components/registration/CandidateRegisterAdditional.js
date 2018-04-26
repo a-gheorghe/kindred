@@ -29,18 +29,14 @@ class CandidateRegisterAdditional extends React.Component {
     axios.post('/upload', formData)
     .then((result) => {
 
-      const currentState = {
-        github: this.state.github,
-        linkedin: this.state.linkedin,
-        website: this.state.website,
-        selfbio: this.state.selfbio,
-        profilepic: result.data.docs.profilePic,
-        resume: result.data.docs.resume
-      }
-      console.log('CURRENT STATE OBJECT', currentState)
-      const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-      let newCandidateObject = Object.assign({}, currentState, candidateObject)
-      localStorage.setItem('candidateObject', JSON.stringify(newCandidateObject))
+      let candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+      candidateObject.basic.github_url = this.state.github
+      candidateObject.basic.linkedin_url = this.state.linkedin
+      candidateObject.basic.website_url = this.state.website
+      candidateObject.basic.resume_url = result.data.docs.resume
+      candidateObject.basic.picture_url = result.data.docs.profilePic
+
+      localStorage.setItem('candidateObject', JSON.stringify(candidateObject))
       this.props.history.push('/cand/pending')
     })
     // .then(() => this.props.history.push('/cand/pending'))
@@ -86,7 +82,8 @@ class CandidateRegisterAdditional extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('CAND ADDITIONAL PROPS', this.props)
+
+    console.log('candidate object inside additional', candidateObject)
     return (
       <div>
         <ProgressBarAdditional />
@@ -118,7 +115,8 @@ class CandidateRegisterAdditional extends React.Component {
           </div>
           <Link style={{float: 'left'}} to='/register/cand/profile'> Back </Link>
           {/* <Link onClick={this.uploadBoth} style={{float: 'right'}} to="/cand/pending"> Done </Link> */}
-          <li onClick={this.uploadBoth} style={{float: 'right'}}> Done </li>
+
+          <a onClick={this.uploadBoth} style={{float: 'right'}}> Done </a>
 
         </div>
 

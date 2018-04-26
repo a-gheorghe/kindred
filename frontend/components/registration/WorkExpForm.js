@@ -7,6 +7,9 @@ class WorkExpForm extends React.Component {
       company: props.company || '',
       title: props.title || '',
       description: props.description || '',
+      startdate: props.startdate || '',
+      enddate: props.enddate || '',
+      current: props.current || '',
       editable: props.editable || false,
       id: props.id
     }
@@ -24,7 +27,7 @@ class WorkExpForm extends React.Component {
 
   disableEditAndAdd = () => {
     this.setState({editable: !this.state.editable},
-      () => this.props.addEditedWork(this.state.company, this.state.title, this.state.description, this.state.editable, this.state.id, this.props.positionArray))
+      () => this.props.addEditedWork(this.state.company, this.state.title, this.state.description, this.state.startdate, this.state.enddate, this.state.current, this.state.editable, this.state.id, this.props.positionArray))
     }
 
     render(){
@@ -36,10 +39,13 @@ class WorkExpForm extends React.Component {
             Company: <input type="text" name="company" value={this.state.company} onChange={this.handleInputChange} />
             Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
             Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
+            Start Date: <input type="text" name="startdate" value={this.state.startdate} onChange={this.handleInputChange} /> <br/>
+            End Date: <input type="text" name="enddate" value={this.state.enddate} onChange={this.handleInputChange} /> <br/>
+            Current: <input type="text" name="current" value={this.state.current} onChange={this.handleInputChange} />
           </div>
           {editedVersion ?
             <button onClick={() => this.disableEditAndAdd()}> Save </button> :
-            <button onClick={() => addWorkCloseForm(this.state.company, this.state.title, this.state.description, this.state.editable)}> Save </button>}
+            <button onClick={() => addWorkCloseForm(this.state.company, this.state.title, this.state.description, this.state.startdate, this.state.enddate, this.state.current, this.state.editable)}> Save </button>}
           </div>
         )
       }

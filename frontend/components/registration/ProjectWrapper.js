@@ -27,12 +27,28 @@ class ProjectWrapper extends React.Component {
           {projectArr.map((project, i) => {
             return (
               project.editable ?
-              <ProjectForm i={i} addEditedProject={addEditedProject} title={project.title} description={project.description} projectstart={project.projectstart} photos={project.photos} id={project.id} editable={true} addProjectCloseForm={addProjectCloseForm} editedVersion={true} positionArray={i}/>
+              <ProjectForm
+                i={i}
+                addEditedProject={addEditedProject}
+                title={project.title}
+                description={project.description}
+                projectstart={project.projectstart}
+                projectend={project.projectend}
+                current={project.current}
+                link={project.link}
+                id={project.id}
+                editable={true}
+                addProjectCloseForm={addProjectCloseForm}
+                editedVersion={true}
+                positionArray={i}/>
              :
             <div style={{border: '1px solid green'}} key={project.id}>
               Title: {project.title} <br/>
               Description: {project.description} <br/>
               Start date: {project.projectstart}<br/>
+              End date: {project.projectend}<br/>
+              Current: {project.current}<br/>
+              Link: {project.link}<br/>
               <button onClick={(e) => removeProject(project.id, e)}> Delete </button>
               <button onClick={(e) => makeProjectEditable(project.id, e)}> Edit </button>
             </div>

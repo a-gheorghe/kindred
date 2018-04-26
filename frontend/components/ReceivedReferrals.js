@@ -4,7 +4,6 @@ import OptionsCand from './authentication/OptionsCand';
 import Referral from './Referral';
 
 const ReceivedReferrals = (props) => {
-  console.log('received referrals props', props);
   return (
     <div>
       <OptionsCand loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} />

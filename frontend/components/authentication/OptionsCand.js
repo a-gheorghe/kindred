@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import AuthButton from './AuthButton';
 
 const OptionsCand = (props) => {
-  console.log('all candidate props', props);
   return (
     <div>
       <AuthButton loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} /><br />
