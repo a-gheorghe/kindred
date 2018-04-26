@@ -81,6 +81,7 @@ class RegisterBoth extends React.Component {
             <input style={{marginBottom: "5px"}} placeholder="Confirm Password" className="loginInput" type="password" name="repeatpassword" value={this.state.repeatpassword} onChange={this.handleBothChange}/> <br/>
             <Dropdown className="regDrop" placeholder="Choose One" fluid selection options={options} value={this.state.type} onChange={this.handleTypeChange} />
 
+            {/* Change button to call registerCand if Cand or registerRef if Ref */}
             {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
             this.state.type === "candidate" ? <button onClick={this.registerCandStorage}> Sign Up as a Candidate </button> :
             <Button className="loginButton"> Sign Up </Button> }
