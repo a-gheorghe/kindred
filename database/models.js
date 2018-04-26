@@ -8,7 +8,7 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('kindred', 'postgres', process.env.DBPASSWORD, {
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
 });
 

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
-    "setup-db": "node_modules/.bin/sequelize db:create && node_modules/.bin/sequelize db:migrate && node database/sync.js && node_modules/.bin/sequelize db:seed:all",
+    "setup-db": "node_modules/.bin/sequelize db:create && node_modules/.bin/sequelize db:migrate && node database/sync.js",
     "clear-db": "node_modules/.bin/sequelize db:seed:undo:all",
     "drop-db": "node_modules/.bin/sequelize db:drop",
     "dev": "concurrently -k \"npm run frontend\" \"npm run backend\"",
