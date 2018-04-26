@@ -5,6 +5,9 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
+    "setup-db": "node_modules/.bin/sequelize db:create && node_modules/.bin/sequelize db:migrate && node database/sync.js && node_modules/.bin/sequelize db:seed:all",
+    "clear-db": "node_modules/.bin/sequelize db:seed:undo:all",
+    "drop-db": "node_modules/.bin/sequelize db:drop",
     "dev": "concurrently -k \"npm run frontend\" \"npm run backend\"",
     "frontend": "webpack -d --watch",
     "backend": "nodemon server.js",
@@ -15,9 +18,14 @@
     "lint:staged": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint .", "git add --all"]
+    "*.js": [
+      "eslint .",
+      "git add --all"
+    ]
   },
-  "pre-commit": ["lint:staged"],
+  "pre-commit": [
+    "lint:staged"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -26,12 +34,17 @@
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.1",
     "expect": "^1.20.2",
     "express": "^4.15.2",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -44,6 +57,8 @@
     "redux-devtools-dock-monitor": "^1.1.2",
     "redux-devtools-log-monitor": "^1.3.0",
     "sass-loader": "^6.0.3",
+    "sequelize": "^4.37.6",
+    "sequelize-cli": "^4.0.0",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3"
   },
@@ -59,7 +74,7 @@
     "eslint-watch": "^3.1.0",
     "ignore-styles": "^5.0.1",
     "lint-staged": "^7.0.4",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.17.3",
     "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
