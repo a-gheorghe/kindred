@@ -4,6 +4,9 @@ import ProgressBarProfile from '../../components/registration/ProgressBarProfile
 import ExperienceWrapper from '../../components/registration/ExperienceWrapper';
 import ProjectWrapper from '../../components/registration/ProjectWrapper'
 import SkillWrapper from '../../components/registration/SkillWrapper'
+import Container2 from '../../components/Container2'
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
 
 class CandidateRegisterProfileContainer extends React.Component {
   constructor(props) {
@@ -138,13 +141,41 @@ class CandidateRegisterProfileContainer extends React.Component {
     console.log('candidate object on register profile container page is: ', candidateObject)
 
     return (
-      <div style={{border: '2px dotted red'}}>
-        <ProgressBarProfile /><br/>
-        <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
-        <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
-        <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
-        <button style={{float: 'right'}}> <Link onClick={this.saveProfileInfo} to='/register/cand/additional'> Next </Link></button>
-        <button style={{float: 'left'}}> <Link to='/register/cand/education'> Previous </Link></button>
+      <div className="maindiv2" style={{backgroundColor: "#FAFAFA"}}>
+        <Header />
+        <Container2>
+          <img src="/progressBar2.svg" style={{width: "566px", height: "75px", marginTop: "60px", marginBottom: "60px"}}/>
+          <div className="thanksFor">
+            <div className="thanksline1">So far so good. Let’s move on and talk about your experience.</div>
+            <div className="thanksline2">We use this information to help match you with jobs matching your ares of expertise.</div>
+          </div>
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/Briefcase.svg" alt=""/>
+            <div className="canDiv1">
+              <div className="canDivHeader">Work Experience</div>
+              <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
+            </div>
+          </div>
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/Binder.svg" alt=""/>
+            <div className="canDiv1">
+              <div className="canDivHeader">Project Experience</div>
+              <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
+            </div>
+          </div>
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/CodeDocument.svg" alt=""/>
+            <div className="canDiv1">
+              <div className="canDivHeader">Skills</div>
+              <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
+            </div>
+          </div>
+          <div style={{width: "100%", marginTop: "60px", marginBottom: "60px"}}>
+            <a style={{float: "right"}} className="nextButton" onClick={this.saveProfileInfo} href='/app/register/cand/additional'> Next </a>
+            <a style={{float: "left"}} className="prevButton" href='/app/register/cand/education'> Previous </a>
+          </div>
+        </Container2>
+        <Footer />
       </div>
     );
   }

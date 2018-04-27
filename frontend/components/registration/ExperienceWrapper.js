@@ -13,8 +13,7 @@ class ExperienceWrapper extends React.Component {
     const { workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork } = this.props
 
     return (
-      <div style={{ border: '1px solid black' }}>
-        <h3>Work Experience</h3>
+      <div>
         {workExpArr.length === 0 ? <p> Add first work experience </p> : ''}
         <div>
           {workExpArr.map((work, i) => {
@@ -34,7 +33,7 @@ class ExperienceWrapper extends React.Component {
               </div>
             )})}
           </div>
-          {workFormShown ? <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> : <button onClick={toggleWorkForm}> Add Work Experience </button>}
+          {workFormShown ? <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> : <button className="addButton" onClick={toggleWorkForm}> Add Work Experience </button>}
         </div>
       )
     }

@@ -399,9 +399,59 @@ Ana's stuff
   font-family: Avenir-Black;
 }
 
+.prevButton {
+  display: block;
+  width: 160px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D43239;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 22px;
+  font-family: Avenir-Black;
+}
+
 .nextButtonDiv {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-bottom: 60px;
+}
+
+.canDivHeader {
+  font-family: Avenir-Light;
+  font-size: 28px;
+  color: #9B9B9B;
+}
+
+.canDiv {
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 60px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: white;
+  flex-direction: column;
+}
+
+.canDiv1 {
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 60px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+}
+
+.addButton {
+
 }
