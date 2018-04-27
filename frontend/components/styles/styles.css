@@ -79,6 +79,7 @@ html, body{
 }
 
 .loginInput {
+  font-family: Avenir-Light;
   height: 27px;
   width: 300px;
   border-left: none;
@@ -318,4 +319,112 @@ Ana's stuff
   right: 31.39%;
   top: 8.75%;
   bottom: 85.78%;
+}
+
+.resume-red-button {
+  font-family: Avenir-Light;
+  border-width: 0px;
+  border: none;
+  width: 200px;
+  font-size: 14px;
+  color: white;
+  background-color: #D43239;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.resume-up-button {
+  font-family: Avenir-Light;
+  border-width: 0px;
+  border: none;
+  font-size: 14px;
+  color: #6B6B6B;
+  background-color: white;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100px;
+}
+
+#additional-form {
+  flex: 1;
+  padding: 70px 70px 70px 160px;
+}
+
+#additional-form input,
+#additional-form textarea {
+  margin-bottom: 30px;
+}
+
+#additional-form textarea {
+  padding: 10px;
+}
+
+.red-button {
+  color: white;
+  background-color: #D43239;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.grey-button {
+  color: white;
+  background-color: #9B9B9B;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.round-red-button {
+  color: white;
+  background-color: #D43239;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px 20px;
+  border: 0;
+  box-shadow: 0px 2px 8px #ECE1E1;
+  cursor: pointer;
+}
+
+.small-grey-button {
+  color: white;
+  background-color: #9B9B9B;
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#outer-circle-picselect {
+  margin-Top: 50px;
+  display: flex;
+  border-Radius: 50%;
+  width: 250px;
+  height: 250px;
+  background-Color: white;
+  align-Items: center;
+  justify-Content: center;
+}
+
+#picselect-div {
+  flex: 1;
+  background-Color: #FAFAFA;
+  padding: 70px 0px 70px 160px;
+}
+
+.container-style-noshadow {
+  width: 1200px;
+  display: flex;
+  align-Items: center;
+  padding: 50px 0;
 }
