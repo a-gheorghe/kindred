@@ -58,7 +58,7 @@ router.get('/candidate/profile', (req, res) => {
       const candidateInfo = {};
       candidateInfo.basic = basic;
       candidateInfo.eduArr = education;
-      candidateInfo.projArr = projects;
+      candidateInfo.projectArr = projects;
       candidateInfo.skillArr = skills;
       candidateInfo.workArr = workExperiences;
       res.json(candidateInfo);
@@ -111,8 +111,8 @@ router.post('/register-candidate', (req, res) => {
       for (let i = 0; i < req.body.eduArr.length; i++) {
         promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));
       }
-      for (let l = 0; l < req.body.projArr.length; l++) {
-        promiseArr.push(createProject(cand.id, req.body.projArr[l]));
+      for (let l = 0; l < req.body.projectArr.length; l++) {
+        promiseArr.push(createProject(cand.id, req.body.projectArr[l]));
       }
       for (let k = 0; k < req.body.skillArr.length; k++) {
         promiseArr.push(createSkill(cand.id, req.body.skillArr[k]));

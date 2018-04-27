@@ -274,7 +274,7 @@ module.exports = {
           primaryKey: true,
           autoIncrement: true
         },
-        name: {
+        skill: {
           type: Sequelize.STRING,
           allowNull: false
         }

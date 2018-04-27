@@ -24,7 +24,7 @@ function createCandidate(candObj) {
     website_url: candObj.website_url,
     resume_url: candObj.resume_url,
     title: candObj.title,
-    approval_status: false
+    approval_status: false,
   })
     .catch(err => console.error(err));
 }
@@ -81,7 +81,7 @@ function createSkill(candId, skillObj) {
       candidate_id: candId,
     },
     defaults: {
-      name: skillObj.name,
+      skill: skillObj.skill,
     },
   })
     .catch(err => console.error(err));

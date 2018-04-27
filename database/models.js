@@ -220,7 +220,7 @@ const Project = sequelize.define('projects', {
 });
 
 const Skill = sequelize.define('skills', {
-  name: {
+  skill: {
     type: Sequelize.STRING,
     allowNull: false
   }

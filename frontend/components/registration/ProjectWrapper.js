@@ -32,8 +32,8 @@ class ProjectWrapper extends React.Component {
                 addEditedProject={addEditedProject}
                 title={project.title}
                 description={project.description}
-                projectstart={project.projectstart}
-                projectend={project.projectend}
+                start_date={project.start_date}
+                end_date={project.end_date}
                 current={project.current}
                 link={project.link}
                 id={project.id}
@@ -45,8 +45,8 @@ class ProjectWrapper extends React.Component {
             <div style={{border: '1px solid green'}} key={project.id}>
               Title: {project.title} <br/>
               Description: {project.description} <br/>
-              Start date: {project.projectstart}<br/>
-              End date: {project.projectend}<br/>
+              Start date: {project.start_date}<br/>
+              End date: {project.end_date}<br/>
               Current: {project.current}<br/>
               Link: {project.link}<br/>
               <button onClick={(e) => removeProject(project.id, e)}> Delete </button>
