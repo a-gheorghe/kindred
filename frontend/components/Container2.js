@@ -11,7 +11,7 @@ class Container2 extends React.Component {
 
   render() {
     return (
-      <div style={{ width: '1200px', display:'flex', alignItems: 'center', height: '100vh', flexDirection: 'column'}}>
+      <div style={{ width: '1200px', display:'flex', alignItems: 'center', flexDirection: 'column'}}>
         {this.props.children}
       </div>
     );

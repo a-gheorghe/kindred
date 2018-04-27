@@ -82,9 +82,9 @@ class RegisterBoth extends React.Component {
             <Dropdown className="regDrop" placeholder="Choose One" fluid selection options={options} value={this.state.type} onChange={this.handleTypeChange} />
 
             {/* Change button to call registerCand if Cand or registerRef if Ref */}
-            {this.state.type === "referrer" ? <button onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
-            this.state.type === "candidate" ? <button onClick={this.registerCandStorage}> Sign Up as a Candidate </button> :
-            <Button className="loginButton"> Sign Up </Button> }
+            {this.state.type === "referrer" ? <button className="loginButton" style={{marginBottom: "30px"}} onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
+            this.state.type === "candidate" ? <button className="loginButton" style={{marginBottom: "30px"}} onClick={this.registerCandStorage}> Sign Up as a Candidate </button> :
+            <Button className="loginButton" style={{marginBottom: "30px"}}> Sign Up </Button> }
           </div>
           {/* <button onClick={this.props.registerCand}> Register as a Candidate </button><br/> */}
           <div className="loginSignup">

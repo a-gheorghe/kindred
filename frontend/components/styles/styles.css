@@ -254,6 +254,8 @@ Ana's stuff
   right: 31.39%;
   top: 8.75%;
   bottom: 85.78%;
+}
+
 .center {
   justify-content: center;
 }
@@ -299,7 +301,7 @@ Ana's stuff
 
 .educationDiv2 {
   width: 100%;
-  padding-top: 110px;
+  padding-top: 90px;
   padding-bottom: 60px;
   box-shadow: 0px 2px 8px #CECECE;
   display: flex;
@@ -307,7 +309,7 @@ Ana's stuff
   align-items: center;
   margin-bottom: 60px;
   background-color: white;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .maindiv2 {
@@ -316,4 +318,90 @@ Ana's stuff
   flex-direction: column;
   position: relative;
   width: 100%;
+}
+
+.educationInput {
+  height: 30px;
+  width: 300px;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #CECECE 1px;
+  border-top: none;
+  outline: none;
+  margin-bottom: 49px;
+  margin-left: 20px;
+}
+
+.educationInput2 {
+  height: 30px;
+  width: 300px;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #CECECE 1px;
+  border-top: none;
+  outline: none;
+  margin-left: 20px;
+}
+
+.educationInput::placeholder {
+  color: #CECECE;
+}
+
+.educationInput2::placeholder {
+  color: #CECECE;
+}
+
+.educationLabel {
+  font-family: Avenir-Black;
+  color: #9B9B9B;
+  margin-right: 20px;
+  font-size: 14px;
+  margin-bottom: 60px;
+}
+
+.educationLabel2 {
+  font-family: Avenir-Black;
+  color: #9B9B9B;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.educaLableDiv {
+  width: 50%;
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 10px;
+}
+.educaInputDiv {
+  width: 50%;
+  text-align: Right;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nextButton {
+  display: block;
+  width: 160px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9B9B9B;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 22px;
+  font-family: Avenir-Black;
+}
+
+.nextButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 60px;
 }

@@ -6,6 +6,7 @@ import Container2 from '../Container2'
 import Footer from '../Footer'
 import Header from '../Header'
 
+
 class CandidateRegisterEducation extends React.Component {
   constructor(props) {
     super(props);
@@ -55,16 +56,27 @@ class CandidateRegisterEducation extends React.Component {
             <div className="thanksline2">We use this information to help match you with jobs matching your area of expertise.</div>
           </div>
           <div className="educationDiv1" >
-            <img className="educationImg" src="./Graduate.svg" alt=""/>
+            <img className="educationImg" src="/Graduate.svg" alt=""/>
             <div className="educationDiv2">
-              <input type="text" name="city" placeholder="Enter city" onChange={this.handleEducationChange} /> <br />
-              <input type="text" name="degree" placeholder="Enter degree" onChange={this.handleEducationChange} /> <br />
-              <input type="text" name="school" placeholder="Enter school" onChange={this.handleEducationChange} /> <br />
-              <input type="text" name="gpa" placeholder="Enter GPA" onChange={this.handleEducationChange}/> <br />
-              <input type="text" name="major" placeholder="Enter major" onChange={this.handleEducationChange} /> <br />
+              <div className="educaLableDiv">
+                <div className="educationLabel">CURRENT CITY</div>
+                <div className="educationLabel">HIGHEST LEVEL OF EDUCATION</div>
+                <div className="educationLabel">INSTITUTION NAME</div>
+                <div className="educationLabel">GPA</div>
+                <div className="educationLabel2">FIELD OF STUDY</div>
+              </div>
+              <div className="educaInputDiv">
+                <input className="educationInput" type="text" name="city" placeholder="Enter city" onChange={this.handleEducationChange} />
+                <input className="educationInput" type="text" name="degree" placeholder="Enter degree" onChange={this.handleEducationChange} />
+                <input className="educationInput" type="text" name="school" placeholder="Enter school" onChange={this.handleEducationChange} />
+                <input className="educationInput" type="text" name="gpa" placeholder="Enter GPA" onChange={this.handleEducationChange}/>
+                <input className="educationInput2" type="text" name="major" placeholder="Enter major" onChange={this.handleEducationChange} />
+              </div>
             </div>
           </div>
-          <a href="/register/cand/profile" onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
+          <div className="nextButtonDiv">
+            <a className="nextButton" href="/app/register/cand/profile" onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
+          </div>
         </Container2>
         <Footer />
       </div>
