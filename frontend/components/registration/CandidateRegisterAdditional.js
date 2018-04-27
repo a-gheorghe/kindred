@@ -45,7 +45,7 @@ class CandidateRegisterAdditional extends React.Component {
     })
     .then((res) => {
       console.log('response is ', res)
-      this.props.history.push('/cand/pending')
+      this.props.history.push('/register/cand/pending')
     })
     // .then(() => this.props.history.push('/cand/pending'))
     .catch(err => {
@@ -90,6 +90,7 @@ class CandidateRegisterAdditional extends React.Component {
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('inside additional props', this.props)
 
     console.log('candidate object inside additional', candidateObject)
     return (

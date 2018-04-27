@@ -38,12 +38,13 @@ class CandidateRegisterEducation extends React.Component {
 
     let newCandidateObject = Object.assign({}, candidateObject)
     candidateObject = localStorage.setItem('candidateObject', JSON.stringify(newCandidateObject))
+    this.props.history.push('/register/cand/profile')
   }
 
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-
+    console.log('EDUCATION COMPONENT', this.props)
     console.log('candidate object inside education', candidateObject)
     return (
       <div className="maindiv2" style={{backgroundColor: "#FAFAFA"}}>
@@ -64,7 +65,7 @@ class CandidateRegisterEducation extends React.Component {
               <input type="text" name="major" placeholder="Enter major" onChange={this.handleEducationChange} /> <br />
             </div>
           </div>
-          <a href="/app/register/cand/profile" onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
+          <a onClick={this.saveCandidateEducation}>  Next </a> {/* Ignore href lint err */}
         </Container2>
         <Footer />
       </div>

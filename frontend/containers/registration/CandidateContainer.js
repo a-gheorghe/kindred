@@ -51,13 +51,13 @@ class CandidateContainer extends React.Component {
           logoutCand={this.props.logoutCand}
         />
         {/* Renders pending form after candidate registers */}
-        <PrivateRouteCand
+        {/* <PrivateRouteCand
           exact
           path="/cand/pending"
           component={Pending}
           loggedInCand={this.props.loggedInCand}
           logoutCand={this.props.logoutCand}
-        />
+        /> */}
 
       </div>
     );

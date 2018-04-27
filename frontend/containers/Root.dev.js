@@ -16,6 +16,7 @@ import MessageContainer from './../components/MessageContainer';
 class AuthExample extends React.Component {
   constructor(props) {
     super(props);
+    console.log('I AM CONSTRUCTING THE OVERARCHING CONTAINER')
     this.state = {
       loggedInCand: false,
       loggedInRef: false,
