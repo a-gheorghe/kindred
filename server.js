@@ -185,7 +185,7 @@ app.post('/upload', upload.array('documents'), (req, res) => {
   // if file.mimetime === 'image/jpeg', this is the profile picture
 
   //   req.files.forEach((file) => console.log('file location is: ', file.location))
-  res.status(200).send({message: 'Here are the cand docs', docs: candDocs})
+  res.status(200).json({message: 'Here are the cand docs', docs: candDocs})
 })
 
 app.get('/', (req, res) => {
