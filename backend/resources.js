@@ -9,23 +9,27 @@ const {
   Skill,
   WorkExperience,
 } = require('../database/models');
+const bcrypt = require('bcrypt');
 
 // adds a new candidate
 function createCandidate(candObj) {
-  return Candidate.create({
-    first_name: candObj.first_name,
-    last_name: candObj.last_name,
-    email: candObj.email,
-    password: candObj.password,
-    picture_url: candObj.picture_url,
-    location: candObj.location,
-    linkedin_url: candObj.linkedin_url,
-    github_url: candObj.github_url,
-    website_url: candObj.website_url,
-    resume_url: candObj.resume_url,
-    title: candObj.title,
-    approval_status: false,
-  })
+  return bcrypt.hash(candObj.password, 10)
+    .then(hash =>
+      Candidate.create({
+          first_name: candObj.first_name,
+          last_name: candObj.last_name,
+          email: candObj.email,
+          password: hash,
+          picture_url: candObj.picture_url,
+          location: candObj.location,
+          linkedin_url: candObj.linkedin_url,
+          github_url: candObj.github_url,
+          website_url: candObj.website_url,
+          resume_url: candObj.resume_url,
+          title: candObj.title,
+          approval_status: false,
+        })
+    )
     .catch(err => console.error(err));
 }
 

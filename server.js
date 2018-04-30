@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+
 const app = express();
+const bcrypt = require('bcrypt');
 const path = require('path');
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
@@ -75,14 +77,19 @@ passport.deserializeUser((obj, done) => {
 passport.use('candidate-local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
-}, function(email, password, done) {
+}, (email, password, done) => {
   Candidate.findOne({
     where: {
       email: email,
-      password: password
     }
   }).then((candidate) => {
-    return done(null, candidate);
+    if (candidate) {
+      bcrypt.compare(password, candidate.password, (err, res) =>
+        (res) ? done(null, candidate) : done(null, false)
+      );
+    } else {
+      return done(null, false);
+    }
   })
   .catch(err => {
     if (err) {
@@ -96,13 +103,19 @@ passport.use('candidate-local', new LocalStrategy({
 passport.use('referrer-local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
-}, function(email, password, done) {
+}, (email, password, done) => {
   Referrer.findOne({
     where: {
       email: email,
     }
   }).then((referrer) => {
-    return done(null, referrer);
+    if (referrer) {
+      bcrypt.compare(password, referrer.password, (err, res) =>
+        (res) ? done(null, referrer) : done(null, false)
+      );
+    } else {
+      return done(null, false);
+    }
   })
   .catch(err => {
     if (err) {
@@ -116,14 +129,19 @@ passport.use('referrer-local', new LocalStrategy({
 passport.use('admin-local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
-}, function(email, password, done) {
+}, (email, password, done) => {
   Admin.findOne({
     where: {
       email: email,
-      password: password
     }
   }).then((admin) => {
-    return done(null, admin);
+    if (admin) {
+      bcrypt.compare(password, admin.password, (err, res) =>
+        (res) ? done(null, admin) : done(null, false)
+      );
+    } else {
+      return done(null, false);
+    }
   })
   .catch(err => {
     if (err) {
