@@ -8,13 +8,6 @@ class ProjectWrapper extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps(){
-  }
-
-  shouldComponentUpdate(){
-    return true
-  }
-
 
 
   render(){

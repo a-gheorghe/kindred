@@ -5,7 +5,7 @@ import ExperienceWrapper from '../../components/registration/ExperienceWrapper';
 import ProjectWrapper from '../../components/registration/ProjectWrapper'
 import SkillWrapper from '../../components/registration/SkillWrapper'
 
-class CandidateRegisterProfileContainer extends React.Component {
+class CandidateProfileContainer extends React.Component {
   constructor(props) {
     super(props);
     this.workCount = 0;
@@ -18,6 +18,18 @@ class CandidateRegisterProfileContainer extends React.Component {
       workFormShown: false,
       projectFormShown: false,
     }
+  }
+
+  componentDidMount(){
+    axios.get('/candidate/profile')
+    .then(result => {
+      this.setState({
+        workExpArr: result.workArr,
+        projectArr: result.projectArr,
+        skillArr: result.skillArr
+      })
+    })
+    .catch(err => console.log(err))
   }
 
   saveProfileInfo = () => {
@@ -79,26 +91,6 @@ class CandidateRegisterProfileContainer extends React.Component {
     this.setState({skillArr: newSkillArr})
   }
 
-// not sure if this is necessary
-  onWorkChange = (index, newStuff) => {
-    const newWorkExpArr = this.state.workExpArr.slice()
-    newWorkExpArr[index] = {
-      ...newWorkExpArr[index],
-      ...newStuff
-    }
-    this.setState({ workExpArr: newWorkExpArr })
-  }
-
-// or this
-  onProjectChange = (index, newStuff) => {
-    const newProjectArr = this.state.projectArr.slice()
-    newProjectArr[index] = {
-      ...newProjectArr[index],
-      ...newStuff
-    }
-    this.setState({ projectArr: newProjectArr })
-  }
-
   toggleProjectForm = () => {
     this.setState({ projectFormShown: !this.state.projectFormShown})
   }
@@ -140,9 +132,9 @@ class CandidateRegisterProfileContainer extends React.Component {
 
     return (
       <div style={{border: '2px dotted red'}}>
-        <ProgressBarProfile /><br/>
-        <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} onChange={this.onWorkChange} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
-        <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} onChange={this.onProjectChange} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
+        <ProgressBarProfile /> <br/>
+        <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
+        <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
         <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
         <button style={{float: 'right'}}> <Link onClick={this.saveProfileInfo} to='/register/cand/additional'> Next </Link></button>
         <button style={{float: 'left'}}> <Link to='/register/cand/education'> Previous </Link></button>
@@ -151,4 +143,4 @@ class CandidateRegisterProfileContainer extends React.Component {
   }
 }
 
-export default withRouter(CandidateRegisterProfileContainer);
+export default withRouter(CandidateProfileContainer);
