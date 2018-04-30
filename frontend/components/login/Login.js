@@ -35,11 +35,11 @@ class Login extends React.Component {
       loggedInCand, loggedInRef, loginRef, loginCand,
     } = this.props;
 
-    if (loggedInCand === true) {
+    if (loggedInCand) {
       return (
-        <Redirect to="/cand/selfprofile" />
+        <Redirect to="/cand/messages" />
       );
-    } else if (loggedInRef === true) {
+    } else if (loggedInRef) {
       return (
         <Redirect to="/ref/messages" />
       );
@@ -65,9 +65,9 @@ class Login extends React.Component {
                 </label>
                 </div>
                 {/* Change button to call loginCand if Cand or loginRef if Ref */}
-                {this.state.cand ?
-                  <Button onClick={loginCand} className="loginButton">Sign In</Button> :
-                  <Button onClick={loginRef} className="loginButton">Sign In </Button>}
+              {this.state.cand ?
+                <Button onClick={loginCand} className="loginButton">Sign In</Button> :
+                <Button onClick={loginRef} className="loginButton"> Sign In </Button> }
             </div>
             <a className="loginA" href="#">Forgot Password?</a>
           </div>
