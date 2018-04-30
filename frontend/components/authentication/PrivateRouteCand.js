@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 
-const PrivateRouteCand = ({ component: Component, ...rest }) => (
+const PrivateRouteCand = ({ component: Component, ...rest}) => (
   <Route
     {...rest}
     render={props => rest.loggedInCand === true ?
-      <Component {...props} {...rest} /> :
+      <Component {...rest} /> :
       <Redirect to={{
         pathname: '/login'
       }}

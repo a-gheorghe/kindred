@@ -12,23 +12,23 @@ class Login extends React.Component {
       super(props);
       this.state={
         ref: true,
-        can: false,
+        cand: false,
       }
   }
 
   refClick = () => this.setState({
-    can: false,
+    cand: false,
     ref: true,
   })
-  canClick = () => this.setState({
-    can: true,
+  candClick = () => this.setState({
+    cand: true,
     ref: false,
   })
   // Ignore linter errors: additional methods will go here; not necessary to
   // switch to pure function. <--- Delete me when new methods are added.
 
   render() {
-    const { can, ref } = this.state;
+    const { cand, ref } = this.state;
     // const { from } = this.props.location.state || { from: { pathname: '/' } }
 
     const {
@@ -37,7 +37,7 @@ class Login extends React.Component {
 
     if (loggedInCand === true) {
       return (
-        <Redirect to="/cand/messages" />
+        <Redirect to="/cand/selfprofile" />
       );
     } else if (loggedInRef === true) {
       return (
@@ -53,7 +53,7 @@ class Login extends React.Component {
             <div className="loginHeader">Sign into KindredTalent</div>
             <Button.Group>
               <Button toggle active={ref} onClick={this.refClick}>Referrer</Button>
-              <Button toggle active={can} onClick={this.canClick}>Candidate</Button>
+              <Button toggle active={cand} onClick={this.candClick}>Candidate</Button>
             </Button.Group>
             <div className="loginBox">
               <input className="loginInput" placeholder="Email" style={{marginBottom: "45px"}} type="text" name="name" />
@@ -65,7 +65,9 @@ class Login extends React.Component {
                 </label>
                 </div>
                 {/* Change button to call loginCand if Cand or loginRef if Ref */}
-              <Button className="loginButton">Sign In</Button>
+                {this.state.cand ?
+                  <Button onClick={loginCand} className="loginButton">Sign In</Button> :
+                  <Button onClick={loginRef} className="loginButton">Sign In </Button>}
             </div>
             <a className="loginA" href="#">Forgot Password?</a>
           </div>

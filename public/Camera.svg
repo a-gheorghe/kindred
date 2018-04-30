@@ -1,0 +1,81 @@
+<svg width="340" height="340" viewBox="0 0 340 340" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Canvas" fill="none">
+    <g id="DP">
+      <g id="Oval 5" filter="url(#filter0_i)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M 170 340C 263.888 340 340 263.888 340 170C 340 76.1116 263.888 0 170 0C 76.1116 0 0 76.1116 0 170C 0 263.888 76.1116 340 170 340Z" fill="white"/>
+      </g>
+      <g id="Camera">
+        <g id="Multicolor">
+          <g id="Shape">
+            <path d="M 99.9634 71.8487C 99.9634 73.5739 98.5648 74.9725 96.8395 74.9725L 3.12386 74.9725C 1.3986 74.9725 0 73.5739 0 71.8487L 0 9.37157C 0 7.64631 1.3986 6.24771 3.12386 6.24771L 37.4863 6.24771L 37.4863 3.12386C 37.4863 1.3986 38.8849 0 40.6101 0L 96.8395 0C 98.5648 0 99.9634 1.3986 99.9634 3.12386L 99.9634 71.8487Z" transform="translate(120.019 130.305)" fill="#F0F1F1"/>
+          </g>
+          <g id="Shape_2">
+            <path d="M 40.6101 0C 38.8849 0 37.4863 1.3986 37.4863 3.12386L 37.4863 6.24771L 3.12386 6.24771C 1.3986 6.24771 0 7.64631 0 9.37157L 0 71.8487C 0 72.3407 0.123392 72.7999 0.326443 73.2138L 73.5403 0L 40.6101 0Z" transform="translate(120.019 130.305)" fill="white"/>
+          </g>
+          <g id="Shape_3">
+            <path d="M 21.867 6.24771L 0 6.24771L 0 1.56193C 0 0.699299 0.699299 0 1.56193 0L 20.3051 0C 21.1677 0 21.867 0.699299 21.867 1.56193L 21.867 6.24771Z" transform="translate(126.266 130.305)" fill="white"/>
+          </g>
+          <g id="Shape_4">
+            <path d="M 18.7431 10.9335C 18.7431 11.7961 18.0438 12.4954 17.1812 12.4954L 1.56193 12.4954C 0.699299 12.4954 0 11.7961 0 10.9335L 0 1.56193C 0 0.699299 0.699299 0 1.56193 0L 17.1812 0C 18.0438 0 18.7431 0.699299 18.7431 1.56193L 18.7431 10.9335Z" transform="translate(194.991 136.553)" fill="#40C9E7"/>
+          </g>
+          <g id="Oval">
+            <path d="M 3.12386 6.24771C 4.84911 6.24771 6.24771 4.84911 6.24771 3.12386C 6.24771 1.3986 4.84911 0 3.12386 0C 1.3986 0 0 1.3986 0 3.12386C 0 4.84911 1.3986 6.24771 3.12386 6.24771Z" transform="translate(132.514 142.801)" fill="#5B5C5F"/>
+          </g>
+          <g id="Shape_5">
+            <path d="M 0 0L 3.12386 0L 3.12386 6.24771L 0 6.24771L 0 0Z" transform="translate(129.39 130.305)" fill="#E2E4E5"/>
+          </g>
+          <g id="Shape_6">
+            <path d="M 0 0L 3.12386 0L 3.12386 6.24771L 0 6.24771L 0 0Z" transform="translate(135.638 130.305)" fill="#E2E4E5"/>
+          </g>
+          <g id="Shape_7">
+            <path d="M 0 0L 3.12386 0L 3.12386 6.24771L 0 6.24771L 0 0Z" transform="translate(141.886 130.305)" fill="#E2E4E5"/>
+          </g>
+          <g id="Shape_8">
+            <path d="M 0 0L 99.9634 0L 99.9634 43.734L 0 43.734L 0 0Z" transform="translate(120.019 155.296)" fill="#3E3E3F"/>
+          </g>
+          <g id="Shape_9">
+            <path d="M 0 0L 0 43.734L 4.81542 43.734L 48.5494 0L 0 0Z" transform="translate(120.019 155.296)" fill="#5B5C5F"/>
+          </g>
+          <g id="Oval_2">
+            <path d="M 24.9908 49.9817C 38.7929 49.9817 49.9817 38.7929 49.9817 24.9908C 49.9817 11.1888 38.7929 0 24.9908 0C 11.1888 0 0 11.1888 0 24.9908C 0 38.7929 11.1888 49.9817 24.9908 49.9817Z" transform="translate(151.257 149.048)" fill="white"/>
+          </g>
+          <g id="Oval_3">
+            <path d="M 18.7431 37.4863C 29.0947 37.4863 37.4863 29.0947 37.4863 18.7431C 37.4863 8.39159 29.0947 0 18.7431 0C 8.39159 0 0 8.39159 0 18.7431C 0 29.0947 8.39159 37.4863 18.7431 37.4863Z" transform="translate(157.505 155.296)" fill="#21B2D1"/>
+          </g>
+          <g id="Shape_10">
+            <path d="M 18.7431 1.05602e-05C 8.39224 1.05602e-05 0 8.39225 0 18.7431C 0 23.9569 2.13203 28.6692 5.56671 32.068L 32.0664 5.56828C 28.5515 2.00093 23.7512 -0.00531115 18.7431 1.05602e-05Z" transform="translate(157.505 155.296)" fill="#40C9E7"/>
+          </g>
+          <g id="Shape_11">
+            <path d="M 6.24771 9.37157C 6.24771 11.0968 4.84911 12.4954 3.12386 12.4954C 1.3986 12.4954 0 11.0968 0 9.37157L 0 3.12386C 0 1.3986 1.3986 0 3.12386 0C 4.84911 0 6.24771 1.3986 6.24771 3.12386L 6.24771 9.37157Z" transform="translate(138.762 174.039)" fill="#818284"/>
+          </g>
+        </g>
+      </g>
+      <g id="Oval 5 Copy" opacity="0.751868" filter="url(#filter1_i)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M 150 300C 232.843 300 300 232.843 300 150C 300 67.1573 232.843 0 150 0C 67.1573 0 0 67.1573 0 150C 0 232.843 67.1573 300 150 300Z" transform="translate(20 18)" fill="#FAFAFA"/>
+      </g>
+    </g>
+  </g>
+  <defs>
+    <filter id="filter0_i" x="0" y="0" width="340" height="341" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0" result="hardAlpha"/>
+      <feOffset dy="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+    </filter>
+    <filter id="filter1_i" x="20" y="18" width="300" height="301" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0" result="hardAlpha"/>
+      <feOffset dy="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+    </filter>
+
+  </defs>
+</svg>

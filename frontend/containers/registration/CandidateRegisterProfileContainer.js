@@ -136,6 +136,7 @@ class CandidateRegisterProfileContainer extends React.Component {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
 
     console.log('candidate object on register profile container page is: ', candidateObject)
+    console.log('PROFILE CONTAINER', this.props)
 
     return (
       <div style={{border: '2px dotted red'}}>
