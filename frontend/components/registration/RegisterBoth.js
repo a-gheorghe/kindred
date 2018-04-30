@@ -43,7 +43,7 @@ class RegisterBoth extends React.Component {
       }
     }))
 
-    this.props.registerCand()
+    this.props.registerCand();
   }
 
 
