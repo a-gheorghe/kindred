@@ -126,4 +126,10 @@ router.post('/register-candidate', (req, res) => {
     .catch(err => console.error(err));
 });
 
+router.post('/register-referrer', (req, res) => {
+  createReferrer(req.body)
+    .then(resp => res.json(resp))
+    .catch(err => console.error(err));
+});
+
 module.exports = router;
