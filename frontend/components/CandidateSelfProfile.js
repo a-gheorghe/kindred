@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ExperienceWrapper from './registration/ExperienceWrapper'
 import ProjectWrapper from './registration/ProjectWrapper'
 import SkillWrapper from './registration/SkillWrapper'
+import ProfileSideBar from './ProfileSideBar'
 import axios from 'axios'
 // import CandidateRegisterEducation from './registration/CandidateRegisterEducation'
 // import CandidateProfileContainer from '../containers/registration/CandidateProfileContainer'
@@ -31,6 +32,9 @@ class CandidateSelfProfile extends React.Component {
       this.projectCount = result.projectArr-1
       this.skillCount = result.skillArr-1
       this.setState({
+        picture: result.basic.picture_url,
+        resume: result.basic.resume_url,
+        location: result.basic.location,
         eduArr: result.eduArr,
         workExpArr: result.workArr,
         projectArr: result.projectArr,
@@ -125,6 +129,7 @@ class CandidateSelfProfile extends React.Component {
       <div>
         <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
         <div style={{border: '2px dotted red'}}>
+          <ProfileSideBar picture={this.state.picture} location={this.state.location} />
           Education: {this.state.eduArr.map(edu => <div> {edu.school_name} </div>)}
           <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
           <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
