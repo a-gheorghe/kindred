@@ -13,7 +13,15 @@ class Login extends React.Component {
       this.state={
         ref: true,
         cand: false,
+        email: '',
+        password: '',
       }
+  }
+
+  handleChange = (event) => {
+    let change = {}
+    change[event.target.name] = event.target.value
+    this.setState(change)
   }
 
   refClick = () => this.setState({
@@ -44,6 +52,7 @@ class Login extends React.Component {
     //     <Redirect to="/ref/messages" />
     //   );
     // }
+    console.log('i am rendering login comp');
     return (
       <div className="maindiv">
         <Header />
@@ -56,8 +65,8 @@ class Login extends React.Component {
               <Button toggle active={cand} onClick={this.candClick}>Candidate</Button>
             </Button.Group>
             <div className="loginBox">
-              <input className="loginInput" placeholder="Email" style={{marginBottom: "45px"}} type="text" name="name" />
-              <input className="loginInput" placeholder="Password" style={{marginBottom: "20px"}} type="text" name="name" />
+              <input className="loginInput" placeholder="Email" style={{marginBottom: "45px"}} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+              <input className="loginInput" placeholder="Password" style={{marginBottom: "20px"}} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
               <div className="loginRemember">
                 <label className="loginLabel">
                   <input type="checkbox" value="" className="loginCheck"/>
@@ -66,7 +75,7 @@ class Login extends React.Component {
                 </div>
                 {/* Change button to call loginCand if Cand or loginRef if Ref */}
               {this.state.cand ?
-                <Button onClick={loginCand} className="loginButton">Sign In</Button> :
+                <Button onClick={() => loginCand(this.state.email, this.state.password)} className="loginButton">Sign In</Button> :
                 <Button onClick={loginRef} className="loginButton"> Sign In </Button> }
             </div>
             <a className="loginA" href="#">Forgot Password?</a>

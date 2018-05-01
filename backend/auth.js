@@ -57,9 +57,10 @@ module.exports = function(passport) {
   // });
 
   router.post('/candidate/login', (req, res, next) => {
+    console.log('hit');
     passport.authenticate('candidate-local', {
       successRedirect: '/app/cand/selfprofile',
-      failureRedirect: '/app/login',
+      failureRedirect: '/app/',
     })
   });
 

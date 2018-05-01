@@ -53,8 +53,9 @@ class AuthExample extends React.Component {
       },
     };
 
-    this.loginCand = () => {
-      axios.post('/candidate/login')
+    this.loginCand = (email, password) => {
+      console.log('sending with email ', email, 'sending with password ', password)
+      axios.post('/candidate/login', {email: email, password: password})
       .then(result => console.log(result))
       .catch(err => console.log('error is ', err))
     }

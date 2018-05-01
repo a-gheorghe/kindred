@@ -89,9 +89,13 @@ passport.use('candidate-local', new LocalStrategy({
     }
   }).then((candidate) => {
     if (candidate) {
-      bcrypt.compare(password, candidate.password, (err, res) =>
-        (res) ? done(null, candidate) : done(null, false)
-      );
+      bcrypt.compare(password, candidate.password, (err, res) => {
+        if (res) {
+          return done(null, candidate);
+        } else {
+          return done(null, false);
+        }
+      });
     } else {
       return done(null, false);
     }
@@ -228,6 +232,15 @@ app.get(/^\/app/, (req, res) => {
 
 
 app.use('/', auth(passport));
+
+app.use((req, res, next) => {
+    if(!req.user) {
+      res.redirect('/app');
+    } else {
+      next();
+    }
+  });
+
 app.use('/', admin);
 app.use('/', routes);
 
