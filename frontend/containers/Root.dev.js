@@ -54,12 +54,18 @@ class AuthExample extends React.Component {
     };
 
     this.loginCand = () => {
-      fakeAuthCand.authenticate(() => {
-        this.setState(() => ({
-          loggedInCand: fakeAuthCand.isAuthenticated,
-        }));
-      });
-    };
+      axios.post('/candidate/login')
+      .then(result => console.log(result))
+      .catch(err => console.log('error is ', err))
+    }
+
+    // this.loginCand = () => {
+    //   fakeAuthCand.authenticate(() => {
+    //     this.setState(() => ({
+    //       loggedInCand: fakeAuthCand.isAuthenticated,
+    //     }));
+    //   });
+    // };
 
     this.registerCand = () => {
       fakeAuthCand.register(() => {

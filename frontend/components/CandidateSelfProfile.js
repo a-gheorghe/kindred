@@ -13,6 +13,7 @@ class CandidateSelfProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      eduArr: [],
       workExpArr: [],
       projectArr: [],
       skillArr: [],
@@ -30,6 +31,7 @@ class CandidateSelfProfile extends React.Component {
       this.projectCount = result.projectArr-1
       this.skillCount = result.skillArr-1
       this.setState({
+        eduArr: result.eduArr,
         workExpArr: result.workArr,
         projectArr: result.projectArr,
         skillArr: result.skillArr
@@ -123,6 +125,7 @@ class CandidateSelfProfile extends React.Component {
       <div>
         <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
         <div style={{border: '2px dotted red'}}>
+          Education: {this.state.eduArr.map(edu => <div> {edu.school_name} </div>)}
           <ExperienceWrapper addEditedWork={this.addEditedWork} addWorkCloseForm={this.addWorkCloseForm} workExpArr={this.state.workExpArr} addWork={this.addWork} removeWork={this.removeWork} workFormShown={this.state.workFormShown} toggleWorkForm={this.toggleWorkForm} makeWorkEditable={this.makeWorkEditable} /><br/>
           <ProjectWrapper addEditedProject = {this.addEditedProject} addProjectCloseForm = {this.addProjectCloseForm} projectArr={this.state.projectArr} addProject={this.addProject} removeProject={this.removeProject} projectFormShown={this.state.projectFormShown} toggleProjectForm={this.toggleProjectForm} makeProjectEditable={this.makeProjectEditable}/><br/>
           <SkillWrapper skillArr={this.state.skillArr} addSkill={this.addSkill} removeSkill={this.removeSkill} count={this.skillCount}/><br/>
