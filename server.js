@@ -13,7 +13,12 @@ const multerS3 = require('multer-s3');
 const routes = require('./backend/routes');
 const admin = require('./backend/admin');
 const auth = require('./backend/auth');
-const { Candidate, Referrer, Admin } = require('./database/models');
+const {
+  Candidate,
+  Referrer,
+  Admin,
+} = require('./database/models');
+
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
@@ -22,10 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-isCand = function(user) {
+isCand = (user) => {
   return user.hasOwnProperty('approval_status');
 }
-isRef = function(user){
+isRef = (user) => {
   return user.hasOwnProperty('company');
 }
 
