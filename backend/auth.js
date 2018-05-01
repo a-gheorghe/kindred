@@ -40,29 +40,31 @@ module.exports = function(passport) {
   });
 
   // POST Login page by Jay
-  // router.post('/candidate/login', function(req, res, next) {
-  //    passport.authenticate('candidate-local', function(err, candidate, info) {
-  //      if (err || !candidate) {
-  //        // did not successfully authenticate
-  //        res.send(401);
-  //      } else {
-  //        // successfully authenticate
-  //        console.log('this is req', Object.keys(req));
-  //        res.json({
-  //          success: true,
-  //          user: req.user,
-  //        });
-  //      }
-  //    })(req, res, next)
-  // });
-
-  router.post('/candidate/login', (req, res, next) => {
-    console.log('hit');
-    passport.authenticate('candidate-local', {
-      successRedirect: '/app/cand/selfprofile',
-      failureRedirect: '/app/',
-    })
+  router.post('/candidate/login', function(req, res, next) {
+     passport.authenticate('candidate-local', function(err, candidate, info) {
+       if (err || !candidate) {
+         // did not successfully authenticate
+         console.log('error is ', err)
+         console.log('candidate is ', candidate)
+         res.sendStatus(401);
+       } else {
+         // successfully authenticate
+         console.log('this is req', Object.keys(req));
+         res.json({
+           success: true,
+           user: req.user,
+         });
+       }
+     })(req, res, next)
   });
+
+  // router.post('/candidate/login', (req, res, next) => {
+  //   console.log('hit with req', req);
+  //   passport.authenticate('candidate-local', {
+  //     successRedirect: '/app/cand/selfprofile',
+  //     failureRedirect: '/app/',
+  //   })
+  // });
 
   router.post('/referrer/login', (req, res, next) => {
     passport.authenticate('referrer-local', {

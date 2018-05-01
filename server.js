@@ -21,8 +21,10 @@ const {
 
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -83,6 +85,7 @@ passport.use('candidate-local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
 }, (email, password, done) => {
+  console.log('inside local stratedy')
   Candidate.findOne({
     where: {
       email: email,
@@ -164,9 +167,6 @@ passport.use('admin-local', new LocalStrategy({
 
 
 //routes
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 aws.config.update({
     secretAccessKey: process.env.S3_SECRET,
