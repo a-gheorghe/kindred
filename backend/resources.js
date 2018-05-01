@@ -61,7 +61,7 @@ function createProject(candId, projObj) {
 
 // adds a new referrer
 function createReferrer(refObj) {
-  return bcrypt.hash(candObj.password, 10)
+  return bcrypt.hash(refObj.password, 10)
     .then(hash =>
       Referrer.create({
         first_name: refObj.first_name,

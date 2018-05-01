@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const session = require('express-session');
 const LocalStrategy = require('passport-local');
 
 const app = express();
@@ -26,30 +27,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: process.env.SECRET,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-isCand = (user) => {
-  return user.hasOwnProperty('approval_status');
-}
-isRef = (user) => {
-  return user.hasOwnProperty('company');
-}
-
 passport.serializeUser((user, done) => {
   let userType;
-  if (isCand(user)) {
+  if ('approval_status' in user) {
     userType = "candidate";
-  } else if(isRef(user)) {
-    userType = "referrer"
+  } else if('company' in user) {
+    userType = "referrer";
   }else{
-    userType = "admin"
+    userType = "admin";
   }
   done(null, {'userType': userType, 'id': user.id});
 });
 
-passport.deserializeUser((obj, done) => {
-  let userObj = JSON.parse(obj);
+passport.deserializeUser((userObj, done) => {
   // figure out how to differentiate between Candidate and Referrer for passport
   if (userObj.userType === "candidate") {
     Candidate.findById(userObj.id)
@@ -91,6 +89,7 @@ passport.use('candidate-local', new LocalStrategy({
       email: email,
     }
   }).then((candidate) => {
+    console.log('HELLO', candidate);
     if (candidate) {
       bcrypt.compare(password, candidate.password, (err, res) => {
         if (res) {
@@ -200,7 +199,7 @@ const upload = multer({
 app.post('/upload', upload.array('documents'), (req, res) => {
   console.log('successfully documents to S3', req.files)
   let candDocs = {}
-  for (let i = 0; i < req.files.length; i++){
+  for (let i = 0; i < req.files.length; i++) {
     if (req.files[i].mimetype === 'application/pdf'){
       candDocs.resume = req.files[i].location
     } else {
@@ -222,24 +221,25 @@ app.get('/', (req, res) => {
 app.get('/candidate', (req, res) => {
   ('in /candidate route')
   res.sendFile(__dirname + '/public/candidate.html');
-})
+});
 
 // this one renders the react app
 app.get(/^\/app/, (req, res) => {
   ('in /app route')
   res.sendFile(__dirname + '/public/app.html');
-})
+});
 
 
 app.use('/', auth(passport));
 
 app.use((req, res, next) => {
-    if(!req.user) {
-      res.redirect('/app');
-    } else {
-      next();
-    }
-  });
+  console.log('req.user', req.session);
+  if(!req.user) {
+    res.redirect('/app/login');
+  } else {
+    next();
+  }
+});
 
 app.use('/', admin);
 app.use('/', routes);

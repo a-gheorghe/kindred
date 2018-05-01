@@ -38,8 +38,8 @@ const {
 } = require('./resources');
 
 const {
+  Candidate,
   Education,
-  Project,
   Skill,
   WorkExperience,
 } = require('../database/models');
@@ -99,36 +99,6 @@ router.put('/candidate/profile/work-experiences/:workId', (req, res) => {
   WorkExperience.findById(req.params.workId)
     .then(workObj => updateWorkExperience(workObj))
     .then(updated => res.json(updated))
-    .catch(err => console.error(err));
-})
-
-// adds a new candidate into the database
-// Route is tested
-router.post('/register-candidate', (req, res) => {
-  const promiseArr = [];
-  createCandidate(req.body.basic)
-    .then(cand => {
-      for (let i = 0; i < req.body.eduArr.length; i++) {
-        promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));
-      }
-      for (let l = 0; l < req.body.projectArr.length; l++) {
-        promiseArr.push(createProject(cand.id, req.body.projectArr[l]));
-      }
-      for (let k = 0; k < req.body.skillArr.length; k++) {
-        promiseArr.push(createSkill(cand.id, req.body.skillArr[k]));
-      }
-      for (let j = 0; j < req.body.workArr.length; j++) {
-        promiseArr.push(createWorkExperience(cand.id, req.body.workArr[j]));
-      }
-      return Promise.all(promiseArr);
-    })
-    .then(resp => res.json(resp))
-    .catch(err => console.error(err));
-});
-
-router.post('/register-referrer', (req, res) => {
-  createReferrer(req.body)
-    .then(resp => res.json(resp))
     .catch(err => console.error(err));
 });
 
