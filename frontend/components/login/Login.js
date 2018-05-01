@@ -37,7 +37,7 @@ class Login extends React.Component {
 
     if (loggedInCand) {
       return (
-        <Redirect to="/cand/messages" />
+        <Redirect to="/cand/selfprofile" />
       );
     } else if (loggedInRef) {
       return (

@@ -61,16 +61,19 @@ function createProject(candId, projObj) {
 
 // adds a new referrer
 function createReferrer(refObj) {
-  return Referrer.create({
-    first_name: refObj.first_name,
-    last_name: refObj.last_name,
-    company: refObj.company,
-    title: refObj.title,
-    email: refObj.email,
-    password: refObj.password,
-    picture_url: refObj.picture_url,
-    linkedin_url: refObj.linkedin_url,
-  })
+  return bcrypt.hash(candObj.password, 10)
+    .then(hash =>
+      Referrer.create({
+        first_name: refObj.first_name,
+        last_name: refObj.last_name,
+        company: refObj.company,
+        title: refObj.title,
+        email: refObj.email,
+        password: hash,
+        picture_url: refObj.picture_url,
+        linkedin_url: refObj.linkedin_url,
+      })
+    )
     .catch(err => console.error(err));
 }
 
