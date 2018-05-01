@@ -16,6 +16,7 @@ import MessageContainer from './../components/MessageContainer';
 class AuthExample extends React.Component {
   constructor(props) {
     super(props);
+    console.log('I AM CONSTRUCTING THE OVERARCHING CONTAINER')
     this.state = {
       loggedInCand: false,
       loggedInRef: false,
@@ -52,13 +53,20 @@ class AuthExample extends React.Component {
       },
     };
 
-    this.loginCand = () => {
-      fakeAuthCand.authenticate(() => {
-        this.setState(() => ({
-          loggedInCand: fakeAuthCand.isAuthenticated,
-        }));
-      });
-    };
+    this.loginCand = (email, password) => {
+      console.log('sending with email ', email, 'sending with password ', password)
+      axios.post('/candidate/login', {email: email, password: password})
+      .then(result => console.log('result is', result))
+      .catch(err => console.log('error is ', err))
+    }
+
+    // this.loginCand = () => {
+    //   fakeAuthCand.authenticate(() => {
+    //     this.setState(() => ({
+    //       loggedInCand: fakeAuthCand.isAuthenticated,
+    //     }));
+    //   });
+    // };
 
     this.registerCand = () => {
       fakeAuthCand.register(() => {

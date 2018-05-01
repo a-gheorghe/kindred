@@ -11,6 +11,7 @@ class Pending extends React.Component {
   render() {
 
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
+    console.log('props in pending', this.props)
     console.log('this is the object that will be sent', candidateObject)
     return (
       <div className="maindiv pendingContainer">
