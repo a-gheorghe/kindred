@@ -14,6 +14,9 @@ class CandidateSelfProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      picture: 'https://kindred-testing-ana.s3.us-west-1.amazonaws.com/c58dcc1d-52d2-426d-a598-4c8091d61dd0.jpg',
+      resume: '',
+      location: 'San Francisco',
       eduArr: [],
       workExpArr: [],
       projectArr: [],
@@ -22,29 +25,29 @@ class CandidateSelfProfile extends React.Component {
       projectFormShown: false,
     }
   }
-
-  componentDidMount(){
-    console.log('front end here')
-    axios.get('/candidate/profile')
-    .then(result => {
-      console.log('front end result', result)
-      this.workCount = result.workArr.length-1
-      this.projectCount = result.projectArr-1
-      this.skillCount = result.skillArr-1
-      this.setState({
-        picture: result.basic.picture_url,
-        resume: result.basic.resume_url,
-        location: result.basic.location,
-        eduArr: result.eduArr,
-        workExpArr: result.workArr,
-        projectArr: result.projectArr,
-        skillArr: result.skillArr
-      })
-    })
-    .catch(err => console.log(err))
-  }
-
-
+  //
+  // componentDidMount(){
+  //   console.log('front end here')
+  //   axios.get('/candidate/profile')
+  //   .then(result => {
+  //     console.log('front end result', result)
+  //     this.workCount = result.workArr.length-1
+  //     this.projectCount = result.projectArr-1
+  //     this.skillCount = result.skillArr-1
+  //     this.setState({
+  //       picture: result.basic.picture_url,
+  //       resume: result.basic.resume_url,
+  //       location: result.basic.location,
+  //       eduArr: result.eduArr,
+  //       workExpArr: result.workArr,
+  //       projectArr: result.projectArr,
+  //       skillArr: result.skillArr
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+  // }
+  //
+  //
 
   addWork = (company, title, description, start_date, end_date, current, editable) => {
     this.setState({workExpArr: [...this.state.workExpArr, {company: company, title: title, description: description, start_date: start_date, end_date: end_date, current: current, editable: editable, id: this.workCount++}]})

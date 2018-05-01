@@ -43,15 +43,15 @@ class Login extends React.Component {
       loggedInCand, loggedInRef, loginRef, loginCand,
     } = this.props;
 
-    // if (loggedInCand) {
-    //   return (
-    //     <Redirect to="/cand/selfprofile" />
-    //   );
-    // } else if (loggedInRef) {
-    //   return (
-    //     <Redirect to="/ref/messages" />
-    //   );
-    // }
+    if (loggedInCand) {
+      return (
+        <Redirect to="/cand/selfprofile" />
+      );
+    } else if (loggedInRef) {
+      return (
+        <Redirect to="/ref/messages" />
+      );
+    }
     console.log('i am rendering login comp');
     return (
       <div className="maindiv">
