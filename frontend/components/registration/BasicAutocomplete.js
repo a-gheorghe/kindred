@@ -1,5 +1,7 @@
 import React from 'react'
 import Downshift from 'downshift'
+import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+
 
 const BasicAutocomplete = ({items, onChange, addSkill}) => (
     <Downshift
@@ -14,8 +16,14 @@ const BasicAutocomplete = ({items, onChange, addSkill}) => (
         highlightedIndex,
         clearSelection
       }) => (
-        <div style={{border: '2px solid orange'}}>
-          <input {...getInputProps({placeholder:  'What skills do you have?' })} /> <button onClick={(event) => { clearSelection(); addSkill();}}> Add Skill </button>
+        <div>
+          <InputGroup>
+            <Input className="skillsInput" {...getInputProps({placeholder:  'What skills do you have?' })}/>
+            <InputGroupAddon addonType="append">
+              <Button className="addSkillbutt" onClick={(event) => { clearSelection(); addSkill();}}>Add Skill</Button>
+            </InputGroupAddon>
+          </InputGroup>
+
           {isOpen ? (
             <div style={{border: '1px solid #ccc'}}>
               {items

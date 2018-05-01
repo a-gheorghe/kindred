@@ -14,7 +14,6 @@ class ExperienceWrapper extends React.Component {
 
     return (
       <div>
-        {workExpArr.length === 0 ? <p> Add first work experience </p> : ''}
         <div>
           {workExpArr.map((work, i) => {
             return (

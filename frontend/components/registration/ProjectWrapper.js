@@ -20,9 +20,7 @@ class ProjectWrapper extends React.Component {
   render(){
     const { projectArr, addProject, removeProject, onChange, projectFormShown, toggleProjectForm, makeProjectEditable, addProjectCloseForm, addEditedProject } = this.props
     return (
-      <div style={{ border: '1px solid purple' }}>
-        <h3>Projects</h3>
-        {projectArr.length === 0 ? <p> Projects are a great way to show off your skills. Add your first project </p> : ''}
+      <div>
         <div>
           {projectArr.map((project, i) => {
             return (
@@ -54,7 +52,7 @@ class ProjectWrapper extends React.Component {
             </div>
           )})}
         </div>
-        {projectFormShown ? <div> <ProjectForm addProjectCloseForm = {addProjectCloseForm} />  </div> : <button onClick={toggleProjectForm}> Add a Project</button>}
+        {projectFormShown ? <div> <ProjectForm addProjectCloseForm = {addProjectCloseForm} />  </div> : <button className="addButton" onClick={toggleProjectForm}> Add a Project</button>}
       </div>
     )
   }
