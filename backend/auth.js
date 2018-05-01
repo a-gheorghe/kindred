@@ -57,10 +57,10 @@ module.exports = function(passport) {
   //    })(req, res, next)
   // });
 
-  router.post('/candidate/login', passport.authenticate('candidate-local', {
-    successRedirect: '/candidate/success',
-    failureRedirect: '/candidate/failure',
-  }));
+router.post('/candidate/login', passport.authenticate('candidate-local', {
+  successRedirect: '/candidate/success',
+  failureRedirect: '/candidate/failure',
+}));
 
 router.get('/candidate/success', (req, res) => {
   res.status(200).json({success: true});
@@ -69,7 +69,6 @@ router.get('/candidate/success', (req, res) => {
 router.get('/candidate/failure', (req, res) => {
   res.status(200).json({success: false});
 });
-
 
   // router.post('/candidate/login', (req, res, next) => {
   //   console.log('hit with req', req);
