@@ -10,6 +10,7 @@ class ExperienceWrapper extends React.Component {
   }
 
   render() {
+    console.log('experience wrapper this.props', this.props)
     const { workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork } = this.props
 
     return (

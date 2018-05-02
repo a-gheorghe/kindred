@@ -49,7 +49,19 @@ html, body{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  cursor: pointer;
 }
+
+/* Ana start */
+.aTagLink {
+  font-family: Avenir-Light;
+  font-size: 16px;
+  color: #6B6B6B;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* Ana end */
 
 .maindiv {
   display: flex;
@@ -427,4 +439,18 @@ Ana's stuff
   display: flex;
   align-Items: center;
   padding: 50px 0;
+}
+
+.profile-holder {
+  border: 2px solid red;
+  display: flex;
+}
+
+.profile-sidebar {
+  flex: 1;
+  border: 2px solid purple;
+}
+
+.profile-content {
+  flex: 1;
 }

@@ -4,6 +4,7 @@ import ProgressBarProfile from '../../components/registration/ProgressBarProfile
 import ExperienceWrapper from '../../components/registration/ExperienceWrapper';
 import ProjectWrapper from '../../components/registration/ProjectWrapper'
 import SkillWrapper from '../../components/registration/SkillWrapper'
+import axios from 'axios';
 
 class CandidateProfileContainer extends React.Component {
   constructor(props) {
@@ -20,17 +21,17 @@ class CandidateProfileContainer extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios.get('/candidate/profile')
-    .then(result => {
-      this.setState({
-        workExpArr: result.workArr,
-        projectArr: result.projectArr,
-        skillArr: result.skillArr
-      })
-    })
-    .catch(err => console.log(err))
-  }
+  // componentDidMount(){
+  //   axios.get('/candidate/profile')
+  //   .then(result => {
+  //     this.setState({
+  //       workExpArr: result.workArr,
+  //       projectArr: result.projectArr,
+  //       skillArr: result.skillArr
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   saveProfileInfo = () => {
     const currentState = {
