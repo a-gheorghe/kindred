@@ -4,6 +4,7 @@ import ProgressBarProfile from '../../components/registration/ProgressBarProfile
 import ExperienceWrapper from '../../components/registration/ExperienceWrapper';
 import ProjectWrapper from '../../components/registration/ProjectWrapper'
 import SkillWrapper from '../../components/registration/SkillWrapper'
+
 import axios from 'axios';
 
 class CandidateProfileContainer extends React.Component {

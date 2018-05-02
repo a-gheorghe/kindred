@@ -1,5 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import { HashLink as Link } from 'react-router-hash-link';
+
 
 class ProfileSideBar extends React.Component {
   constructor(props) {
@@ -20,9 +22,9 @@ render() {
       <div> <b>{this.props.basic.first_name} {this.props.basic.last_name}</b> </div>
       <div> {this.props.basic.location}</div>
       <div> {this.props.eduArr[0].major} @ {this.props.eduArr[0].school}</div>
-      <div style={{border: '1px solid black', width: '150px', margin: '5px'}}> Work Experience </div>
-      <div style={{border: '1px solid black', width: '150px', margin: '5px'}}> Projects </div>
-      <div style={{border: '1px solid black', width: '150px', margin: '5px'}}> Skills </div>
+      <Link style={{border: '1px solid black', width: '150px', margin: '5px'}} to="/cand/selfprofile#work">Work Experience</Link>
+      <Link style={{border: '1px solid black', width: '150px', margin: '5px'}} to="/cand/selfprofile#projects">Projects</Link>
+      <Link style={{border: '1px solid black', width: '150px', margin: '5px'}} to="/cand/selfprofile#skills">Skills</Link>
     </div>
   );
 }
