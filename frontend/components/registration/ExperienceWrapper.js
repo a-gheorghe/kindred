@@ -7,9 +7,9 @@ class ExperienceWrapper extends React.Component {
     super(props);
   }
 
-render() {
-  const { workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork } = this.props
-  // Current: {work.current}
+  render() {
+    console.log('experience wrapper this.props', this.props)
+    const { workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork } = this.props
 
   return (
     <div className="experBigDiv">

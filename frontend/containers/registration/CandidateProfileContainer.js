@@ -8,6 +8,8 @@ import Container2 from '../../components/Container2'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 
+import axios from 'axios';
+
 class CandidateProfileContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -23,17 +25,17 @@ class CandidateProfileContainer extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios.get('/candidate/profile')
-    .then(result => {
-      this.setState({
-        workExpArr: result.workArr,
-        projectArr: result.projectArr,
-        skillArr: result.skillArr
-      })
-    })
-    .catch(err => console.log(err))
-  }
+  // componentDidMount(){
+  //   axios.get('/candidate/profile')
+  //   .then(result => {
+  //     this.setState({
+  //       workExpArr: result.workArr,
+  //       projectArr: result.projectArr,
+  //       skillArr: result.skillArr
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   saveProfileInfo = () => {
     const currentState = {

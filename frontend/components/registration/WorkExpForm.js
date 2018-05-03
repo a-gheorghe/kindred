@@ -31,7 +31,10 @@ class WorkExpForm extends React.Component {
     }
 
     render(){
+      console.log('work form this.props', this.props)
+      console.log('work form this.state', this.state)
       const { addWorkCloseForm, addEditedWork, editedVersion, positionArray } = this.props
+
 
       return (
         <div className="workExpFormDiv">
