@@ -4,6 +4,9 @@ import Container from '../Container'
 import Footer from '../Footer'
 import Header from '../Header'
 import { Dropdown, Button } from 'semantic-ui-react'
+import axios from 'axios';
+
+import '../styles/styles.css';
 
 class RegisterBoth extends React.Component {
   constructor(props) {
@@ -21,14 +24,14 @@ class RegisterBoth extends React.Component {
     }
 
   handleBothChange = (event) => {
-    console.log('handleBothChange', this.state)
-    let change={}
-    change[event.target.name] = event.target.value
-    this.setState(change)
+    // console.log('handleBothChange', this.state)
+    let change = {};
+    change[event.target.name] = event.target.value;
+    this.setState(change);
   }
 
   handleTypeChange = (event, data) => {
-    console.log('event is ', event, 'data is ', data)
+    // console.log('event is ', event, 'data is ', data)
     this.setState({type: data.value})
   }
 
@@ -46,18 +49,37 @@ class RegisterBoth extends React.Component {
     this.props.registerCand();
   }
 
+  registerRef = () => {
+    if (this.state.password === this.state.repeatpassword) {
+      this.props.registerRef({
+        first_name: this.state.firstname,
+        last_name: this.state.lastname,
+        email: this.state.email,
+        title: this.state.title,
+        password: this.state.password,
+        company: 'unspecified'
+      }).then(() => {
+        if (this.props.loggedInRef) {
+          this.props.history.push('/ref/my/profile');
+        };
+      })
+      .catch((e) => {
+        console.log('something went wrong inside registerBoth');
+        console.log(e);
+      })
+    } else {
+        alert('Passwords must match! Try again.');
+    }
+  }
 
   render() {
-
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-    console.log('candidate object on register both page', candidateObject)
     if (this.props.loggedInCand === true) {
       return <Redirect to='/register/cand/education'/>
     }
 
     if (this.props.loggedInRef === true) {
-      console.log('referrer is logged in');
-      return <Redirect to='/ref/pending'/>
+      return <Redirect to='/ref/my/profile'/>
     }
 
     let options = [
@@ -82,7 +104,7 @@ class RegisterBoth extends React.Component {
             <Dropdown className="regDrop" placeholder="Choose One" fluid selection options={options} value={this.state.type} onChange={this.handleTypeChange} />
 
             {/* Change button to call registerCand if Cand or registerRef if Ref */}
-            {this.state.type === "referrer" ? <button className="loginButton" style={{marginBottom: "30px"}} onClick={this.props.registerRef}> Sign Up as a Referrer </button> :
+            {this.state.type === "referrer" ? <button className="loginButton" style={{marginBottom: "30px"}} onClick={this.registerRef}> Sign Up as a Referrer </button> :
             this.state.type === "candidate" ? <button className="loginButton" style={{marginBottom: "30px"}} onClick={this.registerCandStorage}> Sign Up as a Candidate </button> :
             <Button className="loginButton" style={{marginBottom: "30px"}}> Sign Up </Button> }
           </div>

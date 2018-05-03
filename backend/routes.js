@@ -44,6 +44,16 @@ const {
   WorkExperience,
 } = require('../database/models');
 
+
+// Check to see if a user is logged in as a referrer or candidate
+router.get('/candidate/checkAuth', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
+router.get('/referrer/checkAuth', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
 // returns all of the info about a candidate's profile that is displayed to users
 router.get('/candidate/profile', (req, res) => {
   const promiseArr = [
@@ -51,7 +61,7 @@ router.get('/candidate/profile', (req, res) => {
     getAllEducation(req.user.id),
     getAllProjects(req.user.id),
     getAllSkills(req.user.id),
-    getAllWorkExperiences(req.user.id)
+    getAllWorkExperiences(req.user.id),
   ];
   Promise.all(promiseArr)
     .then(([basic, education, projects, skills, workExperiences]) => {

@@ -72,9 +72,12 @@ function createReferrer(refObj) {
         password: hash,
         picture_url: refObj.picture_url,
         linkedin_url: refObj.linkedin_url,
-      })
-    )
-    .catch(err => console.error(err));
+      }))
+    .catch((err) => {
+      // If someone has tried to repeat the same email address...
+      // console.error(err);
+      return { success: false, error: err.name };
+    });
 }
 
 // adds a specific candidate’s skill

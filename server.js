@@ -38,13 +38,13 @@ app.use(passport.session());
 passport.serializeUser((user, done) => {
   let userType;
   if ('approval_status' in user) {
-    userType = "candidate";
-  } else if('company' in user) {
-    userType = "referrer";
-  }else{
-    userType = "admin";
+    userType = 'candidate';
+  } else if ('company' in user) {
+    userType = 'referrer';
+  } else {
+    userType = 'admin';
   }
-  done(null, {'userType': userType, 'id': user.id});
+  done(null, { userType, id: user.id });
 });
 
 passport.deserializeUser((userObj, done) => {
@@ -122,14 +122,16 @@ passport.use('referrer-local', new LocalStrategy({
   }).then((referrer) => {
     if (referrer) {
       bcrypt.compare(password, referrer.password, (err, res) =>
-        (res) ? done(null, referrer) : done(null, false)
+        ((res) ? done(null, referrer) : done(null, false))
       );
     } else {
+      console.log("User not found.");
       return done(null, false);
     }
   })
   .catch(err => {
     if (err) {
+      console.log("Password or email address is incorrect");
       return done(err, false, {
         message: 'This email or password is incorrect.',
       });

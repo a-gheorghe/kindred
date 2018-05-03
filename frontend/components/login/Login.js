@@ -28,12 +28,26 @@ class Login extends React.Component {
     cand: false,
     ref: true,
   })
+
   candClick = () => this.setState({
     cand: true,
     ref: false,
   })
-  // Ignore linter errors: additional methods will go here; not necessary to
-  // switch to pure function. <--- Delete me when new methods are added.
+
+  submitRef = () => {
+    this.props.loginRef(this.state.email, this.state.password)
+    .then(() => {
+      console.log('this.props.loggedInRef1', this.props.loggedInRef);
+      if (this.props.loggedInRef) {
+        this.props.history.push('/ref/my/profile');
+      }
+    })
+    console.log('this.props.loggedInRef2', this.props.loggedInRef);
+    // if (this.props.loggedInRef) {
+    //   this.props.history.push('/ref/my/profile');
+    // }
+  }
+
 
   render() {
     const { cand, ref } = this.state;
@@ -75,8 +89,19 @@ class Login extends React.Component {
                 </div>
                 {/* Change button to call loginCand if Cand or loginRef if Ref */}
               {this.state.cand ?
-                <Button onClick={() => loginCand(this.state.email, this.state.password)} className="loginButton">Sign In</Button> :
-                <Button onClick={loginRef} className="loginButton"> Sign In </Button> }
+                <Button
+                  onClick={() => loginCand(this.state.email, this.state.password)}
+                  className="loginButton"
+                >
+                  Sign In
+                </Button> :
+                <Button
+                  onClick={() => this.submitRef()}
+                  className="loginButton"
+                >
+                  Sign In
+                </Button>
+              }
             </div>
             <a className="loginA" href="#">Forgot Password?</a>
           </div>

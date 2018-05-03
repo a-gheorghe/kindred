@@ -55,18 +55,28 @@ class AuthExample extends React.Component {
 
     this.loginCand = (email, password) => {
       console.log('sending with email ', email, 'sending with password ', password)
-      axios.post('/candidate/login', {email: email, password: password})
-      .then(result => console.log('result is', result))
-      .catch(err => console.log('error is ', err))
-    }
+      axios.post('/candidate/login', { email, password })
+        .then(result => console.log('result is', result))
+        .catch(err => console.log('error is ', err));
+    };
 
-    // this.loginCand = () => {
-    //   fakeAuthCand.authenticate(() => {
-    //     this.setState(() => ({
-    //       loggedInCand: fakeAuthCand.isAuthenticated,
-    //     }));
-    //   });
-    // };
+    this.loginRef = (email, password) => {
+      console.log('Global this.loginRef');
+      console.log('Attempting login...');
+      console.log('sending with email ', email, 'sending with password ', password)
+      return axios.post('/referrer/login', { email, password })
+        .then((resp) => {
+          console.log('Response received from server...');
+          console.log(resp.data);
+          if (resp.data.success) {
+            this.setState({ loggedInRef: true });
+          }
+        })
+        .catch((err) => {
+          console.log('Something went wrong during login...');
+          console.log(err);
+        });
+    };
 
     this.registerCand = () => {
       fakeAuthCand.register(() => {
@@ -76,26 +86,25 @@ class AuthExample extends React.Component {
       });
     };
 
+    this.registerRef = (refObj) => {
+      console.log('Global this.registerRef');
+      console.log('Attempting registration...');
+      return axios.post('/register-referrer', refObj)
+        .then((resp) => {
+          console.log('Response received from server...');
+          console.log(resp.data);
+          // attempt immediate login
+          this.loginRef(refObj.email, refObj.password);
+        })
+        .catch((err) => {
+          console.log('Something went wrong during registration...');
+          console.log(err);
+        });
+    };
+
     this.logoutCand = () => {
       fakeAuthCand.logout(() => {
         window.location.pathname = '/candidate';
-      });
-    };
-
-    this.loginRef = () => {
-      console.log('inside login ref function');
-      fakeAuthRef.authenticate(() => {
-        this.setState(() => ({
-          loggedInRef: fakeAuthRef.isAuthenticated,
-        }));
-      });
-    };
-
-    this.registerRef = () => {
-      fakeAuthRef.register(() => {
-        this.setState(() => ({
-          loggedInRef: fakeAuthRef.isAuthenticated,
-        }));
       });
     };
 
@@ -126,6 +135,7 @@ class AuthExample extends React.Component {
                 registerCand={this.registerCand}
                 logoutCand={this.logoutCand}
                 logoutRef={this.logoutRef}
+                loginRef={this.loginRef}
                 {...props}
               />
             )}
