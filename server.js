@@ -12,6 +12,7 @@ const routes = require('./backend/routes');
 const admin = require('./backend/admin');
 const auth = require('./backend/auth');
 const { Candidate, Referrer, Admin } = require('./database/models');
+
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());

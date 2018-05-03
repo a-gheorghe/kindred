@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 // // On Windows we needa DBPASSWORD
 // if (/^win/.test(process.platform) && ! process.env.DBPASSWORD) {
@@ -25,6 +25,8 @@ const Admin = sequelize.define('admins', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true
+
   },
   password: {
     type: Sequelize.STRING,
@@ -47,7 +49,8 @@ const Candidate = sequelize.define('candidates', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   password: {
     type: Sequelize.STRING,
@@ -99,6 +102,8 @@ const Referrer = sequelize.define('referrers', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true
+
   },
   password: {
     type: Sequelize.STRING,
