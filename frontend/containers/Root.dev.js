@@ -94,7 +94,7 @@ class AuthExample extends React.Component {
           console.log('Response received from server...');
           console.log(resp.data);
           // attempt immediate login
-          this.loginRef(refObj.email, refObj.password);
+          return this.loginRef(refObj.email, refObj.password);
         })
         .catch((err) => {
           console.log('Something went wrong during registration...');
