@@ -45,6 +45,7 @@ const {
   WorkExperience,
 } = require('../database/models');
 
+
 // returns all of the info about a candidate's profile that is displayed to users
 router.get('/candidate/profile', (req, res) => {
   const promiseArr = [

@@ -28,12 +28,25 @@ class Login extends React.Component {
     cand: false,
     ref: true,
   });
+
   candClick = () => this.setState({
     cand: true,
     ref: false,
   });
-  // Ignore linter errors: additional methods will go here; not necessary to
-  // switch to pure function. <--- Delete me when new methods are added.
+
+  submitRef = () => {
+    this.props.loginRef(this.state.email, this.state.password)
+      .then(() => {
+        console.log('this.props.loggedInRef1', this.props.loggedInRef);
+        if (this.props.loggedInRef) {
+          this.props.history.push('/ref/my/profile');
+        }
+      });
+    console.log('this.props.loggedInRef2', this.props.loggedInRef);
+    // if (this.props.loggedInRef) {
+    //   this.props.history.push('/ref/my/profile');
+    // }
+  };
 
   render() {
     const { cand, ref } = this.state;
@@ -57,10 +70,11 @@ class Login extends React.Component {
       <div className="maindiv">
         <Header />
         <img
+          alt="background"
           src="../background.svg"
           style={{
-position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
-}}
+            position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
+          }}
         />
         <Container className="center">
           <div className="loginDiv">
@@ -70,8 +84,24 @@ position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
               <Button toggle active={cand} onClick={this.candClick}>Candidate</Button>
             </Button.Group>
             <div className="loginBox">
-              <input className="loginInput" placeholder="Email" style={{ marginBottom: '45px' }} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-              <input className="loginInput" placeholder="Password" style={{ marginBottom: '20px' }} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+              <input
+                className="loginInput"
+                placeholder="Email"
+                style={{ marginBottom: '45px' }}
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <input
+                className="loginInput"
+                placeholder="Password"
+                style={{ marginBottom: '20px' }}
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
               <div className="loginRemember">
                 <label className="loginLabel">
                   <input type="checkbox" value="" className="loginCheck" />
@@ -80,8 +110,19 @@ position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
               </div>
               {/* Change button to call loginCand if Cand or loginRef if Ref */}
               {this.state.cand ?
-                <Button onClick={loginCand} className="loginButton">Sign In</Button> :
-                <Button onClick={loginRef} className="loginButton"> Sign In </Button> }
+                <Button
+                  onClick={() => loginCand(this.state.email, this.state.password)}
+                  className="loginButton"
+                >
+                  Sign In
+                </Button> :
+                <Button
+                  onClick={() => this.submitRef()}
+                  className="loginButton"
+                >
+                  Sign In
+                </Button>
+              }
             </div>
             <a className="loginA" href="#">Forgot Password?</a>
           </div>

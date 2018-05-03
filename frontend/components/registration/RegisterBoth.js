@@ -4,6 +4,9 @@ import Container from '../Container';
 import Footer from '../Footer';
 import Header from '../Header';
 import { Dropdown, Button } from 'semantic-ui-react';
+import axios from 'axios';
+
+import '../styles/styles.css';
 
 class RegisterBoth extends React.Component {
   constructor(props) {
@@ -21,14 +24,14 @@ class RegisterBoth extends React.Component {
   }
 
   handleBothChange = (event) => {
-    console.log('handleBothChange', this.state);
+    // console.log('handleBothChange', this.state);
     const change = {};
     change[event.target.name] = event.target.value;
     this.setState(change);
   };
 
   handleTypeChange = (event, data) => {
-    console.log('event is ', event, 'data is ', data);
+    // console.log('event is ', event, 'data is ', data);
     this.setState({ type: data.value });
   };
 
@@ -46,10 +49,35 @@ class RegisterBoth extends React.Component {
     this.props.registerCand();
   };
 
+  clickRegisterRef = () => {
+    if (this.state.password === this.state.repeatpassword) {
+      const ref = {
+        first_name: this.state.firstname,
+        last_name: this.state.lastname,
+        email: this.state.email,
+        title: this.state.title,
+        password: this.state.password,
+        company: 'unspecified'
+      };
+      console.log('ref', ref);
+      this.props.registerRef(ref)
+        .then(() => {
+          if (this.props.loggedInRef) {
+            this.props.history.push('/ref/my/profile');
+          }
+        })
+        .catch((e) => {
+          console.log('something went wrong inside registerBoth');
+          console.log(e);
+        });
+    } else {
+      alert('Passwords must match! Try again.');
+    }
+  }
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'));
-    console.log('candidate object on register both page', candidateObject);
+    // console.log('candidate object on register both page', candidateObject);
     if (this.props.loggedInCand === true) {
       return <Redirect to="/register/cand/education" />;
     }
@@ -87,12 +115,27 @@ position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
 
             {/* Change button to call registerCand if Cand or registerRef if Ref */}
             {this.state.type === 'referrer' ?
-              <button className="loginButton" style={{ marginBottom: '30px' }} onClick={this.props.registerRef}> Sign Up as a Referrer </button>
-            : this.state.type === 'candidate' ?
-              <button className="loginButton" style={{ marginBottom: '30px' }} onClick={this.registerCandStorage}> Sign Up as a Candidate </button>
-            :
-              <Button className="loginButton" style={{ marginBottom: '30px' }}> Sign Up </Button>
-            }
+              <button
+                className="loginButton"
+                style={{ marginBottom: '30px' }}
+                onClick={this.clickRegisterRef}
+              >
+                Sign Up as a Referrer
+              </button> :
+              this.state.type === 'candidate' ?
+                <button
+                  className="loginButton"
+                  style={{ marginBottom: '30px' }}
+                  onClick={this.registerCandStorage}
+                >
+                  Sign Up as a Candidate
+                </button> :
+                <Button
+                  className="loginButton"
+                  style={{ marginBottom: '30px' }}
+                >
+                  Sign Up
+                </Button> }
           </div>
           {/* <button onClick={this.props.registerCand}> Register as a Candidate </button><br/> */}
           <div className="loginSignup">
