@@ -180,6 +180,7 @@ const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'kindred-testing-ana',
+        acl: 'public-read',
         key: (req, file, cb) => {
             const newFilename = `${uuidv4()}${path.extname(file.originalname)}`
             cb(null, newFilename)

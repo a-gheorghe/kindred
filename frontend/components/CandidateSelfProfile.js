@@ -51,7 +51,9 @@ class CandidateSelfProfile extends React.Component {
       axios.post('/upload', formData)
       .then((result) => {
         this.setState({
-          pictureUrl: result.data.docs.profilePic,
+          basic: {...this.state.basic,
+            pictureUrl: result.data.docs.profilePic
+          },
           changed: true
         });
 

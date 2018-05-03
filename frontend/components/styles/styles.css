@@ -454,3 +454,11 @@ Ana's stuff
 .profile-content {
   flex: 1;
 }
+
+/* Ana */
+#root {
+  height: 100%;
+  border: 4px solid green;
+}
+
+#root > [data-reactroot] { height: 100% }
