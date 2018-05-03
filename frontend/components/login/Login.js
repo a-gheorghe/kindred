@@ -9,29 +9,29 @@ import Header from '../Header';
 
 class Login extends React.Component {
   constructor(props) {
-      super(props);
-      this.state={
-        ref: true,
-        cand: false,
-        email: '',
-        password: '',
-      }
+    super(props);
+    this.state = {
+      ref: true,
+      cand: false,
+      email: '',
+      password: '',
+    };
   }
 
   handleChange = (event) => {
-    let change = {}
-    change[event.target.name] = event.target.value
-    this.setState(change)
-  }
+    const change = {};
+    change[event.target.name] = event.target.value;
+    this.setState(change);
+  };
 
   refClick = () => this.setState({
     cand: false,
     ref: true,
-  })
+  });
   candClick = () => this.setState({
     cand: true,
     ref: false,
-  })
+  });
   // Ignore linter errors: additional methods will go here; not necessary to
   // switch to pure function. <--- Delete me when new methods are added.
 
@@ -56,7 +56,12 @@ class Login extends React.Component {
     return (
       <div className="maindiv">
         <Header />
-        <img src="../background.svg" style={{position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1'}}/>
+        <img
+          src="../background.svg"
+          style={{
+position: 'fixed', bottom: '0px', width: '100%', zIndex: '-1',
+}}
+        />
         <Container className="center">
           <div className="loginDiv">
             <div className="loginHeader">Sign into KindredTalent</div>
@@ -65,15 +70,15 @@ class Login extends React.Component {
               <Button toggle active={cand} onClick={this.candClick}>Candidate</Button>
             </Button.Group>
             <div className="loginBox">
-              <input className="loginInput" placeholder="Email" style={{marginBottom: "45px"}} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-              <input className="loginInput" placeholder="Password" style={{marginBottom: "20px"}} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+              <input className="loginInput" placeholder="Email" style={{ marginBottom: '45px' }} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+              <input className="loginInput" placeholder="Password" style={{ marginBottom: '20px' }} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
               <div className="loginRemember">
                 <label className="loginLabel">
-                  <input type="checkbox" value="" className="loginCheck"/>
+                  <input type="checkbox" value="" className="loginCheck" />
                   Remember Me
                 </label>
-                </div>
-                {/* Change button to call loginCand if Cand or loginRef if Ref */}
+              </div>
+              {/* Change button to call loginCand if Cand or loginRef if Ref */}
               {this.state.cand ?
                 <Button onClick={loginCand} className="loginButton">Sign In</Button> :
                 <Button onClick={loginRef} className="loginButton"> Sign In </Button> }

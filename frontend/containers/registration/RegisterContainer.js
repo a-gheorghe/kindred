@@ -8,10 +8,6 @@ import PrivateRouteCand from '../../components/authentication/PrivateRouteCand';
 import Pending from '../../components/Pending';
 
 class RegisterContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log('REGISTER CONTAINER', this.props);
     return (

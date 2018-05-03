@@ -9,10 +9,6 @@ import CandidateSelfProfile from '../../components/CandidateSelfProfile';
 import Pending from '../../components/Pending';
 
 class CandidateContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

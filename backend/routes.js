@@ -35,6 +35,7 @@ const {
   updateEducation,
   updateProject,
   updateReferrer,
+  updateWorkExperience,
 } = require('./resources');
 
 const {

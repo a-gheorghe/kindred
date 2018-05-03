@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShortBio from './ShortBio';
 
-const AllCandidates = props => (
+const AllCandidates = () => (
   <div>
       Here are all the candidates
     <ShortBio /> <br />

@@ -20,8 +20,8 @@ class OptionsCand extends React.Component {
           <Link className="aTagLink" to="/cand/messages"> Messages </Link> <br />
           <Link to="/cand/selfprofile"> Profile </Link><br />
           <Link to="/cand/settings"> Settings</Link><br />
-          <AuthButton loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} /><br />
-
+          <AuthButton loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
+          <br />
         </div>
         {/* Href attribute linter errors can be ignored. */}
       </div>

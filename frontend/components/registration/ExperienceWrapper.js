@@ -10,14 +10,35 @@ class ExperienceWrapper extends React.Component {
   render() {
     console.log('experience wrapper this.props', this.props);
     const {
-      workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork,
+      workExpArr,
+      addWork,
+      removeWork,
+      onChange,
+      workFormShown,
+      toggleWorkForm,
+      makeWorkEditable,
+      addWorkCloseForm,
+      addEditedWork,
     } = this.props;
 
     return (
       <div className="experBigDiv">
         {workExpArr.map((work, i) => (
           work.editable ?
-            <WorkExpForm addEditedWork={addEditedWork} startdate={work.startdate} enddate={work.enddate} current={work.current} company={work.company} title={work.title} description={work.description} id={work.id} editable addWorkCloseForm={addWorkCloseForm} editedVersion positionArray={i} />
+            <WorkExpForm
+              addEditedWork={addEditedWork}
+              startdate={work.startdate}
+              enddate={work.enddate}
+              current={work.current}
+              company={work.company}
+              title={work.title}
+              description={work.description}
+              id={work.id}
+              editable
+              addWorkCloseForm={addWorkCloseForm}
+              editedVersion
+              positionArray={i}
+            />
           :
             <div className="experDiv" key={work.id}>
               <div className="experImgDiv" />

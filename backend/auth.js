@@ -3,10 +3,15 @@ const express = require('express');
 
 const router = express.Router();
 const {
-  createCandidate, createEducation, createProject, createReferrer, createSkill, createWorkExperience,
+  createCandidate,
+  createEducation,
+  createProject,
+  createReferrer,
+  createSkill,
+  createWorkExperience,
 } = require('./resources');
 
-module.exports = function (passport) {
+module.exports = function auth(passport) {
   // POSTS a new candidate to the database
   // router.post('/registerCandidate', (req, res) => {
   //   // validation step

@@ -4,7 +4,7 @@ const router = express.Router();
 const models = require('../database/models');
 
 router.get('/admins', (req, res) => {
-  if (!req.user || req.user.userType != 'admin') {
+  if (!req.user || req.user.userType !== 'admin') {
     res.send('No');
   } else {
     models.Admin.findAll()

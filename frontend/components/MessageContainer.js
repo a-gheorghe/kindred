@@ -60,7 +60,7 @@ class MessageContainer extends React.Component {
 
     console.log('updating the active thread props');
     console.log('currentThreadId', this.state.activeThreadId);
-    if (candId == 1) {
+    if (candId === 1) { // TODO: Replace this with real data
       this.setState({
         activeThread:
         [
@@ -116,7 +116,7 @@ class MessageContainer extends React.Component {
           'HTML', 'CSS', 'JavaScript', 'jQuery', 'React', 'Redux', 'React Native', 'Adobe Creative Cloud',
         ],
       });
-    } else if (candId == 2) {
+    } else if (candId === 2) { // TODO: Replace this with real data
       this.setState({
         activeThread:
           [

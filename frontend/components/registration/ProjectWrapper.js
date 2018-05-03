@@ -11,7 +11,15 @@ class ProjectWrapper extends React.Component {
 
   render() {
     const {
-      projectArr, addProject, removeProject, onChange, projectFormShown, toggleProjectForm, makeProjectEditable, addProjectCloseForm, addEditedProject,
+      projectArr,
+      addProject,
+      removeProject,
+      onChange,
+      projectFormShown,
+      toggleProjectForm,
+      makeProjectEditable,
+      addProjectCloseForm,
+      addEditedProject,
     } = this.props;
     return (
       <div>
