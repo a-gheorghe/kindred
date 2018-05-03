@@ -43,17 +43,20 @@ class RegisterBoth extends React.Component {
       }
     }))
 
-    this.props.registerCand();
+    this.props.history.push('/register/cand/education')
+
+    // this.props.tempLogin();
   }
 
 
   render() {
+    console.log('REGISTER BOTH PROPS', this.props)
 
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
     console.log('candidate object on register both page', candidateObject)
-    if (this.props.loggedInCand === true) {
-      return <Redirect to='/register/cand/education'/>
-    }
+    // if (this.props.loggedInTemp === true) {
+    //   return <Redirect to='/register/cand/education'/>
+    // }
 
     if (this.props.loggedInRef === true) {
       console.log('referrer is logged in');

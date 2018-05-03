@@ -52,7 +52,7 @@ class Login extends React.Component {
         <Redirect to="/ref/messages" />
       );
     }
-    console.log('i am rendering login comp');
+    console.log('i am rendering login comp', this.props);
     return (
       <div className="maindiv">
         <Header />
@@ -75,7 +75,7 @@ class Login extends React.Component {
                 </div>
                 {/* Change button to call loginCand if Cand or loginRef if Ref */}
               {this.state.cand ?
-                <Button onClick={loginCand} className="loginButton">Sign In</Button> :
+                <Button onClick={() => loginCand(this.state.email, this.state.password)} className="loginButton">Sign In</Button> :
                 <Button onClick={loginRef} className="loginButton"> Sign In </Button> }
             </div>
             <a className="loginA" href="#">Forgot Password?</a>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import ProgressBarAdditional from './ProgressBarAdditional'
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
@@ -42,14 +42,25 @@ class CandidateRegisterAdditional extends React.Component {
       localStorage.setItem('candidateObject', JSON.stringify(candidateObject))
 
       candidateObject = JSON.parse(localStorage.getItem('candidateObject'))
-      console.log('candidate object after it is altered', candidateObject)
-      return axios.post('/register-candidate', candidateObject)
+      this.props.registerCand(candidateObject)
+
+
+      // console.log('candidate object after it is altered', candidateObject)
+      // return axios.post('/register-candidate', candidateObject)
     })
-    .then((res) => {
-      console.log('response is ', res)
-      this.props.history.push('/register/cand/pending')
-    })
-    // .then(() => this.props.history.push('/cand/pending'))
+    // .then((regSuccess) => {
+    //   console.log('am i in here')
+    //   if (regSuccess === true){
+    //     console.log('yayyy')
+    //     this.props.history.push('/register/cand/pending')
+    //   } else {
+    //     console.log('nayyy')
+    //     alert('Problem registering')
+    //   }
+    //   console.log('BEFORE REGISTER CAND IS CALLED')
+    //   this.props.registerCand()
+    //   this.props.history.push('/cand/pending')
+    // })
     .catch(err => {
       console.log('oops, sorry an error occured', err)
     })
@@ -95,6 +106,11 @@ class CandidateRegisterAdditional extends React.Component {
     console.log('inside additional props', this.props)
 
     console.log('candidate object inside additional', candidateObject)
+    if (this.props.loggedInCand){
+      console.log('I should redirect')
+      this.props.history.push('/register/cand/pending')
+    }
+
     return (
       <div className="maindiv2" style={{backgroundColor: "#FAFAFA"}}>
         <Header />

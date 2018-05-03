@@ -6,7 +6,7 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 const PrivateRouteCand = ({ component: Component, ...rest}) => (
   <Route
     {...rest}
-    render={props => rest.loggedInCand === true ?
+    render={props => rest.loggedInCand === true || rest.loggedInTemp === true ?
       <Component {...rest} /> :
       <Redirect to={{
         pathname: '/login'
@@ -16,6 +16,7 @@ const PrivateRouteCand = ({ component: Component, ...rest}) => (
 />)
 
 PrivateRouteCand.propTypes = {
+  loggedInTemp: PropTypes.bool.isRequired,
   loggedInCand: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired
 }

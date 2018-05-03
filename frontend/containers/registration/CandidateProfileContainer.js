@@ -40,7 +40,7 @@ class CandidateProfileContainer extends React.Component {
   saveProfileInfo = () => {
     const currentState = {
       workArr: this.state.workExpArr,
-      projectArr: this.state.projectArr,
+      projArr: this.state.projectArr,
       skillArr: this.state.skillArr
     }
 
