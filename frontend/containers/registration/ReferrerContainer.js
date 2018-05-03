@@ -69,6 +69,7 @@ const ReferrerContainer = props => (
       component={ReferrerProfileEditable}
       loggedInRef={props.loggedInRef}
       logoutRef={props.logoutRef}
+      checkAuthRef={props.checkAuthRef}
     />
   </div>
 );
@@ -77,6 +78,7 @@ ReferrerContainer.propTypes = {
   setTarget: PropTypes.func.isRequired,
   loggedInRef: PropTypes.bool.isRequired,
   logoutRef: PropTypes.func.isRequired,
+  checkAuthRef: PropTypes.func.isRequired,
 };
 
 export default withRouter(ReferrerContainer);

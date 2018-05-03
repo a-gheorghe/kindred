@@ -108,10 +108,38 @@ class AuthExample extends React.Component {
       });
     };
 
+    this.checkAuthRef = () => {
+      console.log('Global this.checkAuthRef');
+      console.log('Attempting authentication...');
+      return axios.get('/referrer/checkAuth')
+        .then((resp) => {
+          console.log('resp from checkAuthRef: ', resp);
+          if (resp.data.user) {
+            this.setState({ loggedInRef: true });
+            return resp.data.user;
+          }
+          throw new Error('Not logged in...');
+        })
+        .catch((err) => {
+          this.setState({ loggedInRef: false });
+          console.log(err);
+          return err;
+        });
+    };
+
     this.logoutRef = () => {
-      fakeAuthRef.logout(() => {
-        window.location.pathname = '/';
-      });
+      console.log('Global this.logoutRef');
+      console.log('Attempting logout...');
+      return axios.get('/logout')
+        .then((resp) => {
+          console.log('Response received from server...');
+          console.log(resp.data);
+          this.setState({ loggedInRef: false });
+        })
+        .catch((err) => {
+          console.log('Something went wrong during logout...');
+          console.log(err);
+        });
     };
 
     this.setTarget = (url) => {
@@ -163,6 +191,7 @@ class AuthExample extends React.Component {
                 loggedInRef={this.state.loggedInRef}
                 logoutRef={this.logoutRef}
                 setTarget={this.setTarget}
+                checkAuthRef={this.checkAuthRef}
                 {...props}
               />
             )}

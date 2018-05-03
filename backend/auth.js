@@ -33,6 +33,15 @@ router.get('/referrer/failure', (req, res) => {
   res.status(200).json({success: false});
 });
 
+// Check to see if a user is logged in as a referrer or candidate
+router.get('/candidate/checkAuth', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
+router.get('/referrer/checkAuth', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
   // GET Logout page
   router.get('/logout', function(req, res) {
     req.logout();
