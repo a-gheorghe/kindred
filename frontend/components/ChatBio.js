@@ -154,7 +154,7 @@ class ChatBio extends React.Component {
       </div>
     );
   }
-};
+}
 
 ChatBio.propTypes = {
   candId: PropTypes.string,

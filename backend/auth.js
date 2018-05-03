@@ -2,9 +2,11 @@
 const express = require('express');
 
 const router = express.Router();
-const { createCandidate, createEducation, createProject, createReferrer, createSkill, createWorkExperience } = require('./resources');
+const {
+  createCandidate, createEducation, createProject, createReferrer, createSkill, createWorkExperience,
+} = require('./resources');
 
-module.exports = function(passport) {
+module.exports = function (passport) {
   // POSTS a new candidate to the database
   // router.post('/registerCandidate', (req, res) => {
   //   // validation step
@@ -57,18 +59,18 @@ module.exports = function(passport) {
   //    })(req, res, next)
   // });
 
-router.post('/candidate/login', passport.authenticate('candidate-local', {
-  successRedirect: '/candidate/success',
-  failureRedirect: '/candidate/failure',
-}));
+  router.post('/candidate/login', passport.authenticate('candidate-local', {
+    successRedirect: '/candidate/success',
+    failureRedirect: '/candidate/failure',
+  }));
 
-router.get('/candidate/success', (req, res) => {
-  res.status(200).json({success: true});
-});
+  router.get('/candidate/success', (req, res) => {
+    res.status(200).json({ success: true });
+  });
 
-router.get('/candidate/failure', (req, res) => {
-  res.status(200).json({success: false});
-});
+  router.get('/candidate/failure', (req, res) => {
+    res.status(200).json({ success: false });
+  });
 
   // router.post('/candidate/login', (req, res, next) => {
   //   console.log('hit with req', req);
@@ -82,20 +84,20 @@ router.get('/candidate/failure', (req, res) => {
     passport.authenticate('referrer-local', {
       successRedirect: '/app/ref/messages',
       failureRedirect: '/app/login',
-    })
+    });
   });
 
   // GET Logout page
-  router.get('/logout', function(req, res) {
+  router.get('/logout', (req, res) => {
     req.logout();
-    res.send('logout successful!')
+    res.send('logout successful!');
   });
 
   // POST Login page for Admins
   // Check passport('local') -> ??
-  router.post('/admins/login', function(req, res, next){
-    passport.authenticate('admin-local', function(err, admin, info) {
-      console.log(err, admin, info)
+  router.post('/admins/login', (req, res, next) => {
+    passport.authenticate('admin-local', (err, admin, info) => {
+      console.log(err, admin, info);
       if (err) {
         // did not successfully authenticate
         res.send(401);
@@ -109,14 +111,13 @@ router.get('/candidate/failure', (req, res) => {
           user: req.user,
         });
       }
-
-    })(req, res, next)
+    })(req, res, next);
   });
 
   // POST Logout page
-  router.post('/admins/logout', function(req, res) {
+  router.post('/admins/logout', (req, res) => {
     req.logout();
-    res.send('logout successful!')
+    res.send('logout successful!');
   });
 
   // adds a new candidate into the database
@@ -124,7 +125,7 @@ router.get('/candidate/failure', (req, res) => {
   router.post('/register-candidate', (req, res) => {
     const promiseArr = [];
     createCandidate(req.body.basic)
-      .then(cand => {
+      .then((cand) => {
         for (let i = 0; i < req.body.eduArr.length; i++) {
           promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));
         }

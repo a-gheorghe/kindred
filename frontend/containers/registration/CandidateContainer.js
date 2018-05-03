@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PrivateRouteCand from '../../components/authentication/PrivateRouteCand';
 import ReceivedReferrals from '../../components/ReceivedReferrals';
 import MessageThread from '../../components/MessageThread';
-import CandidateExternalProfile from '../../components/CandidateExternalProfile'
+import CandidateExternalProfile from '../../components/CandidateExternalProfile';
 import CandidateSelfProfile from '../../components/CandidateSelfProfile';
 import Pending from '../../components/Pending';
 

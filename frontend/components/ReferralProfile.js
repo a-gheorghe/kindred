@@ -1,12 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const ReferralProfile = (props) => {
-  return (
-    <div>
+const ReferralProfile = props => (
+  <div>
       This is the referrer&apos;s profile
-    </div>
-  );
-};
+  </div>
+);
 
 export default withRouter(ReferralProfile);

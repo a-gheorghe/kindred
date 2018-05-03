@@ -159,7 +159,7 @@ class MessageContainer extends React.Component {
           },
         ],
         activeSkills: [
-          'Java', 'C++', 'C#', 'ASP.NET', 'Visual Basic','JavaScript','SQL','Server Architecture'
+          'Java', 'C++', 'C#', 'ASP.NET', 'Visual Basic', 'JavaScript', 'SQL', 'Server Architecture',
         ],
       });
     } else {

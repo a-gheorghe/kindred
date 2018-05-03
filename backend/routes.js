@@ -51,7 +51,7 @@ router.get('/candidate/profile', (req, res) => {
     getAllEducation(req.user.id),
     getAllProjects(req.user.id),
     getAllSkills(req.user.id),
-    getAllWorkExperiences(req.user.id)
+    getAllWorkExperiences(req.user.id),
   ];
   Promise.all(promiseArr)
     .then(([basic, education, projects, skills, workExperiences]) => {

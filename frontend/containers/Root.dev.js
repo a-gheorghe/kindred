@@ -16,7 +16,7 @@ import MessageContainer from './../components/MessageContainer';
 class AuthExample extends React.Component {
   constructor(props) {
     super(props);
-    console.log('I AM CONSTRUCTING THE OVERARCHING CONTAINER')
+    console.log('I AM CONSTRUCTING THE OVERARCHING CONTAINER');
     this.state = {
       loggedInCand: false,
       loggedInRef: false,
@@ -158,16 +158,18 @@ class AuthExample extends React.Component {
             )}
           />
           {/* Renders candidate routes */}
-          <Route path='/cand' render={props => (
-            <CandidateContainer
-              loggedInCand={this.state.loggedInCand}
-              logoutCand={this.logoutRef}
-              setTarget={this.setTarget}
-              target={this.target}
-              {...props}
-            />
+          <Route
+            path="/cand"
+            render={props => (
+              <CandidateContainer
+                loggedInCand={this.state.loggedInCand}
+                logoutCand={this.logoutRef}
+                setTarget={this.setTarget}
+                target={this.target}
+                {...props}
+              />
           )}
-        />
+          />
         </div>
       </BrowserRouter>
     );

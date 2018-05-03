@@ -16,20 +16,19 @@ function createCandidate(candObj) {
   return bcrypt.hash(candObj.password, 10)
     .then(hash =>
       Candidate.create({
-          first_name: candObj.first_name,
-          last_name: candObj.last_name,
-          email: candObj.email,
-          password: hash,
-          picture_url: candObj.picture_url,
-          location: candObj.location,
-          linkedin_url: candObj.linkedin_url,
-          github_url: candObj.github_url,
-          website_url: candObj.website_url,
-          resume_url: candObj.resume_url,
-          title: candObj.title,
-          approval_status: false,
-        })
-    )
+        first_name: candObj.first_name,
+        last_name: candObj.last_name,
+        email: candObj.email,
+        password: hash,
+        picture_url: candObj.picture_url,
+        location: candObj.location,
+        linkedin_url: candObj.linkedin_url,
+        github_url: candObj.github_url,
+        website_url: candObj.website_url,
+        resume_url: candObj.resume_url,
+        title: candObj.title,
+        approval_status: false,
+      }))
     .catch(err => console.error(err));
 }
 
@@ -72,8 +71,7 @@ function createReferrer(refObj) {
         password: hash,
         picture_url: refObj.picture_url,
         linkedin_url: refObj.linkedin_url,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
@@ -145,7 +143,7 @@ function deleteReferrer(refId) {
   return Referrer.destroy({
     where: {
       id: refId,
-    }
+    },
   })
     .catch(err => console.error(err));
 }
@@ -345,8 +343,7 @@ function updateCandidate(candObj) {
         linkedin_url: candObj.linkedin_url || cand.linkedin_url,
         github_url: candObj.github_url || cand.github_url,
         website_url: candObj.website_url || cand.website_url,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
@@ -364,8 +361,7 @@ function updateEducation(eduObj) {
         degree: eduObj.degree || edu.degree,
         major: eduObj.major || edu.major,
         candidate: eduObj.candidate || edu.candidate,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
@@ -385,8 +381,7 @@ function updateProject(projObj) {
         title: projObj.title || proj.title,
         link: projObj.link || proj.link,
         description: projObj.description || proj.description,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
@@ -402,8 +397,7 @@ function updateReferrer(refObj) {
         email: refObj.email || ref.email,
         picture_url: refObj.picture_url || ref.picture_url,
         linkedin_url: refObj.linkedin_url || ref.linkedin_url,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
@@ -422,8 +416,7 @@ function updateWorkExperience(workObj) {
         title: workObj.title || work.title,
         company: workObj.company || work.company,
         description: workObj.description || work.description,
-      })
-    )
+      }))
     .catch(err => console.error(err));
 }
 
