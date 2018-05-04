@@ -36,7 +36,6 @@ const {
   updateProject,
   updateReferrer,
 } = require('./resources');
-var io = require('socket.io')
 
 const {
   Education,
@@ -54,7 +53,7 @@ client.indices.create({
   index: 'candidate-profile'
 },function(err,resp,status) {
   if(err) {
-    console.log(err);
+    console.log('INDEX ALREADY EXISTS IN ES IGNORE THIS ^');
   }
   else {
     console.log("index created", resp);
@@ -136,7 +135,7 @@ router.post('/search', (req, res) => {
   client.search({
     index: 'candidate-profile',
     // CHANGE approval_status TO TRUE BELOW ONCE OUT OFF ALPHA
-    q: "skill: " + req.body.search + " approval_status: false",
+    q: "skill: " + req.body.search,
   }, function(error, response){
     // UPDATE THIS ONCE FRONT-END PAGE IS BUILT
     res.send(response)

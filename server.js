@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const app = express();
+const server = require('http').Server(app);
 const path = require('path');
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
@@ -12,7 +13,7 @@ const routes = require('./backend/routes');
 const admin = require('./backend/admin');
 const auth = require('./backend/auth');
 const { Candidate, Referrer, Admin } = require('./database/models');
-
+var io = require('socket.io')(server);
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
@@ -209,7 +210,17 @@ app.use('/', auth(passport));
 app.use('/', admin);
 app.use('/', routes);
 
-app.listen(PORT, error => {
+io.on('connection', function(socket) {
+  console.log('a user connected');
+  socket.on('login', message => {
+
+  })
+  socket.on('message', message => {
+    console.log("Got message", message);
+  })
+});
+
+server.listen(PORT, error => {
     error
     ? console.error(error)
     : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
