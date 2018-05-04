@@ -15,7 +15,7 @@
     "win_start": "npm run build && node server.js",
     "start": "npm run dev",
     "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles",
-    "lint": "npm run lint:js",
+    "lint": "npm run lint:errors",
     "lint:js": "eslint -- frontend backend database models migrations config test",
     "lint:errors": "eslint --quiet -- frontend backend database models migrations config test",
     "lint:staged": "lint-staged"
