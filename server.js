@@ -53,7 +53,7 @@ passport.deserializeUser((userObj, done) => {
     Candidate.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
       })
@@ -62,7 +62,7 @@ passport.deserializeUser((userObj, done) => {
     Admin.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
       })
@@ -71,7 +71,7 @@ passport.deserializeUser((userObj, done) => {
     Referrer.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
       })
@@ -123,8 +123,7 @@ passport.use('referrer-local', new LocalStrategy({
     .then((referrer) => {
       if (referrer) {
         bcrypt.compare(password, referrer.password, (err, res) =>
-          ((res) ? done(null, referrer) : done(null, false))
-        );
+          ((res) ? done(null, referrer) : done(null, false)));
       } else {
         console.log('User not found.');
         return done(null, false);

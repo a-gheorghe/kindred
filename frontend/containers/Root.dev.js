@@ -54,7 +54,7 @@ class AuthExample extends React.Component {
     };
 
     this.loginCand = (email, password) => {
-      console.log('sending with email ', email, 'sending with password ', password)
+      console.log('sending with email ', email, 'sending with password ', password);
       axios.post('/candidate/login', { email, password })
         .then(result => console.log('result is', result))
         .catch(err => console.log('error is ', err));
@@ -63,7 +63,7 @@ class AuthExample extends React.Component {
     this.loginRef = (email, password) => {
       console.log('Global this.loginRef');
       console.log('Attempting login...');
-      console.log('sending with email ', email, 'sending with password ', password)
+      console.log('sending with email ', email, 'sending with password ', password);
       return axios.post('/referrer/login', { email, password })
         .then((resp) => {
           console.log('Response received from server...');
@@ -110,16 +110,16 @@ class AuthExample extends React.Component {
     };
 
     this.checkAuthRef = () => {
-      console.log('Global this.checkAuthRef');
+      // console.log('Global this.checkAuthRef');
       console.log('Attempting authentication...');
-      return axios.get('/referrer/checkAuth')
+      return axios.get('/checkAuth')
         .then((resp) => {
-          console.log('resp from checkAuthRef: ', resp);
+          console.log('resp from checkAuthRef: ', resp.data);
           if (resp.data.user) {
             this.setState({ loggedInRef: true });
             return resp.data.user;
           }
-          throw new Error('Not logged in...');
+          return null;
         })
         .catch((err) => {
           this.setState({ loggedInRef: false });
@@ -148,6 +148,10 @@ class AuthExample extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.checkAuthRef().then(resp => console.log(resp)).catch(err => console.log(err));
+    // check to see if user is logged in on server as ref...
+  }
 
   render() {
     return (

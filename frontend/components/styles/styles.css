@@ -726,3 +726,32 @@ Ana's stuff
 }
 
 #root > [data-reactroot] { height: 100% }
+
+.nav-dropdown {
+  float: left;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.nav-drop-content {
+  margin-top: 10px;
+  background-color: white;
+  display: none;
+  position: fixed;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-top: 1px solid grey;
+  padding: 8px 0px;
+}
+
+.nav-drop-content a {
+  padding-bottom: 5px;
+}
+.nav-drop-opened {
+  display: block;
+}
+
+.nav-drop-closed {
+  display: none;
+}
