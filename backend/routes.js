@@ -50,7 +50,7 @@ var client = new elasticsearch.Client({
 });
 
 client.indices.create({
-  index: 'profile'
+  index: 'candidate-profile'
 },function(err,resp,status) {
   if(err) {
     console.log(err);
@@ -60,7 +60,7 @@ client.indices.create({
   }
 })
 // client.indices.delete({
-//   index: 'profile'
+//   index: 'candidate-profile'
 // },function(err,resp,status) {
 //   if(err) {
 //     console.log(err);
@@ -130,12 +130,14 @@ router.put('/candidate/profile/work-experiences/:workId', (req, res) => {
 
 // adds a new candidate into the database
 // Route is tested
-router.get('/search', (req, res) => {
+router.post('/search', (req, res) => {
+  console.log('this is req', req.body);
   client.search({
-    index: 'profile',
-    q: "skill: " + req.body.search + "&& approval_status: false",
+    index: 'candidate-profile',
+    // CHANGE approval_status TO TRUE BELOW ONCE OUT OFF ALPHA
+    q: "skill: " + req.body.search + " approval_status: false",
   }, function(error, response){
-    console.log("LOOOOOK")
+    // UPDATE THIS ONCE FRONT-END PAGE IS BUILT
     res.send(response)
   })
 })
@@ -151,16 +153,13 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 router.post('/register-candidate', (req, res) => {
-console.log('her!', req.body.skillArr);
-let test = req.body.skillArr.map((skill) => (skill.name));
-console.log("ASDFASDF", test);
+  let skillTest = req.body.skillArr.map((skill) => (skill.skill))
   const promiseArr = [];
   createCandidate(req.body.basic)
     .then(cand => {
       client.create({
-        index: 'profile',
+        index: 'candidate-profile',
         type: 'document',
-        // by setting the id to contacts name - it will not allow name duplicates - names must be unique
         id: cand.id,
         body: {
           first_name: req.body.basic.first_name,
@@ -177,7 +176,7 @@ console.log("ASDFASDF", test);
           approval_status: false,
           education: req.body.eduArr,
           projects: req.body.projectArr,
-          skill: test,
+          skill: skillTest,
           workExperience: req.body.workArr
         }
       }, function(error, response){
