@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import PrivateRouteRef from '../../components/authentication/PrivateRouteRef';
 import AllCandidates from '../../components/AllCandidates';
 import ReferralProfile from '../../components/ReferralProfile';
+import ReferrerProfileEditable from '../../components/ReferrerProfileEditable';
 import GivenReferrals from '../../components/GivenReferrals';
 import MessageContainer from '../../components/MessageContainer';
 import RefJobListings from '../../components/RefJobListings';
@@ -13,6 +14,13 @@ import Pending from '../../components/Pending';
 
 const ReferrerContainer = props => (
   <div>
+    <PrivateRouteRef
+      exact
+      path="/ref/pending"
+      component={Pending}
+      loggedInRef={props.loggedInRef}
+      logoutRef={props.logoutRef}
+    />
     <OptionsRef loggedInRef={props.loggedInRef} logoutRef={props.logoutRef} />
     {/* Renders a referrer's message portal */}
     <PrivateRouteRef
@@ -57,10 +65,11 @@ const ReferrerContainer = props => (
     />
     <PrivateRouteRef
       exact
-      path="/ref/pending"
-      component={Pending}
+      path="/ref/my/profile"
+      component={ReferrerProfileEditable}
       loggedInRef={props.loggedInRef}
       logoutRef={props.logoutRef}
+      checkAuthRef={props.checkAuthRef}
     />
   </div>
 );
@@ -69,6 +78,7 @@ ReferrerContainer.propTypes = {
   setTarget: PropTypes.func.isRequired,
   loggedInRef: PropTypes.bool.isRequired,
   logoutRef: PropTypes.func.isRequired,
+  checkAuthRef: PropTypes.func.isRequired,
 };
 
 export default withRouter(ReferrerContainer);

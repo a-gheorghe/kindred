@@ -35,6 +35,7 @@ const {
   updateEducation,
   updateProject,
   updateReferrer,
+  updateWorkExperience,
 } = require('./resources');
 
 const {
@@ -44,6 +45,7 @@ const {
   WorkExperience,
 } = require('../database/models');
 
+
 // returns all of the info about a candidate's profile that is displayed to users
 router.get('/candidate/profile', (req, res) => {
   const promiseArr = [
@@ -51,7 +53,7 @@ router.get('/candidate/profile', (req, res) => {
     getAllEducation(req.user.id),
     getAllProjects(req.user.id),
     getAllSkills(req.user.id),
-    getAllWorkExperiences(req.user.id)
+    getAllWorkExperiences(req.user.id),
   ];
   Promise.all(promiseArr)
     .then(([basic, education, projects, skills, workExperiences]) => {

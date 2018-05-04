@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import OptionsCand from './authentication/OptionsCand';
 import Referral from './Referral';
 
-const ReceivedReferrals = (props) => {
-  return (
-    <div>
-      <OptionsCand loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} />
+const ReceivedReferrals = props => (
+  <div>
+    <OptionsCand loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} />
       Referrals received:
-      <Referral /> <br />
-      <Referral /> <br />
-      <Referral /> <br />
-    </div>
-  );
-};
+    <Referral /> <br />
+    <Referral /> <br />
+    <Referral /> <br />
+  </div>
+);
 
 ReceivedReferrals.propTypes = {
   loggedInCand: PropTypes.bool.isRequired,

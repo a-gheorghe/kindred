@@ -3,22 +3,35 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthButton from './AuthButton';
 
-const OptionsCand = (props) => {
-  return (
-    <div>
-      <AuthButton loggedInCand={props.loggedInCand} logoutCand={props.logoutCand} /><br />
-      {/* Href attribute linter errors can be ignored. */}
-      <Link to="/cand/selfprofile"> My Profile </Link><br />
-      <Link to="/cand/extprofile"> See profile from referrer view </Link><br />
-      <Link to="/cand/messages"> Messages </Link> <br />
-      <Link to="/cand/referrals"> Referrals Received </Link><br />
-    </div>
-  );
-};
+class OptionsCand extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    console.log('this.props in options cand', this.props);
+    return (
+      <div className="topnav">
+        <div className="logo">
+          KindredTalent
+        </div>
+        <div className="aTag">
+          <Link className="aTagLink" to="/cand/messages"> Messages </Link> <br />
+          <Link to="/cand/selfprofile"> Profile </Link><br />
+          <Link to="/cand/settings"> Settings</Link><br />
+          <AuthButton loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
+          <br />
+        </div>
+        {/* Href attribute linter errors can be ignored. */}
+      </div>
+    );
+  }
+}
 
 OptionsCand.propTypes = {
   loggedInCand: PropTypes.bool.isRequired,
-  logoutCand: PropTypes.bool.isRequired,
+  logoutCand: PropTypes.func.isRequired,
 };
 
 export default OptionsCand;
