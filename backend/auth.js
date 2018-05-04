@@ -1,75 +1,65 @@
 // Add Passport-related auth routes here.
-var express = require('express');
-var router = express.Router();
-var { Candidate, Referrer } = require('../database/models');
+const express = require('express');
 
-module.exports = function(passport) {
-  // POSTS a new candidate to the database
-  // router.post('/registerCandidate', (req, res) => {
-  //   // validation step
-  //   Candidate.create({
-  //     first_name: req.body.first_name,
-  //     last_name: req.body.last_name,
-  //     email: req.body.email,
-  //     password: req.body.password,
-  //     picture_url: req.body.picture_url,
-  //     location: req.body.location,
-  //     linkedin_url: req.body.linkedin_url,
-  //     github_url: req.body.github_url,
-  //     website_url: req.body.website_url,
-  //     resume_url: req.body.resume_url,
-  //   })
-  //     .then(() => res.send('candidate successfully added to database'))
-  //     .catch(err => console.error(err));
-  // });
+const router = express.Router();
 
-  // POSTS a new referrer to the database
-  router.post('/registerReferrer', (req, res) => {
-    Referrer.create({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.email,
-      picture_url: req.body.picture_url,
-      location: req.body.location,
-      linkedin_url: req.body.linkedin_url,
-      github_url: req.body.github_url,
-      website_url: req.body.website_url,
-    })
-      .then(() => res.send('referrer successfully added to database'))
-      .catch(err => console.error(err));
+const {
+  createCandidate,
+  createEducation,
+  createProject,
+  createReferrer,
+  createSkill,
+  createWorkExperience
+} = require('./resources');
+
+module.exports = function (passport) {
+  router.post('/candidate/login', passport.authenticate('candidate-local', {
+    successRedirect: '/candidate/success',
+    failureRedirect: '/candidate/failure',
+  }));
+
+  router.get('/candidate/success', (req, res) => {
+    res.status(200).json({ success: true });
   });
 
-  // POST Login page
-  router.post('/candidate/login', function(req, res, next) {
-     passport.authenticate('candidate-local', function(err, candidate, info) {
-       if (err) {
-         // did not successfully authenticate
-         res.send(401);
-       } else if (!candidate) {
-         // did not successfully authenticate
-         res.send(401);
-       } else {
-         // successfully authenticate
-         console.log('this is req', Object.keys(req));
-         res.json({
-           success: true,
-           user: req.user,
-         });
-       }
-     })(req, res, next)
+  router.get('/candidate/failure', (req, res) => {
+    res.status(200).json({ success: false });
+  });
+
+  router.post('/referrer/login', passport.authenticate('referrer-local', {
+    successRedirect: '/referrer/success',
+    failureRedirect: '/referrer/failure',
+  }));
+
+  router.get('/referrer/success', (req, res) => {
+    req.user.isReferrer = true;
+    res.status(200).json({ success: true });
+  });
+
+  router.get('/referrer/failure', (req, res) => {
+    res.status(200).json({ success: false });
+  });
+
+  // Check to see if a user is logged in as a referrer or candidate
+  router.get('/candidate/checkAuth', (req, res) => {
+    res.status(200).json({ user: req.user });
+  });
+
+  router.get('/referrer/checkAuth', (req, res) => {
+    res.status(200).json({ user: req.user });
   });
 
   // GET Logout page
-  router.get('/logout', function(req, res) {
+  router.get('/logout', (req, res) => {
     req.logout();
-    res.send('logout successful!')
+    res.status(200).json({ success: true });
   });
 
   // POST Login page for Admins
   // Check passport('local') -> ??
-  router.post('/admins/login', function(req, res, next){
-    passport.authenticate('admin-local', function(err, admin, info) {
-      console.log(err, admin, info)
+  router.post('/admins/login', (req, res, next) => {
+    passport.authenticate('admin-local', (err, admin, info) => {
+      console.log(err, admin, info);
       if (err) {
         // did not successfully authenticate
         res.send(401);
@@ -83,14 +73,45 @@ module.exports = function(passport) {
           user: req.user,
         });
       }
-
-    })(req, res, next)
+    })(req, res, next);
   });
 
   // POST Logout page
-  router.post('/admins/logout', function(req, res) {
+  router.post('/admins/logout', (req, res) => {
     req.logout();
-    res.send('logout successful!')
+    res.send('logout successful!');
+  });
+
+  // adds a new candidate into the database
+  // Route is tested
+  router.post('/register-candidate', (req, res) => {
+    const promiseArr = [];
+    createCandidate(req.body.basic)
+      .then((cand) => {
+        for (let i = 0; i < req.body.eduArr.length; i++) {
+          promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));
+        }
+        for (let l = 0; l < req.body.projArr.length; l++) {
+          promiseArr.push(createProject(cand.id, req.body.projArr[l]));
+        }
+        for (let k = 0; k < req.body.skillArr.length; k++) {
+          promiseArr.push(createSkill(cand.id, req.body.skillArr[k]));
+        }
+        for (let j = 0; j < req.body.workArr.length; j++) {
+          promiseArr.push(createWorkExperience(cand.id, req.body.workArr[j]));
+        }
+        return Promise.all(promiseArr);
+      })
+      .then(resp => res.json(resp))
+      .catch(err => console.error(err));
+  });
+
+  router.post('/register-referrer', (req, res) => {
+    createReferrer(req.body)
+      .then(resp => res.json(resp))
+      .catch((err) => {
+        console.error(err);
+      });
   });
 
   return router;

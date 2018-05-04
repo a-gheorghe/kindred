@@ -1,8 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
-import WorkExpForm from './WorkExpForm'
-
-
+import { withRouter } from 'react-router-dom';
+import WorkExpForm from './WorkExpForm';
 
 class ExperienceWrapper extends React.Component {
   constructor(props) {
@@ -10,35 +8,64 @@ class ExperienceWrapper extends React.Component {
   }
 
   render() {
-    const { workExpArr, addWork, removeWork, onChange, workFormShown, toggleWorkForm, makeWorkEditable, addWorkCloseForm, addEditedWork } = this.props
+    console.log('experience wrapper this.props', this.props);
+    const {
+      workExpArr,
+      addWork,
+      removeWork,
+      onChange,
+      workFormShown,
+      toggleWorkForm,
+      makeWorkEditable,
+      addWorkCloseForm,
+      addEditedWork,
+    } = this.props;
 
     return (
-      <div style={{ border: '1px solid black' }}>
-        <h3>Work Experience</h3>
-        {workExpArr.length === 0 ? <p> Add first work experience </p> : ''}
-        <div>
-          {workExpArr.map((work, i) => {
-            return (
-              work.editable ?
-              <WorkExpForm addEditedWork={addEditedWork} start_date = {work.start_date} end_date={work.end_date} current = {work.current} company={work.company} title={work.title} description={work.description} id={work.id} editable={true} addWorkCloseForm={addWorkCloseForm} editedVersion={true} positionArray={i} />
-              :
-              <div style={{border: '1px solid green'}} key={work.id}>
-                Company: {work.company} <br/>
-                Title: {work.title} <br/>
-                Description: {work.description} <br/>
-                Start Date: {work.start_date} <br/>
-                End Date: {work.end_date} <br/>
-                Current: {work.current}
-                <button onClick={(e) => removeWork(work.id, e)}> Delete </button>
-                <button onClick={(e) => makeWorkEditable(work.id, e)}> Edit </button>
+      <div className="experBigDiv">
+        {workExpArr.map((work, i) => (
+          work.editable ?
+            <WorkExpForm
+              addEditedWork={addEditedWork}
+              startdate={work.startdate}
+              enddate={work.enddate}
+              current={work.current}
+              company={work.company}
+              title={work.title}
+              description={work.description}
+              id={work.id}
+              editable
+              addWorkCloseForm={addWorkCloseForm}
+              editedVersion
+              positionArray={i}
+            />
+          :
+            <div className="experDiv" key={work.id}>
+              <div className="experImgDiv" />
+              <div>
+                <div>
+                Company: {work.company}
+                </div>
+                <div>
+                Title: {work.title}
+                Start Date: {work.startdate}
+                End Date: {work.enddate}
+                </div>
+                <div>
+                Description: {work.description}
+                </div>
               </div>
-            )})}
-          </div>
-          {workFormShown ? <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> : <button onClick={toggleWorkForm}> Add Work Experience </button>}
-        </div>
-      )
-    }
+              <div>
+                <button onClick={e => removeWork(work.id, e)}> Delete </button>
+                <button onClick={e => makeWorkEditable(work.id, e)}> Edit </button>
+              </div>
+            </div>
+        ))}
+        {workFormShown ? <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> : <button className="addButton" onClick={toggleWorkForm}> Add Work Experience </button>}
+      </div>
+    );
   }
+}
 
 
-  export default withRouter(ExperienceWrapper);
+export default withRouter(ExperienceWrapper);

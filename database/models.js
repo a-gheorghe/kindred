@@ -1,4 +1,4 @@
- 'use strict';
+
 
 // // On Windows we needa DBPASSWORD
 // if (/^win/.test(process.platform) && ! process.env.DBPASSWORD) {
@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   operatorsAliases: false,
   dialectOptions: {
-    ssl: true
+    ssl: true,
   },
 });
 
@@ -25,23 +25,22 @@ const Admin = sequelize.define('admins', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
-
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
     allowNull: false,
-  }
+  },
 });
 
 const Candidate = sequelize.define('candidates', {
   first_name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   last_name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   title: {
     type: Sequelize.STRING,
@@ -50,18 +49,18 @@ const Candidate = sequelize.define('candidates', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   picture: {
     type: Sequelize.TEXT,
   },
   location: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   linkedin_url: {
     type: Sequelize.TEXT,
@@ -78,8 +77,8 @@ const Candidate = sequelize.define('candidates', {
   approval_status: {
     type: Sequelize.BOOLEAN,
     default: false,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 
 const Referrer = sequelize.define('referrers', {
@@ -102,8 +101,7 @@ const Referrer = sequelize.define('referrers', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
-
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
@@ -114,7 +112,7 @@ const Referrer = sequelize.define('referrers', {
   },
   linkedin_url: {
     type: Sequelize.TEXT,
-  }
+  },
 });
 
 const Message = sequelize.define('messages', {
@@ -124,8 +122,8 @@ const Message = sequelize.define('messages', {
   },
   sender_type: {
     type: Sequelize.INTEGER,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 
 const MessageThread = sequelize.define('message_threads', {
@@ -227,8 +225,8 @@ const Project = sequelize.define('projects', {
 const Skill = sequelize.define('skills', {
   skill: {
     type: Sequelize.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 
 Candidate.hasMany(Education, {
@@ -239,7 +237,7 @@ Candidate.hasMany(WorkExperience, {
   foreignKey: 'candidate_id',
 });
 Candidate.hasMany(Skill, {
-  foreignKey: 'candidate_id'
+  foreignKey: 'candidate_id',
 });
 Candidate.hasMany(Project, {
   foreignKey: 'candidate_id',
@@ -249,7 +247,7 @@ Candidate.hasMany(MessageThread, {
 });
 
 JobListing.hasMany(Referral, {
-  foreignKey: 'job_listing_id'
+  foreignKey: 'job_listing_id',
 });
 
 MessageThread.hasMany(Message, {
@@ -257,7 +255,7 @@ MessageThread.hasMany(Message, {
 });
 
 MessageThread.hasMany(Referral, {
-  foreignKey: 'message_thread_id'
+  foreignKey: 'message_thread_id',
 });
 
 Referrer.hasMany(JobListing, {
@@ -275,7 +273,7 @@ Education.belongsTo(Candidate, {
 JobListing.belongsTo(Referrer, {
   foreignKey: 'referrer_id',
 });
-Project.belongsTo(Candidate,  {
+Project.belongsTo(Candidate, {
   foreignKey: 'candidate_id',
 });
 
@@ -283,10 +281,10 @@ Message.belongsTo(MessageThread, {
   foreignKey: 'message_thread_id',
 });
 
-MessageThread.belongsTo(Candidate,  {
+MessageThread.belongsTo(Candidate, {
   foreignKey: 'candidate_id',
 });
-MessageThread.belongsTo(Candidate,  {
+MessageThread.belongsTo(Candidate, {
   foreignKey: 'candidate_id',
 });
 
@@ -299,12 +297,12 @@ Referral.belongsTo(MessageThread, {
 });
 
 Referral.belongsTo(JobListing, {
-  foreignKey: 'job_listing_id'
+  foreignKey: 'job_listing_id',
 });
-Skill.belongsTo(Candidate,  {
+Skill.belongsTo(Candidate, {
   foreignKey: 'candidate_id',
 });
-WorkExperience.belongsTo(Candidate,  {
+WorkExperience.belongsTo(Candidate, {
   foreignKey: 'candidate_id',
 });
 

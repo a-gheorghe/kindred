@@ -49,7 +49,19 @@ html, body{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  cursor: pointer;
 }
+
+/* Ana start */
+.aTagLink {
+  font-family: Avenir-Light;
+  font-size: 16px;
+  color: #6B6B6B;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* Ana end */
 
 .maindiv {
   display: flex;
@@ -321,6 +333,270 @@ Ana's stuff
   bottom: 85.78%;
 }
 
+.center {
+  justify-content: center;
+}
+
+.thanksFor {
+  width: 100%;
+  padding: 75px 0px 75px 0px;
+  background-color: white;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thanksline1 {
+  color: #9B9B9B;
+  font-size: 24px;
+  font-family: Avenir-Light;
+  margin-bottom: 10px;
+}
+
+.thanksline2 {
+  color: #9B9B9B;
+  font-size: 14px;
+  font-family: Avenir-Light;
+}
+
+.educationDiv1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.educationImg {
+  transform: translateY(50%);
+  height: 100px;
+  width: 100px;
+  z-index: 10;
+}
+
+.educationDiv2 {
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 60px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: white;
+  flex-direction: row;
+}
+
+.maindiv2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.educationInput {
+  height: 30px;
+  width: 300px;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #CECECE 1px;
+  border-top: none;
+  outline: none;
+  margin-bottom: 49px;
+  margin-left: 20px;
+}
+
+.educationInput2 {
+  height: 30px;
+  width: 300px;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #CECECE 1px;
+  border-top: none;
+  outline: none;
+  margin-left: 20px;
+}
+
+.educationInput::placeholder {
+  color: #CECECE;
+}
+
+.educationInput2::placeholder {
+  color: #CECECE;
+}
+
+.educationLabel {
+  font-family: Avenir-Black;
+  color: #9B9B9B;
+  margin-right: 20px;
+  font-size: 14px;
+  margin-bottom: 60px;
+}
+
+.educationLabel2 {
+  font-family: Avenir-Black;
+  color: #9B9B9B;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.educaLableDiv {
+  width: 50%;
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 10px;
+}
+.educaInputDiv {
+  width: 50%;
+  text-align: Right;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nextButton {
+  display: block;
+  width: 160px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9B9B9B;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 22px;
+  font-family: Avenir-Black;
+}
+
+.prevButton {
+  display: block;
+  width: 160px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D43239;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 22px;
+  font-family: Avenir-Black;
+}
+
+.nextButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.canDivHeader {
+  font-family: Avenir-Light;
+  font-size: 28px;
+  color: #9B9B9B;
+  margin-bottom: 70px;
+}
+
+.canDiv {
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 60px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: white;
+  flex-direction: column;
+}
+
+.canDiv1 {
+  width: 100%;
+  padding: 70px 100px 70px 100px;
+  box-shadow: 0px 2px 8px #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+}
+
+.addButton {
+  font-family: Avenir-Heavy;
+  height: 70px;
+  width: 300px;
+  color: white;
+  background-color: #D43239;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.skillsInput {
+  width: 800px !important;
+  height: 64px !important;
+  font-family: Avenir-Light !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  box-shadow: 0px 2px 8px #CECECE !important;
+  border: none !important;
+  font-size: 22px !important;
+}
+
+.addSkillbutt {
+  width: 200px;
+  border-radius: 10px;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  background-color: #D43239 !important;
+  font-size: 22px !important;
+  color: white !important;
+  font-family: Avenir-Heavy !important;
+  box-shadow: 0px 2px 8px #CECECE !important;
+  border: none !important;
+}
+
+.skillsInput::placeholder {
+  color: #CECECE !important;
+}
+
+.workExpFormDiv {
+  display: flex;
+  flex-direction: row;
+  background-color: #FAFAFA;
+  width: 100%;
+  height: 100%;
+}
+
+.experBigDiv{
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.experDiv {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.experImgDiv {
+  height: 100%;
+  width: 100px;
+  margin-right: 25px;
+}
+
 .resume-red-button {
   font-family: Avenir-Light;
   border-width: 0px;
@@ -428,3 +704,25 @@ Ana's stuff
   align-Items: center;
   padding: 50px 0;
 }
+
+.profile-holder {
+  border: 2px solid red;
+  display: flex;
+}
+
+.profile-sidebar {
+  flex: 1;
+  border: 2px solid purple;
+}
+
+.profile-content {
+  flex: 1;
+}
+
+/* Ana */
+#root {
+  height: 100%;
+  border: 4px solid green;
+}
+
+#root > [data-reactroot] { height: 100% }

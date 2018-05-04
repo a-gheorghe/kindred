@@ -1,79 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ExperienceWrapper from './registration/ExperienceWrapper';
-import ProjectWrapper from './registration/ProjectWrapper';
-import SkillWrapper from './registration/SkillWrapper';
-import ProfileSideBar from './ProfileSideBar';
+import { withRouter, Route, Link } from 'react-router-dom';
+import ProgressBarProfile from '../../components/registration/ProgressBarProfile';
+import ExperienceWrapper from '../../components/registration/ExperienceWrapper';
+import ProjectWrapper from '../../components/registration/ProjectWrapper';
+import SkillWrapper from '../../components/registration/SkillWrapper';
+import Container2 from '../../components/Container2';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
-import Footer from './Footer';
 import axios from 'axios';
-// import CandidateRegisterEducation from './registration/CandidateRegisterEducation'
-// import CandidateProfileContainer from '../containers/registration/CandidateProfileContainer'
 
-import OptionsCand from './authentication/OptionsCand';
-
-class CandidateSelfProfile extends React.Component {
+class CandidateProfileContainer extends React.Component {
   constructor(props) {
     super(props);
     this.workCount = 0;
     this.projectCount = 0;
     this.skillCount = 0;
     this.state = {
-      basic: {
-        first_name: 'Ana',
-        last_name: 'Gheorghe',
-        github_url: 'https://github.com/a-gheorghe',
-        linkedin_url: 'https://www.linkedin.com/in/ana-stefania-gheorghe-6b1253158/',
-        resume: '',
-        pictureUrl: 'https://kindred-testing-ana.s3.us-west-1.amazonaws.com/c58dcc1d-52d2-426d-a598-4c8091d61dd0.jpg',
-        location: 'San Francisco',
-      },
-      eduArr: [{ school: 'UBC', major: 'Neuroscience' }],
-      workExpArr: [
-        { company: 'Facebook', title: 'software engineer', description: 'did stuff' },
-        { company: 'Facebook', title: 'software engineer', description: 'other stuff' },
-        { company: 'Facebook', title: 'software engineer', description: 'more stuff' },
-      ],
-      projectArr: [
-        { title: 'Runn+', description: 'Created a phone app to find exercise partners using React Native' },
-        { title: 'Kindred Talent', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin sed nisl libero. Fusce quis nulla urna. In fermentum nec ligula quis viverra. In posuere sed nisl ultrices posuere.' },
-      ],
-      skillArr: [{ skill: 'javascript' }, { skill: 'python' }, { skill: 'react' }],
+      workExpArr: [],
+      projectArr: [],
+      skillArr: [],
       workFormShown: false,
       projectFormShown: false,
-      changed: false,
     };
   }
 
-    onDropPicture = (file) => {
-      const formData = new FormData();
-      formData.append('documents', file[0]);
-      axios.post('/upload', formData)
-        .then((result) => {
-          this.setState({
-            basic: {
-              ...this.state.basic,
-              pictureUrl: result.data.docs.profilePic,
-            },
-            changed: true,
-          });
-        })
-        .catch(err => console.log('upload error', err));
-    };
-  //
   // componentDidMount(){
-  //   console.log('front end here')
   //   axios.get('/candidate/profile')
   //   .then(result => {
-  //     console.log('front end result', result)
-  //     this.workCount = result.workArr.length-1
-  //     this.projectCount = result.projectArr-1
-  //     this.skillCount = result.skillArr-1
   //     this.setState({
-  //       picture: result.basic.picture_url,
-  //       resume: result.basic.resume_url,
-  //       location: result.basic.location,
-  //       eduArr: result.eduArr,
   //       workExpArr: result.workArr,
   //       projectArr: result.projectArr,
   //       skillArr: result.skillArr
@@ -81,25 +36,37 @@ class CandidateSelfProfile extends React.Component {
   //   })
   //   .catch(err => console.log(err))
   // }
-  //
-  //
+
+  saveProfileInfo = () => {
+    const currentState = {
+      workArr: this.state.workExpArr,
+      projectArr: this.state.projectArr,
+      skillArr: this.state.skillArr,
+    };
+
+    const candidateObject = JSON.parse(localStorage.getItem('candidateObject'));
+    const newCandidateObject = Object.assign({}, currentState, candidateObject);
+    localStorage.setItem('candidateObject', JSON.stringify(newCandidateObject));
+  };
+
 
   addWork = (company, title, description, startDate, endDate, current, editable) => {
     this.setState({
       workExpArr: [...this.state.workExpArr, {
         company, title, description, startDate, endDate, current, editable, id: this.workCount++,
       }],
-      changed: true,
     });
   };
 
   addProject = (title, description, startDate, endDate, current, link, editable) => {
-    this.setState({
-      projectArr: [...this.state.projectArr, {
-        title, description, startDate, endDate, current, link, editable, id: this.projectCount++,
-      }],
-      changed: true,
-    });
+    this.setState(
+      {
+        projectArr: [...this.state.projectArr, {
+          title, description, startDate, endDate, current, link, editable, id: this.projectCount++,
+        }],
+      },
+      () => console.log('this.state after adding', this.state),
+    );
   };
 
   addEditedProject = (
@@ -111,13 +78,15 @@ class CandidateSelfProfile extends React.Component {
     link,
     editable,
     id,
-    positionArray
+    positionArray,
   ) => {
     const newProjectArr = this.state.projectArr.slice();
+    console.log('array before', newProjectArr);
     newProjectArr.splice(positionArray, 1, {
       title, description, startDate, endDate, current, link, editable, id,
     });
-    this.setState({ projectArr: newProjectArr, changed: true });
+    console.log('array after: ', newProjectArr);
+    this.setState({ projectArr: newProjectArr });
   };
 
   addEditedWork = (
@@ -135,32 +104,29 @@ class CandidateSelfProfile extends React.Component {
     newWorkArr.splice(positionArray, 1, {
       company, title, description, startDate, endDate, current, editable, id,
     });
-    this.setState({ workExpArr: newWorkArr, changed: true });
+    this.setState({ workExpArr: newWorkArr });
   };
 
   addSkill = (skill) => {
-    this.setState({
-      skillArr: [...this.state.skillArr, { skill, id: this.skillCount++ }],
-      changed: true,
-    });
+    this.setState({ skillArr: [...this.state.skillArr, { skill, id: this.skillCount++ }] });
   };
 
   removeWork = (id) => {
     let newWorkExpArr = this.state.workExpArr.slice();
     newWorkExpArr = newWorkExpArr.filter(obj => obj.id !== id);
-    this.setState({ workExpArr: newWorkExpArr, changed: true });
+    this.setState({ workExpArr: newWorkExpArr });
   };
 
   removeProject = (id) => {
     let newProjectArr = this.state.projectArr.slice();
     newProjectArr = newProjectArr.filter(obj => obj.id !== id);
-    this.setState({ projectArr: newProjectArr, changed: true });
+    this.setState({ projectArr: newProjectArr });
   };
 
   removeSkill = (id) => {
     let newSkillArr = this.state.skillArr.slice();
     newSkillArr = newSkillArr.filter(obj => obj.id !== id);
-    this.setState({ skillArr: newSkillArr, changed: true });
+    this.setState({ skillArr: newSkillArr });
   };
 
   toggleProjectForm = () => {
@@ -197,66 +163,103 @@ class CandidateSelfProfile extends React.Component {
 
 
   render() {
-    console.log('profile this.props', this.props);
-    console.log('profile this.state', this.state);
+    const candidateObject = JSON.parse(localStorage.getItem('candidateObject'));
+
+    console.log('candidate object on register profile container page is: ', candidateObject);
+    console.log('PROFILE CONTAINER', this.props);
+
     return (
-      <div>
-        <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
-        <div className="profile-holder">
-          <div className="profile-sidebar">
-            <div className="profile-picture">
-              <ProfileSideBar
-                onDropPicture={this.onDropPicture}
-                basic={this.state.basic}
-                eduArr={this.state.eduArr}
-              />
+      <div className="maindiv2" style={{ backgroundColor: '#FAFAFA' }}>
+        <Header />
+        <Container2>
+          <img
+            src="/progressBar2.svg"
+            style={{
+              width: '566px',
+              height: '75px',
+              marginTop: '60px',
+              marginBottom: '60px',
+            }}
+          />
+          <div className="thanksFor">
+            <div className="thanksline1">
+              So far so good. Let’s move on and talk about your experience.
+            </div>
+            <div className="thanksline2">
+              We use this information to help match you with jobs matching your ares of expertise.
             </div>
           </div>
-          <div className="profile-content">
-            <div id="work">
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/Briefcase.svg" alt="" />
+            <div className="canDiv1">
+              <div className="canDivHeader">Work Experience</div>
               <ExperienceWrapper
                 addEditedWork={this.addEditedWork}
                 addWorkCloseForm={this.addWorkCloseForm}
                 workExpArr={this.state.workExpArr}
                 addWork={this.addWork}
                 removeWork={this.removeWork}
+                onChange={this.onWorkChange}
                 workFormShown={this.state.workFormShown}
                 toggleWorkForm={this.toggleWorkForm}
                 makeWorkEditable={this.makeWorkEditable}
               />
+              <br />
             </div>
-            <div id="projects">
+          </div>
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/Binder.svg" alt="" />
+            <div className="canDiv1">
+              <div className="canDivHeader">Project Experience</div>
               <ProjectWrapper
                 addEditedProject={this.addEditedProject}
                 addProjectCloseForm={this.addProjectCloseForm}
                 projectArr={this.state.projectArr}
                 addProject={this.addProject}
                 removeProject={this.removeProject}
+                onChange={this.onProjectChange}
                 projectFormShown={this.state.projectFormShown}
                 toggleProjectForm={this.toggleProjectForm}
                 makeProjectEditable={this.makeProjectEditable}
               />
+              <br />
             </div>
-            <div id="skills">
+          </div>
+          <div className="educationDiv1" >
+            <img className="educationImg" src="/CodeDocument.svg" alt="" />
+            <div className="canDiv1">
+              <div className="canDivHeader">Skills</div>
               <SkillWrapper
                 skillArr={this.state.skillArr}
                 addSkill={this.addSkill}
                 removeSkill={this.removeSkill}
                 count={this.skillCount}
               />
+              <br />
             </div>
           </div>
-        </div>
+          <div style={{ width: '100%', marginTop: '60px', marginBottom: '60px' }}>
+            <a
+              style={{ float: 'right' }}
+              className="nextButton"
+              onClick={this.saveProfileInfo}
+              href="/app/register/cand/additional"
+            >
+              Next
+            </a>
+            <a
+              style={{ float: 'left' }}
+              className="prevButton"
+              href="/app/register/cand/education"
+            >
+              Previous
+            </a>
+          </div>
+        </Container2>
         <Footer />
       </div>
     );
   }
 }
 
-
-CandidateSelfProfile.propTypes = {
-  loggedInCand: PropTypes.bool.isRequired,
-  logoutCand: PropTypes.func.isRequired,
-};
-
-export default CandidateSelfProfile;
+export default withRouter(CandidateProfileContainer);

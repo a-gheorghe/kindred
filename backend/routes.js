@@ -35,30 +35,31 @@ const {
   updateEducation,
   updateProject,
   updateReferrer,
+  updateWorkExperience,
 } = require('./resources');
 
 const {
+  Candidate,
   Education,
-  Project,
   Skill,
   WorkExperience,
 } = require('../database/models');
-var elasticsearch = require('elasticsearch');
-var client = new elasticsearch.Client({
-  host: "https://eiftsb3217:nwp7p67ue0@kindredtalent-6472919482.us-west-2.bonsaisearch.net",
+const elasticsearch = require('elasticsearch');
+
+const client = new elasticsearch.Client({
+  host: 'https://eiftsb3217:nwp7p67ue0@kindredtalent-6472919482.us-west-2.bonsaisearch.net',
   log: 'trace'
 });
 
 client.indices.create({
   index: 'candidate-profile'
-},function(err,resp,status) {
-  if(err) {
+}, (err, resp, status) => {
+  if (err) {
     console.log('INDEX ALREADY EXISTS IN ES IGNORE THIS ^');
+  } else {
+    console.log('index created', resp);
   }
-  else {
-    console.log("index created", resp);
-  }
-})
+});
 // client.indices.delete({
 //   index: 'candidate-profile'
 // },function(err,resp,status) {
@@ -70,6 +71,7 @@ client.indices.create({
 //   }
 // })
 
+
 // returns all of the info about a candidate's profile that is displayed to users
 router.get('/candidate/profile', (req, res) => {
   const promiseArr = [
@@ -77,7 +79,7 @@ router.get('/candidate/profile', (req, res) => {
     getAllEducation(req.user.id),
     getAllProjects(req.user.id),
     getAllSkills(req.user.id),
-    getAllWorkExperiences(req.user.id)
+    getAllWorkExperiences(req.user.id),
   ];
   Promise.all(promiseArr)
     .then(([basic, education, projects, skills, workExperiences]) => {
@@ -126,7 +128,7 @@ router.put('/candidate/profile/work-experiences/:workId', (req, res) => {
     .then(workObj => updateWorkExperience(workObj))
     .then(updated => res.json(updated))
     .catch(err => console.error(err));
-})
+});
 
 // adds a new candidate into the database
 // Route is tested
@@ -135,28 +137,28 @@ router.post('/search', (req, res) => {
   client.search({
     index: 'candidate-profile',
     // CHANGE approval_status TO TRUE BELOW ONCE OUT OFF ALPHA
-    q: "skill: " + req.body.search,
-  }, function(error, response){
+    q: `skill: ${req.body.search}`,
+  }, (error, response) => {
     // UPDATE THIS ONCE FRONT-END PAGE IS BUILT
-    res.send(response)
-  })
-})
+    res.send(response);
+  });
+});
 
 router.delete('/delete/:id', (req, res) => {
   client.delete({
     index: 'profile',
     type: 'document',
     id: req.params.id,
-  }, function(error, response){
-    res.send(response)
+  }, (error, response) => {
+    res.send(response);
   });
-})
+});
 
 router.post('/register-candidate', (req, res) => {
-  let skillTest = req.body.skillArr.map((skill) => (skill.skill))
+  const skillTest = req.body.skillArr.map(skill => (skill.skill));
   const promiseArr = [];
   createCandidate(req.body.basic)
-    .then(cand => {
+    .then((cand) => {
       client.create({
         index: 'candidate-profile',
         type: 'document',
@@ -179,13 +181,13 @@ router.post('/register-candidate', (req, res) => {
           skill: skillTest,
           workExperience: req.body.workArr
         }
-      }, function(error, response){
-        if(error){
+      }, (error, response) => {
+        if (error) {
           console.log('something bad happened', error);
-        }else{
+        } else {
           console.log(response);
-        };
-      })
+        }
+      });
 
       for (let i = 0; i < req.body.eduArr.length; i++) {
         promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));

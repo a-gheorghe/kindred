@@ -60,7 +60,7 @@ class ChatWindow extends React.Component {
       </div>
     );
   }
-};
+}
 
 ChatWindow.propTypes = {
   candId: PropTypes.string,
