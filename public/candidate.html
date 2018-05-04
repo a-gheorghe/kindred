@@ -11,8 +11,30 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
   <script src="semantic/out/semantic.min.js"></script>
+  <script>
+    /* Open sidenav */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    }
+    /* Hide sidenav */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
 </head>
   <body>
+    <div id="mySidenav" class="sidenav">
+      <div class="hamburger-logo">
+        KindredTalent
+      </div>
+      <div class="hamburger-open" style="flex-direction: column; align-items: center; text-align: center">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/candidate">I'm Looking</a>
+        <a href="/">I'm Referring</a>
+        <a href="/app/register">Sign Up</a>
+        <a href="/app/login">Login</a>
+      </div>
+    </div>
     <div class="topnav">
       <div class="logo">
         KindredTalent
@@ -23,9 +45,10 @@
         <a href="/app/register">Sign Up</a>
         <a href="/app/login">Login</a>
       </div>
+      <img class="hamburger" src="./hamburger.png" onclick="openNav()">
     </div>
     <div class="sec">
-      <div class="subsec">
+      <div class="container">
         <div class="canPromo">
           <p class="bigOffer" style="margin: 0px 0px 20px 0px !important;">
             Get recognized by industry experts.</br>
@@ -36,16 +59,16 @@
             candidates get interviews by using direct relationships with employers. Connections matter.
           </div>
           <button style="margin-bottom: 60px;" id="scootButton" type="submit" name="button">Sign up</button>
-          <img src="./Logos.png" alt="">
+          <div class="logos"><img src="./Logos.png" alt=""></div>
         </div>
       </div>
     </div>
     <div class="sec grey-sec">
-      <div class="subsec">
+      <div class="container">
         <p class="howItWorks">How it works</p>
-        <div class="howItWorksBoxes">
-          <div class="searchDiv1">
-            <img class="searchImg" src="./guy.png" alt="">
+        <div class="row">
+          <div class="col-sm">
+            <div class="searchImg"><img src="./guy.png" alt=""></div>
             <div class="searchDiv2" style="background-color: white;">
               <p class="howItWorksText">Create a Profile</p>
               <p class="howItWorksText2">
@@ -55,8 +78,8 @@
 
             </div>
           </div>
-          <div class="searchDiv1">
-            <img class="searchImg" src="./mail2.png" alt="">
+          <div class="col-sm">
+            <div class="searchImg"><img src="./mail2.png" alt=""></div>
             <div class="searchDiv2" style="background-color: white;">
               <p class="howItWorksText">Get Noticed</p>
               <p class="howItWorksText2">
@@ -66,8 +89,8 @@
 
             </div>
           </div>
-          <div class="searchDiv1">
-            <img class="searchImg" src="./computer.png" alt="">
+          <div class="col-sm">
+            <div class="searchImg"><img src="./computer.png" alt=""></div>
             <div class="searchDiv2" style="background-color: white;">
               <p class="howItWorksText">Work</p>
               <p class="howItWorksText2">
@@ -80,77 +103,114 @@
       </div>
     </div>
     <div class="sec">
-      <div class="subsec">
+      <div class="container">
 
         <div class="faq">FAQs</div>
 
-        <div class="faq1">
-          <div class="">
-            <div class="pricing">How does pricing work?</div>
-            <div class="infoFAQ">
-              Applying for Kindred is free to candidates.</br>
-              If you are placed into a company via our</br>
-              platform, you owe a 10% placement fee.</br>
-              This fee is based on your starting salary.
+        <div class="row">
+          <div class="col-sm">
+            <div class="card">
+              <div class="pricing" data-toggle="collapse" data-target="#collapsePriving" aria-expanded="true" aria-controls="collapseOne">How does pricing work?</div>
+              <div id="collapsePriving" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    Applying for Kindred is free to candidates.</br>
+                    If you are placed into a company via our</br>
+                    platform, you owe a 10% placement fee.</br>
+                    This fee is based on your starting salary.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="">
-            <div class="charge">Why do you charge candidates</br>and not companies?</div>
-            <div class="infoFAQ">
-              Junior candidates struggle the most in</br>
-              landing job #1. Companies hire junior when</br>
-              they can’t find senior candidates. Kindred is</br>
-              creating an system that incentivizes</br>
-              recruiters and employees to take a close</br>
-              look at candidates when it’s needed the</br>
-              most.
+          <div class="col-sm">
+            <div class="card">
+              <div class="charge" data-toggle="collapse" data-target="#collapseCharge" aria-expanded="true" aria-controls="collapseOne">Why do you charge candidates</br>and not companies?</div>
+              <div id="collapseCharge" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    Junior candidates struggle the most in</br>
+                    landing job #1. Companies hire junior when</br>
+                    they can’t find senior candidates. Kindred is</br>
+                    creating an system that incentivizes</br>
+                    recruiters and employees to take a close</br>
+                    look at candidates when it’s needed the</br>
+                    most.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="">
-            <div class="chances">What are my chances?</div>
-            <div class="infoFAQ">
-              Once you are on the Kindred platform you</br>
-              are not guaranteed a job. However, if we</br>
-              take you on, we’re fully incentivized to make</br>
-              your job search as easy as possible.
+          <div class="col-sm">
+            <div class="card">
+              <div class="chances" data-toggle="collapse" data-target="#collapseChances" aria-expanded="true" aria-controls="collapseOne">What are my chances?</div>
+              <div id="collapseChances" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    Once you are on the Kindred platform you</br>
+                    are not guaranteed a job. However, if we</br>
+                    take you on, we’re fully incentivized to make</br>
+                    your job search as easy as possible.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="faq2">
-          <div class="">
-            <div class="placement">How does Kindred</br>help with placement</div>
-            <div class="infoFAQ">
-              We have both an internal placement</br>
-              as well as a network of employeers who are</br>
-              actively looking to match candidates with</br>
-              their companies!
+        
+        <div class="row">
+          <div class="col-sm">
+            <div class="card">
+              <div class="placement" data-toggle="collapse" data-target="#collapsePlacement" aria-expanded="true" aria-controls="collapseOne">How does Kindred</br>help with placement</div>
+              <div id="collapsePlacement" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    We have both an internal placement</br>
+                    as well as a network of employeers who are</br>
+                    actively looking to match candidates with</br>
+                    their companies!
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="">
-            <div class="network">What companies are in</br>the KindredNetwork?</div>
-            <div class="infoFAQ">
-              We work with companies ranging from early</br>
-              stage startups to tech giants like Google</br>
-              and Facebook. We match candidates based</br>
-              on our belief in their likelihood in getting an</br>
-              interview, with a Kindred push.
+          <div class="col-sm">
+            <div class="card">
+              <div class="network" data-toggle="collapse" data-target="#collapseNetwork" aria-expanded="true" aria-controls="collapseOne">What companies are in</br>the KindredNetwork?</div>
+              <div id="collapseNetwork" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    We work with companies ranging from early</br>
+                    stage startups to tech giants like Google</br>
+                    and Facebook. We match candidates based</br>
+                    on our belief in their likelihood in getting an</br>
+                    interview, with a Kindred push.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="">
-            <div class="qualified">Do I need to be qualified?</div>
-            <div class="infoFAQ">
-              Due to the size of our team, we can only</br>
-              work with a certain number of candidates at</br>
-              a time. We will notify you within 72 hours of</br>
-              signing up our team is actively working on</br>
-              placing you.
+          <div class="col-sm">
+            <div class="card">
+              <div class="qualified" data-toggle="collapse" data-target="#collapseQualified" aria-expanded="true" aria-controls="collapseOne">Do I need to be qualified?</div>
+              <div id="collapseQualified" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="infoFAQ">
+                    Due to the size of our team, we can only</br>
+                    work with a certain number of candidates at</br>
+                    a time. We will notify you within 72 hours of</br>
+                    signing up our team is actively working on</br>
+                    placing you.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="sec grey-sec">
-      <div class="subsec">
+      <div class="container">
         <div class="scootDiv">
           <div class="">
             <div style="font-family: Avenir-Medium; font-size: 42px; color: #6B6B6B; margin-bottom: 30px;">Get hired today.</div>
@@ -161,12 +221,12 @@
             <!-- Change below to an <a> with href to /app/register -->
             <button id="scootButton" type="button" name="button">Sign up</button>
           </div>
-          <img style="height: 300px; width: 318px"src="./Briefcase.png" alt="">
+          <div class="briefcase"><img style="height: 300px; width: 318px" src="./Briefcase.png" alt=""></div>
         </div>
       </div>
     </div>
     <div class="sec">
-      <div class="subsec">
+      <div class="container" id="bottom">
         <div class="mainDiv">
           <div class="">
             <div style="font-size: 36px; color: #6C6666; margin-bottom: 20px;  font-family: BodoniSvtyTwoITCTT-Bold;">KindredTalent</div>
