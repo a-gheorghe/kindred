@@ -55,7 +55,7 @@ const Candidate = sequelize.define('candidates', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  picture: {
+  picture_url: {
     type: Sequelize.TEXT,
   },
   location: {
