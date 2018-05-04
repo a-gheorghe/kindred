@@ -55,7 +55,7 @@ passport.deserializeUser((userObj, done) => {
     Candidate.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
         return done(new Error('could not find user', null));
@@ -65,7 +65,7 @@ passport.deserializeUser((userObj, done) => {
     Admin.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
         return done(new Error('could not find user', null));
@@ -75,7 +75,7 @@ passport.deserializeUser((userObj, done) => {
     Referrer.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
         return done(new Error('could not find user', null));

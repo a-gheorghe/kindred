@@ -110,16 +110,16 @@ class AuthExample extends React.Component {
     };
 
     this.checkAuthRef = () => {
-      console.log('Global this.checkAuthRef');
+      // console.log('Global this.checkAuthRef');
       console.log('Attempting authentication...');
-      return axios.get('/referrer/checkAuth')
+      return axios.get('/checkAuth')
         .then((resp) => {
-          console.log('resp from checkAuthRef: ', resp);
+          console.log('resp from checkAuthRef: ', resp.data);
           if (resp.data.user) {
             this.setState({ loggedInRef: true });
             return resp.data.user;
           }
-          throw new Error('Not logged in...');
+          return null;
         })
         .catch((err) => {
           this.setState({ loggedInRef: false });
@@ -148,6 +148,10 @@ class AuthExample extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.checkAuthRef().then(resp => console.log(resp)).catch(err => console.log(err));
+    // check to see if user is logged in on server as ref...
+  }
 
   render() {
     return (

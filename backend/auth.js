@@ -32,7 +32,6 @@ module.exports = function (passport) {
   }));
 
   router.get('/referrer/success', (req, res) => {
-    req.user.isReferrer = true;
     res.status(200).json({ success: true });
   });
 
@@ -41,11 +40,7 @@ module.exports = function (passport) {
   });
 
   // Check to see if a user is logged in as a referrer or candidate
-  router.get('/candidate/checkAuth', (req, res) => {
-    res.status(200).json({ user: req.user });
-  });
-
-  router.get('/referrer/checkAuth', (req, res) => {
+  router.get('/checkAuth', (req, res) => {
     res.status(200).json({ user: req.user });
   });
 
