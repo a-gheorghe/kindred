@@ -73,21 +73,20 @@ html, body{
 }
 
 .loginDiv {
-  width: 420px;
-  height: 517px;
   box-shadow: 0px 2px 4px #9D9D9D;
   border-radius: 5px;
   background-color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 45px 60px 25px 60px;
 }
 
 .loginHeader {
   color: #D43239;
   font-size: 26px;
   font-family: Avenir-Light;
-  margin: 45px 0px 45px 0px;
+  margin-bottom: 45px;
 }
 
 .loginInput {
@@ -201,21 +200,22 @@ Ana's stuff
 }
 
 .regDiv {
-  width: 420px;
-  height: 544px;
+  /* width: 420px;
+  height: 544px; */
   box-shadow: 0px 2px 4px #9D9D9D;
   border-radius: 5px;
   background-color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 45px 60px 30px 60px;
 }
 
 .regHeader {
   color: #D43239;
   font-size: 26px;
   font-family: Avenir-Light;
-  margin: 45px 0px 45px 0px;
+  margin-bottom: 45px;
 }
 
 .ui.selection.active.dropdown {
