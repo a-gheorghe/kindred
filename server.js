@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local');
+
 const app = express();
 const server = require('http').Server(app);
 const bcrypt = require('bcrypt');
@@ -97,10 +98,8 @@ passport.use('candidate-local', new LocalStrategy({
       console.log('HELLO', candidate);
       if (candidate) {
         bcrypt.compare(password, candidate.password, (err, res) => {
-          if (res) {
-            done(null, candidate);
-          }
-          done(null, false);
+          if (res) done(null, candidate);
+          else done(null, false);
         });
       } else {
         done(null, false);
@@ -259,18 +258,15 @@ server.listen(PORT, (error) => {
   }
 });
 
-const io = require('socket.io')(server);
-console.log('inside server', PORT);
 // Socket handler
-io.on('connection', socket => {
-  socket.on('username', username => {
-    if (!username || !username.trim()) {
-      return socket.emit('errorMessage', 'No username!');
-    }
+io.on('connection', (socket) => {
+  socket.on('username', (username) => {
+    if (!username || !username.trim()) return socket.emit('errorMessage', 'No username!');
     socket.username = String(username);
+    return socket.username;
   });
 
-  socket.on('room', requestedRoom => {
+  socket.on('room', (requestedRoom) => {
     if (!socket.username) {
       return socket.emit('errorMessage', 'Username not set!');
     }
@@ -280,11 +276,11 @@ io.on('connection', socket => {
     if (socket.room) socket.leave(socket.room);
     socket.room = requestedRoom;
 
-    let timeStamp = new Date();
+    const timeStamp = new Date();
 
-    socket.join(requestedRoom, () => {
+    return socket.join(requestedRoom, () => {
       socket.to(requestedRoom).emit('message', {
-        timeStamp: timeStamp,
+        timeStamp,
         user: 'KindredTalent',
         content: `${socket.username} has joined`,
       });
@@ -293,11 +289,12 @@ io.on('connection', socket => {
 
   socket.on('edit', editData => socket.to(editData.roomName).emit('edit', editData));
 
-  socket.on('message', message => {
+  socket.on('message', (message) => {
     if (!socket.room) {
       return socket.emit('errorMessage', 'No rooms joined!');
     }
-    socket.to(socket.room).emit('message', {
+
+    return socket.to(socket.room).emit('message', {
       timeStamp: message.timeStamp,
       user: socket.username,
       content: message.content
