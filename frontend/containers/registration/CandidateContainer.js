@@ -10,6 +10,7 @@ import Pending from '../../components/Pending';
 
 class CandidateContainer extends React.Component {
   render() {
+    console.log('candidate container props', this.props);
     return (
       <div>
         {/* Renders messages for candidiate */}

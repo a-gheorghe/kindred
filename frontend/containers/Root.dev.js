@@ -20,6 +20,7 @@ class AuthExample extends React.Component {
     this.state = {
       loggedInCand: false,
       loggedInRef: false,
+      loggedInTemp: false,
       // targetPath: '/',
     };
 
@@ -78,12 +79,42 @@ class AuthExample extends React.Component {
         });
     };
 
-    this.registerCand = () => {
-      fakeAuthCand.register(() => {
-        this.setState(() => ({
-          loggedInCand: fakeAuthCand.isAuthenticated,
-        }));
-      });
+    this.loginCand = (email, password) => {
+      console.log('calling loginCand');
+      return axios.post('/candidate/login', { email, password })
+        .then((resp) => {
+          console.log('response from server', resp.data);
+          if (resp.data.success) {
+            this.setState({ loggedInCand: true });
+          }
+        });
+    };
+
+    this.tempLogin = () => {
+      console.log('calling tempLogin');
+      this.setState(() => ({
+        loggedInTemp: true,
+      }));
+    };
+
+    this.registerCand = (candidateObject) => {
+      console.log('in here cand object is ', candidateObject);
+      return axios.post('/register-candidate', candidateObject)
+        .then((res) => {
+          console.log('response after registering', res);
+
+          if (res.status === 200) {
+            console.log('good status');
+            return this.loginCand(candidateObject.basic.email, candidateObject.basic.password);
+          }
+          console.log('bad status');
+          return false;
+        })
+        .catch(err => console.log('error with registering'));
+      // this.setState(() => ({
+      //   loggedInCand: true,
+      // }
+      // ));
     };
 
     this.registerRef = (refObj) => {
@@ -154,6 +185,7 @@ class AuthExample extends React.Component {
   }
 
   render() {
+    console.log('root dev this.state', this.state);
     return (
       <BrowserRouter basename="/app">
         <div>
@@ -164,6 +196,8 @@ class AuthExample extends React.Component {
               (<RegisterContainer
                 loggedInCand={this.state.loggedInCand}
                 loggedInRef={this.state.loggedInRef}
+                loggedInTemp={this.state.loggedInTemp}
+                tempLogin={this.tempLogin}
                 registerRef={this.registerRef}
                 registerCand={this.registerCand}
                 logoutCand={this.logoutCand}

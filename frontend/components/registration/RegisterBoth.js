@@ -46,8 +46,10 @@ class RegisterBoth extends React.Component {
       },
     }));
 
-    this.props.registerCand();
-  };
+    this.props.history.push('/register/cand/education');
+
+    // this.props.tempLogin();
+  }
 
   clickRegisterRef = () => {
     if (this.state.password === this.state.repeatpassword) {
@@ -73,7 +75,7 @@ class RegisterBoth extends React.Component {
     } else {
       alert('Passwords must match! Try again.');
     }
-  }
+  };
 
   render() {
     const candidateObject = JSON.parse(localStorage.getItem('candidateObject'));
@@ -81,10 +83,6 @@ class RegisterBoth extends React.Component {
       { key: 'Referrer', text: 'Referrer', value: 'referrer' },
       { key: 'Candidate', text: 'Candidate', value: 'candidate' },
     ];
-
-    if (this.props.loggedInCand === true) {
-      return <Redirect to="/register/cand/education" />;
-    }
 
     if (this.props.loggedInRef) {
       console.log('referrer is logged in');
