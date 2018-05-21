@@ -257,7 +257,6 @@ const io = require('socket.io')(server);
 console.log('inside server', PORT);
 // Socket handler
 io.on('connection', socket => {
-  console.log('connected');
   socket.on('username', username => {
     if (!username || !username.trim()) {
       return socket.emit('errorMessage', 'No username!');
@@ -272,9 +271,7 @@ io.on('connection', socket => {
     if (!requestedRoom) {
       return socket.emit('errorMessage', 'No room!');
     }
-    if (socket.room) {
-      socket.leave(socket.room);
-    }
+    if (socket.room) socket.leave(socket.room);
     socket.room = requestedRoom;
 
     let timeStamp = new Date();
@@ -282,15 +279,13 @@ io.on('connection', socket => {
     socket.join(requestedRoom, () => {
       socket.to(requestedRoom).emit('message', {
         timeStamp: timeStamp,
-        user: 'MadFlatter',
-        content: `${socket.username} has joined`
+        user: 'KindredTalent',
+        content: `${socket.username} has joined`,
       });
     });
   });
 
-  socket.on('edit', editData=>{
-    socket.to(editData.roomName).emit('edit', editData);
-  });
+  socket.on('edit', editData => socket.to(editData.roomName).emit('edit', editData));
 
   socket.on('message', message => {
     if (!socket.room) {
@@ -301,6 +296,5 @@ io.on('connection', socket => {
       user: socket.username,
       content: message.content
     });
-  })
-
+  });
 });
