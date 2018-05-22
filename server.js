@@ -5,6 +5,7 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local');
 
 const app = express();
+const server = require('http').Server(app);
 const bcrypt = require('bcrypt');
 const path = require('path');
 const multer = require('multer');
@@ -19,6 +20,7 @@ const {
   Referrer,
   Admin,
 } = require('./database/models');
+const io = require('socket.io')(server);
 
 const PORT = process.env.PORT || 3000;
 
@@ -53,27 +55,30 @@ passport.deserializeUser((userObj, done) => {
     Candidate.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
+        return done(new Error('could not find user', null));
       })
       .catch(err => done(err, null));
   } else if (userObj.userType === 'admin') {
     Admin.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
+        return done(new Error('could not find user', null));
       })
       .catch(err => done(err, null));
   } else {
     Referrer.findById(userObj.id)
       .then((user) => {
         if (user) {
-          user.userType = userObj.userType;
+          user.dataValues.userType = userObj.userType;
           return done(null, user);
         }
+        return done(new Error('could not find user', null));
       })
       .catch(err => done(err, null));
   }
@@ -93,22 +98,16 @@ passport.use('candidate-local', new LocalStrategy({
       console.log('HELLO', candidate);
       if (candidate) {
         bcrypt.compare(password, candidate.password, (err, res) => {
-          if (res) {
-            return done(null, candidate);
-          }
-          return done(null, false);
+          if (res) done(null, candidate);
+          else done(null, false);
         });
       } else {
-        return done(null, false);
+        done(null, false);
       }
     })
-    .catch((err) => {
-      if (err) {
-        return done(err, false, {
-          message: 'This email or password is incorrect.',
-        });
-      }
-    });
+    .catch(err => done(err, false, {
+      message: 'This email or password is incorrect.',
+    }));
 }));
 
 passport.use('referrer-local', new LocalStrategy({
@@ -123,18 +122,15 @@ passport.use('referrer-local', new LocalStrategy({
     .then((referrer) => {
       if (referrer) {
         bcrypt.compare(password, referrer.password, (err, res) =>
-          ((res) ? done(null, referrer) : done(null, false))
-        );
+          ((res) ? done(null, referrer) : done(null, false)));
       } else {
         console.log('User not found.');
-        return done(null, false);
+        done(null, false);
       }
     })
     .catch((err) => {
-      if (err) {
-        console.log('Password or email address is incorrect');
-        return done(err, false, { message: 'This email or password is incorrect.' });
-      }
+      console.log('Password or email address is incorrect');
+      return done(err, false, { message: 'This email or password is incorrect.' });
     });
 }));
 
@@ -147,21 +143,17 @@ passport.use('admin-local', new LocalStrategy({
       email,
     }
   })
-    .then((admin) => {
-      if (admin) {
-        bcrypt.compare(password, admin.password, (err, res) =>
-          ((res) ? done(null, admin) : done(null, false)));
+    .then((adminUser) => {
+      if (adminUser) {
+        bcrypt.compare(password, adminUser.password, (err, res) =>
+          ((res) ? done(null, adminUser) : done(null, false)));
       } else {
-        return done(null, false);
+        done(null, false);
       }
     })
-    .catch((err) => {
-      if (err) {
-        return done(err, false, {
-          message: 'This email or password is incorrect.',
-        });
-      }
-    });
+    .catch(err => done(err, false, {
+      message: 'This email or password is incorrect.',
+    }));
 }));
 
 // routes
@@ -190,7 +182,8 @@ const upload = multer({
 // app.post('/projectphotos', upload.array('project-photos'), (req, res) => {
 //   console.log('successfully uploaded photos to S3', req.files)
 //
-//   // here now we can take the urls and save them to the postgreSQL database for the particular user
+//   // here now we can take the urls and save them to the postgreSQL database
+//   // for the particular user
 //   req.files.forEach((file) => console.log('file location is: ', file.location))
 //   // req.files.location
 //   res.send();
@@ -246,10 +239,65 @@ app.use((req, res, next) => {
 app.use('/', admin);
 app.use('/', routes);
 
-app.listen(PORT, (error) => {
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('login', (message) => {
+
+  });
+  socket.on('message', (message) => {
+    console.log('Got message', message);
+  });
+});
+
+server.listen(PORT, (error) => {
   if (error) {
     console.error(error);
   } else {
-    console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
+    console.info(`==> 🌎 Listening on port ${PORT}. ` +
+      `Visit http://localhost:${PORT}/ in your browser.`);
   }
+});
+
+// Socket handler
+io.on('connection', (socket) => {
+  socket.on('username', (username) => {
+    if (!username || !username.trim()) return socket.emit('errorMessage', 'No username!');
+    socket.username = String(username);
+    return socket.username;
+  });
+
+  socket.on('room', (requestedRoom) => {
+    if (!socket.username) {
+      return socket.emit('errorMessage', 'Username not set!');
+    }
+    if (!requestedRoom) {
+      return socket.emit('errorMessage', 'No room!');
+    }
+    if (socket.room) socket.leave(socket.room);
+    socket.room = requestedRoom;
+
+    const timeStamp = new Date();
+
+    return socket.join(requestedRoom, () => {
+      socket.to(requestedRoom).emit('message', {
+        timeStamp,
+        user: 'KindredTalent',
+        content: `${socket.username} has joined`,
+      });
+    });
+  });
+
+  socket.on('edit', editData => socket.to(editData.roomName).emit('edit', editData));
+
+  socket.on('message', (message) => {
+    if (!socket.room) {
+      return socket.emit('errorMessage', 'No rooms joined!');
+    }
+
+    return socket.to(socket.room).emit('message', {
+      timeStamp: message.timeStamp,
+      user: socket.username,
+      content: message.content
+    });
+  });
 });

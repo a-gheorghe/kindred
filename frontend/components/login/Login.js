@@ -65,7 +65,7 @@ class Login extends React.Component {
         <Redirect to="/ref/messages" />
       );
     }
-    console.log('i am rendering login comp');
+    console.log('i am rendering login comp', this.props);
     return (
       <div className="maindiv">
         <Header />

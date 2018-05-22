@@ -1,4 +1,6 @@
-// On Windows we needa DBPASSWORD
+
+
+// // On Windows we needa DBPASSWORD
 // if (/^win/.test(process.platform) && ! process.env.DBPASSWORD) {
 //   console.log('You need to set DBPASSWORD in your env.sh file');
 //   process.exit(1);
@@ -53,7 +55,7 @@ const Candidate = sequelize.define('candidates', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  picture: {
+  picture_url: {
     type: Sequelize.TEXT,
   },
   location: {

@@ -15,35 +15,23 @@ import OptionsCand from './authentication/OptionsCand';
 class CandidateSelfProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.workCount = 0;
-    this.projectCount = 0;
-    this.skillCount = 0;
     this.state = {
       basic: {
-        first_name: 'Ana',
-        last_name: 'Gheorghe',
-        github_url: 'https://github.com/a-gheorghe',
-        linkedin_url: 'https://www.linkedin.com/in/ana-stefania-gheorghe-6b1253158/',
+        first_name: '',
+        last_name: '',
+        picture_url: '',
         resume: '',
-        pictureUrl: 'https://kindred-testing-ana.s3.us-west-1.amazonaws.com/c58dcc1d-52d2-426d-a598-4c8091d61dd0.jpg',
-        location: 'San Francisco',
+        location: '',
+        linkedin_url: '',
+        github_url: ''
       },
-      eduArr: [{ school: 'UBC', major: 'Neuroscience' }],
-      workExpArr: [
-        { company: 'Facebook', title: 'software engineer', description: 'did stuff' },
-        { company: 'Facebook', title: 'software engineer', description: 'other stuff' },
-        { company: 'Facebook', title: 'software engineer', description: 'more stuff' },
-      ],
-      projectArr: [
-        { title: 'Runn+', description: 'Created a phone app to find exercise partners using React Native' },
-        { title: 'Kindred Talent', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin sed nisl libero. Fusce quis nulla urna. In fermentum nec ligula quis viverra. In posuere sed nisl ultrices posuere.' },
-      ],
-      skillArr: [{ skill: 'javascript' }, { skill: 'python' }, { skill: 'react' }],
-      workFormShown: false,
-      projectFormShown: false,
-      changed: false,
+      eduArr: [],
+      workExpArr: [],
+      projectArr: [],
+      skillArr: []
     };
   }
+
 
     onDropPicture = (file) => {
       const formData = new FormData();
@@ -51,36 +39,40 @@ class CandidateSelfProfile extends React.Component {
       axios.post('/upload', formData)
         .then((result) => {
           this.setState({
-            basic: {
-              ...this.state.basic,
-              pictureUrl: result.data.docs.profilePic,
-            },
-            changed: true,
+            basic: { ...this.state.basic,
+              picture_url: result.data.docs.profilePic },
+            changed: true
           });
         })
         .catch(err => console.log('upload error', err));
-    };
+    }
   //
-  // componentDidMount(){
-  //   console.log('front end here')
-  //   axios.get('/candidate/profile')
-  //   .then(result => {
-  //     console.log('front end result', result)
-  //     this.workCount = result.workArr.length-1
-  //     this.projectCount = result.projectArr-1
-  //     this.skillCount = result.skillArr-1
-  //     this.setState({
-  //       picture: result.basic.picture_url,
-  //       resume: result.basic.resume_url,
-  //       location: result.basic.location,
-  //       eduArr: result.eduArr,
-  //       workExpArr: result.workArr,
-  //       projectArr: result.projectArr,
-  //       skillArr: result.skillArr
-  //     })
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+    componentDidMount() {
+      console.log('front end here');
+      axios.get('/candidate/profile')
+        .then((result) => {
+          console.log('front end result', result);
+          this.workCount = result.data.workArr.length;
+          this.projectCount = result.data.projectArr;
+          this.skillCount = result.data.skillArr;
+          this.setState({
+            basic: {
+              first_name: result.data.basic.first_name,
+              last_name: result.data.basic.last_name,
+              picture_url: result.data.basic.picture_url,
+              resume: result.data.basic.resume_url,
+              location: result.data.basic.location,
+              linkedin_url: result.data.basic.linkedin_url,
+              github_url: result.data.basic.github_url
+            },
+            eduArr: result.data.eduArr,
+            workExpArr: result.data.workArr,
+            projectArr: result.data.projectArr,
+            skillArr: result.data.skillArr
+          });
+        })
+        .catch(err => console.log(err));
+    }
   //
   //
 
@@ -197,19 +189,22 @@ class CandidateSelfProfile extends React.Component {
 
 
   render() {
-    console.log('profile this.props', this.props);
-    console.log('profile this.state', this.state);
+    console.log('SELF PROFILE this.props', this.props);
+    console.log('SELF PROFILE this.state', this.state);
     return (
       <div>
         <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
         <div className="profile-holder">
           <div className="profile-sidebar">
             <div className="profile-picture">
-              <ProfileSideBar
-                onDropPicture={this.onDropPicture}
-                basic={this.state.basic}
-                eduArr={this.state.eduArr}
-              />
+              {
+                this.state.eduArr.length > 0 &&
+                <ProfileSideBar
+                  onDropPicture={this.onDropPicture}
+                  basic={this.state.basic}
+                  eduArr={this.state.eduArr}
+                />
+              }
             </div>
           </div>
           <div className="profile-content">

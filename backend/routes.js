@@ -44,6 +44,32 @@ const {
   Skill,
   WorkExperience,
 } = require('../database/models');
+const elasticsearch = require('elasticsearch');
+
+const client = new elasticsearch.Client({
+  host: 'https://eiftsb3217:nwp7p67ue0@kindredtalent-6472919482.us-west-2.bonsaisearch.net',
+  log: 'trace'
+});
+
+client.indices.create({
+  index: 'candidate-profile'
+}, (err, resp, status) => {
+  if (err) {
+    console.log('INDEX ALREADY EXISTS IN ES IGNORE THIS ^');
+  } else {
+    console.log('index created', resp);
+  }
+});
+// client.indices.delete({
+//   index: 'candidate-profile'
+// },function(err,resp,status) {
+//   if(err) {
+//     console.log(err);
+//   }
+//   else {
+//     console.log("index created", resp);
+//   }
+// })
 
 
 // returns all of the info about a candidate's profile that is displayed to users
@@ -101,6 +127,83 @@ router.put('/candidate/profile/work-experiences/:workId', (req, res) => {
   WorkExperience.findById(req.params.workId)
     .then(workObj => updateWorkExperience(workObj))
     .then(updated => res.json(updated))
+    .catch(err => console.error(err));
+});
+
+// adds a new candidate into the database
+// Route is tested
+router.post('/search', (req, res) => {
+  console.log('this is req', req.body);
+  client.search({
+    index: 'candidate-profile',
+    // CHANGE approval_status TO TRUE BELOW ONCE OUT OFF ALPHA
+    q: `skill: ${req.body.search}`,
+  }, (error, response) => {
+    // UPDATE THIS ONCE FRONT-END PAGE IS BUILT
+    res.send(response);
+  });
+});
+
+router.delete('/delete/:id', (req, res) => {
+  client.delete({
+    index: 'profile',
+    type: 'document',
+    id: req.params.id,
+  }, (error, response) => {
+    res.send(response);
+  });
+});
+
+router.post('/register-candidate', (req, res) => {
+  const skillTest = req.body.skillArr.map(skill => (skill.skill));
+  const promiseArr = [];
+  createCandidate(req.body.basic)
+    .then((cand) => {
+      client.create({
+        index: 'candidate-profile',
+        type: 'document',
+        id: cand.id,
+        body: {
+          first_name: req.body.basic.first_name,
+          last_name: req.body.basic.last_name,
+          email: req.body.basic.email,
+          password: req.body.basic.password,
+          picture_url: req.body.basic.picture_url,
+          location: req.body.basic.location,
+          linkedin_url: req.body.basic.linkedin_url,
+          github_url: req.body.basic.github_url,
+          website_url: req.body.basic.website_url,
+          resume_url: req.body.basic.resume_url,
+          title: req.body.basic.title,
+          approval_status: false,
+          education: req.body.eduArr,
+          projects: req.body.projectArr,
+          skill: skillTest,
+          workExperience: req.body.workArr
+        }
+      }, (error, response) => {
+        if (error) {
+          console.log('something bad happened', error);
+        } else {
+          console.log(response);
+        }
+      });
+
+      for (let i = 0; i < req.body.eduArr.length; i++) {
+        promiseArr.push(createEducation(cand.id, req.body.eduArr[i]));
+      }
+      for (let l = 0; l < req.body.projectArr.length; l++) {
+        promiseArr.push(createProject(cand.id, req.body.projectArr[l]));
+      }
+      for (let k = 0; k < req.body.skillArr.length; k++) {
+        promiseArr.push(createSkill(cand.id, req.body.skillArr[k]));
+      }
+      for (let j = 0; j < req.body.workArr.length; j++) {
+        promiseArr.push(createWorkExperience(cand.id, req.body.workArr[j]));
+      }
+      return Promise.all(promiseArr);
+    })
+    .then(resp => res.json(resp))
     .catch(err => console.error(err));
 });
 

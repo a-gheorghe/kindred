@@ -36,7 +36,7 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    picture: {
+    picture_url: {
       type: Sequelize.TEXT,
     },
     location: {

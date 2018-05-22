@@ -8,56 +8,70 @@ import CandidateRegisterAdditional from '../../components/registration/Candidate
 import PrivateRouteCand from '../../components/authentication/PrivateRouteCand';
 import Pending from '../../components/Pending';
 
-const RegisterContainer = props => (
-  <div>
-    <Route
-      exact
-      path="/register"
-      render={() =>
-      (<RegisterBoth
-        loggedInCand={props.loggedInCand}
-        loggedInRef={props.loggedInRef}
-        registerCand={props.registerCand}
-        registerRef={props.registerRef}
-        loginRef={props.loginRef}
-      />)}
-    />
-    <Route
-      exact
-      path="/register/cand/education"
-      render={() =>
-        (<CandidateRegisterEducation
-          loggedInCand={props.loggedInCand}
-          registerCand={props.registerCand}
-        />)}
-    />
-    <Route
-      exact
-      path="/register/cand/profile"
-      render={() =>
-        (<CandidateProfileContainer
-          loggedInCand={props.loggedInCand}
-          registerCand={props.registerCand}
-        />)}
-    />
-    <Route
-      exact
-      path="/register/cand/additional"
-      render={() =>
-        (<CandidateRegisterAdditional
-          loggedInCand={props.loggedInCand}
-          registerCand={props.registerCand}
-        />)}
-    />
-    <PrivateRouteCand
-      exact
-      path="/register/cand/pending"
-      component={Pending}
-      loggedInCand={props.loggedInCand}
-      registerCand={props.registerCand}
-    />
-  </div>
-);
+class RegisterContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log('REGISTER CONTAINER', this.props);
+    return (
+      <div>
+        <Route
+          exact
+          path="/register"
+          render={props => (<RegisterBoth
+            loggedInCand={this.props.loggedInCand}
+            loggedInRef={this.props.loggedInRef}
+            registerRef={this.props.registerRef}
+            registerCand={this.props.registerCand}
+            tempLogin={this.props.tempLogin}
+            loggedInTemp={this.props.loggedInTemp}
+          />)}
+        />
+
+        <Route
+          exact
+          path="/register/cand/education"
+          render={props => (<CandidateRegisterEducation
+            loggedInTemp={this.props.loggedInTemp}
+            loggedInCand={this.props.loggedInCand}
+            registerCand={this.props.registerCand}
+          />)}
+        />
+
+        <Route
+          exact
+          path="/register/cand/profile"
+          render={props => (<CandidateProfileContainer
+            loggedInTemp={this.props.loggedInTemp}
+            loggedInCand={this.props.loggedInCand}
+            registerCand={this.props.registerCand}
+          />)}
+        />
+
+        <Route
+          exact
+          path="/register/cand/additional"
+          render={props => (<CandidateRegisterAdditional
+            loggedInTemp={this.props.loggedInTemp}
+            loggedInCand={this.props.loggedInCand}
+            registerCand={this.props.registerCand}
+          />)}
+        />
+
+        <PrivateRouteCand
+          exact
+          path="/register/cand/pending"
+          component={Pending}
+          loggedInCand={this.props.loggedInCand}
+          loggedInTemp={this.props.loggedInTemp}
+          registerCand={this.props.registerCand}
+        />
+      </div>
+    );
+  }
+}
 
 RegisterContainer.propTypes = {
   loggedInRef: PropTypes.bool.isRequired,

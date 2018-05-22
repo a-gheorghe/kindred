@@ -16,8 +16,8 @@
     "start": "npm run dev",
     "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles",
     "lint": "npm run lint:errors",
-    "lint:js": "eslint -- frontend backend database models migrations config test",
-    "lint:errors": "eslint --quiet -- frontend backend database models migrations config test",
+    "lint:js": "eslint -- server.js frontend backend database models migrations config test",
+    "lint:errors": "eslint --fix --quiet -- server.js frontend backend database models migrations config test",
     "lint:staged": "lint-staged"
   },
   "lint-staged": {
@@ -43,6 +43,7 @@
     "bootstrap": "^4.1.1",
     "css-loader": "^0.28.0",
     "downshift": "^1.31.9",
+    "elasticsearch": "^14.2.2",
     "enzyme": "^2.8.1",
     "expect": "^1.20.2",
     "express": "^4.15.2",
@@ -80,7 +81,9 @@
     "semantic-ui-react": "^0.79.1",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
+    "socket.io": "^2.1.0",
     "style-loader": "^0.16.1",
+    "uuid": "^3.2.1",
     "webpack": "^2.3.3"
   },
   "devDependencies": {

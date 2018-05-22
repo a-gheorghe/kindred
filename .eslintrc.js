@@ -30,6 +30,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'warn',
 
     // disabled
+    'no-param-reassign': 'off',
     'linebreak-style': 'off',
     'no-console': 'off',
     'no-unused-vars': 'off',

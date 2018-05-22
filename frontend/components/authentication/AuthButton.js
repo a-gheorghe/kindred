@@ -17,9 +17,7 @@ class AuthButton extends React.Component {
       );
     } else if (loggedInRef) {
       return (
-        <p> Welcome!
           <button onClick={logoutRef}> Sign out </button>
-        </p>
       );
     }
     return (

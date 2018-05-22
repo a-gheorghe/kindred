@@ -16,6 +16,7 @@ const PrivateRouteCand = ({ component: Component, ...rest }) => (
   />);
 
 PrivateRouteCand.propTypes = {
+  loggedInTemp: PropTypes.bool.isRequired,
   loggedInCand: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
 };
