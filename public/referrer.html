@@ -27,8 +27,30 @@
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script src="semantic/out/semantic.min.js"></script>
+    <script>
+      /* Open sidenav */
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+      }
+      /* Hide sidenav */
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
   </head>
   <body>
+    <div id="mySidenav" class="sidenav">
+      <div class="hamburger-logo">
+        KindredTalent
+      </div>
+      <div class="hamburger-open" style="flex-direction: column; align-items: center; text-align: center">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/candidate">I'm Looking</a>
+        <a href="/">I'm Referring</a>
+        <a href="/app/register">Sign Up</a>
+        <a href="/app/login">Login</a>
+      </div>
+    </div>
     <div class="topnav">
       <div class="logo">
         KindredTalent
@@ -40,22 +62,29 @@
         <a href="/app/login">Login</a>
         <!-- <a href='/app/allCandidates'> See all candidates </a> -->
       </div>
+      <img class="hamburger" src="./hamburger.png" onclick="openNav()">
     </div>
     <div class="sec">
-      <div class="subsec" style="align-items: normal !important">
+      <div class="container" style="align-items: normal !important">
         <div class="block">
-          <div class="inline-block float-left">
+          <!-- <div class="inline-block float-left"> -->
             <p class="bigOffer">
               Refer engineers for jobs.</br>
               Get paid up to $5,000/hire.</br>
             </p>
             <div class="input-group">
-              <input id="landingpageInput" type="text" placeholder="What skills are you looking for?">
+              <input id="landingpageInputSquare" type="text" placeholder="What skills are you looking for?">
               <span class="input-group-btn">
-                <button id="inputBut" class="btn btn-secondary" type="submit">Search</button>
+                <button id="inputButSquare" class="btn btn-secondary" type="submit">Search</button>
               </span>
+              <div>
+                <input id="landingpageInputRound" type="text" placeholder="What skills are you looking for?"><br>
+                <span class="input-group-btn">
+                  <button id="inputButRound" class="btn btn-secondary" type="submit">Search</button>
+                </span>
+              </div>
             </div>
-          </div>
+          <!-- </div> -->
           <div class="inline-block float-right">
             <img class="landingpageImg" src="./people.png" alt="">
           </div>
@@ -68,10 +97,10 @@
       </div>
     </div>
     <div class="sec">
-      <div class="subsec">
+      <div class="container">
         <p class="howItWorks">How it works</p>
-        <div class="howItWorksBoxes">
-          <div class="searchDiv1">
+        <div class="row">
+          <div class="col-sm">
             <img class="searchImg" src="./search.png" alt="">
             <div class="searchDiv2">
               <p class="howItWorksText">Search</p>
@@ -82,7 +111,7 @@
 
             </div>
           </div>
-          <div class="searchDiv1">
+          <div class="col-sm">
             <img class="searchImg" src="./mail.png" alt="">
             <div class="searchDiv2">
               <p class="howItWorksText">Refer</p>
@@ -93,7 +122,7 @@
 
             </div>
           </div>
-          <div class="searchDiv1">
+          <div class="col-sm">
             <img class="searchImg" src="./computer.png" alt="">
             <div class="searchDiv2">
               <p class="howItWorksText">Work</p>
@@ -107,20 +136,20 @@
       </div>
     </div>
     <div class="sec grey-sec">
-      <div class="subsec">
+      <div class="container">
         <div class="scootDiv">
           <div class="">
-            <div style="font-family: Avenir-Medium; font-size: 42px; color: #6B6B6B; margin-bottom: 30px;">Start referring today.</div>
+            <div style="font-family: Avenir-Medium; font-size: 42px; color: #6B6B6B; margin-bottom: 30px; line-height: 0.9">Start referring today.</div>
             <div style="font-family: Avenir-Light; font-size: 18px; color: #6B6B6B; margin-bottom: 30px;">Search through candidates. Refer them to jobs your company (or</br>
               friends). If they land a job, you get paid!</div>
               <button id="scootButton" type="button" name="button">Sign up</button>
           </div>
-          <img style="height: 300px; width: 317px"src="./scoot.png" alt="">
+          <img class="scoot" style="height: 300px; width: 317px"src="./scoot.png" alt="">
         </div>
       </div>
     </div>
     <div class="sec">
-      <div class="subsec">
+      <div class="container" id="bottom">
         <div class="mainDiv">
           <div class="">
             <div style="font-size: 36px; color: #6C6666; margin-bottom: 20px;  font-family: BodoniSvtyTwoITCTT-Bold;">KindredTalent</div>
