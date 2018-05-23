@@ -77,8 +77,31 @@ class ChatWindow extends React.Component {
           </div>
           :
           <div>
-            <p>You have no messages from {this.props.candId}</p>
-            <textarea placeholder="Click a candidate to start a conversation" disabled />
+            <div className="chat-banner">
+              <h3>
+                My Inbox
+              </h3>
+            </div>
+            <div className="convo-container">
+              <div className="msg-bubble">
+                You can choose someone to message by doing a search in the sidebar,
+                or from viewing someone's profile and clicking "Message Me".
+              </div>
+            </div>
+            <form>
+              <img src="../../paperclip.svg" alt="Attach" className="icon-msgbar" />
+              <img src="../../pictureicon.svg" alt="Upload" className="icon-msgbar" />
+              <textarea
+                disabled
+                type="text"
+                placeholder="Select someone to send a message to..."
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <button disabled className="message-submit">
+                <img src="../../plane.svg" alt="send" />
+              </button>
+            </form>
           </div>
         }
       </div>

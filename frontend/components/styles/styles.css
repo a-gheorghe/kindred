@@ -840,7 +840,7 @@ Ana's stuff
       right: 20px;
     }
     .convo-container {
-      min-height: 720px;
+      min-height: 550px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;

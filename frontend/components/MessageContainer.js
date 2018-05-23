@@ -14,6 +14,7 @@ class MessageContainer extends React.Component {
 
     this.state = {
       user: null,
+      query: '',
       activeThreadId: null, // candidate id of active thread
       activeThread: [],
       activeEd: [],
@@ -143,6 +144,10 @@ class MessageContainer extends React.Component {
     });
   }
 
+  handleChange(event) {
+    this.setState({ query: event.target.value });
+  }
+
   render() {
     return (
       <div className="message-container">
@@ -150,7 +155,12 @@ class MessageContainer extends React.Component {
         <div className="convo-picker">
           <div className="search-threads">
             <img src="/../../magnifyglass.svg" alt="Magnifying glass" />
-            <input type="text" placeholder="Search..." />
+            <input
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.query}
+              placeholder="Search..."
+            />
             <img src="/../../plussign.svg" alt="Add contact" />
           </div>
           { this.state.activeThreadId ?
