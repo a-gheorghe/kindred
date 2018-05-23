@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../components/styles/styles.css';
 
 const SelectThread = props => (
   <div
+    className={props.active ? 'select-thread active-thread' : 'select-thread'}
     onClick={(id) => {
       console.log('id', id);
       props.activateThread(id);
@@ -15,10 +17,12 @@ const SelectThread = props => (
     tabIndex={0}
     key={props.candId}
   >
-    { props.imgUrl ? <img src={props.imgUrl} alt={props.name} /> : null }
-    <h3>{props.name}</h3>
-    <h4>{props.role}</h4>
-    { props.active ? <p>** ACTIVE **</p> : null}
+    { props.imgUrl ? <img className="thread-profile-pic" src={props.imgUrl} alt={props.name} /> : null }
+    <div>
+      <h3>{props.name}</h3>
+      <h4>{props.role}</h4>
+    </div>
+    <span className="thread-update-time">5:21 pm</span>
   </div>
 );
 

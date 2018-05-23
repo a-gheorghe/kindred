@@ -25,6 +25,7 @@ const ReferrerContainer = props => (
         logoutRef={props.logoutRef}
         loggedInRef={props.loggedInRef}
         setTarget={props.setTarget}
+        checkAuthRef={props.checkAuthRef}
       />
       {/* Renders profile of referrer */}
       <PrivateRouteRef

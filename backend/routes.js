@@ -72,6 +72,12 @@ client.indices.create({
 // })
 
 
+router.get('/candidates', (req, res) => {
+  console.log('reaching /candidates');
+  Candidate.findAll()
+    .then(candObjs => res.json(candObjs))
+    .catch(err => res.json(err));
+});
 // returns all of the info about a candidate's profile that is displayed to users
 router.get('/candidate/profile', (req, res) => {
   const promiseArr = [
