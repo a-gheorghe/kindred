@@ -36,7 +36,7 @@ Message.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   imgUrl: PropTypes.string.isRequired,
-  isSender: PropTypes.string.isRequired,
+  isSender: PropTypes.bool.isRequired,
 };
 
 export default Message;

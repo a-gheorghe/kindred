@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OptionsCand from './authentication/OptionsCand';
-import OptionsRef from './authentication/OptionsRef';
+// import OptionsCand from './authentication/OptionsCand';
+// import OptionsRef from './authentication/OptionsRef';
 
 class CandidateExternalProfile extends React.Component {
   // Ignore linter errors: additional methods will go here; not necessary to
@@ -12,7 +12,7 @@ class CandidateExternalProfile extends React.Component {
     if (this.props.loggedInCand) {
       return (
         <div>
-          <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
+          {/* <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} /> */}
           <div> External view of profile!!!! </div>
           <b>Ana</b><br />
           <b> Education:</b> MSc University of British Columbia <br />
@@ -22,7 +22,7 @@ class CandidateExternalProfile extends React.Component {
     } else if (this.props.loggedInRef) {
       return (
         <div>
-          <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} />
+          {/* <OptionsRef loggedInRef={this.props.loggedInRef} logoutRef={this.props.logoutRef} /> */}
           <div> External view of profile!!!! </div>
           <b>Ana</b><br />
           <b> Education:</b> MSc University of British Columbia <br />

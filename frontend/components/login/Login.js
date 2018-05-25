@@ -37,12 +37,12 @@ class Login extends React.Component {
   submitRef = () => {
     this.props.loginRef(this.state.email, this.state.password)
       .then(() => {
-        console.log('this.props.loggedInRef1', this.props.loggedInRef);
+        // console.log('this.props.loggedInRef1', this.props.loggedInRef);
         if (this.props.loggedInRef) {
           this.props.history.push('/ref/my/profile');
         }
       });
-    console.log('this.props.loggedInRef2', this.props.loggedInRef);
+    // console.log('this.props.loggedInRef2', this.props.loggedInRef);
     // if (this.props.loggedInRef) {
     //   this.props.history.push('/ref/my/profile');
     // }
@@ -65,7 +65,7 @@ class Login extends React.Component {
         <Redirect to="/ref/messages" />
       );
     }
-    console.log('i am rendering login comp', this.props);
+    // console.log('i am rendering login comp', this.props);
     return (
       <div className="maindiv">
         <Header />

@@ -135,9 +135,22 @@ class AuthExample extends React.Component {
     };
 
     this.logoutCand = () => {
-      fakeAuthCand.logout(() => {
-        window.location.pathname = '/candidate';
-      });
+      console.log('Global this.logoutCand');
+      console.log('Attempting logout...');
+      return axios.get('/logout')
+        .then((resp) => {
+          console.log('Response received from server...');
+          console.log('resp.data', resp.data);
+          if (resp.data.success) {
+            console.log('Setting this.state.loggedinCand to false');
+            this.setState({ loggedInCand: false });
+          }
+          console.log('getting to bottom of logout cand');
+        })
+        .catch((err) => {
+          console.log('Something went wrong during cand logout...');
+          console.log(err);
+        });
     };
 
     this.checkAuthRef = () => {
@@ -159,6 +172,25 @@ class AuthExample extends React.Component {
         });
     };
 
+    this.checkAuthCand = () => {
+      // console.log('Global this.checkAuthRef');
+      console.log('Attempting authentication...');
+      return axios.get('/checkAuth')
+        .then((resp) => {
+          console.log('resp from checkAuthCand: ', resp.data);
+          if (resp.data.user) {
+            this.setState({ loggedInCand: true });
+            return resp.data.user;
+          }
+          return null;
+        })
+        .catch((err) => {
+          this.setState({ loggedInCand: false });
+          console.log(err);
+          return err;
+        });
+    };
+
     this.logoutRef = () => {
       console.log('Global this.logoutRef');
       console.log('Attempting logout...');
@@ -166,10 +198,12 @@ class AuthExample extends React.Component {
         .then((resp) => {
           console.log('Response received from server...');
           console.log(resp.data);
-          this.setState({ loggedInRef: false });
+          if (resp.data.success) {
+            this.setState({ loggedInRef: false });
+          }
         })
         .catch((err) => {
-          console.log('Something went wrong during logout...');
+          console.log('Something went wrong during ref logout...');
           console.log(err);
         });
     };
@@ -180,8 +214,12 @@ class AuthExample extends React.Component {
   }
 
   componentWillMount() {
-    this.checkAuthRef().then(resp => console.log(resp)).catch(err => console.log(err));
-    // check to see if user is logged in on server as ref...
+    // make sure user is logged in, for auto-login... broken..
+    if (this.state.loggedInRef) {
+      this.checkAuthRef().then(resp => console.log(resp)).catch(err => console.log(err));
+    } else if (this.state.loggedInCand) {
+      this.checkAuthCand().then(resp => console.log(resp)).catch(err => console.log(err));
+    }
   }
 
   render() {
@@ -259,6 +297,7 @@ class AuthExample extends React.Component {
                 loggedInCand={this.state.loggedInCand}
                 logoutCand={this.logoutRef}
                 setTarget={this.setTarget}
+                checkAuthCand={this.checkAuthCand}
                 target={this.target}
                 {...props}
               />

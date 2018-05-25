@@ -722,7 +722,7 @@ Ana's stuff
 /* Ana */
 #root {
   height: 100%;
-  border: 4px solid green;
+  /* border: 4px solid green; */
 }
 
 #root > [data-reactroot] { height: 100% }
@@ -774,6 +774,7 @@ Ana's stuff
       align-items: center;
       justify-content: space-evenly;
       border-top: 1px solid #FAFAFA;
+      cursor: pointer;
     }
     .select-thread:last-of-type {
       border-bottom: 1px solid #FAFAFA;
@@ -887,7 +888,6 @@ Ana's stuff
       max-width: 80%;
     }
     .right-msg {
-      float: right;
       max-width: 80%;
       align-self: flex-end;
     }
@@ -898,10 +898,17 @@ Ana's stuff
       padding: 3px;
       vertical-align: bottom;
     }
+      .right-msg .msg-img {
+        float: right;
+      }
     .msg-bubble {
       padding: 10px;
       border-radius: 10px;
       border: 1px solid #D8D8D8;
       display: inline-block;
       margin-bottom: 10px;
+    }
+    .unstyled-button {
+      background-color: transparent;
+      border: none;
     }

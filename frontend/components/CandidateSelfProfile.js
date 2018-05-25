@@ -10,7 +10,7 @@ import axios from 'axios';
 // import CandidateRegisterEducation from './registration/CandidateRegisterEducation'
 // import CandidateProfileContainer from '../containers/registration/CandidateProfileContainer'
 
-import OptionsCand from './authentication/OptionsCand';
+// import OptionsCand from './authentication/OptionsCand';
 
 class CandidateSelfProfile extends React.Component {
   constructor(props) {
@@ -193,7 +193,6 @@ class CandidateSelfProfile extends React.Component {
     console.log('SELF PROFILE this.state', this.state);
     return (
       <div>
-        <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
         <div className="profile-holder">
           <div className="profile-sidebar">
             <div className="profile-picture">

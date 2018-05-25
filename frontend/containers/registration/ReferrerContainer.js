@@ -22,10 +22,10 @@ const ReferrerContainer = props => (
         exact
         path="/ref/messages"
         component={MessageContainer}
-        logoutRef={props.logoutRef}
+        logout={props.logoutRef}
         loggedInRef={props.loggedInRef}
         setTarget={props.setTarget}
-        checkAuthRef={props.checkAuthRef}
+        checkAuth={props.checkAuthRef}
       />
       {/* Renders profile of referrer */}
       <PrivateRouteRef
