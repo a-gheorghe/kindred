@@ -41,6 +41,7 @@ class CandidateRegisterAdditional extends React.Component {
         localStorage.setItem('candidateObject', JSON.stringify(candidateObject));
 
         candidateObject = JSON.parse(localStorage.getItem('candidateObject'));
+        console.log('CANDIDATE OBJECT BEFORE REGISTERING', candidateObject);
         this.props.registerCand(candidateObject);
 
 

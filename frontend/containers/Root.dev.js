@@ -135,6 +135,7 @@ class AuthExample extends React.Component {
     };
 
     this.logoutCand = () => {
+      console.log('calling logoutCand');
       fakeAuthCand.logout(() => {
         window.location.pathname = '/candidate';
       });

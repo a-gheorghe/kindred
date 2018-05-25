@@ -155,6 +155,7 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 router.post('/register-candidate', (req, res) => {
+  console.log('REGISTERING A CANDIDATE', req.body.skillArr);
   const skillTest = req.body.skillArr.map(skill => (skill.skill));
   const promiseArr = [];
   createCandidate(req.body.basic)
