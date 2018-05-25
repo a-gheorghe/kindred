@@ -13,7 +13,7 @@ class AuthButton extends React.Component {
     } = this.props;
     if (loggedInCand) {
       return (
-          <a className="aTag" onClick={logoutCand}> Logout </a>
+          <button className="aTag" onClick={logoutCand}> Logout </button>
       );
     } else if (loggedInRef) {
       return (

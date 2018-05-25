@@ -9,6 +9,10 @@ class Header extends React.Component {
     };
   }
 
+  // componentDidMount() {
+  //
+  // }
+
   render() {
     return (
       <div className="topnav">

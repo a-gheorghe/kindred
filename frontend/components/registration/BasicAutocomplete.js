@@ -25,7 +25,7 @@ const BasicAutocomplete = ({ items, onChange, addSkill }) => (
           </InputGroup>
 
           {isOpen ? (
-            <div style={{ border: '1px solid #ccc' }}>
+            <div style={{ border: '1px solid #ccc', borderRadius: '5px', width: '560px', marginLeft: '40px' }}>
               {items
                 .filter(i =>
                     !inputValue ||
@@ -36,7 +36,7 @@ const BasicAutocomplete = ({ items, onChange, addSkill }) => (
                     key={item}
                     style={{
                       backgroundColor:
-                        highlightedIndex === index ? 'gray' : 'white',
+                        highlightedIndex === index ? '#FAFAFA' : 'white',
                       fontWeight: selectedItem === item ? 'bold' : 'normal',
                     }}
                   >
