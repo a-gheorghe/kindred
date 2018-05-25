@@ -58,8 +58,8 @@ class WorkExpForm extends React.Component {
             <input id="co-title" type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
           </div>
           <div>
-            <input id="profile-date" type="text" name="start_date" placeholder="Start Date" value={this.state.start_date} onChange={this.handleInputChange} />
-            <input id="profile-date" type="text" name="end_date" placeholder="End Date" value={this.state.end_date} onChange={this.handleInputChange} />
+            <input id="profile-date" type="text" name="start_date" placeholder="Start Date MM/YY" value={this.state.start_date} onChange={this.handleInputChange} />
+            <input id="profile-date" type="text" name="end_date" placeholder="End Date MM/YY" value={this.state.end_date} onChange={this.handleInputChange} />
           </div>
           <div><input type="text" name="current" placeholder="Current (Yes/No)" value={this.state.current} onChange={this.handleInputChange} /></div>
           <div><input id="pro-desc" type="text" name="description" placeholder="Description" value={this.state.description} onChange={this.handleInputChange} /></div>
