@@ -54,8 +54,8 @@ class CandidateSelfProfile extends React.Component {
         .then((result) => {
           console.log('front end result', result);
           this.workCount = result.data.workArr.length;
-          this.projectCount = result.data.projectArr;
-          this.skillCount = result.data.skillArr;
+          this.projectCount = result.data.projectArr.length;
+          this.skillCount = result.data.skillArr.length;
           this.setState({
             basic: {
               first_name: result.data.basic.first_name,
@@ -190,8 +190,7 @@ class CandidateSelfProfile extends React.Component {
 
 
   render() {
-    console.log('SELF PROFILE this.props', this.props);
-    console.log('SELF PROFILE this.state', this.state);
+    console.log('CONSOLE LOG A NEW THING TO TEST UPDATES');
     return (
       <div>
         <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />

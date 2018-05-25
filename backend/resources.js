@@ -83,16 +83,13 @@ function createReferrer(refObj) {
 so if it returns false, that means the skill is already on this candidate's
 page and should throw back a message on the client side saying something like
 "sorry, you already have this skill listed" */
-function createSkill(candId, skillObj) {
-  return Skill.findOrCreate({
-    where: {
-      candidate_id: candId,
-    },
-    defaults: {
-      skill: skillObj.skill,
-    },
+function createSkill(candId, skill) {
+  console.log('creating a skillObj', skill);
+  return Skill.create({
+    candidate_id: candId,
+    skill
   })
-    .catch(err => console.error(err));
+    .catch(err => console.error('error creating skill', err));
 }
 
 // adds a specific candidate’s work experience
@@ -259,12 +256,13 @@ function getAllReferrers() {
 
 // returns all of a specific candidate's skills
 function getAllSkills(candId) {
+  console.log('looking for skills');
   return Skill.findAll({
     where: {
       candidate_id: candId,
     },
   })
-    .catch(err => console.error(err));
+    .catch(err => console.error('My error was here', err));
 }
 
 // returns all of a specific candidate's work experiences

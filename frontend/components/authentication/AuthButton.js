@@ -8,22 +8,25 @@ import { withRouter } from 'react-router-dom';
 class AuthButton extends React.Component {
 
   render() {
+    console.log('*******Auth button component loggedInCand*****', this.props.loggedInCand)
     const {
       history, loggedInCand, loggedInRef, logoutCand, logoutRef,
     } = this.props;
     if (loggedInCand) {
       return (
-          <button className="aTag" onClick={logoutCand}> Logout </button>
+          // <a className="aTag" onClick={logoutCand}> Logout as Candidate!!!! </a>
+          <button onClick={logoutCand}> Logout as Candidate!!!! </button>
       );
     } else if (loggedInRef) {
       return (
           <button onClick={logoutRef}> Sign out </button>
       );
-    }
+    } else {
     return (
       <p> You are not logged in </p>
     );
   }
+}
 }
 
 AuthButton.propTypes = {

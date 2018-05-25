@@ -80,6 +80,7 @@ module.exports = function (passport) {
   // adds a new candidate into the database
   // Route is tested
   router.post('/register-candidate', (req, res) => {
+    const skillTest = req.body.skillArr.map(skill => skill.skill);
     const promiseArr = [];
     createCandidate(req.body.basic)
       .then((cand) => {
@@ -89,8 +90,8 @@ module.exports = function (passport) {
         for (let l = 0; l < req.body.projArr.length; l++) {
           promiseArr.push(createProject(cand.id, req.body.projArr[l]));
         }
-        for (let k = 0; k < req.body.skillArr.length; k++) {
-          promiseArr.push(createSkill(cand.id, req.body.skillArr[k]));
+        for (let k = 0; k < skillTest.length; k++) {
+          promiseArr.push(createSkill(cand.id, skillTest[k]));
         }
         for (let j = 0; j < req.body.workArr.length; j++) {
           promiseArr.push(createWorkExperience(cand.id, req.body.workArr[j]));
