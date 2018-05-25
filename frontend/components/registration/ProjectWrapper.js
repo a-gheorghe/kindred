@@ -22,7 +22,8 @@ class ProjectWrapper extends React.Component {
       addEditedProject,
     } = this.props;
     return (
-      <div>
+      <div className="experBigDiv">
+        <div className="work-exp-header">PROJECTS</div>
         <div>
           {projectArr.map((project, i) => (
               project.editable ?
@@ -42,19 +43,27 @@ class ProjectWrapper extends React.Component {
                   positionArray={i}
                 />
              :
-                <div style={{ border: '1px solid green' }} key={project.id}>
-              Title: {project.title} <br />
-              Description: {project.description} <br />
-              Start date: {project.start_date}<br />
-              End date: {project.end_date}<br />
-              Current: {project.current}<br />
-              Link: {project.link}<br />
-                  <button onClick={e => removeProject(project.id, e)}> Delete </button>
-                  <button onClick={e => makeProjectEditable(project.id, e)}> Edit </button>
+                <div className="experDiv" key={project.id}>
+                  <div>
+                    <div id="profile-company-name">{project.title}</div>
+                    <div id="profile-desc">{project.description}</div>
+                    {/* project role ???? ie. front end eng */}
+                    Start date: {project.start_date}<br />
+                    End date: {project.end_date}<br />
+                    Current: {project.current}<br />
+                    Link: {project.link}<br />
+                  </div>
+                  <div className="toggleExp">
+                    <input alt="close" type="image" src="/RedX.svg" onClick={e => removeProject(project.id, e)} />
+                    <input alt="edit" type="image" src="/RedEdit.svg" onClick={e => makeProjectEditable(project.id, e)} />
+                  </div>
                 </div>
           ))}
         </div>
-        {projectFormShown ? <div> <ProjectForm addProjectCloseForm={addProjectCloseForm} />  </div> : <button className="addButton" onClick={toggleProjectForm}> Add a Project</button>}
+        {projectFormShown ?
+          <div> <ProjectForm addProjectCloseForm={addProjectCloseForm} />  </div> :
+          <div id="red-button"><button className="addButton" onClick={toggleProjectForm}> Add a Project</button></div>
+        }
       </div>
     );
   }

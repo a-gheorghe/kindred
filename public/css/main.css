@@ -31,7 +31,6 @@ body {
   font-family: BodoniSvtyTwoITCTT-Bold;
 }
 
-
 .aTag {
   display: flex;
   align-items: center;
@@ -124,7 +123,7 @@ body {
   margin: 25px 0 55px 0 !important;
 }
 
-#landingpageInput {
+#landingpageInputSquare {
   font-family: Avenir-Light;
   color: #6B6B6B;
   width: 550px;
@@ -136,9 +135,10 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding-left: 20px;
+  outline: none;
 }
 
-#inputBut {
+#inputButSquare {
   font-family: Avenir-Light;
   border-width: 0px;
   border: none;
@@ -149,12 +149,21 @@ body {
   box-shadow: 0px 2px 8px #ECE1E1;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  outline: none;
+}
+
+#landingpageInputRound {
+  display: none;
+}
+
+#inputButRound {
+  display: none;
 }
 
 .landingpageImg {
   width: 415px;
   height: 399px;
-  margin-top: 20px;
+  margin: -250px 70px 100px 30px;
 }
 
 .promoBox {
@@ -262,6 +271,7 @@ body {
   background-color: #D43239;
   font-size: 22px;
   border-radius: 10px;
+  outline: none;
 }
 
 .scootDiv {
@@ -275,7 +285,7 @@ body {
 .mainDiv {
   display: flex;
   justify-content: space-between;
-  width: 100%
+  width: 100%;
 }
 
 .col-sm {
@@ -356,7 +366,7 @@ body {
 
 .card {
   border: none;
-  padding: 20px;
+  padding: 0px 45px;
 }
 .placement {
   font-size: 18px;
@@ -391,10 +401,6 @@ body {
   #bottom {
     display: none;
   }
-
-  /* .card-body {
-    display: none;
-  } */
 }
 
 @media only screen and (max-width: 655px) {
@@ -417,12 +423,61 @@ body {
   .briefcase {
     display: none;
   }
+
+  .scoot {
+    display: none;
+  }
 }
 
-@media only screen and (max-width: 1200px) {
-  .sec {
-    /* margin-left: 30px;
-    margin-right: 30px; */
+@media only screen and (max-width: 770px) {
+  .language-subsec {
+    display: none;
   }
 
+  #landingpageInputSquare {
+    display: none;
+  }
+
+  #inputButSquare {
+    display: none;
+  }
+
+  #landingpageInputRound {
+    display: flex;
+    font-family: Avenir-Light;
+    color: #6B6B6B;
+    width: 550px;
+    height: 64px;
+    font-size: 22px;
+    border-width: 0px;
+    border: none;
+    box-shadow: 0px 2px 8px #ECE1E1;
+    border-radius: 10px;
+    padding-left: 20px;
+    outline: none;
+    padding-right: 20px;
+  }
+
+  #inputButRound {
+    display: flex;
+    font-family: Avenir-Light;
+    border-width: 0px;
+    border: none;
+    width: 160px;
+    font-size: 22px;
+    color: white;
+    background-color: #D43239;
+    box-shadow: 0px 2px 8px #ECE1E1;
+    border-radius: 10px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    outline: none;
+  }
 }
+
+@media only screen and (max-width: 1290px) {
+  .landingpageImg {
+    display: none;
+  }

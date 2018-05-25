@@ -52,29 +52,44 @@ class WorkExpForm extends React.Component {
 
     return (
       <div className="workExpFormDiv">
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-            Company: <input type="text" name="company" value={this.state.company} onChange={this.handleInputChange} />
-            Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
-            Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
-            Start Date: <input type="text" name="start_date" value={this.state.start_date} onChange={this.handleInputChange} /> <br />
-            End Date: <input type="text" name="end_date" value={this.state.end_date} onChange={this.handleInputChange} /> <br />
-            Current: <input type="text" name="current" value={this.state.current} onChange={this.handleInputChange} />
+        <div style={{ padding: '25px' }}>
+          <div>
+            <input id="co-title" type="text" name="company" placeholder="Company" value={this.state.company} onChange={this.handleInputChange} />
+            <input id="co-title" type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
+          </div>
+          <div>
+            <input id="profile-date" type="text" name="start_date" placeholder="Start Date" value={this.state.start_date} onChange={this.handleInputChange} />
+            <input id="profile-date" type="text" name="end_date" placeholder="End Date" value={this.state.end_date} onChange={this.handleInputChange} />
+          </div>
+          <div><input type="text" name="current" placeholder="Current (Yes/No)" value={this.state.current} onChange={this.handleInputChange} /></div>
+          <div><input id="pro-desc" type="text" name="description" placeholder="Description" value={this.state.description} onChange={this.handleInputChange} /></div>
         </div>
         {editedVersion ?
-          <button onClick={() => this.disableEditAndAdd()}> Save </button> :
-          <button
-            onClick={() => addWorkCloseForm(
-              this.state.company,
-              this.state.title,
-              this.state.description,
-              this.state.start_date,
-              this.state.end_date,
-              this.state.current,
-              this.state.editable
-            )}
-          >
-            Save
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: '25px' }}>
+            <button
+              className="addSkillbutt"
+              style={{ height: '60px' }}
+              onClick={() => this.disableEditAndAdd()}
+            >Save
+            </button>
+          </div> :
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: '25px' }}>
+            <button
+              className="addSkillbutt"
+              style={{ height: '60px' }}
+              onClick={() => addWorkCloseForm(
+                this.state.company,
+                this.state.title,
+                this.state.description,
+                this.state.start_date,
+                this.state.end_date,
+                this.state.current,
+                this.state.editable
+              )}
+            >
+              Save
+            </button>
+          </div>
         }
       </div>
     );

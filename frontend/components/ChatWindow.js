@@ -21,12 +21,14 @@ class ChatWindow extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.updateThread()(this.state.value);
-    // console.log()
-    console.log('updateThread');
-    this.setState({
-      value: '',
-    });
+    if (this.state.value) {
+      this.props.updateThread()(this.state.value);
+      // console.log()
+      console.log('updateThread');
+      this.setState({
+        value: '',
+      });
+    }
   }
 
   render() {
@@ -34,27 +36,72 @@ class ChatWindow extends React.Component {
       <div>
         {this.props.thread.length > 0 ?
           <div>
-            {this.props.thread.map(message => (
-              <Message
-                name={`${message.first_name} ${message.last_name}`}
-                value={message.message}
-                key={message.message_id}
-              />
-            ))}
+            <div className="chat-banner">
+              <h3>
+                {this.props.candData.first_name} {this.props.candData.last_name}
+              </h3>
+              <img className="chat-profile-icon" src="../../profileicon.svg" alt="Profile" />
+            </div>
+            <div className="convo-container">
+              {this.props.thread.map(message => (
+                <Message
+                  name={`${message.first_name} ${message.last_name}`}
+                  value={message.message}
+                  key={message.message_id}
+                  imgUrl={
+                    // is the sender a ref? is user a ref?
+                    ((this.props.userData.userType === 'referrer') && (message.referrer_id === this.props.userData.id)) ||
+                    ((this.props.userData.userType === 'candidate') && (message.candidate_id === this.props.userData.id))
+                    ? this.props.userData.picture_url : this.props.candData.picture_url
+                  }
+                  isSender={
+                    ((this.props.userData.userType === 'referrer') && (message.referrer_id === this.props.userData.id)) ||
+                    ((this.props.userData.userType === 'candidate') && (message.candidate_id === this.props.userData.id))
+                  }
+                />
+              ))}
+            </div>
             <form onSubmit={this.handleSubmit}>
+              <img src="../../paperclip.svg" alt="Attach" className="icon-msgbar" />
+              <img src="../../pictureicon.svg" alt="Upload" className="icon-msgbar" />
               <textarea
                 type="text"
                 placeholder="Type your message here..."
                 value={this.state.value}
                 onChange={this.handleChange}
               />
-              <input type="submit" value="Send message" />
+              <button type="submit" className="message-submit">
+                <img src="../../plane.svg" alt="send" />
+              </button>
             </form>
           </div>
           :
           <div>
-            <p>You have no messages from {this.props.candId}</p>
-            <textarea placeholder="Click a candidate to start a conversation" disabled />
+            <div className="chat-banner">
+              <h3>
+                My Inbox
+              </h3>
+            </div>
+            <div className="convo-container">
+              <div className="msg-bubble">
+                You can choose someone to message by doing a search in the sidebar,
+                or from viewing someone's profile and clicking "Message Me".
+              </div>
+            </div>
+            <form>
+              <img src="../../paperclip.svg" alt="Attach" className="icon-msgbar" />
+              <img src="../../pictureicon.svg" alt="Upload" className="icon-msgbar" />
+              <textarea
+                disabled
+                type="text"
+                placeholder="Select someone to send a message to..."
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <button disabled className="message-submit">
+                <img src="../../plane.svg" alt="send" />
+              </button>
+            </form>
           </div>
         }
       </div>
@@ -64,6 +111,7 @@ class ChatWindow extends React.Component {
 
 ChatWindow.propTypes = {
   candId: PropTypes.string,
+  userData: PropTypes.object,
   candData: PropTypes.object,
   thread: PropTypes.array,
   updateThread: PropTypes.func.isRequired,

@@ -4,13 +4,14 @@ import ExperienceWrapper from './registration/ExperienceWrapper';
 import ProjectWrapper from './registration/ProjectWrapper';
 import SkillWrapper from './registration/SkillWrapper';
 import ProfileSideBar from './ProfileSideBar';
+import OptionsCand from './authentication/OptionsCand';
+
+// import Header from './Header';
 
 import Footer from './Footer';
 import axios from 'axios';
 // import CandidateRegisterEducation from './registration/CandidateRegisterEducation'
 // import CandidateProfileContainer from '../containers/registration/CandidateProfileContainer'
-
-import OptionsCand from './authentication/OptionsCand';
 
 class CandidateSelfProfile extends React.Component {
   constructor(props) {

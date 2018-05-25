@@ -26,13 +26,18 @@ addSkillResetState = () => {
 
 render() {
   return (
-    <div>
-      {this.props.skillArr.map((data, i) => (
-        <span style={{ border: '1px solid green', color: 'red', margin: '10 10 10 10' }} key={data.id}>
-          {data.skill}
-          <button onClick={e => this.props.removeSkill(data.id, e)}> Delete </button>
-        </span>
-    ))}
+    <div className="experBigDiv">
+      <div className="work-exp-header">SKILLS</div>
+      <div className="skillContainer">
+        {this.props.skillArr.map((data, i) => (
+          <div id="oneSkill" key={data.id}>
+            <div id="skillText">{data.skill}</div>
+            <div>
+              <input alt="deleteSkill" type="image" src="/deleteSkill.svg" onClick={e => this.props.removeSkill(data.id, e)} />
+            </div>
+          </div>
+          ))}
+      </div>
       <BasicAutocomplete
         items={skills}
         onChange={e => this.handleInputChange(e)}

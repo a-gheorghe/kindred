@@ -23,6 +23,7 @@ class ExperienceWrapper extends React.Component {
 
     return (
       <div className="experBigDiv">
+        <div className="work-exp-header">WORK EXPERIENCE</div>
         {workExpArr.map((work, i) => (
           work.editable ?
             <WorkExpForm
@@ -43,25 +44,24 @@ class ExperienceWrapper extends React.Component {
             <div className="experDiv" key={work.id}>
               <div className="experImgDiv" />
               <div>
-                <div>
-                Company: {work.company}
+                <div id="profile-company-name">{work.company}</div>
+                <div className="work-info">
+                  <div id="profile-title">{work.title}&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+                  <div id="profile-dates">
+                    Start Date {work.startdate} - End Date {work.enddate}
+                  </div>
                 </div>
-                <div>
-                Title: {work.title}
-                Start Date: {work.startdate}
-                End Date: {work.enddate}
-                </div>
-                <div>
-                Description: {work.description}
-                </div>
+                <div id="profile-desc">{work.description}</div>
               </div>
-              <div>
-                <button onClick={e => removeWork(work.id, e)}> Delete </button>
-                <button onClick={e => makeWorkEditable(work.id, e)}> Edit </button>
+              <div className="toggleExp">
+                <input alt="close" type="image" src="/RedX.svg" onClick={e => removeWork(work.id, e)} />
+                <input alt="edit" type="image" src="/RedEdit.svg" onClick={e => makeWorkEditable(work.id, e)} />
               </div>
             </div>
         ))}
-        {workFormShown ? <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> : <button className="addButton" onClick={toggleWorkForm}> Add Work Experience </button>}
+        {workFormShown ?
+          <div> <WorkExpForm addWorkCloseForm={addWorkCloseForm} /> </div> :
+          <div id="red-button"><button className="addButton" onClick={toggleWorkForm}> Add Work Experience </button></div>}
       </div>
     );
   }

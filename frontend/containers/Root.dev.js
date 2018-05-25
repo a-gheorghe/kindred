@@ -161,6 +161,22 @@ class AuthExample extends React.Component {
     return (
       <BrowserRouter basename="/app">
         <div>
+          {/* Test messenger */}
+          <Route
+            path="/testMsg"
+            render={props => (
+              <MessageContainer
+                loggedInCand={this.state.loggedInCand}
+                loggedInRef={this.state.loggedInRef}
+                registerRef={this.registerRef}
+                registerCand={this.registerCand}
+                logoutCand={this.logoutCand}
+                logoutRef={this.logoutRef}
+                loginRef={this.loginRef}
+                {...props}
+              />
+            )}
+          />
           {/* Renders the first page of the registration form for cands & recruiters */}
           <Route
             path="/register"

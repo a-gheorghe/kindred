@@ -258,6 +258,8 @@ server.listen(PORT, (error) => {
   }
 });
 
+console.log('inside server', PORT);
+
 // Socket handler
 io.on('connection', (socket) => {
   socket.on('username', (username) => {
