@@ -9,7 +9,7 @@ class ChatWindow extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.retrieveMessageThreads = this.retrieveMessageThreads.bind(this);
+
     this.state = {
       value: '',
     };
@@ -23,8 +23,7 @@ class ChatWindow extends React.Component {
     event.preventDefault();
     if (this.state.value) {
       this.props.updateThread()(this.state.value);
-      // console.log()
-      console.log('updateThread');
+
       this.setState({
         value: '',
       });
@@ -38,7 +37,7 @@ class ChatWindow extends React.Component {
           <div>
             <div className="chat-banner">
               <h3>
-                {this.props.candData.first_name} {this.props.candData.last_name}
+                {this.props.sendToData.first_name} {this.props.sendToData.last_name}
               </h3>
               <img className="chat-profile-icon" src="../../profileicon.svg" alt="Profile" />
             </div>
@@ -50,13 +49,13 @@ class ChatWindow extends React.Component {
                   key={message.message_id}
                   imgUrl={
                     // is the sender a ref? is user a ref?
-                    ((this.props.userData.userType === 'referrer') && (message.referrer_id === this.props.userData.id)) ||
-                    ((this.props.userData.userType === 'candidate') && (message.candidate_id === this.props.userData.id))
-                    ? this.props.userData.picture_url : this.props.candData.picture_url
+                    ((this.props.loggedInUser.userType === 'referrer') && (message.referrer_id === this.props.loggedInUser.id)) ||
+                    ((this.props.loggedInUser.userType === 'candidate') && (message.candidate_id === this.props.loggedInUser.id))
+                    ? this.props.loggedInUser.picture_url : this.props.sendToData.picture_url
                   }
                   isSender={
-                    ((this.props.userData.userType === 'referrer') && (message.referrer_id === this.props.userData.id)) ||
-                    ((this.props.userData.userType === 'candidate') && (message.candidate_id === this.props.userData.id))
+                    ((this.props.loggedInUser.userType === 'referrer') && (message.referrer_id === this.props.loggedInUser.id)) ||
+                    ((this.props.loggedInUser.userType === 'candidate') && (message.candidate_id === this.props.loggedInUser.id))
                   }
                 />
               ))}
@@ -110,16 +109,14 @@ class ChatWindow extends React.Component {
 }
 
 ChatWindow.propTypes = {
-  candId: PropTypes.string,
-  userData: PropTypes.object,
-  candData: PropTypes.object,
+  sendToId: PropTypes.string.isRequired,
+  loggedInUser: PropTypes.object.isRequired,
+  sendToData: PropTypes.object.isRequired,
   thread: PropTypes.array,
   updateThread: PropTypes.func.isRequired,
 };
 
 ChatWindow.defaultProps = {
-  candId: null,
-  candData: null,
   thread: [],
 };
 

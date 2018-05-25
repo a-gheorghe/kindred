@@ -29,7 +29,9 @@ module.exports = {
     'jsx-a11y/alt-text': 'warn',
     'jsx-a11y/no-static-element-interactions': 'warn',
 
+
     // disabled
+    'eqeqeq': 'off',
     'no-param-reassign': 'off',
     'linebreak-style': 'off',
     'no-console': 'off',

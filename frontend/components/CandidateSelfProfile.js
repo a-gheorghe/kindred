@@ -6,12 +6,11 @@ import SkillWrapper from './registration/SkillWrapper';
 import ProfileSideBar from './ProfileSideBar';
 import OptionsCand from './authentication/OptionsCand';
 
-// import Header from './Header';
-
 import Footer from './Footer';
 import axios from 'axios';
 // import CandidateRegisterEducation from './registration/CandidateRegisterEducation'
 // import CandidateProfileContainer from '../containers/registration/CandidateProfileContainer'
+// import OptionsCand from './authentication/OptionsCand';
 
 class CandidateSelfProfile extends React.Component {
   constructor(props) {
@@ -47,7 +46,7 @@ class CandidateSelfProfile extends React.Component {
         })
         .catch(err => console.log('upload error', err));
     }
-  //
+
     componentDidMount() {
       console.log('front end here');
       axios.get('/candidate/profile')
@@ -190,10 +189,9 @@ class CandidateSelfProfile extends React.Component {
 
 
   render() {
-    console.log('CONSOLE LOG A NEW THING TO TEST UPDATES');
+    // console.log('CONSOLE LOG A NEW THING TO TEST UPDATES');
     return (
       <div>
-        <OptionsCand loggedInCand={this.props.loggedInCand} logoutCand={this.props.logoutCand} />
         <div className="profile-holder">
           <div className="profile-sidebar">
             <div className="profile-picture">

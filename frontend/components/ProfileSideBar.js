@@ -23,7 +23,7 @@ export default class ProfileSideBar extends React.Component {
           >
             {this.props.basic.picture_url === '' ?
               <div> Upload a picture </div> :
-              <img alt="profile" style={{ 'max-width': '100%', 'max-height': '100%', borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }} src={this.props.basic.picture_url} />}
+              <img alt="profile" style={{ maxWidth: '100%', mamaxHeight: '100%', borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }} src={this.props.basic.picture_url} />}
             {/* HOVER IMAGE */}
           </Dropzone>
         </div>

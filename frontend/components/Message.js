@@ -12,8 +12,7 @@ const Message = props => (
           <img
             className="msg-img"
             alt={props.name}
-            src={props.imgUrl ||
-              'http://wp0.vanderbilt.edu/blackboard/wp-content/uploads/sites/71/2015/08/profile-42914_12801-150x150.png'}
+            src={props.imgUrl}
           />
         </div>
       : // otherwise display on left
@@ -21,8 +20,7 @@ const Message = props => (
           <img
             className="msg-img"
             alt={props.name}
-            src={props.imgUrl ||
-              'http://wp0.vanderbilt.edu/blackboard/wp-content/uploads/sites/71/2015/08/profile-42914_12801-150x150.png'}
+            src={props.imgUrl}
           />
           <div className="msg-bubble">
             {props.value}
@@ -35,8 +33,12 @@ const Message = props => (
 Message.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
-  isSender: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
+  isSender: PropTypes.bool.isRequired,
+};
+
+Message.defaultProps = {
+  imgUrl: 'http://wp0.vanderbilt.edu/blackboard/wp-content/uploads/sites/71/2015/08/profile-42914_12801-150x150.png',
 };
 
 export default Message;
