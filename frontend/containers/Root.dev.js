@@ -20,8 +20,6 @@ class AuthExample extends React.Component {
     this.state = {
       loggedInCand: false,
       loggedInRef: false,
-      loggedInTemp: false,
-      // targetPath: '/',
     };
 
     const fakeAuthCand = {
@@ -54,92 +52,65 @@ class AuthExample extends React.Component {
       },
     };
 
-    this.loginCand = (email, password) => {
-      console.log('sending with email ', email, 'sending with password ', password);
-      axios.post('/candidate/login', { email, password })
-        .then(result => console.log('result is', result))
-        .catch(err => console.log('error is ', err));
-    };
 
-    this.loginRef = (email, password) => {
-      console.log('Global this.loginRef');
-      console.log('Attempting login...');
-      console.log('sending with email ', email, 'sending with password ', password);
-      return axios.post('/referrer/login', { email, password })
-        .then((resp) => {
-          console.log('Response received from server...');
-          console.log(resp.data);
-          if (resp.data.success) {
-            this.setState({ loggedInRef: true });
-          }
-        })
-        .catch((err) => {
-          console.log('Something went wrong during login...');
-          console.log(err);
-        });
-    };
+    this.loginRef = (email, password) => axios.post('/referrer/login', { email, password })
+      .then((resp) => {
+        if (resp.data.success) {
+          this.setState({ loggedInRef: true });
+        }
+      })
+      .catch((err) => {
+        console.log('Something went wrong during login...');
+        console.log(err);
+      });
 
-    this.loginCand = (email, password) => {
-      console.log('calling loginCand');
-      return axios.post('/candidate/login', { email, password })
-        .then((resp) => {
-          console.log('response from server', resp.data);
-          if (resp.data.success) {
-            this.setState({ loggedInCand: true });
-          }
-        });
-    };
+    this.loginCand = (email, password) => axios.post('/candidate/login', { email, password })
+      .then((resp) => {
+        if (resp.data.success) {
+          this.setState({ loggedInCand: true });
+        }
+      });
 
-    this.tempLogin = () => {
-      console.log('calling tempLogin');
-      this.setState(() => ({
-        loggedInTemp: true,
-      }));
-    };
 
-    this.registerCand = (candidateObject) => {
-      console.log('in here cand object is ', candidateObject);
-      return axios.post('/register-candidate', candidateObject)
-        .then((res) => {
-          console.log('response after registering', res);
+    this.registerCand = candidateObject => axios.post('/register-candidate', candidateObject)
+      .then((res) => {
+        if (res.status === 200) {
+          return this.loginCand(candidateObject.basic.email, candidateObject.basic.password);
+        }
+        return false;
+      })
+      .catch(err => console.log('error with registering'));
 
-          if (res.status === 200) {
-            console.log('good status');
-            return this.loginCand(candidateObject.basic.email, candidateObject.basic.password);
-          }
-          console.log('bad status');
-          return false;
-        })
-        .catch(err => console.log('error with registering'));
-      // this.setState(() => ({
-      //   loggedInCand: true,
-      // }
-      // ));
-    };
-
-    this.registerRef = (refObj) => {
-      console.log('Global this.registerRef');
-      console.log('Attempting registration...');
-      console.log(refObj);
-      return axios.post('/register-referrer', refObj)
-        .then((resp) => {
-          console.log('Response received from server...');
-          console.log(resp.data);
-          // attempt immediate login
-          return this.loginRef(refObj.email, refObj.password);
-        })
-        .catch((err) => {
-          console.log('Something went wrong during registration...');
-          console.log(err);
-        });
-    };
+    this.registerRef = refObj => axios.post('/register-referrer', refObj)
+      .then((resp) => {
+        console.log('Response received from server...');
+        console.log(resp.data);
+        // attempt immediate login
+        return this.loginRef(refObj.email, refObj.password);
+      })
+      .catch((err) => {
+        console.log('Something went wrong during registration...');
+        console.log(err);
+      });
 
     this.logoutCand = () => {
       console.log('calling logoutCand');
-      fakeAuthCand.logout(() => {
-        window.location.pathname = '/candidate';
-      });
+      return axios.get('/logout')
+        .then((resp) => {
+          console.log('Response received from server...');
+          console.log(resp.data);
+          this.setState({ loggedInCand: false }, window.location.pathname = '/candidate');
+        })
+        .catch((err) => {
+          console.log('Something went wrong during logout...');
+          console.log(err);
+        });
     };
+    //     })
+    //   fakeAuthCand.logout(() => {
+    //     window.location.pathname = '/candidate';
+    //   });
+    // };
 
     this.checkAuthRef = () => {
       // console.log('Global this.checkAuthRef');
@@ -242,7 +213,7 @@ class AuthExample extends React.Component {
             render={props => (
               <CandidateContainer
                 loggedInCand={this.state.loggedInCand}
-                logoutCand={this.logoutRef}
+                logoutCand={this.logoutCand}
                 setTarget={this.setTarget}
                 target={this.target}
                 {...props}

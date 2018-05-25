@@ -80,9 +80,7 @@ module.exports = function (passport) {
   // adds a new candidate into the database
   // Route is tested
   router.post('/register-candidate', (req, res) => {
-    console.log('registering candidate for post route, req is', req.body.skillArr[0]);
     const skillTest = req.body.skillArr.map(skill => skill.skill);
-    console.log('skill test is ', skillTest);
     const promiseArr = [];
     createCandidate(req.body.basic)
       .then((cand) => {
