@@ -196,6 +196,7 @@ const Referral = sequelize.define('referrals', {
   },
 });
 
+// TO DO: Project model is missing 'role'
 const Project = sequelize.define('projects', {
   start_date: {
     type: Sequelize.DATE,
