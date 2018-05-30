@@ -20,7 +20,6 @@ const {
   Referrer,
   Admin,
 } = require('./database/models');
-const io = require('socket.io')(server);
 
 const PORT = process.env.PORT || 3000;
 
@@ -239,16 +238,6 @@ app.use((req, res, next) => {
 app.use('/', admin);
 app.use('/', routes);
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('login', (message) => {
-
-  });
-  socket.on('message', (message) => {
-    console.log('Got message', message);
-  });
-});
-
 server.listen(PORT, (error) => {
   if (error) {
     console.error(error);
@@ -256,50 +245,4 @@ server.listen(PORT, (error) => {
     console.info(`==> 🌎 Listening on port ${PORT}. ` +
       `Visit http://localhost:${PORT}/ in your browser.`);
   }
-});
-
-console.log('inside server', PORT);
-
-// Socket handler
-io.on('connection', (socket) => {
-  socket.on('username', (username) => {
-    if (!username || !username.trim()) return socket.emit('errorMessage', 'No username!');
-    socket.username = String(username);
-    return socket.username;
-  });
-
-  socket.on('room', (requestedRoom) => {
-    if (!socket.username) {
-      return socket.emit('errorMessage', 'Username not set!');
-    }
-    if (!requestedRoom) {
-      return socket.emit('errorMessage', 'No room!');
-    }
-    if (socket.room) socket.leave(socket.room);
-    socket.room = requestedRoom;
-
-    const timeStamp = new Date();
-
-    return socket.join(requestedRoom, () => {
-      socket.to(requestedRoom).emit('message', {
-        timeStamp,
-        user: 'KindredTalent',
-        content: `${socket.username} has joined`,
-      });
-    });
-  });
-
-  socket.on('edit', editData => socket.to(editData.roomName).emit('edit', editData));
-
-  socket.on('message', (message) => {
-    if (!socket.room) {
-      return socket.emit('errorMessage', 'No rooms joined!');
-    }
-
-    return socket.to(socket.room).emit('message', {
-      timeStamp: message.timeStamp,
-      user: socket.username,
-      content: message.content
-    });
-  });
 });

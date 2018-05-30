@@ -81,7 +81,6 @@
     "semantic-ui-react": "^0.79.1",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
-    "socket.io": "^2.1.0",
     "style-loader": "^0.16.1",
     "uuid": "^3.2.1",
     "webpack": "^2.3.3"
