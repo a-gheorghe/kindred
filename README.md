@@ -20,7 +20,7 @@ Once the server is running, you can visit `http://localhost:3000/`
     - API routes are under `backend/routes.js`
     - API routes are served under `http://localhost:3000/api`
 
-<img src="./readme-images/candidate-top.png" alt="cand" width="328px" height="548px">
-<img src="./readme-images/candidate-bottom.png" alt="cand" width="328px" height="548px">
-<img src="./readme-images/referrer-top.png" alt="ref" width="328px" height="548px">
-<img src="./readme-images/referrer-bottom.png" alt="ref" width="328px" height="548px">
+<img src="./readme-images/candidate-top.png" alt="cand" width="328px" height="800px">
+<img src="./readme-images/candidate-bottom.png" alt="cand" width="328px" height="800px">
+<img src="./readme-images/referrer-top.png" alt="ref" width="328px" height="800px">
+<img src="./readme-images/referrer-bottom.png" alt="ref" width="328px" height="800px">
