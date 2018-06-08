@@ -156,12 +156,6 @@ html, body{
   color: #D43239;
 }
 
-
-
-/*
-Ana's stuff
- */
-
 .ana.right {
   border: 1px solid red;
   flex: 1;
@@ -321,8 +315,6 @@ Ana's stuff
   line-height: 120%;
   padding-top: 50px;
 }
-
-/* Ana - Registration Additional Page */
 
 .additional-progress {
   border: 1px solid orange;

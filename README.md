@@ -14,7 +14,7 @@ Once the server is running, you can visit `http://localhost:3000/`
 
 - **Frontend React**
     <!-- - The top level application Container is in `frontend/containers/AppContainer.js` -->
-    - CSS styles are in `frontend/assets/stylesheets/base.scss`
+    - CSS styles are in `frontend/styles/styles.css`
 - **Backend Express**
     - Entry point is `server.js`
     - API routes are under `backend/routes.js`
